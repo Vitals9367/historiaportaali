@@ -94,9 +94,5 @@ if ($env = getenv('APP_ENV')) {
   if (file_exists(__DIR__ . '/local.settings.php')) {
     include __DIR__ . '/local.settings.php';
   }
-
-  if (file_exists(__DIR__ . '/platformsh.settings.php')) {
-    include __DIR__ . '/platformsh.settings.php';
-  }
 }
 
