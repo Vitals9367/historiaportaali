@@ -1,0 +1,14 @@
+uuid: 3a1c68f9-f6af-4ceb-9f9a-a357a1467a94
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.content_producer
+  module:
+    - user
+id: user_add_role_action.content_producer
+label: 'Add the Content producer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: content_producer

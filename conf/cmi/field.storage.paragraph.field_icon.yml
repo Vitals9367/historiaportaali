@@ -1,0 +1,21 @@
+uuid: 90e173e8-0ab5-4415-9687-c7eeafc3f8d9
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - select2_icon
+_core:
+  default_config_hash: FmQFOWb6K1mY_dccIuzSLACHd08uf9e5yk6MogBX1MI
+id: paragraph.field_icon
+field_name: field_icon
+entity_type: paragraph
+type: select2_icon
+settings: {  }
+module: select2_icon
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
