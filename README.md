@@ -6,7 +6,7 @@ Env | Branch | Drush alias | URL
 --- | ------ | ----------- | ---
 docker | - | - | http://historiaportaali.docker.sh/
 development | develop | - | -
-production | master | - | -
+production | master | - | https://master-7rqtwti-c6cjuxyujjv64.eu-5.platformsh.site/
 
 ## Requirements
 
@@ -14,43 +14,44 @@ You need to have these applications installed to operate on all environments:
 
 - [Docker](https://github.com/druidfi/guidelines/blob/master/docs/docker.md)
 - [Stonehenge](https://github.com/druidfi/stonehenge)
+- [Platform.sh CLI](https://docs.platform.sh/development/cli.html)
 
 ## Running Stonehenge
 
 In Stonehenge directory, start with:
 
-``
+```
 $ make up
-``
+```
 
 Stop with:
 
-``
+```
 $ make stop
-``
+```
 
 If only stopped, Stonehenge will run on boot. Destroy with:
 
-``
+```
 $ make down
-``
+```
 
 If stopping/destroying Stonehenge breaks networking, run:
 
-``
+```
 cd /etc/
 sudo rm resolv.conf
 sudo ln -s /run/resolvconf/resolv.conf
 sudo systemctl restart resolvconf.service
-``
+```
 
 ## Create and start the project
 
 To create and start the environment, in project directory:
 
-``
+```
 $ make fresh
-``
+```
 
 (Do this twice if you get `ERROR 2002 (HY000): Can't connect to MySQL server on 'db' (115)`)
 
@@ -58,9 +59,9 @@ $ make fresh
 
 Rename file to `dump.sql` and run:
 
-``
+```
 $ make drush-sync-db
-``
+```
 
 ## Login to Drupal container
 
