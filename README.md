@@ -1,13 +1,12 @@
-# Your Drupal 9 project
-
-Description of your project.
+# Helsinki History Portal
 
 ## Environments
 
 Env | Branch | Drush alias | URL
 --- | ------ | ----------- | ---
-development | * | - | http://yoursite.docker.so/
-production | main | @main | TBD
+docker | - | - | http://historiaportaali.docker.sh/
+development | develop | - | -
+production | master | - | -
 
 ## Requirements
 
@@ -15,23 +14,53 @@ You need to have these applications installed to operate on all environments:
 
 - [Docker](https://github.com/druidfi/guidelines/blob/master/docs/docker.md)
 - [Stonehenge](https://github.com/druidfi/stonehenge)
-- For the new person: Your SSH public key needs to be added to servers
 
-## Create and start the environment
+## Running Stonehenge
 
-For the first time (new project):
-
-``
-$ make new
-``
-
-And following times to start the environment:
+In Stonehenge directory, start with:
 
 ``
 $ make up
 ``
 
-NOTE: Change these according of the state of your project.
+Stop with:
+
+``
+$ make stop
+``
+
+If only stopped, Stonehenge will run on boot. Destroy with:
+
+``
+$ make down
+``
+
+If stopping/destroying Stonehenge breaks networking, run:
+
+``
+cd /etc/
+sudo rm resolv.conf
+sudo ln -s /run/resolvconf/resolv.conf
+sudo systemctl restart resolvconf.service
+``
+
+## Create and start the project
+
+To create and start the environment, in project directory:
+
+``
+$ make fresh
+``
+
+(Do this twice if you get `ERROR 2002 (HY000): Can't connect to MySQL server on 'db' (115)`)
+
+## Import database
+
+Rename file to `dump.sql` and run:
+
+``
+$ make drush-sync-db
+``
 
 ## Login to Drupal container
 
@@ -40,3 +69,9 @@ This will log you inside the app container:
 ```
 $ make shell
 ```
+
+## Misc
+
+- Web root is `/public`
+- Configuration is in `/conf/cmi`
+- Run `make help` to list all available commands
