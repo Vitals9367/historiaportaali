@@ -5,7 +5,8 @@
 Env | Branch | Drush alias | URL
 --- | ------ | ----------- | ---
 docker | - | - | http://historiaportaali.docker.sh/
-development | develop | - | -
+sandbox | sandbox | - | https://sandbox-w6wvm5a-c6cjuxyujjv64.eu-5.platformsh.site/
+development | develop | - | https://develop-sr3snxi-c6cjuxyujjv64.eu-5.platformsh.site/
 production | master | - | https://master-7rqtwti-c6cjuxyujjv64.eu-5.platformsh.site/
 
 ## Requirements
@@ -50,7 +51,7 @@ sudo systemctl restart resolvconf.service
 To create and start the environment, in project directory:
 
 ```
-$ make fresh
+$ make up
 ```
 
 (Do this twice if you get `ERROR 2002 (HY000): Can't connect to MySQL server on 'db' (115)`)
