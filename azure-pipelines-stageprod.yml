@@ -1,12 +1,13 @@
-# File: drupal-helfi/azure-pipelines.yml
+# File: historiaportaali/azure-pipelines-stageprod.yml
 
 # Continuous integration (CI) triggers cause a pipeline to run whenever you push
 # an update to the specified branches or you push specified tags.
 trigger:
   branches:
     include:
-    - release/*
-    - refs/tags/*
+     - master
+#    - release/*
+#    - refs/tags/*
   paths:
     exclude:
     - README.md
@@ -28,10 +29,10 @@ pool: Default
 resources:
   repositories:
   # Azure DevOps repository
-  - repository: drupal-REPLACEME
+  - repository: helhist-pipelines
     type: git
     # project/repository
-    name: drupal-helfi/drupal-REPLACEME
+    name: helhist/helhist-pipelines
 
 extends:
-  template: azure-pipelines-drupal-release.yml@drupal-REPLACEME
+  template: azure-pipelines-drupal-stageprod.yml@helhist-pipelines
