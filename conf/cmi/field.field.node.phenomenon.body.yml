@@ -1,0 +1,23 @@
+uuid: 044e81ea-86ff-4ab4-984f-44680fd48047
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.phenomenon
+  module:
+    - text
+id: node.phenomenon.body
+field_name: body
+entity_type: node
+bundle: phenomenon
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

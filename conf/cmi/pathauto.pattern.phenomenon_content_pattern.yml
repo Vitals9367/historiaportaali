@@ -1,0 +1,22 @@
+uuid: 78e5d34a-62e9-445d-835e-69d1560f3c64
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: phenomenon_content_pattern
+label: 'Phenomenon content pattern'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria:
+  769d3149-c0dc-4ab1-9083-231821b092b4:
+    id: node_type
+    bundles:
+      phenomenon: phenomenon
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 769d3149-c0dc-4ab1-9083-231821b092b4
+selection_logic: and
+weight: -5
+relationships: {  }

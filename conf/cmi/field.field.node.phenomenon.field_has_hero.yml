@@ -1,0 +1,23 @@
+uuid: 81fc624a-d86d-48d2-9c15-c9a95f3502f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_has_hero
+    - node.type.phenomenon
+id: node.phenomenon.field_has_hero
+field_name: field_has_hero
+entity_type: node
+bundle: phenomenon
+label: Hero
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'true'
+  off_label: 'false'
+field_type: boolean

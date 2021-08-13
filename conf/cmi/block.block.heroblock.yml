@@ -26,6 +26,7 @@ visibility:
     bundles:
       landing_page: landing_page
       page: page
+      phenomenon: phenomenon
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
