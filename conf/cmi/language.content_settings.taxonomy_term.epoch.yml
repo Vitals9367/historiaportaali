@@ -1,0 +1,16 @@
+uuid: eea0102b-3522-41f4-ab90-6cef13ca262d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.epoch
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.epoch
+target_entity_type_id: taxonomy_term
+target_bundle: epoch
+default_langcode: fi
+language_alterable: true

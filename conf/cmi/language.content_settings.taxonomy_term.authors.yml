@@ -1,0 +1,16 @@
+uuid: 82a8a421-52e6-4f50-bf14-bdfdaf30ede2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.authors
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.authors
+target_entity_type_id: taxonomy_term
+target_bundle: authors
+default_langcode: fi
+language_alterable: true

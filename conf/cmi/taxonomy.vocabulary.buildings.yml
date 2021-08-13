@@ -1,0 +1,8 @@
+uuid: e37a0dd2-a05a-4041-87ed-4d11711c9325
+langcode: en
+status: true
+dependencies: {  }
+name: Buildings
+vid: buildings
+description: ''
+weight: 0

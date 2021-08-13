@@ -1,0 +1,16 @@
+uuid: 5d0cb695-e6e0-475c-a914-beb1c6fe9b5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.copyright
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.copyright
+target_entity_type_id: taxonomy_term
+target_bundle: copyright
+default_langcode: fi
+language_alterable: true
