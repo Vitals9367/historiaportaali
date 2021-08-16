@@ -1,0 +1,19 @@
+uuid: 412e5ad6-34ea-4efe-9611-e325d829b1c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_buildings_info
+    - node.type.article
+id: node.article.field_buildings_info
+field_name: field_buildings_info
+entity_type: node
+bundle: article
+label: 'Additional information'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
