@@ -1,12 +1,12 @@
-uuid: d3ad5f3a-bd96-4f90-92e4-804bbf7bdd89
+uuid: dd097655-cc62-4e3b-83aa-cd14552477d8
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - taxonomy
-id: node.field_neighbourhood
-field_name: field_neighbourhood
+id: node.field_neighbourhoods
+field_name: field_neighbourhoods
 entity_type: node
 type: entity_reference
 settings:

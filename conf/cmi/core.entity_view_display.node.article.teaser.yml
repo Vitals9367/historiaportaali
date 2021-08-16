@@ -18,8 +18,8 @@ dependencies:
     - field.field.node.article.field_lead
     - field.field.node.article.field_liftup_image
     - field.field.node.article.field_metatags
-    - field.field.node.article.field_neighbourhood
-    - field.field.node.article.field_phenomenon
+    - field.field.node.article.field_neighbourhoods
+    - field.field.node.article.field_phenomena
     - node.type.article
   module:
     - user
@@ -53,7 +53,7 @@ hidden:
   field_languages: true
   field_lead: true
   field_metatags: true
-  field_neighbourhood: true
-  field_phenomenon: true
+  field_neighbourhoods: true
+  field_phenomena: true
   langcode: true
   links: true

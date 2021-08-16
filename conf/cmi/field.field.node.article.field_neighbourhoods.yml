@@ -1,16 +1,16 @@
-uuid: 8429c5cf-b240-4fa1-a55b-07c3c6d5edb8
+uuid: 5b08ca40-d551-4484-a178-fa46c2f2fa55
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_phenomenon
+    - field.storage.node.field_neighbourhoods
     - node.type.article
-    - taxonomy.vocabulary.phenomena
-id: node.article.field_phenomenon
-field_name: field_phenomenon
+    - taxonomy.vocabulary.neighbourhoods
+id: node.article.field_neighbourhoods
+field_name: field_neighbourhoods
 entity_type: node
 bundle: article
-label: Phenomenon
+label: Neighbourhoods
 description: ''
 required: false
 translatable: false
@@ -20,10 +20,10 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      phenomena: phenomena
+      neighbourhoods: neighbourhoods
     sort:
       field: name
       direction: asc
-    auto_create: false
+    auto_create: true
     auto_create_bundle: ''
 field_type: entity_reference

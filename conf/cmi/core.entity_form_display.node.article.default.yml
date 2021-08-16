@@ -17,8 +17,8 @@ dependencies:
     - field.field.node.article.field_lead
     - field.field.node.article.field_liftup_image
     - field.field.node.article.field_metatags
-    - field.field.node.article.field_neighbourhood
-    - field.field.node.article.field_phenomenon
+    - field.field.node.article.field_neighbourhoods
+    - field.field.node.article.field_phenomena
     - node.type.article
   module:
     - datetime_range
@@ -33,8 +33,8 @@ third_party_settings:
   field_group:
     group_historiaportaali_meta:
       children:
-        - field_phenomenon
-        - field_neighbourhood
+        - field_phenomena
+        - field_neighbourhoods
         - field_date_range
       parent_name: ''
       weight: 18
@@ -158,7 +158,7 @@ content:
     type: select2_entity_reference
     region: content
   field_date_range:
-    weight: 28
+    weight: 32
     settings:
       increment: 15
       date_order: YMD
@@ -216,8 +216,8 @@ content:
     third_party_settings: {  }
     type: metatag_firehose
     region: content
-  field_neighbourhood:
-    weight: 27
+  field_neighbourhoods:
+    weight: 31
     settings:
       width: 100%
       autocomplete: true
@@ -226,8 +226,8 @@ content:
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
-  field_phenomenon:
-    weight: 26
+  field_phenomena:
+    weight: 30
     settings:
       width: 100%
       autocomplete: true
