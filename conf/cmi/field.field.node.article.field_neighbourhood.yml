@@ -1,0 +1,29 @@
+uuid: 7138b849-d4b0-4b36-9ebe-35c7bfe60920
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_neighbourhood
+    - node.type.article
+    - taxonomy.vocabulary.neighbourhoods
+id: node.article.field_neighbourhood
+field_name: field_neighbourhood
+entity_type: node
+bundle: article
+label: Neighbourhood
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      neighbourhoods: neighbourhoods
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

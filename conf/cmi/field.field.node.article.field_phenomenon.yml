@@ -1,0 +1,29 @@
+uuid: 8429c5cf-b240-4fa1-a55b-07c3c6d5edb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phenomenon
+    - node.type.article
+    - taxonomy.vocabulary.phenomena
+id: node.article.field_phenomenon
+field_name: field_phenomenon
+entity_type: node
+bundle: article
+label: Phenomenon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      phenomena: phenomena
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -2,7 +2,7 @@ uuid: 0bc4ffbe-f14a-494a-a906-80ae67066c17
 langcode: en
 status: true
 dependencies: {  }
-name: Copyright
-vid: copyright
+name: Copyrights
+vid: copyrights
 description: ''
 weight: 0

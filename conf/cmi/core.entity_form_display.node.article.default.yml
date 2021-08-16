@@ -4,19 +4,81 @@ status: true
 dependencies:
   config:
     - field.field.node.article.field_author
+    - field.field.node.article.field_authors
+    - field.field.node.article.field_buildings
+    - field.field.node.article.field_buildings_info
     - field.field.node.article.field_content
+    - field.field.node.article.field_copyrights
+    - field.field.node.article.field_date_range
+    - field.field.node.article.field_finna_id
+    - field.field.node.article.field_formats
     - field.field.node.article.field_keywords
+    - field.field.node.article.field_languages
     - field.field.node.article.field_lead
     - field.field.node.article.field_liftup_image
     - field.field.node.article.field_metatags
+    - field.field.node.article.field_neighbourhood
+    - field.field.node.article.field_phenomenon
     - node.type.article
   module:
+    - datetime_range
+    - field_group
     - media_library
     - metatag
     - paragraphs
     - path
     - scheduler
     - select2
+third_party_settings:
+  field_group:
+    group_historiaportaali_meta:
+      children:
+        - field_phenomenon
+        - field_neighbourhood
+        - field_date_range
+      parent_name: ''
+      weight: 18
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Historiaportaali Meta'
+    group_finna_meta:
+      children:
+        - field_finna_id
+        - field_formats
+        - field_authors
+        - field_copyrights
+        - field_languages
+        - group_location
+      parent_name: ''
+      weight: 19
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Finna.fi Meta'
+    group_location:
+      children:
+        - field_buildings
+        - field_buildings_info
+      parent_name: group_finna_meta
+      weight: 36
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Location
 _core:
   default_config_hash: pCNOhgqtZB0RYWLFELZhHp654GnKfoQ_Dbd2v2MIrWU
 id: node.article.default
@@ -26,12 +88,40 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 8
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   field_author:
     weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_authors:
+    weight: 33
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_buildings:
+    weight: 29
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_buildings_info:
+    weight: 30
     settings:
       size: 60
       placeholder: ''
@@ -57,8 +147,45 @@ content:
     third_party_settings: {  }
     type: paragraphs
     region: content
-  field_keywords:
-    weight: 6
+  field_copyrights:
+    weight: 34
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_date_range:
+    weight: 28
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
+    third_party_settings: {  }
+    type: daterange_datelist
+    region: content
+  field_finna_id:
+    weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_formats:
+    weight: 32
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_languages:
+    weight: 35
     settings:
       width: 100%
       autocomplete: true
@@ -83,11 +210,31 @@ content:
     type: media_library_widget
     region: content
   field_metatags:
-    weight: 51
+    weight: 17
     settings:
       sidebar: false
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
+  field_neighbourhood:
+    weight: 27
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_phenomenon:
+    weight: 26
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
   langcode:
     type: language_select
@@ -98,7 +245,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 12
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -106,32 +253,32 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 9
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 20
+    weight: 13
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 12
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 10
     region: content
     third_party_settings: {  }
   title:
@@ -143,13 +290,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 9
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 7
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -159,13 +306,14 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 16
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
-hidden: {  }
+hidden:
+  field_keywords: true
