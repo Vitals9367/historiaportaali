@@ -1,0 +1,29 @@
+uuid: 2dd10801-79e3-49fd-97cb-5012b555a194
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_formats
+    - node.type.article
+    - taxonomy.vocabulary.formats
+id: node.article.field_formats
+field_name: field_formats
+entity_type: node
+bundle: article
+label: Formats
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      formats: formats
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
