@@ -45,6 +45,7 @@ module:
   helfi_languages: 0
   helfi_media: 0
   helfi_platform_config: 0
+  helhist_admin_forms: 0
   image: 0
   image_style_quality: 0
   language: 0
