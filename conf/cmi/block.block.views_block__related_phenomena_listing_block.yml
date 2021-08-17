@@ -1,0 +1,33 @@
+uuid: 19b3b542-7763-42ff-a670-70e5c138274e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.related_phenomena
+  module:
+    - ctools
+    - views
+  theme:
+    - hdbt
+id: views_block__related_phenomena_listing_block
+theme: hdbt
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:related_phenomena-listing_block'
+settings:
+  id: 'views_block:related_phenomena-listing_block'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      phenomenon: phenomenon
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
