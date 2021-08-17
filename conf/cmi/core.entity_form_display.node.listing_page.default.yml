@@ -1,38 +1,20 @@
-uuid: 69f17afc-d12c-403e-9654-45bfba4a85d0
+uuid: 5b78ad62-5414-4188-b149-c18d3660085b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.phenomenon.body
-    - field.field.node.phenomenon.field_has_hero
-    - field.field.node.phenomenon.field_hero
-    - field.field.node.phenomenon.field_phenomena
-    - node.type.phenomenon
+    - field.field.node.listing_page.body
+    - field.field.node.listing_page.field_listing_type
+    - field.field.node.listing_page.field_phenomena
+    - node.type.listing_page
   module:
-    - field_group
-    - paragraphs
     - path
     - scheduler
     - select2
     - text
-third_party_settings:
-  field_group:
-    group_historiaportaali_meta:
-      children:
-        - field_phenomena
-      parent_name: ''
-      weight: 15
-      format_type: fieldset
-      region: content
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        required_fields: true
-      label: 'Historiaportaali Meta'
-id: node.phenomenon.default
+id: node.listing_page.default
 targetEntityType: node
-bundle: phenomenon
+bundle: listing_page
 mode: default
 content:
   body:
@@ -51,34 +33,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_has_hero:
+  field_listing_type:
     weight: 2
     settings:
-      display_label: true
+      width: 100%
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
-  field_hero:
-    weight: 3
-    settings:
-      title: Lohko
-      title_plural: Lohkot
-      edit_mode: closed_expand_nested
-      closed_mode: summary
-      autocollapse: none
-      closed_mode_threshold: 0
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: _none
-      features:
-        add_above: '0'
-        collapse_edit_all: '0'
-        duplicate: '0'
-    third_party_settings: {  }
-    type: paragraphs
+    type: select2
     region: content
   field_phenomena:
-    weight: 16
+    weight: 3
     settings:
       width: 100%
       autocomplete: true
@@ -89,7 +52,7 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 1
+    weight: 0
     region: content
     settings:
       include_locked: true
@@ -129,7 +92,7 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60

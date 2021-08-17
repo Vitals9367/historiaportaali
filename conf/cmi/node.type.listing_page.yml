@@ -1,4 +1,4 @@
-uuid: 5275b372-4aea-4510-b6e7-7d317a777ca7
+uuid: c3b09fcd-64ee-413a-876c-9bcea886d063
 langcode: en
 status: true
 dependencies:
@@ -23,10 +23,10 @@ third_party_settings:
     unpublish_enable: false
     unpublish_required: false
     unpublish_revision: false
-name: Phenomenon
-type: phenomenon
+name: 'Listing page'
+type: listing_page
 description: ''
 help: ''
 new_revision: true
 preview_mode: 1
-display_submitted: true
+display_submitted: false

@@ -1,0 +1,27 @@
+uuid: f1018b56-a756-415e-93e7-dc5e462304ca
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_listing_type
+field_name: field_listing_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: phenomenon
+      label: 'Phenomena listing'
+    -
+      value: article
+      label: 'Article listing'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

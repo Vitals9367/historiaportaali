@@ -10,6 +10,9 @@ module:
   config_replace: 0
   config_translation: 0
   config_update: 0
+  context: 0
+  context_entity_field: 0
+  context_ui: 0
   crop: 0
   ctools: 0
   datetime: 0
@@ -45,6 +48,7 @@ module:
   helfi_languages: 0
   helfi_media: 0
   helfi_platform_config: 0
+  his_article_listings: 0
   image: 0
   image_style_quality: 0
   language: 0
@@ -88,6 +92,7 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  views_menu_children_filter: 0
   views_ui: 0
   pathauto: 1
   content_translation: 10

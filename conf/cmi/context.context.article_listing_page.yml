@@ -1,0 +1,31 @@
+uuid: 12d96685-edfd-4301-a60f-72079faa0a98
+langcode: fi
+status: true
+dependencies:
+  module:
+    - context_entity_field
+    - node
+name: article_listing_page
+label: 'Article listing page'
+group: null
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  node_type:
+    id: node_type
+    bundles: {  }
+    negate: false
+    uuid: f297c469-5b22-40e0-8b4f-dea3d6d04403
+    context_mapping:
+      node: '@node.node_route_context:node'
+  'entity_field:node':
+    id: 'entity_field:node'
+    field_name: field_listing_type
+    field_state: value
+    field_value: article
+    context_mapping:
+      node: '@node.node_route_context:node'
+    negate: 0
+reactions: {  }
+weight: 0

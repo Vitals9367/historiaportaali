@@ -1,0 +1,53 @@
+uuid: d7f5ac6a-1537-43a8-9788-68bf42da29f7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.listings
+  module:
+    - context
+    - ctools
+    - views
+  theme:
+    - hdbt
+id: views_block__listings_phenomena_listing_block
+theme: hdbt
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:listings-phenomena_listing_block'
+settings:
+  id: 'views_block:listings-phenomena_listing_block'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      listing_page: listing_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  context_all:
+    id: context_all
+    values: phenomena_listing_page
+    negate: null
+  context:
+    id: context
+    values: ''
+    negate: null
+  user_status:
+    id: user_status
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

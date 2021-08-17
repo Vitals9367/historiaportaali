@@ -1,20 +1,19 @@
-uuid: bff01352-759f-4aff-a6e7-f0a38e3726ba
+uuid: 52b59762-9a9d-42ff-934c-ae048b2673bd
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.phenomenon.body
-    - field.field.node.phenomenon.field_has_hero
-    - field.field.node.phenomenon.field_hero
-    - field.field.node.phenomenon.field_phenomena
-    - node.type.phenomenon
+    - field.field.node.listing_page.body
+    - field.field.node.listing_page.field_listing_type
+    - field.field.node.listing_page.field_phenomena
+    - node.type.listing_page
   module:
     - text
     - user
-id: node.phenomenon.teaser
+id: node.listing_page.teaser
 targetEntityType: node
-bundle: phenomenon
+bundle: listing_page
 mode: teaser
 content:
   body:
@@ -31,7 +30,6 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
-  field_has_hero: true
-  field_hero: true
+  field_listing_type: true
   field_phenomena: true
   langcode: true
