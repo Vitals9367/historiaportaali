@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.phenomenon.body
     - field.field.node.phenomenon.field_has_hero
     - field.field.node.phenomenon.field_hero
+    - field.field.node.phenomenon.field_phenomena
     - node.type.phenomenon
   module:
     - text
@@ -30,4 +31,5 @@ content:
 hidden:
   field_has_hero: true
   field_hero: true
+  field_phenomena: true
   langcode: true

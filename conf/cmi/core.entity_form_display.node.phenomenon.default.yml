@@ -6,12 +6,30 @@ dependencies:
     - field.field.node.phenomenon.body
     - field.field.node.phenomenon.field_has_hero
     - field.field.node.phenomenon.field_hero
+    - field.field.node.phenomenon.field_phenomena
     - node.type.phenomenon
   module:
+    - field_group
     - paragraphs
     - path
     - scheduler
+    - select2
     - text
+third_party_settings:
+  field_group:
+    group_historiaportaali_meta:
+      children:
+        - field_phenomena
+      parent_name: ''
+      weight: 15
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Historiaportaali Meta'
 id: node.phenomenon.default
 targetEntityType: node
 bundle: phenomenon
@@ -58,6 +76,16 @@ content:
         duplicate: '0'
     third_party_settings: {  }
     type: paragraphs
+    region: content
+  field_phenomena:
+    weight: 16
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
   langcode:
     type: language_select
