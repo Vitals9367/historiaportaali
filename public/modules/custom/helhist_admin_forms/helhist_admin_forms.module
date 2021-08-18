@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Contains helhist_admin_forms.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function helhist_admin_forms_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the helhist_admin_forms module.
+    case 'help.page.helhist_admin_forms':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides customizations for admin forms') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function helhist_admin_forms_form_node_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'node_article_edit_form':
+    case 'node_article_form':
+    case 'node_phenomenon_edit_form':
+    case 'node_phenomenon_form':
+      // Control Hero paragraph visibility via checkbox states.
+      $form['field_hero']['#states'] = [
+        'visible' => [
+          ':input[name="field_has_hero[value]"]' => ['checked' => TRUE],
+        ],
+      ];
+      break;
+  }
+}
