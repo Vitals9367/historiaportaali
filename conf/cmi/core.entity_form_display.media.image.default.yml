@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.image.field_geolocation
     - field.field.media.image.field_media_image
     - field.field.media.image.field_photographer
     - image.style.media_library
     - media.type.image
   module:
     - focal_point
+    - geofield_map
     - path
 _core:
   default_config_hash: _j-Y1d8xzIrrkE3VLGHbEks1vFdg7kMl68UaYmxSGBo
@@ -19,12 +21,56 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_geolocation:
+    weight: 4
+    settings:
+      map_geocoder:
+        control: 1
+        settings:
+          providers:
+            openstreetmap:
+              checked: true
+              weight: 0
+          min_terms: 4
+          delay: 800
+          options: ''
+      map_google_places:
+        places_additional_options: ''
+        places_control: false
+      map_library: leaflet
+      map_type_google: roadmap
+      map_type_leaflet: OpenStreetMap_Mapnik
+      map_type_selector: true
+      map_dimensions:
+        width: 100%
+        height: 450px
+      zoom:
+        start: 6
+        focus: 12
+        min: 0
+        max: 22
+      geoaddress_field:
+        field: '0'
+        disabled: true
+        hidden: false
+      default_value:
+        lat: !!float 0
+        lon: !!float 0
+      click_to_find_marker: false
+      click_to_place_marker: false
+      hide_coordinates: false
+      html5_geolocation: false
+      map_google_api_key: ''
+      zoom_level: 5
+    third_party_settings: {  }
+    type: geofield_map
+    region: content
   field_media_image:
-    weight: 1
+    weight: 2
     settings:
       preview_image_style: media_library
       progress_indicator: throbber
@@ -34,23 +80,23 @@ content:
     type: image_focal_point
     region: content
   field_photographer:
-    weight: 2
+    type: string_textfield
+    weight: 3
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   langcode:
     type: language_select
-    weight: 3
+    weight: 0
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   name:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60
@@ -58,7 +104,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -66,17 +112,17 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 9
     region: content
     third_party_settings: {  }
   translation:
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60

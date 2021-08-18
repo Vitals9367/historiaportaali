@@ -1,0 +1,14 @@
+uuid: 646fe0c7-5fb5-4ea7-97fa-011d0751f9b6
+langcode: en
+status: true
+dependencies: {  }
+id: openstreetmap
+label: OpenStreetMap
+plugin: openstreetmap
+configuration:
+  rootUrl: 'https://nominatim.openstreetmap.org'
+  userAgent: 'My User Agent 1.0'
+  referer: 'https://platform.sh/'
+  throttle:
+    period: 2
+    limit: 1
