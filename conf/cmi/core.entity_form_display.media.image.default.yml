@@ -3,15 +3,79 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.image.field_authors
+    - field.field.media.image.field_buildings
+    - field.field.media.image.field_buildings_info
+    - field.field.media.image.field_copyrights
+    - field.field.media.image.field_date_range
+    - field.field.media.image.field_finna_id
+    - field.field.media.image.field_formats
     - field.field.media.image.field_geolocation
+    - field.field.media.image.field_languages
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_neighbourhoods
+    - field.field.media.image.field_phenomena
     - field.field.media.image.field_photographer
     - image.style.media_library
     - media.type.image
   module:
+    - datetime_range
+    - field_group
     - focal_point
     - geofield_map
     - path
+    - select2
+third_party_settings:
+  field_group:
+    group_historiaportaali_meta:
+      children:
+        - field_phenomena
+        - field_neighbourhoods
+        - field_date_range
+      parent_name: ''
+      weight: 10
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: 'Historiaportaali Metatietokentät'
+    group_finna_meta:
+      children:
+        - field_finna_id
+        - field_formats
+        - field_authors
+        - field_copyrights
+        - field_languages
+        - group_location
+      parent_name: ''
+      weight: 11
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: 'Finna.fi Metatietokentät'
+    group_location:
+      children:
+        - field_buildings
+        - field_buildings_info
+      parent_name: group_finna_meta
+      weight: 24
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Säilytyspaikka
 _core:
   default_config_hash: _j-Y1d8xzIrrkE3VLGHbEks1vFdg7kMl68UaYmxSGBo
 id: media.image.default
@@ -25,6 +89,71 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_authors:
+    weight: 21
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_buildings:
+    weight: 12
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_buildings_info:
+    weight: 13
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_copyrights:
+    weight: 22
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_date_range:
+    weight: 20
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
+    third_party_settings: {  }
+    type: daterange_datelist
+    region: content
+  field_finna_id:
+    weight: 19
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_formats:
+    weight: 20
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
   field_geolocation:
     weight: 4
     settings:
@@ -69,6 +198,16 @@ content:
     third_party_settings: {  }
     type: geofield_map
     region: content
+  field_languages:
+    weight: 23
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
   field_media_image:
     weight: 2
     settings:
@@ -78,6 +217,26 @@ content:
       offsets: '50,50'
     third_party_settings: {  }
     type: image_focal_point
+    region: content
+  field_neighbourhoods:
+    weight: 19
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_phenomena:
+    weight: 18
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
   field_photographer:
     type: string_textfield
