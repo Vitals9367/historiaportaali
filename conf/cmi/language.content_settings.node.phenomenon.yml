@@ -1,0 +1,16 @@
+uuid: 4b86b3b6-8243-423b-abaf-f4dbb938f1b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.phenomenon
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.phenomenon
+target_entity_type_id: node
+target_bundle: phenomenon
+default_langcode: fi
+language_alterable: true

@@ -1,0 +1,35 @@
+uuid: 6ea58204-609a-4a2b-8bc3-4dddc118d2c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.phenomenon.body
+    - field.field.node.phenomenon.field_has_hero
+    - field.field.node.phenomenon.field_hero
+    - field.field.node.phenomenon.field_phenomena
+    - node.type.phenomenon
+  module:
+    - text
+    - user
+id: node.phenomenon.default
+targetEntityType: node
+bundle: phenomenon
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_has_hero: true
+  field_hero: true
+  field_phenomena: true
+  langcode: true
