@@ -1,17 +1,17 @@
-uuid: e3c10afc-d2b8-44bc-a56b-1d95c932f3ef
+uuid: 0e68ce31-e80e-45cc-b997-50dfa2cd5ff8
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_hero
-    - node.type.phenomenon
+    - node.type.listing_page
     - paragraphs.paragraphs_type.hero
   module:
     - entity_reference_revisions
-id: node.phenomenon.field_hero
+id: node.listing_page.field_hero
 field_name: field_hero
 entity_type: node
-bundle: phenomenon
+bundle: listing_page
 label: Hero
 description: ''
 required: false

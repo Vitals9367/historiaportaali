@@ -1,16 +1,16 @@
-uuid: 044e81ea-86ff-4ab4-984f-44680fd48047
+uuid: 0ae81738-408c-4b08-9e7b-dbc277cb6ee4
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.phenomenon
+    - node.type.listing_page
   module:
     - text
-id: node.phenomenon.body
+id: node.listing_page.body
 field_name: body
 entity_type: node
-bundle: phenomenon
+bundle: listing_page
 label: Body
 description: ''
 required: false

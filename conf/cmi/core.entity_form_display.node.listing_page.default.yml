@@ -1,43 +1,28 @@
-uuid: 69f17afc-d12c-403e-9654-45bfba4a85d0
+uuid: 5b78ad62-5414-4188-b149-c18d3660085b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.phenomenon.body
-    - field.field.node.phenomenon.field_has_hero
-    - field.field.node.phenomenon.field_hero
-    - field.field.node.phenomenon.field_phenomena
-    - node.type.phenomenon
+    - field.field.node.listing_page.body
+    - field.field.node.listing_page.field_has_hero
+    - field.field.node.listing_page.field_hero
+    - field.field.node.listing_page.field_listing_type
+    - field.field.node.listing_page.field_phenomena
+    - node.type.listing_page
   module:
-    - field_group
     - paragraphs
     - path
     - scheduler
     - select2
     - text
-third_party_settings:
-  field_group:
-    group_historiaportaali_meta:
-      children:
-        - field_phenomena
-      parent_name: ''
-      weight: 15
-      format_type: fieldset
-      region: content
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        required_fields: true
-      label: 'Historiaportaali Meta'
-id: node.phenomenon.default
+id: node.listing_page.default
 targetEntityType: node
-bundle: phenomenon
+bundle: listing_page
 mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 4
+    weight: 6
     settings:
       rows: 9
       summary_rows: 3
@@ -47,7 +32,7 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 6
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -77,8 +62,15 @@ content:
     third_party_settings: {  }
     type: paragraphs
     region: content
+  field_listing_type:
+    weight: 4
+    settings:
+      width: 100%
+    third_party_settings: {  }
+    type: select2
+    region: content
   field_phenomena:
-    weight: 16
+    weight: 5
     settings:
       width: 100%
       autocomplete: true
@@ -96,7 +88,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 10
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -104,12 +96,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 10
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 11
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -117,14 +109,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 16
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 11
     region: content
     third_party_settings: {  }
   title:
@@ -136,13 +128,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 7
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -152,12 +144,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 12
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 13
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }

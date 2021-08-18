@@ -1,19 +1,20 @@
-uuid: 6ea58204-609a-4a2b-8bc3-4dddc118d2c7
+uuid: 2e75854d-3e66-42f4-a2e7-30e17becfec5
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.phenomenon.body
-    - field.field.node.phenomenon.field_has_hero
-    - field.field.node.phenomenon.field_hero
-    - field.field.node.phenomenon.field_phenomena
-    - node.type.phenomenon
+    - field.field.node.listing_page.body
+    - field.field.node.listing_page.field_has_hero
+    - field.field.node.listing_page.field_hero
+    - field.field.node.listing_page.field_listing_type
+    - field.field.node.listing_page.field_phenomena
+    - node.type.listing_page
   module:
     - text
     - user
-id: node.phenomenon.default
+id: node.listing_page.default
 targetEntityType: node
-bundle: phenomenon
+bundle: listing_page
 mode: default
 content:
   body:
@@ -31,5 +32,6 @@ content:
 hidden:
   field_has_hero: true
   field_hero: true
+  field_listing_type: true
   field_phenomena: true
   langcode: true

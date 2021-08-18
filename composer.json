@@ -9,6 +9,8 @@
     "require": {
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6.7",
+        "drupal/context": "^4.1",
+        "drupal/context_entity_field": "1.x-dev@dev",
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-recommended": "^9.1",
         "drupal/hdbt": "^1.0",
@@ -21,6 +23,7 @@
         "drupal/helfi_tpr": "^1.0",
         "drupal/helfi_tunnistamo": "^1.0",
         "drupal/optional_end_date": "^1.2",
+        "drupal/views_menu_children_filter": "^1.0@RC",
         "drush/drush": "^10.4"
     },
     "require-dev": {

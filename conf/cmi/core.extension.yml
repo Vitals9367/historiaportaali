@@ -10,6 +10,9 @@ module:
   config_replace: 0
   config_translation: 0
   config_update: 0
+  context: 0
+  context_entity_field: 0
+  context_ui: 0
   crop: 0
   ctools: 0
   datetime: 0
@@ -89,6 +92,7 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  views_menu_children_filter: 0
   views_ui: 0
   pathauto: 1
   content_translation: 10

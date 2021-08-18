@@ -1,39 +1,40 @@
-uuid: 380e61d3-b514-4660-b9a7-d18fa2d664b1
+uuid: d7f5ac6a-1537-43a8-9788-68bf42da29f7
 langcode: en
 status: true
 dependencies:
+  config:
+    - views.view.listings
   module:
     - context
     - ctools
-    - hdbt_content
+    - views
   theme:
     - hdbt
-_core:
-  default_config_hash: nH8M6u66xNnGzjplyiDZAKKeyzDR6NFyTMXNwDYzldk
-id: heroblock
+id: views_block__listings_phenomena_listing_block
 theme: hdbt
-region: before_content
-weight: -5
+region: content
+weight: 0
 provider: null
-plugin: hero_block
+plugin: 'views_block:listings-phenomena_listing_block'
 settings:
-  id: hero_block
-  label: 'Hero block'
-  provider: hdbt_content
-  label_display: '0'
+  id: 'views_block:listings-phenomena_listing_block'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
     bundles:
-      landing_page: landing_page
       listing_page: listing_page
-      page: page
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
   context_all:
     id: context_all
-    values: ''
+    values: phenomena_listing_page
     negate: null
   context:
     id: context
