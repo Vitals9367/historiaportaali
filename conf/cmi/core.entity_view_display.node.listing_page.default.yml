@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.listing_page.body
+    - field.field.node.listing_page.field_has_hero
+    - field.field.node.listing_page.field_hero
     - field.field.node.listing_page.field_listing_type
     - field.field.node.listing_page.field_phenomena
     - node.type.listing_page
@@ -28,6 +30,8 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_has_hero: true
+  field_hero: true
   field_listing_type: true
   field_phenomena: true
   langcode: true
