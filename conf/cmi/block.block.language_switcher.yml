@@ -16,7 +16,7 @@ provider: null
 plugin: 'language_block:language_content'
 settings:
   id: 'language_block:language_content'
-  label: 'Kielen vaihtaja'
+  label: 'Language switcher'
   provider: language
   label_display: '0'
 visibility: {  }
