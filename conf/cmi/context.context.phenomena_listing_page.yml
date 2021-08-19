@@ -1,0 +1,31 @@
+uuid: ba4a6563-a253-43ce-9a4a-b56d8e8e739e
+langcode: en
+status: true
+dependencies:
+  module:
+    - context_entity_field
+    - node
+name: phenomena_listing_page
+label: 'Phenomena listing page'
+group: null
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  node_type:
+    id: node_type
+    bundles: {  }
+    negate: false
+    uuid: f8ee5c4a-18a6-4490-bb2d-0772589610ef
+    context_mapping:
+      node: '@node.node_route_context:node'
+  'entity_field:node':
+    id: 'entity_field:node'
+    field_name: field_listing_type
+    field_state: value
+    field_value: phenomenon
+    context_mapping:
+      node: '@node.node_route_context:node'
+    negate: 0
+reactions: {  }
+weight: 0

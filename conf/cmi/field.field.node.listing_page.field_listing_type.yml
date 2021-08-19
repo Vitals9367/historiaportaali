@@ -1,0 +1,21 @@
+uuid: 4a49eae6-4ca2-4ad2-8458-3d23191957e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_type
+    - node.type.listing_page
+  module:
+    - options
+id: node.listing_page.field_listing_type
+field_name: field_listing_type
+entity_type: node
+bundle: listing_page
+label: 'Listing type'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
