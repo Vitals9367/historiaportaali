@@ -1,0 +1,19 @@
+uuid: 3fdca1eb-8c96-4af7-989b-fcafecec4c65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_buildings_info
+    - media.type.image
+id: media.image.field_buildings_info
+field_name: field_buildings_info
+entity_type: media
+bundle: image
+label: 'Additional information'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

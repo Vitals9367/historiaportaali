@@ -1,0 +1,20 @@
+uuid: 2b559a8e-0894-4f71-87bf-c9565d9a77cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - geofield
+    - media
+id: media.field_geolocation
+field_name: field_geolocation
+entity_type: media
+type: geofield
+settings:
+  backend: geofield_backend_default
+module: geofield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

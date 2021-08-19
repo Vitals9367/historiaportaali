@@ -4,12 +4,78 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
+    - field.field.media.image.field_authors
+    - field.field.media.image.field_buildings
+    - field.field.media.image.field_buildings_info
+    - field.field.media.image.field_copyrights
+    - field.field.media.image.field_date_range
+    - field.field.media.image.field_finna_id
+    - field.field.media.image.field_formats
+    - field.field.media.image.field_geolocation
+    - field.field.media.image.field_languages
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_neighbourhoods
+    - field.field.media.image.field_phenomena
     - field.field.media.image.field_photographer
     - image.style.media_library
     - media.type.image
   module:
+    - datetime_range
+    - field_group
     - focal_point
+    - geofield_map
+    - select2
+third_party_settings:
+  field_group:
+    group_historiaportaali_meta:
+      children:
+        - field_phenomena
+        - field_neighbourhoods
+        - field_date_range
+      parent_name: ''
+      weight: 4
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: 'Historiaportaali Metatietokentät'
+    group_finna_meta:
+      children:
+        - field_finna_id
+        - field_formats
+        - field_authors
+        - field_copyrights
+        - field_languages
+        - group_location
+      parent_name: ''
+      weight: 5
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: 'Finna.fi Metatietokentät'
+    group_location:
+      children:
+        - field_buildings
+        - field_buildings_info
+      parent_name: group_finna_meta
+      weight: 5
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Säilytyspaikka
 _core:
   default_config_hash: _WTCyWUZlB2FyBSgpuey9Y9okHz6R8gcAWQ3DUiyNuA
 id: media.image.media_library
@@ -17,6 +83,125 @@ targetEntityType: media
 bundle: image
 mode: media_library
 content:
+  field_authors:
+    type: select2_entity_reference
+    weight: 2
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+  field_buildings:
+    type: select2_entity_reference
+    weight: 0
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+  field_buildings_info:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_copyrights:
+    type: select2_entity_reference
+    weight: 3
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+  field_date_range:
+    type: daterange_datelist
+    weight: 2
+    region: content
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
+    third_party_settings: {  }
+  field_finna_id:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_formats:
+    type: select2_entity_reference
+    weight: 1
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+  field_geolocation:
+    type: geofield_map
+    weight: 3
+    region: content
+    settings:
+      map_geocoder:
+        control: 1
+        settings:
+          providers:
+            openstreetmap:
+              checked: true
+              weight: 0
+          min_terms: 4
+          delay: 800
+          options: ''
+      map_google_places:
+        places_additional_options: ''
+        places_control: false
+      map_library: leaflet
+      map_type_google: roadmap
+      map_type_leaflet: OpenStreetMap_Mapnik
+      map_type_selector: true
+      map_dimensions:
+        width: 100%
+        height: 450px
+      zoom:
+        start: 6
+        focus: 12
+        min: 0
+        max: 22
+      geoaddress_field:
+        field: '0'
+        disabled: true
+        hidden: false
+      default_value:
+        lat: !!float 0
+        lon: !!float 0
+      click_to_find_marker: false
+      click_to_place_marker: false
+      hide_coordinates: false
+      html5_geolocation: false
+      map_google_api_key: ''
+      zoom_level: 5
+    third_party_settings: {  }
+  field_languages:
+    type: select2_entity_reference
+    weight: 4
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
   field_media_image:
     weight: 1
     settings:
@@ -27,6 +212,26 @@ content:
     third_party_settings: {  }
     type: image_focal_point
     region: content
+  field_neighbourhoods:
+    type: select2_entity_reference
+    weight: 1
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+  field_phenomena:
+    type: select2_entity_reference
+    weight: 0
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
   field_photographer:
     type: string_textfield
     weight: 2
@@ -44,7 +249,7 @@ content:
     third_party_settings: {  }
     region: content
   translation:
-    weight: 3
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -1,0 +1,21 @@
+uuid: c7ea23a9-4909-41d5-9fca-3b509def8b06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_geolocation
+    - media.type.image
+  module:
+    - geofield
+id: media.image.field_geolocation
+field_name: field_geolocation
+entity_type: media
+bundle: image
+label: Geolocation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield
