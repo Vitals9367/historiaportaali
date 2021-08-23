@@ -1,18 +1,16 @@
-uuid: a95f5be7-d0d7-4bb8-99b4-fbb1ae8b627c
+uuid: ac4c455a-8417-4093-b3d2-1a2e17f292e4
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_keywords
-    - node.type.article
-    - taxonomy.vocabulary.keywords
-_core:
-  default_config_hash: LSKCct3_vvTchT4_8ijyWaV3tYa0K1ihTS_cxpSBCxM
-id: node.article.field_keywords
-field_name: field_keywords
-entity_type: node
-bundle: article
-label: Keywords
+    - field.storage.media.field_buildings
+    - media.type.image
+    - taxonomy.vocabulary.buildings
+id: media.image.field_buildings
+field_name: field_buildings
+entity_type: media
+bundle: image
+label: Buildings
 description: ''
 required: false
 translatable: false
@@ -22,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      keywords: keywords
+      buildings: buildings
     sort:
       field: name
       direction: asc

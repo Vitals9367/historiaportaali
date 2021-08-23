@@ -36,16 +36,18 @@ third_party_settings:
         - field_phenomena
         - field_neighbourhoods
         - field_date_range
+        - field_keywords
       parent_name: ''
-      weight: 18
-      format_type: fieldset
+      weight: 5
+      format_type: details
       region: content
       format_settings:
-        id: ''
-        classes: ''
         description: ''
         required_fields: true
-      label: 'Historiaportaali Meta'
+        id: ''
+        classes: ''
+        open: false
+      label: 'Historiaportaali Metatietokentät'
     group_finna_meta:
       children:
         - field_finna_id
@@ -55,16 +57,16 @@ third_party_settings:
         - field_languages
         - group_location
       parent_name: ''
-      weight: 19
-      format_type: fieldset
+      weight: 6
+      format_type: details
       region: content
       format_settings:
+        description: ''
+        required_fields: true
         id: ''
         classes: ''
-        description: ''
         open: false
-        required_fields: true
-      label: 'Finna.fi Meta'
+      label: 'Finna.fi Metatietokentät'
     group_location:
       children:
         - field_buildings
@@ -74,11 +76,11 @@ third_party_settings:
       format_type: fieldset
       region: content
       format_settings:
-        id: ''
-        classes: ''
         description: ''
         required_fields: true
-      label: Location
+        id: ''
+        classes: ''
+      label: Säilytyspaikka
 _core:
   default_config_hash: pCNOhgqtZB0RYWLFELZhHp654GnKfoQ_Dbd2v2MIrWU
 id: node.article.default
@@ -88,7 +90,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -129,7 +131,7 @@ content:
     type: string_textfield
     region: content
   field_content:
-    weight: 5
+    weight: 7
     settings:
       title: Lohko
       title_plural: Lohkot
@@ -184,6 +186,16 @@ content:
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
+  field_keywords:
+    type: select2_entity_reference
+    weight: 33
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
   field_languages:
     weight: 35
     settings:
@@ -210,7 +222,7 @@ content:
     type: media_library_widget
     region: content
   field_metatags:
-    weight: 17
+    weight: 19
     settings:
       sidebar: false
     third_party_settings: {  }
@@ -245,7 +257,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 11
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -253,17 +265,17 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 11
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 14
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 13
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -271,14 +283,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 14
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 12
     region: content
     third_party_settings: {  }
   title:
@@ -290,13 +302,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 8
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 8
     settings:
       match_operator: CONTAINS
       size: 60
@@ -306,14 +318,13 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 15
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 16
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_keywords: true
+hidden: {  }

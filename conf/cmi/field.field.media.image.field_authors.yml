@@ -1,18 +1,16 @@
-uuid: a95f5be7-d0d7-4bb8-99b4-fbb1ae8b627c
+uuid: 17048fe8-4ac5-443c-9fb8-1fb10fa4e4d9
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_keywords
-    - node.type.article
-    - taxonomy.vocabulary.keywords
-_core:
-  default_config_hash: LSKCct3_vvTchT4_8ijyWaV3tYa0K1ihTS_cxpSBCxM
-id: node.article.field_keywords
-field_name: field_keywords
-entity_type: node
-bundle: article
-label: Keywords
+    - field.storage.media.field_authors
+    - media.type.image
+    - taxonomy.vocabulary.authors
+id: media.image.field_authors
+field_name: field_authors
+entity_type: media
+bundle: image
+label: Authors
 description: ''
 required: false
 translatable: false
@@ -22,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      keywords: keywords
+      authors: authors
     sort:
       field: name
       direction: asc

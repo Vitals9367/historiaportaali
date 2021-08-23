@@ -1,17 +1,15 @@
-uuid: a95f5be7-d0d7-4bb8-99b4-fbb1ae8b627c
+uuid: 3ef59f11-ff28-4eac-854b-d0d148adaa43
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_keywords
-    - node.type.article
+    - field.storage.media.field_keywords
+    - media.type.image
     - taxonomy.vocabulary.keywords
-_core:
-  default_config_hash: LSKCct3_vvTchT4_8ijyWaV3tYa0K1ihTS_cxpSBCxM
-id: node.article.field_keywords
+id: media.image.field_keywords
 field_name: field_keywords
-entity_type: node
-bundle: article
+entity_type: media
+bundle: image
 label: Keywords
 description: ''
 required: false
