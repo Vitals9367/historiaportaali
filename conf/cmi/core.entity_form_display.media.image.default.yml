@@ -11,6 +11,7 @@ dependencies:
     - field.field.media.image.field_finna_id
     - field.field.media.image.field_formats
     - field.field.media.image.field_geolocation
+    - field.field.media.image.field_keywords
     - field.field.media.image.field_languages
     - field.field.media.image.field_media_image
     - field.field.media.image.field_neighbourhoods
@@ -32,6 +33,7 @@ third_party_settings:
         - field_phenomena
         - field_neighbourhoods
         - field_date_range
+        - field_keywords
       parent_name: ''
       weight: 10
       format_type: details
@@ -197,6 +199,16 @@ content:
       zoom_level: 5
     third_party_settings: {  }
     type: geofield_map
+    region: content
+  field_keywords:
+    weight: 21
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
   field_languages:
     weight: 23
