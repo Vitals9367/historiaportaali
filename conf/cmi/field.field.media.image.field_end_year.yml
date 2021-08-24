@@ -1,0 +1,23 @@
+uuid: 7957c1ee-2eda-4e3f-bf47-dc3d999400f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_end_year
+    - media.type.image
+id: media.image.field_end_year
+field_name: field_end_year
+entity_type: media
+bundle: image
+label: 'End year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

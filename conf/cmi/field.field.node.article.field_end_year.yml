@@ -1,0 +1,23 @@
+uuid: 200775f5-48f9-4f27-9ec2-5efec2eb1e71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_end_year
+    - node.type.article
+id: node.article.field_end_year
+field_name: field_end_year
+entity_type: node
+bundle: article
+label: 'End year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
