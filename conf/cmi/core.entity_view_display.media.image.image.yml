@@ -19,6 +19,7 @@ dependencies:
     - field.field.media.image.field_phenomena
     - field.field.media.image.field_photographer
     - field.field.media.image.field_start_year
+    - field.field.media.image.field_transcript
     - media.type.image
     - responsive_image.styles.image__3_2
   module:
@@ -62,6 +63,7 @@ hidden:
   field_neighbourhoods: true
   field_phenomena: true
   field_start_year: true
+  field_transcript: true
   langcode: true
   name: true
   thumbnail: true

@@ -18,6 +18,7 @@ dependencies:
     - field.field.media.image.field_phenomena
     - field.field.media.image.field_photographer
     - field.field.media.image.field_start_year
+    - field.field.media.image.field_transcript
     - image.style.large
     - media.type.image
   module:
@@ -54,6 +55,7 @@ hidden:
   field_phenomena: true
   field_photographer: true
   field_start_year: true
+  field_transcript: true
   langcode: true
   name: true
   thumbnail: true
