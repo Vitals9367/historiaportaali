@@ -1,0 +1,23 @@
+uuid: 80c5b129-8604-4c88-beb2-4b96108c2957
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_start_year
+    - node.type.article
+id: node.article.field_start_year
+field_name: field_start_year
+entity_type: node
+bundle: article
+label: 'Start year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\InvokeCommand;
 
 /**
  * Implements hook_help().
@@ -40,4 +42,70 @@ function helhist_admin_forms_form_node_form_alter(&$form, &$form_state, $form_id
       ];
       break;
   }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function helhist_admin_forms_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'node_article_edit_form':
+    case 'node_article_form':
+    case 'media_image_add_form':
+    case 'media_image_edit_form':
+      $form['field_start_year']['start_year_bce'] = [
+        '#type' => 'checkbox',
+        '#title' => t('BCE'),
+        '#ajax' => [
+          'callback' => 'helhist_admin_forms_ajax_start_year_bce',
+          'event' => 'change',
+        ],
+        // Default to checked if saved year is negative.
+        '#default_value' => ($form['field_start_year']['widget'][0]['value']['#default_value'] < 0) ? TRUE : FALSE
+      ];
+
+      $form['field_end_year']['end_year_bce'] = [
+        '#type' => 'checkbox',
+        '#title' => t('BCE'),
+        '#ajax' => [
+          'callback' => 'helhist_admin_forms_ajax_end_year_bce',
+          'event' => 'change',
+        ],
+        // Default to checked if saved year is negative.
+        '#default_value' => ($form['field_end_year']['widget'][0]['value']['#default_value'] < 0) ? TRUE : FALSE
+      ];
+      break;
+  }
+
+  return $form;
+}
+
+/**
+* Implements Ajax custom callback function().
+*/
+function helhist_admin_forms_ajax_start_year_bce($form, $form_state) {
+  $response = new AjaxResponse();
+  $start_year = $form['field_start_year']['widget'][0]['value']['#value'];
+  $selector = '#edit-field-start-year-0-value';
+  $method = 'val';
+  // Flip sign of year integer.
+  $arguments = [-$start_year];
+  $response->addCommand(new InvokeCommand($selector, $method, $arguments));
+
+  return $response;
+}
+
+/**
+* Implements Ajax custom callback function().
+*/
+function helhist_admin_forms_ajax_end_year_bce($form, $form_state) {
+  $response = new AjaxResponse();
+  $end_year = $form['field_end_year']['widget'][0]['value']['#value'];
+  $selector = '#edit-field-end-year-0-value';
+  $method = 'val';
+  // Flip sign of year integer.
+  $arguments = [-$end_year];
+  $response->addCommand(new InvokeCommand($selector, $method, $arguments));
+
+  return $response;
 }
