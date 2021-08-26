@@ -1,0 +1,53 @@
+uuid: 1354b266-406c-42f2-98e1-abcaf96d3f03
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.listings
+  module:
+    - context
+    - ctools
+    - views
+  theme:
+    - hdbt_subtheme
+id: hdbt_subtheme_views_block__listings_article_listing_block
+theme: hdbt_subtheme
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:listings-article_listing_block'
+settings:
+  id: 'views_block:listings-article_listing_block'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      listing_page: listing_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  context_all:
+    id: context_all
+    values: article_listing_page
+    negate: null
+  context:
+    id: context
+    values: ''
+    negate: null
+  user_status:
+    id: user_status
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
