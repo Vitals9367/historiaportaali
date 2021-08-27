@@ -8,7 +8,7 @@ dependencies:
     - field.field.media.image.field_buildings
     - field.field.media.image.field_buildings_info
     - field.field.media.image.field_copyrights
-    - field.field.media.image.field_date_range
+    - field.field.media.image.field_end_year
     - field.field.media.image.field_finna_id
     - field.field.media.image.field_formats
     - field.field.media.image.field_geolocation
@@ -18,6 +18,8 @@ dependencies:
     - field.field.media.image.field_neighbourhoods
     - field.field.media.image.field_phenomena
     - field.field.media.image.field_photographer
+    - field.field.media.image.field_start_year
+    - field.field.media.image.field_transcript
     - media.type.image
     - responsive_image.styles.content_cards
   module:
@@ -44,7 +46,7 @@ hidden:
   field_buildings: true
   field_buildings_info: true
   field_copyrights: true
-  field_date_range: true
+  field_end_year: true
   field_finna_id: true
   field_formats: true
   field_geolocation: true
@@ -53,6 +55,8 @@ hidden:
   field_neighbourhoods: true
   field_phenomena: true
   field_photographer: true
+  field_start_year: true
+  field_transcript: true
   langcode: true
   name: true
   thumbnail: true

@@ -1,0 +1,23 @@
+uuid: 59abaf52-9089-427a-b8ba-bdea5b27b7cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_start_year
+    - media.type.image
+id: media.image.field_start_year
+field_name: field_start_year
+entity_type: media
+bundle: image
+label: 'Start year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

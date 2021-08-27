@@ -59,6 +59,11 @@
             }
         },
         "enable-patching": true,
+        "patches": {
+            "drupal/field_group": {
+                "https://www.drupal.org/project/field_group/issues/3171458#comment-13961305": "https://www.drupal.org/files/issues/2021-01-11/field_group-media_library_widget-3171458-14.patch"
+            }
+        },
         "installer-paths": {
             "public/core": [
                 "type:drupal-core"
