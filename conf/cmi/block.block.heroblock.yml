@@ -7,11 +7,11 @@ dependencies:
     - ctools
     - hdbt_content
   theme:
-    - hdbt
+    - hdbt_subtheme
 _core:
   default_config_hash: nH8M6u66xNnGzjplyiDZAKKeyzDR6NFyTMXNwDYzldk
 id: heroblock
-theme: hdbt
+theme: hdbt_subtheme
 region: before_content
 weight: -5
 provider: null

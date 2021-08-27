@@ -5,11 +5,11 @@ dependencies:
   module:
     - ctools
   theme:
-    - hdbt
+    - hdbt_subtheme
 _core:
   default_config_hash: cWAyHuLWbIx_Tsd04YPaUUGBOdvtYeKIjFXBXJhmi2w
 id: hdbt_page_title
-theme: hdbt
+theme: hdbt_subtheme
 region: before_content
 weight: -6
 provider: null

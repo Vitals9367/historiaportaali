@@ -9,9 +9,9 @@ dependencies:
     - ctools
     - views
   theme:
-    - hdbt
+    - hdbt_subtheme
 id: views_block__listings_article_listing_block
-theme: hdbt
+theme: hdbt_subtheme
 region: content
 weight: 0
 provider: null
