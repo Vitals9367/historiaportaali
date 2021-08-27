@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94ad47a4d8c9bbf316fa8c54e75f386b",
+    "content-hash": "8112080b2fd520b79074e4fceed97879",
     "packages": [
         {
             "name": "City-of-Helsinki/php-hauki-client",
@@ -3616,6 +3616,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "https://www.drupal.org/project/field_group/issues/3171458#comment-13961305": "https://www.drupal.org/files/issues/2021-01-11/field_group-media_library_widget-3171458-14.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -16272,5 +16275,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
