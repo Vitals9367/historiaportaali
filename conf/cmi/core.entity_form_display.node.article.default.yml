@@ -9,7 +9,7 @@ dependencies:
     - field.field.node.article.field_buildings_info
     - field.field.node.article.field_content
     - field.field.node.article.field_copyrights
-    - field.field.node.article.field_date_range
+    - field.field.node.article.field_end_year
     - field.field.node.article.field_finna_id
     - field.field.node.article.field_formats
     - field.field.node.article.field_keywords
@@ -19,9 +19,9 @@ dependencies:
     - field.field.node.article.field_metatags
     - field.field.node.article.field_neighbourhoods
     - field.field.node.article.field_phenomena
+    - field.field.node.article.field_start_year
     - node.type.article
   module:
-    - datetime_range
     - field_group
     - media_library
     - metatag
@@ -35,7 +35,8 @@ third_party_settings:
       children:
         - field_phenomena
         - field_neighbourhoods
-        - field_date_range
+        - group_year
+        - field_keywords
       parent_name: ''
       weight: 5
       format_type: details
@@ -80,6 +81,20 @@ third_party_settings:
         id: ''
         classes: ''
       label: Säilytyspaikka
+    group_year:
+      children:
+        - field_start_year
+        - field_end_year
+      parent_name: group_historiaportaali_meta
+      weight: 32
+      format_type: fieldset
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: Aikakausi
 _core:
   default_config_hash: pCNOhgqtZB0RYWLFELZhHp654GnKfoQ_Dbd2v2MIrWU
 id: node.article.default
@@ -158,14 +173,12 @@ content:
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
-  field_date_range:
-    weight: 33
+  field_end_year:
+    weight: 38
     settings:
-      increment: 15
-      date_order: YMD
-      time_type: '24'
+      placeholder: ''
     third_party_settings: {  }
-    type: daterange_datelist
+    type: number
     region: content
   field_finna_id:
     weight: 31
@@ -185,6 +198,16 @@ content:
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
+  field_keywords:
+    type: select2_entity_reference
+    weight: 33
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
   field_languages:
     weight: 35
     settings:
@@ -236,6 +259,13 @@ content:
       match_limit: 10
     third_party_settings: {  }
     type: select2_entity_reference
+    region: content
+  field_start_year:
+    weight: 37
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   langcode:
     type: language_select
@@ -316,5 +346,4 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_keywords: true
+hidden: {  }

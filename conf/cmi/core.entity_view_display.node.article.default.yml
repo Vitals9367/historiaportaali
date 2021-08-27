@@ -9,7 +9,7 @@ dependencies:
     - field.field.node.article.field_buildings_info
     - field.field.node.article.field_content
     - field.field.node.article.field_copyrights
-    - field.field.node.article.field_date_range
+    - field.field.node.article.field_end_year
     - field.field.node.article.field_finna_id
     - field.field.node.article.field_formats
     - field.field.node.article.field_keywords
@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.article.field_metatags
     - field.field.node.article.field_neighbourhoods
     - field.field.node.article.field_phenomena
+    - field.field.node.article.field_start_year
     - node.type.article
   module:
     - entity_reference_revisions
@@ -80,11 +81,12 @@ hidden:
   field_buildings: true
   field_buildings_info: true
   field_copyrights: true
-  field_date_range: true
+  field_end_year: true
   field_finna_id: true
   field_formats: true
   field_languages: true
   field_liftup_image: true
   field_neighbourhoods: true
   field_phenomena: true
+  field_start_year: true
   langcode: true

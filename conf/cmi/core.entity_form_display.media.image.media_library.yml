@@ -8,32 +8,36 @@ dependencies:
     - field.field.media.image.field_buildings
     - field.field.media.image.field_buildings_info
     - field.field.media.image.field_copyrights
-    - field.field.media.image.field_date_range
+    - field.field.media.image.field_end_year
     - field.field.media.image.field_finna_id
     - field.field.media.image.field_formats
     - field.field.media.image.field_geolocation
+    - field.field.media.image.field_keywords
     - field.field.media.image.field_languages
     - field.field.media.image.field_media_image
     - field.field.media.image.field_neighbourhoods
     - field.field.media.image.field_phenomena
     - field.field.media.image.field_photographer
+    - field.field.media.image.field_start_year
+    - field.field.media.image.field_transcript
     - image.style.media_library
     - media.type.image
   module:
-    - datetime_range
     - field_group
     - focal_point
     - geofield_map
     - select2
+    - text
 third_party_settings:
   field_group:
     group_historiaportaali_meta:
       children:
         - field_phenomena
         - field_neighbourhoods
-        - field_date_range
+        - group_year
+        - field_keywords
       parent_name: ''
-      weight: 4
+      weight: 5
       format_type: details
       region: content
       format_settings:
@@ -52,7 +56,7 @@ third_party_settings:
         - field_languages
         - group_location
       parent_name: ''
-      weight: 5
+      weight: 6
       format_type: details
       region: content
       format_settings:
@@ -76,6 +80,20 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Säilytyspaikka
+    group_year:
+      children:
+        - field_start_year
+        - field_end_year
+      parent_name: group_historiaportaali_meta
+      weight: 2
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Ajanjakso
 _core:
   default_config_hash: _WTCyWUZlB2FyBSgpuey9Y9okHz6R8gcAWQ3DUiyNuA
 id: media.image.media_library
@@ -121,14 +139,12 @@ content:
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-  field_date_range:
-    type: daterange_datelist
-    weight: 2
+  field_end_year:
+    type: number
+    weight: 1
     region: content
     settings:
-      increment: 15
-      date_order: YMD
-      time_type: '24'
+      placeholder: ''
     third_party_settings: {  }
   field_finna_id:
     type: string_textfield
@@ -150,7 +166,7 @@ content:
     third_party_settings: {  }
   field_geolocation:
     type: geofield_map
-    weight: 3
+    weight: 4
     region: content
     settings:
       map_geocoder:
@@ -191,6 +207,16 @@ content:
       html5_geolocation: false
       map_google_api_key: ''
       zoom_level: 5
+    third_party_settings: {  }
+  field_keywords:
+    type: select2_entity_reference
+    weight: 3
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
     third_party_settings: {  }
   field_languages:
     type: select2_entity_reference
@@ -234,10 +260,25 @@ content:
     third_party_settings: {  }
   field_photographer:
     type: string_textfield
-    weight: 2
+    weight: 3
     region: content
     settings:
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_start_year:
+    type: number
+    weight: 0
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_transcript:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   name:
@@ -249,7 +290,7 @@ content:
     third_party_settings: {  }
     region: content
   translation:
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
