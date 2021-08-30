@@ -14,5 +14,30 @@
 .is-hidden {
   display: none; }
 
+body {
+  background-color: #FAF9F7; }
+
+.views--listings {
+  margin: 32px 0; }
+  .views--listings .views-row {
+    margin-bottom: 16px; }
+  .views--listings article.node--view-mode-listing-item .thumbnail-image img {
+    vertical-align: middle; }
+  .views--listings article.node--view-mode-listing-item .content-wrapper {
+    background: white;
+    padding: 16px; }
+    .views--listings article.node--view-mode-listing-item .content-wrapper h2 {
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 16px; }
+    .views--listings article.node--view-mode-listing-item .content-wrapper a {
+      text-decoration: none; }
+    @media (min-width: 768px) {
+    .views--listings article.node--view-mode-listing-item {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
+
 
 /*# sourceMappingURL=styles.min.css.map*/
