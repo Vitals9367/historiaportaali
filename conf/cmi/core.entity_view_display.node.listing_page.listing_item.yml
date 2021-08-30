@@ -1,8 +1,9 @@
-uuid: 2e75854d-3e66-42f4-a2e7-30e17becfec5
+uuid: 3bb9032b-31e0-448e-9343-0110af873aa1
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.listing_item
     - field.field.node.listing_page.body
     - field.field.node.listing_page.field_has_hero
     - field.field.node.listing_page.field_hero
@@ -11,29 +12,30 @@ dependencies:
     - field.field.node.listing_page.field_phenomena
     - node.type.listing_page
   module:
-    - text
     - user
-id: node.listing_page.default
+id: node.listing_page.listing_item
 targetEntityType: node
 bundle: listing_page
-mode: default
+mode: listing_item
 content:
-  body:
-    label: hidden
-    type: text_default
+  field_liftup_image:
+    type: entity_reference_entity_view
     weight: 1
-    settings: {  }
-    third_party_settings: {  }
     region: content
+    label: hidden
+    settings:
+      view_mode: content_listing
+      link: false
+    third_party_settings: {  }
   links:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  body: true
   field_has_hero: true
   field_hero: true
-  field_liftup_image: true
   field_listing_type: true
   field_phenomena: true
   langcode: true
