@@ -1,0 +1,118 @@
+uuid: a9a16338-945a-4a41-9025-d94400d94067
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_end_year
+    - field.storage.media.field_formats
+    - field.storage.media.field_start_year
+    - field.storage.node.field_end_year
+    - field.storage.node.field_keywords
+    - field.storage.node.field_start_year
+    - search_api.server.database
+  module:
+    - taxonomy
+    - media
+    - node
+    - search_api
+id: content_and_media
+name: 'Content and media'
+description: ''
+read_only: false
+field_settings:
+  article_end_year:
+    label: 'End year'
+    datasource_id: 'entity:node'
+    property_path: field_end_year
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_end_year
+  article_keywords:
+    label: 'Keywords » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_keywords:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_keywords
+      module:
+        - taxonomy
+  article_start_year:
+    label: 'Start year'
+    datasource_id: 'entity:node'
+    property_path: field_start_year
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_start_year
+  article_title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
+  media_end_year:
+    label: 'End year'
+    datasource_id: 'entity:media'
+    property_path: field_end_year
+    type: integer
+    dependencies:
+      config:
+        - field.storage.media.field_end_year
+  media_format:
+    label: 'Formats » Taxonomy term » Name'
+    datasource_id: 'entity:media'
+    property_path: 'field_formats:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.media.field_formats
+      module:
+        - taxonomy
+  media_name:
+    label: Name
+    datasource_id: 'entity:media'
+    property_path: name
+    type: text
+    dependencies:
+      module:
+        - media
+  media_start_year:
+    label: 'Start year'
+    datasource_id: 'entity:media'
+    property_path: field_start_year
+    type: integer
+    dependencies:
+      config:
+        - field.storage.media.field_start_year
+datasource_settings:
+  'entity:media':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - article
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  language_with_fallback: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: database
