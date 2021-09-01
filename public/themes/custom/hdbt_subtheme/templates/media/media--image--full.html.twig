@@ -1,0 +1,140 @@
+{#
+/**
+ * @file
+ * Theme override to present a media item.
+ *
+ * Available variables:
+ * - media: The media item, with limited access to object properties and
+ *   methods. Only method names starting with "get", "has", or "is" and
+ *   a few common methods such as "id", "label", and "bundle" are available.
+ *   For example:
+ *   - entity.getEntityTypeId() will return the entity type ID.
+ *   - entity.hasField('field_example') returns TRUE if the entity includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   Calling other methods, such as entity.delete(), will result in
+ *   an exception.
+ *   See \Drupal\Core\Entity\EntityInterface for a full list of methods.
+ * - name: Name of the media item.
+ * - content: Media content.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - attributes: HTML attributes for the containing element.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ *
+ * @see template_preprocess_media()
+ */
+#}
+{%
+  set classes = [
+  'media--type-' ~ media.bundle()|clean_class,
+  view_mode ? 'media--view-mode-' ~ view_mode|clean_class,
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
+    {% block container_content %}
+      <h2 class="columns__title">{{ media.name() }}</h2>
+
+      {% set left_column_classes = ['columns__column'] %}
+      {% set right_column_classes = ['columns__column'] %}
+
+      {% set left_column_classes = left_column_classes|merge(['column--70']) %}
+      {% set right_column_classes = right_column_classes|merge(['column--30']) %}
+
+      <div class="columns__content">
+        <div class="{{ left_column_classes|join(' ') }}">
+          {% if content.field_media_image|render %}
+            <div class="{{ media.bundle()|clean_class }}__media_image">
+              {{ content.field_media_image }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="{{ right_column_classes|join(' ') }}">
+          {{ content.field_photographer }}
+          {{ content.field_geolocation }}
+        </div>
+      </div>
+    {% endblock %}
+  {% endembed %}
+
+  {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
+    {% block container_content %}
+      <h2 class="columns__title">{{ 'Additional information'|trans }}</h2>
+
+      {% set left_column_classes = ['columns__column'] %}
+      {% set right_column_classes = ['columns__column'] %}
+
+      {% set left_column_classes = left_column_classes|merge(['column--50']) %}
+      {% set right_column_classes = right_column_classes|merge(['column--50']) %}
+
+      <div class="columns__content">
+        <div class="{{ left_column_classes|join(' ') }}">
+
+          {% if content.field_phenomena|render %}
+            <div class="{{ media.bundle()|clean_class }}__phenomena">
+              {{ content.field_phenomena }}
+            </div>
+          {% endif %}
+
+          {% if content.field_neighbourhoods|render %}
+            <div class="{{ media.bundle()|clean_class }}__neighbourhoods">
+              {{ content.field_neighbourhoods }}
+            </div>
+          {% endif %}
+
+          {{ content.field_start_year }} - {{ content.field_end_year }}
+        </div>
+
+        <div class="{{ right_column_classes|join(' ') }}">
+          {% if content.field_finna_id|render %}
+            <div class="{{ media.bundle()|clean_class }}__finna_id">
+              {{ content.field_finna_id }}
+            </div>
+          {% endif %}
+
+          {% if content.field_formats|render %}
+            <div class="{{ media.bundle()|clean_class }}__formats">
+              {{ content.field_formats }}
+            </div>
+          {% endif %}
+
+          {% if content.field_authors|render %}
+            <div class="{{ media.bundle()|clean_class }}__authors">
+              {{ content.field_authors }}
+            </div>
+          {% endif %}
+
+          {% if content.field_copyrights|render %}
+            <div class="{{ media.bundle()|clean_class }}__copyrights">
+              {{ content.field_copyrights }}
+            </div>
+          {% endif %}
+
+          {% if content.field_languages|render %}
+            <div class="{{ media.bundle()|clean_class }}__languages">
+              {{ content.field_languages }}
+            </div>
+          {% endif %}
+
+          {% if content.field_buildings|render %}
+            <div class="{{ media.bundle()|clean_class }}__buildings">
+              {{ content.field_buildings }}
+            </div>
+          {% endif %}
+
+          {% if content.field_buildings_info|render %}
+            <div class="{{ media.bundle()|clean_class }}__buildings_info">
+              {{ content.field_buildings_info }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endblock %}
+  {% endembed %}
+</article>
