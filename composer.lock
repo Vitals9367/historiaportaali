@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94ad47a4d8c9bbf316fa8c54e75f386b",
+    "content-hash": "b2b0c6680b16df926a97ab7a2ca14dc2",
     "packages": [
         {
             "name": "City-of-Helsinki/php-hauki-client",
@@ -4638,6 +4638,78 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/key_value_field",
                 "issues": "https://www.drupal.org/project/issues/key_value_field"
+            }
+        },
+        {
+            "name": "drupal/leaflet",
+            "version": "2.1.14",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/leaflet.git",
+                "reference": "2.1.14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/leaflet-2.1.14.zip",
+                "reference": "2.1.14",
+                "shasum": "2814c15193c204467de0e64c20f9ddd6f135fd38"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9",
+                "drupal/geofield": "^1.31"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.14",
+                    "datestamp": "1622756655",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Italo Mairo",
+                    "homepage": "https://www.drupal.org/u/itamair",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Peter Vanhee (pvhee)",
+                    "homepage": "https://www.drupal.org/u/pvhee",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Rik de Boer (RdeBoer)",
+                    "homepage": "https://www.drupal.org/u/rdeboer",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Gabriel Carleton-Barnes (gcb)",
+                    "homepage": "https://www.drupal.org/u/gcb",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Lev Tsypin (levelos)",
+                    "homepage": "https://www.drupal.org/u/levelos",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Sean Larkin (seanberto)",
+                    "homepage": "https://www.drupal.org/u/seanberto",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Integration with the Leaflet map scripting library.",
+            "homepage": "https://www.drupal.org/project/leaflet",
+            "support": {
+                "source": "https://git.drupalcode.org/project/leaflet",
+                "issues": "https://www.drupal.org/project/issues/leaflet"
             }
         },
         {

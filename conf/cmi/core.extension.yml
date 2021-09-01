@@ -57,6 +57,7 @@ module:
   image: 0
   image_style_quality: 0
   language: 0
+  leaflet: 0
   link: 0
   linkit: 0
   locale: 0
