@@ -27,6 +27,7 @@
         "drupal/helfi_platform_config": "^1",
         "drupal/helfi_tpr": "^1.0",
         "drupal/helfi_tunnistamo": "^1.0",
+        "drupal/leaflet": "^2.1",
         "drupal/optional_end_date": "^1.2",
         "drupal/search_api_autocomplete": "^1.5",
         "drupal/views_menu_children_filter": "^1.0@RC",
@@ -39,7 +40,6 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "drupal/coder": "^8.3",
         "drupal/core-dev": "^9.1",
-        "drupal/devel_debug_log": "^1.0",
         "phpspec/prophecy-phpunit": "^2",
         "phpunit/phpunit": "~9.4.0"
     },

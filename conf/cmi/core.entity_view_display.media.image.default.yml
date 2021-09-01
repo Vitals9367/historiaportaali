@@ -19,10 +19,12 @@ dependencies:
     - field.field.media.image.field_photographer
     - field.field.media.image.field_start_year
     - field.field.media.image.field_transcript
-    - image.style.large
+    - image.style.original_l
     - media.type.image
   module:
     - image
+    - leaflet
+    - text
 _core:
   default_config_hash: in_XCvnpxCs_Bfi1xBUEGLq1TwGghNZOnnJsyyeWqQE
 id: media.image.default
@@ -30,33 +32,210 @@ targetEntityType: media
 bundle: image
 mode: default
 content:
+  field_authors:
+    type: entity_reference_label
+    weight: 12
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_buildings:
+    type: entity_reference_label
+    weight: 15
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_buildings_info:
+    type: string
+    weight: 16
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_copyrights:
+    type: entity_reference_label
+    weight: 13
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_end_year:
+    type: number_integer
+    weight: 8
+    region: content
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+  field_finna_id:
+    type: string
+    weight: 10
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_formats:
+    type: entity_reference_label
+    weight: 11
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_geolocation:
+    type: leaflet_formatter_default
+    weight: 4
+    region: content
+    label: above
+    settings:
+      multiple_map: false
+      popup_content: ''
+      leaflet_map: 'OSM Mapnik'
+      height: 400
+      height_unit: px
+      fullscreen_control: true
+      reset_map:
+        position: topright
+        control: false
+      map_position:
+        center:
+          lat: !!float 0
+          lon: !!float 0
+        zoom: 12
+        minZoom: 1
+        maxZoom: 18
+        zoomFiner: 0
+        force: false
+      weight: ''
+      icon:
+        iconType: marker
+        iconUrl: ''
+        shadowUrl: ''
+        className: ''
+        html: '<div></div>'
+        html_class: leaflet-map-divicon
+        circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
+        iconSize:
+          x: ''
+          'y': ''
+        iconAnchor:
+          x: ''
+          'y': ''
+        shadowSize:
+          x: ''
+          'y': ''
+        shadowAnchor:
+          x: ''
+          'y': ''
+        popupAnchor:
+          x: ''
+          'y': ''
+      path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2","radius":"6"}'
+      geocoder:
+        settings:
+          position: topright
+          input_size: 25
+          providers:
+            openstreetmap:
+              weight: 0
+              checked: false
+          min_terms: 4
+          delay: 800
+          zoom: 16
+          options: ''
+          popup: false
+        control: false
+      popup: false
+      hide_empty_map: false
+      disable_wheel: false
+      gesture_handling: false
+      leaflet_markercluster:
+        control: false
+        options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds": false}'
+        include_path: false
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_label
+    weight: 9
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_languages:
+    type: entity_reference_label
+    weight: 14
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
   field_media_image:
     label: hidden
-    weight: 0
+    weight: 1
     settings:
-      image_style: large
-      image_link: ''
+      image_style: original_l
+      image_link: file
     third_party_settings: {  }
     type: image
     region: content
+  field_neighbourhoods:
+    type: entity_reference_label
+    weight: 6
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_phenomena:
+    type: entity_reference_label
+    weight: 5
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_photographer:
+    type: string
+    weight: 3
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_start_year:
+    type: number_integer
+    weight: 7
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+  field_transcript:
+    type: text_default
+    weight: 2
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
   created: true
-  field_authors: true
-  field_buildings: true
-  field_buildings_info: true
-  field_copyrights: true
-  field_end_year: true
-  field_finna_id: true
-  field_formats: true
-  field_geolocation: true
-  field_keywords: true
-  field_languages: true
-  field_neighbourhoods: true
-  field_phenomena: true
-  field_photographer: true
-  field_start_year: true
-  field_transcript: true
   langcode: true
-  name: true
   thumbnail: true
   uid: true
