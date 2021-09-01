@@ -32,9 +32,26 @@
 
 <div class="search-result media">
   {{ title_suffix.contextual_links }}
-  {{ content|without('field_photographer') }}
+  {% if content.field_media_image|render %}
+    <div class="search-result__image">
+      {{ content.field_media_image }}
+    </div>
+  {% endif %}
   
   <div class="metadata-wrapper">
+    <div class="metadata-row">
+      {% if content.field_phenomena|render %}
+        <div class="search-result__phenomena">
+          {{ content.field_phenomena }}
+        </div>
+      {% endif %}
+
+      {% if content.field_formats|render %}
+        <div class="search-result__formats">
+          {{ content.field_formats }}
+        </div>
+      {% endif %}
+    </div>
     <h3>{{ name }}</h3>
   </div>
 </div>

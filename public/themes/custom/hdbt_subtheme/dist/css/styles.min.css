@@ -28,6 +28,16 @@ body {
   width: 100%;
   height: auto; }
 
+.search-result .metadata-wrapper {
+  background: #ffffff; }
+  .search-result .metadata-wrapper .metadata-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+
 .views--listings {
   margin: 32px 0; }
   .views--listings .views-row {

@@ -1,0 +1,10 @@
+.search-result {
+  .metadata-wrapper {
+    background: $color-white;
+
+    .metadata-row {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
