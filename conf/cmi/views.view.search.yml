@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_end_year
     - search_api.index.content_and_media
   module:
+    - better_exposed_filters
     - search_api
 id: search
 label: Search
@@ -34,15 +35,54 @@ display:
           skip_access: false
           preserve_facet_query_args: false
       exposed_form:
-        type: basic
+        type: bef
         options:
-          submit_button: Apply
+          submit_button: Search
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: true
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+            filter:
+              search_api_fulltext:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              aggregated_start_year:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              aggregated_end_year:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              aggregated_phenomenon:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
       pager:
         type: mini
         options:
@@ -184,7 +224,7 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
-            placeholder: ''
+            placeholder: 'Location, person, topic, event...'
             expose_fields: false
             searched_fields_id: search_api_fulltext_searched_fields
           is_grouped: false
@@ -204,6 +244,147 @@ display:
           fields:
             - aggregated_keywords
           plugin_id: search_api_fulltext
+        aggregated_start_year:
+          id: aggregated_start_year
+          table: search_api_index_content_and_media
+          field: aggregated_start_year
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: aggregated_start_year_op
+            label: Starts
+            description: ''
+            use_operator: false
+            operator: aggregated_start_year_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: start_year
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              admin: '0'
+              content_producer: '0'
+            placeholder: Starts
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_numeric
+        aggregated_end_year:
+          id: aggregated_end_year
+          table: search_api_index_content_and_media
+          field: aggregated_end_year
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: aggregated_end_year_op
+            label: Ends
+            description: ''
+            use_operator: false
+            operator: aggregated_end_year_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: end_year
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              admin: '0'
+              content_producer: '0'
+            placeholder: Ends
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_numeric
+        aggregated_phenomenon:
+          id: aggregated_phenomenon
+          table: search_api_index_content_and_media
+          field: aggregated_phenomenon
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: aggregated_phenomenon_op
+            label: 'Select phenomenon'
+            description: ''
+            use_operator: false
+            operator: aggregated_phenomenon_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: phenomenon
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              admin: '0'
+              content_producer: '0'
+            placeholder: 'Select phenomenon'
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
       sorts: {  }
       title: Search
       header: {  }
@@ -212,6 +393,10 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:

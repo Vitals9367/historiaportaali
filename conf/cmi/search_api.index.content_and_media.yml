@@ -20,6 +20,15 @@ name: 'Content and media'
 description: ''
 read_only: false
 field_settings:
+  aggregated_end_year:
+    label: 'Aggregated end year'
+    property_path: aggregated_field
+    type: integer
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_end_year'
+        - 'entity:node/field_end_year'
   aggregated_keywords:
     label: 'Aggregated keywords'
     property_path: aggregated_field
@@ -32,15 +41,24 @@ field_settings:
         - 'entity:node/field_keywords'
         - 'entity:node/field_lead'
         - 'entity:node/title'
-  aggregated_phenomena:
-    label: 'Aggregated phenomena'
+  aggregated_phenomenon:
+    label: 'Aggregated phenomenon'
     property_path: aggregated_field
-    type: integer
+    type: string
     configuration:
       type: union
       fields:
         - 'entity:media/field_phenomena'
         - 'entity:node/field_phenomena'
+  aggregated_start_year:
+    label: 'Aggregated start year'
+    property_path: aggregated_field
+    type: integer
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_start_year'
+        - 'entity:node/field_start_year'
   article_end_year:
     label: 'End year'
     datasource_id: 'entity:node'
