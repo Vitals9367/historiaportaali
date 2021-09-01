@@ -178,7 +178,7 @@ content:
       link: false
     third_party_settings: {  }
   field_media_image:
-    label: above
+    label: hidden
     weight: 1
     settings:
       image_style: original_l
@@ -230,7 +230,7 @@ content:
     type: string
     weight: 0
     region: content
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }

@@ -38,7 +38,7 @@
 <article{{ attributes.addClass(classes) }}>
   {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
     {% block container_content %}
-      <h2 class="columns__title">{{ media.name() }}</h2>
+      <h2 class="columns__title">{{ content.name }}</h2>
 
       {% set left_column_classes = ['columns__column'] %}
       {% set right_column_classes = ['columns__column'] %}
