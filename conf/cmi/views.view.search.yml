@@ -374,16 +374,37 @@ display:
             max_placeholder: ''
           is_grouped: false
           group_info:
-            label: ''
+            label: 'Select phenomenon'
             description: ''
-            identifier: ''
+            identifier: aggregated_phenomenon
             optional: true
             widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items: {  }
+            group_items:
+              1:
+                title: ''
+                operator: '='
+                value:
+                  value: ''
+                  min: ''
+                  max: ''
+              2:
+                title: ''
+                operator: '='
+                value:
+                  value: ''
+                  min: ''
+                  max: ''
+              3:
+                title: ''
+                operator: '='
+                value:
+                  value: ''
+                  min: ''
+                  max: ''
           plugin_id: search_api_string
       sorts: {  }
       title: Search

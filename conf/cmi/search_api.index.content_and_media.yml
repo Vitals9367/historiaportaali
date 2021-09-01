@@ -4,14 +4,11 @@ status: true
 dependencies:
   config:
     - field.storage.media.field_end_year
-    - field.storage.media.field_formats
     - field.storage.media.field_start_year
     - field.storage.node.field_end_year
-    - field.storage.node.field_keywords
     - field.storage.node.field_start_year
     - search_api.server.database
   module:
-    - taxonomy
     - node
     - search_api
     - media
@@ -37,8 +34,10 @@ field_settings:
       type: union
       fields:
         - 'entity:media/field_keywords'
+        - 'entity:media/field_keywords:entity:name'
         - 'entity:media/name'
         - 'entity:node/field_keywords'
+        - 'entity:node/field_keywords:entity:name'
         - 'entity:node/field_lead'
         - 'entity:node/title'
   aggregated_phenomenon:
@@ -48,8 +47,8 @@ field_settings:
     configuration:
       type: union
       fields:
-        - 'entity:media/field_phenomena'
-        - 'entity:node/field_phenomena'
+        - 'entity:media/field_phenomena:entity:name'
+        - 'entity:node/field_phenomena:entity:name'
   aggregated_start_year:
     label: 'Aggregated start year'
     property_path: aggregated_field
@@ -67,16 +66,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_end_year
-  article_keywords:
-    label: 'Keywords » Taxonomy term » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_keywords:entity:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_keywords
-      module:
-        - taxonomy
   article_start_year:
     label: 'Start year'
     datasource_id: 'entity:node'
@@ -93,16 +82,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.media.field_end_year
-  media_format:
-    label: 'Formats » Taxonomy term » Name'
-    datasource_id: 'entity:media'
-    property_path: 'field_formats:entity:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.media.field_formats
-      module:
-        - taxonomy
   media_start_year:
     label: 'Start year'
     datasource_id: 'entity:media'
