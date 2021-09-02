@@ -83,12 +83,30 @@
 %}
 
 <div class="search-result article">
-  <article{{ attributes.addClass(classes) }}>
-    {{ content|without('field_lower_content') }}
+  {% if content.field_liftup_image|render %}
+    <div class="search-result__image">
+      {{ content.field_liftup_image }}
+    </div>
+  {% endif %}
+
+  <div class="metadata-wrapper">
+    <div class="metadata-row">
+      {% if content.field_phenomena|render %}
+        <div class="search-result__phenomena">
+          {{ content.field_phenomena }}
+        </div>
+      {% endif %}
+
+      {% if content.field_formats|render %}
+        <div class="search-result__formats">
+          {{ content.field_formats }}
+        </div>
+      {% endif %}
+    </div>
     {{ title_prefix }}
       <h3{{ title_attributes }}>
         <a href="{{ url }}" rel="bookmark">{{ label }}</a>
       </h3>
     {{ title_suffix }}
-  </article>
+  </div>
 </div>
