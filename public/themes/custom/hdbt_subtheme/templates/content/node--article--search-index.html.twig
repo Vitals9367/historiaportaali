@@ -108,5 +108,11 @@
         <a href="{{ url }}" rel="bookmark">{{ label }}</a>
       </h3>
     {{ title_suffix }}
+
+    <div class="search-result__link-to-content">
+      <a href="{{ url }}">
+        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Link to content'|t } %}
+      </a>
+    </div>
   </div>
 </div>

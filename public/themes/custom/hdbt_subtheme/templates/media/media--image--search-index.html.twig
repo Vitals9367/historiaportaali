@@ -53,5 +53,11 @@
       {% endif %}
     </div>
     <h3>{{ name }}</h3>
+
+    <div class="search-result__link-to-content">
+      <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}">
+        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Link to content'|t } %}
+      </a>
+    </div>
   </div>
 </div>
