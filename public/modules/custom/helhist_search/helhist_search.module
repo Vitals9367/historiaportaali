@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * Implements hook_form_views_exposed_form_alter().
+ */
+function helhist_search_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $view_ids = ['search'];
+
+  if ($form_id == 'views_exposed_form' && in_array($form_state->get('view')->id(), $view_ids)) {
+    // Transform Phenomenon-filter from textfield to select
+    $phenomenon_filter_title = $form['phenomenon']['#title'];
+    $phenomenon_vocabulary_id = 'phenomena';
+    $form['phenomenon'] = _generate_select_from_taxonomy_vocabulary($phenomenon_filter_title, $phenomenon_vocabulary_id);
+    
+    // Transform Format-filter from textfield to select
+    $format_filter_title = $form['format']['#title'];
+    $format_vocabulary_id = 'formats';
+    $form['format'] = _generate_select_from_taxonomy_vocabulary($format_filter_title, $format_vocabulary_id);
+  }
+}
+
+function _generate_select_from_taxonomy_vocabulary($title, $vocabulary_id) {
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $select_options = [];
+
+  $term_query = \Drupal::entityQuery('taxonomy_term');
+  $term_query->condition('vid', $vocabulary_id);
+  $tids = $term_query->execute();
+
+  $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($tids);
+
+  foreach ($terms as $term) {
+    if ($term->hasTranslation($language)) {
+      $translated_term = $term->getTranslation($language);
+      $term_name = $translated_term->getName();
+    } else {
+      $term_name = $term->getName();
+    }
+
+    $select_options[$term->id()] = $term_name;
+  }
+
+  return [
+    '#type' => 'select2',
+    '#title' => $title,
+    '#options' => $select_options
+  ];
+}
