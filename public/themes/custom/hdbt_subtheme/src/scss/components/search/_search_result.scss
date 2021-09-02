@@ -1,10 +1,54 @@
 .search-result {
+  .search-result__image {
+    img {
+      vertical-align: middle;
+    }
+  }
+
   .metadata-wrapper {
     background: $color-white;
+    padding: $spacing;
 
     .metadata-row {
       display: flex;
+      align-items: flex-start;
+      margin: 0 0 $spacing;
+    }
+
+    .metadata-item {
+      display: flex;
       align-items: center;
+      background-color: $sand;
+      color: $color-metro-dark;
+      min-height: $spacing-double;
+      padding: 0 $spacing-half;
+      margin-right: $spacing;
+      font-size: 14px;
+      line-height: 1.4em;
+    }
+
+    .format-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .format-icon {
+      margin-right: $spacing-quarter;
+
+      svg {
+        vertical-align: middle;
+      } 
+    }
+
+    h3 {
+      margin: 0 0 $spacing;
+      font-size: 18px;
+      font-weight: $font-weight-bold;
+
+      a {
+        text-decoration: none;
+      }
     }
   }
 }

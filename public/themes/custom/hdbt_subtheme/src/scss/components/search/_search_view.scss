@@ -1,0 +1,11 @@
+.views--search {
+  .views-infinite-scroll-content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .views-row {
+    margin: 0 $spacing-double $spacing-double;
+    max-width: 320px;
+  }
+}
