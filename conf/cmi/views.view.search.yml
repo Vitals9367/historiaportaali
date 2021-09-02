@@ -83,6 +83,12 @@ display:
                   placeholder_text: ''
                   collapsible: false
                   is_secondary: false
+              aggregated_formats:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
       pager:
         type: mini
         options:
@@ -405,6 +411,53 @@ display:
                   value: ''
                   min: ''
                   max: ''
+          plugin_id: search_api_string
+        aggregated_formats:
+          id: aggregated_formats
+          table: search_api_index_content_and_media
+          field: aggregated_formats
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: aggregated_formats_op
+            label: 'Select format'
+            description: ''
+            use_operator: false
+            operator: aggregated_formats_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: format
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              admin: '0'
+              content_producer: '0'
+            placeholder: 'Select format'
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
           plugin_id: search_api_string
       sorts: {  }
       title: Search

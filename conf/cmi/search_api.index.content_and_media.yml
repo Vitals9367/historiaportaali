@@ -26,6 +26,15 @@ field_settings:
       fields:
         - 'entity:media/field_end_year'
         - 'entity:node/field_end_year'
+  aggregated_formats:
+    label: 'Aggregated formats'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_formats:entity:tid'
+        - 'entity:node/field_formats:entity:tid'
   aggregated_keywords:
     label: 'Aggregated keywords'
     property_path: aggregated_field
@@ -47,8 +56,8 @@ field_settings:
     configuration:
       type: union
       fields:
-        - 'entity:media/field_phenomena:entity:name'
-        - 'entity:node/field_phenomena:entity:name'
+        - 'entity:media/field_phenomena:entity:tid'
+        - 'entity:node/field_phenomena:entity:tid'
   aggregated_start_year:
     label: 'Aggregated start year'
     property_path: aggregated_field
