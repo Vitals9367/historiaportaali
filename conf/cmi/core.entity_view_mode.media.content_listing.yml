@@ -1,0 +1,10 @@
+uuid: d3ac918d-5a64-4821-8d1d-635ac2f86b4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.content_listing
+label: 'Content listing'
+targetEntityType: media
+cache: true

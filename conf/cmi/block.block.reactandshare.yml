@@ -5,11 +5,11 @@ dependencies:
   module:
     - helfi_platform_config
   theme:
-    - hdbt
+    - hdbt_subtheme
 _core:
   default_config_hash: NGwdfNLrACjqgqO8nuIYG7P4pXxSCQ51eykE4-xME6M
 id: reactandshare
-theme: hdbt
+theme: hdbt_subtheme
 region: after_content
 weight: -7
 provider: null

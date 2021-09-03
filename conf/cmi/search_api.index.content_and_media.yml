@@ -1,0 +1,159 @@
+uuid: a9a16338-945a-4a41-9025-d94400d94067
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_end_year
+    - field.storage.media.field_start_year
+    - field.storage.node.field_end_year
+    - field.storage.node.field_start_year
+    - search_api.server.database
+  module:
+    - node
+    - search_api
+    - media
+id: content_and_media
+name: 'Content and media'
+description: ''
+read_only: false
+field_settings:
+  aggregated_end_year:
+    label: 'Aggregated end year'
+    property_path: aggregated_field
+    type: integer
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_end_year'
+        - 'entity:node/field_end_year'
+  aggregated_formats:
+    label: 'Aggregated formats'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_formats:entity:tid'
+        - 'entity:node/field_formats:entity:tid'
+  aggregated_keywords:
+    label: 'Aggregated keywords'
+    property_path: aggregated_field
+    type: text
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_keywords'
+        - 'entity:media/field_keywords:entity:name'
+        - 'entity:media/name'
+        - 'entity:node/field_keywords'
+        - 'entity:node/field_keywords:entity:name'
+        - 'entity:node/field_lead'
+        - 'entity:node/title'
+  aggregated_phenomenon:
+    label: 'Aggregated phenomenon'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_phenomena:entity:tid'
+        - 'entity:node/field_phenomena:entity:tid'
+  aggregated_start_year:
+    label: 'Aggregated start year'
+    property_path: aggregated_field
+    type: integer
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_start_year'
+        - 'entity:node/field_start_year'
+  article_end_year:
+    label: 'End year'
+    datasource_id: 'entity:node'
+    property_path: field_end_year
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_end_year
+  article_start_year:
+    label: 'Start year'
+    datasource_id: 'entity:node'
+    property_path: field_start_year
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_start_year
+  media_end_year:
+    label: 'End year'
+    datasource_id: 'entity:media'
+    property_path: field_end_year
+    type: integer
+    dependencies:
+      config:
+        - field.storage.media.field_end_year
+  media_start_year:
+    label: 'Start year'
+    datasource_id: 'entity:media'
+    property_path: field_start_year
+    type: integer
+    dependencies:
+      config:
+        - field.storage.media.field_start_year
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  status:
+    label: status
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  uid:
+    label: uid
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:media':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - article
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  language_with_fallback: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: database

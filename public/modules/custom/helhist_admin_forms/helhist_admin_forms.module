@@ -29,18 +29,33 @@ function helhist_admin_forms_help($route_name, RouteMatchInterface $route_match)
  * Implements hook_form_FORM_ID_alter().
  */
 function helhist_admin_forms_form_node_form_alter(&$form, &$form_state, $form_id) {
-  switch ($form_id) {
-    case 'node_article_edit_form':
-    case 'node_article_form':
-    case 'node_listing_page_edit_form':
-    case 'node_listing_page_form':
-      // Control Hero paragraph visibility via checkbox states.
-      $form['field_hero']['#states'] = [
-        'visible' => [
-          ':input[name="field_has_hero[value]"]' => ['checked' => TRUE],
-        ],
-      ];
-      break;
+  if (in_array($form_id, [
+    'node_article_edit_form',
+    'node_article_form',
+    'node_listing_page_edit_form',
+    'node_listing_page_form'
+  ])) {
+    // Control Hero paragraph visibility via checkbox states.
+    $form['field_hero']['#states'] = [
+      'visible' => [
+        ':input[name="field_has_hero[value]"]' => ['checked' => TRUE],
+      ],
+    ];
+  }
+  
+  if (in_array($form_id, [
+    'node_listing_page_edit_form',
+    'node_listing_page_form'
+  ])) {
+    // Control Phenomena field visibility via Listing type selection.
+    $form['field_phenomena']['#states'] = [
+      'visible' => [
+        ':input[name="field_listing_type"]' => ['value' => 'article'],
+      ],
+      'required' => [
+        ':input[name="field_listing_type"]' => ['value' => 'article'],
+      ],
+    ];
   }
 }
 

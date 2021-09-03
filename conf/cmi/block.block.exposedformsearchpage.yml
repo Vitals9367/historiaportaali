@@ -1,0 +1,48 @@
+uuid: 894740ca-9c82-41e9-be54-a99818e7aa0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.search
+  module:
+    - context
+    - system
+    - views
+  theme:
+    - hdbt_subtheme
+id: exposedformsearchpage
+theme: hdbt_subtheme
+region: before_content
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:search-page'
+settings:
+  id: 'views_exposed_filter_block:search-page'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+visibility:
+  context_all:
+    id: context_all
+    values: ''
+    negate: null
+  context:
+    id: context
+    values: ''
+    negate: null
+  user_status:
+    id: user_status
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false

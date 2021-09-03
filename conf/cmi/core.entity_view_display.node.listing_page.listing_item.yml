@@ -1,0 +1,42 @@
+uuid: 3bb9032b-31e0-448e-9343-0110af873aa1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing_item
+    - field.field.node.listing_page.body
+    - field.field.node.listing_page.field_has_hero
+    - field.field.node.listing_page.field_hero
+    - field.field.node.listing_page.field_liftup_image
+    - field.field.node.listing_page.field_listing_type
+    - field.field.node.listing_page.field_phenomena
+    - node.type.listing_page
+  module:
+    - user
+id: node.listing_page.listing_item
+targetEntityType: node
+bundle: listing_page
+mode: listing_item
+content:
+  field_liftup_image:
+    type: entity_reference_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: content_listing
+      link: false
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_has_hero: true
+  field_hero: true
+  field_listing_type: true
+  field_phenomena: true
+  langcode: true
+  search_api_excerpt: true
