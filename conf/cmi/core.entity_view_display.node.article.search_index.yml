@@ -1,8 +1,9 @@
-uuid: 101d692e-be0e-43f6-8501-9832d82fdffd
+uuid: a3b10ea6-4328-40c7-b239-d41c707b5feb
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.search_index
     - field.field.node.article.field_author
     - field.field.node.article.field_authors
     - field.field.node.article.field_buildings
@@ -22,72 +23,58 @@ dependencies:
     - field.field.node.article.field_start_year
     - node.type.article
   module:
-    - entity_reference_revisions
-    - metatag
     - user
 _core:
   default_config_hash: iP63ruNj8P30AR0u-V9j_M03qHUEpzx-qneyWJtGvNw
-id: node.article.default
+id: node.article.search_index
 targetEntityType: node
 bundle: article
-mode: default
+mode: search_index
 content:
-  field_author:
-    weight: 2
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_content:
-    weight: 3
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
-  field_keywords:
-    weight: 4
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
+  field_formats:
     type: entity_reference_label
+    weight: 3
     region: content
-  field_lead:
-    weight: 1
     label: hidden
-    settings: {  }
+    settings:
+      link: false
     third_party_settings: {  }
-    type: basic_string
+  field_liftup_image:
+    type: entity_reference_entity_view
+    weight: 1
     region: content
-  field_metatags:
-    weight: 5
-    label: above
-    settings: {  }
+    label: hidden
+    settings:
+      view_mode: content_listing
+      link: false
     third_party_settings: {  }
-    type: metatag_empty_formatter
+  field_phenomena:
+    type: entity_reference_label
+    weight: 2
     region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
   links:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_author: true
   field_authors: true
   field_buildings: true
   field_buildings_info: true
+  field_content: true
   field_copyrights: true
   field_end_year: true
   field_finna_id: true
-  field_formats: true
+  field_keywords: true
   field_languages: true
-  field_liftup_image: true
+  field_lead: true
+  field_metatags: true
   field_neighbourhoods: true
-  field_phenomena: true
   field_start_year: true
   langcode: true
   search_api_excerpt: true

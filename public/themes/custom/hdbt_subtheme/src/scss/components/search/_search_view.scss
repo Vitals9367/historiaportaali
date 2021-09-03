@@ -1,0 +1,20 @@
+.views--search {
+  header {
+    h2 {
+      margin: 0 0 $spacing-half;
+    }
+  }
+
+  .search-results-wrapper {
+    margin-top: $spacing-triple;
+  }
+
+  .columns__content {
+    flex-wrap: wrap;
+  }
+
+  .views-row {
+    max-width: 320px;
+    margin-bottom: $spacing-double;
+  }
+}

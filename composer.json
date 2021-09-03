@@ -9,10 +9,12 @@
     "require": {
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6.7",
+        "drupal/better_exposed_filters": "^5.0@beta",
         "drupal/context": "^4.1",
         "drupal/context_entity_field": "1.x-dev@dev",
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-recommended": "^9.1",
+        "drupal/facets": "^1.8",
         "drupal/geocoder": "^3.20",
         "drupal/geofield": "^1.34",
         "drupal/geofield_map": "^2.70",
@@ -27,9 +29,12 @@
         "drupal/helfi_tunnistamo": "^1.0",
         "drupal/leaflet": "^2.1",
         "drupal/optional_end_date": "^1.2",
+        "drupal/search_api_autocomplete": "^1.5",
         "drupal/views_menu_children_filter": "^1.0@RC",
         "drush/drush": "^10.4",
-        "geocoder-php/nominatim-provider": "^5.5"
+        "geocoder-php/nominatim-provider": "^5.5",
+        "npm-asset/jquery-ui-touch-punch": "^0.2.3",
+        "oomphinc/composer-installers-extender": "^2.0"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
@@ -55,7 +60,8 @@
                 "web-root": "./public"
             },
             "file-mapping": {
-                "[project-root]/.editorconfig": false
+                "[project-root]/.editorconfig": false,
+                "[web-root]/sites/development.services.yml": false
             }
         },
         "enable-patching": true,
@@ -64,12 +70,15 @@
                 "https://www.drupal.org/project/field_group/issues/3171458#comment-13961305": "https://www.drupal.org/files/issues/2021-01-11/field_group-media_library_widget-3171458-14.patch"
             }
         },
+        "installer-types": ["bower-asset", "npm-asset"],
         "installer-paths": {
             "public/core": [
                 "type:drupal-core"
             ],
             "public/libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "public/modules/contrib/{$name}": [
                 "type:drupal-module"
@@ -99,6 +108,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "scripts": { }
