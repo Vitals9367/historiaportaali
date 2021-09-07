@@ -16,6 +16,11 @@ function helhist_search_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\
     $format_filter_title = $form['format']['#title'];
     $format_vocabulary_id = 'formats';
     $form['format'] = _generate_select_from_taxonomy_vocabulary($format_filter_title, $format_vocabulary_id);
+
+    $form['keywords']['#weight'] = -2;
+    $form['actions']['#weight'] = -1;
+
+    ddl($form);
   }
 }
 
@@ -43,6 +48,9 @@ function _generate_select_from_taxonomy_vocabulary($title, $vocabulary_id) {
   return [
     '#type' => 'select2',
     '#title' => $title,
-    '#options' => $select_options
+    '#options' => $select_options,
+    '#select2' => [
+      'placeholder' => t($title)
+    ]
   ];
 }

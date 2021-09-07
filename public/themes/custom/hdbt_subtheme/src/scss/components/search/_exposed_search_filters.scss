@@ -12,13 +12,20 @@
     position: absolute;
   }
 
+  .hds-text-input .hds-text-input__input {
+    border: 0;
+  }
+
+  .hds-text-input__input-wrapper .icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -12px;
+    right: 12px;
+  }
+
   form {
     label {
       color: $color-white;
-    }
-
-    input.form-text {
-      border: 0;
     }
   }
 }

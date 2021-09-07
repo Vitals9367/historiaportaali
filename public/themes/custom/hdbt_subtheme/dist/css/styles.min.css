@@ -56,10 +56,15 @@ body {
   .search__exposed-filters .hds-koros {
     display: block;
     position: absolute; }
+  .search__exposed-filters .hds-text-input .hds-text-input__input {
+    border: 0; }
+  .search__exposed-filters .hds-text-input__input-wrapper .icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -12px;
+    right: 12px; }
   .search__exposed-filters form label {
     color: #ffffff; }
-  .search__exposed-filters form input.form-text {
-    border: 0; }
 
 .search__pager {
   list-style: none;
