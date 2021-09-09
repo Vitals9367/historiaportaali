@@ -6,11 +6,11 @@ dependencies:
     - eu_cookie_compliance
     - system
   theme:
-    - hdbt
+    - hdbt_subtheme
 _core:
   default_config_hash: 28-kb7jihf_0-XOrfhlEDbsUyoxMcH4YtOMyietA-vA
 id: eucookiecomplianceblock
-theme: hdbt
+theme: hdbt_subtheme
 region: after_content
 weight: -8
 provider: null

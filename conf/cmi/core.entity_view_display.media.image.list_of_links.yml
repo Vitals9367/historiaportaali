@@ -4,8 +4,22 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.list_of_links
+    - field.field.media.image.field_authors
+    - field.field.media.image.field_buildings
+    - field.field.media.image.field_buildings_info
+    - field.field.media.image.field_copyrights
+    - field.field.media.image.field_end_year
+    - field.field.media.image.field_finna_id
+    - field.field.media.image.field_formats
+    - field.field.media.image.field_geolocation
+    - field.field.media.image.field_keywords
+    - field.field.media.image.field_languages
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_neighbourhoods
+    - field.field.media.image.field_phenomena
     - field.field.media.image.field_photographer
+    - field.field.media.image.field_start_year
+    - field.field.media.image.field_transcript
     - media.type.image
     - responsive_image.styles.list_of_links__thumbnail
   module:
@@ -28,7 +42,21 @@ content:
     region: content
 hidden:
   created: true
+  field_authors: true
+  field_buildings: true
+  field_buildings_info: true
+  field_copyrights: true
+  field_end_year: true
+  field_finna_id: true
+  field_formats: true
+  field_geolocation: true
+  field_keywords: true
+  field_languages: true
+  field_neighbourhoods: true
+  field_phenomena: true
   field_photographer: true
+  field_start_year: true
+  field_transcript: true
   langcode: true
   name: true
   thumbnail: true

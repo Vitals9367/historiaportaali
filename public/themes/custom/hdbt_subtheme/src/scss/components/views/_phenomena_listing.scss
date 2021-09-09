@@ -1,0 +1,34 @@
+.views--listings {
+  margin: $spacing-double 0;
+
+  .views-row {
+    margin-bottom: $spacing;
+  }
+
+  article.node--view-mode-listing-item {
+    @include breakpoint($breakpoint-m) {
+      display: flex;
+    }
+
+    .thumbnail-image {
+      img {
+        vertical-align: middle;
+      }
+    }
+
+    .content-wrapper {
+      background: white;
+      padding: $spacing;
+
+      h2 {
+        @include font-size(20px, 24px);
+        font-weight: $font-weight-bold;
+        margin: 0 0 $spacing;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}

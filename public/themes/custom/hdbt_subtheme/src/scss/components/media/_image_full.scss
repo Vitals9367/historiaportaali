@@ -1,0 +1,23 @@
+.media--type-image {
+  &.media--view-mode-full {
+
+    .label {
+      @include font-size(18px, 30px);
+      color: $color-black-90;
+      font-weight: $font-weight-medium;
+      margin: 0 $spacing-quarter $spacing-half;
+
+      @include breakpoint($breakpoint-m) {
+        @include font-size(24px, 30px);
+        margin: 0 $spacing-quarter $spacing;
+      }
+    }
+
+    .image__media_image {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

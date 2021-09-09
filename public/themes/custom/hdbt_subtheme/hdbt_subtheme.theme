@@ -42,3 +42,31 @@ function hdbt_subtheme_theme_suggestions_block_alter(&$suggestions) {
     $suggestion = str_replace('hdbt_subtheme_', '', $suggestion);
   }
 }
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function hdbt_subtheme_preprocess_field(&$variables, $hook) {
+  $field_name = $variables['element']['#field_name'];
+
+  // Provide term's machine name as variable (prefer English)
+  if ($field_name == 'field_formats') {
+    $field_items = $variables['element']['#items']->getValue();
+
+    foreach ($field_items as $key => $field_item) {
+      $format_tid = $field_item['target_id'];
+      $format_term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($format_tid);
+
+      if ($format_term->hasTranslation('en')) {
+        $english_term = $format_term->getTranslation('en');
+        $term_name = $english_term->getName();
+      } else {
+        $term_name = $format_term->getName();
+      }
+
+      $term_machine_name = strtolower(str_replace(' ', '_', $term_name));
+
+      $variables['items'][$key]['term_machine_name'] = $term_machine_name;
+    }
+  }
+}

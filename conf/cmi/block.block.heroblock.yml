@@ -3,14 +3,15 @@ langcode: en
 status: true
 dependencies:
   module:
+    - context
     - ctools
     - hdbt_content
   theme:
-    - hdbt
+    - hdbt_subtheme
 _core:
   default_config_hash: nH8M6u66xNnGzjplyiDZAKKeyzDR6NFyTMXNwDYzldk
 id: heroblock
-theme: hdbt
+theme: hdbt_subtheme
 region: before_content
 weight: -5
 provider: null
@@ -25,7 +26,27 @@ visibility:
     id: 'entity_bundle:node'
     bundles:
       landing_page: landing_page
+      listing_page: listing_page
       page: page
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  context_all:
+    id: context_all
+    values: ''
+    negate: null
+  context:
+    id: context
+    values: ''
+    negate: null
+  user_status:
+    id: user_status
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

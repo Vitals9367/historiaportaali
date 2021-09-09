@@ -1,0 +1,29 @@
+uuid: ac4c455a-8417-4093-b3d2-1a2e17f292e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_buildings
+    - media.type.image
+    - taxonomy.vocabulary.buildings
+id: media.image.field_buildings
+field_name: field_buildings
+entity_type: media
+bundle: image
+label: Buildings
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      buildings: buildings
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

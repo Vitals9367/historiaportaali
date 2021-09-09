@@ -1,0 +1,20 @@
+uuid: 746b012e-4af7-4cde-9585-72534aeed0a0
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_end_year
+field_name: field_end_year
+entity_type: media
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

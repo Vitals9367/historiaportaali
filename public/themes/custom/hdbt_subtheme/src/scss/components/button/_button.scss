@@ -1,0 +1,19 @@
+.hds-button--primary {
+  --background-color: var(--color-metro-dark);
+  --background-color-hover: var(--color-metro);
+  --background-color-focus: var(--color-metro);
+  --background-color-hover-focus: var(--color-metro);
+  --background-color-disabled: var(--color-metro-medium-light);
+  --border-color: var(--color-metro-dark);
+  --border-color-hover: var(--color-metro);
+  --border-color-focus: var(--color-metro);
+  --border-color-hover-focus: var(--color-metro);
+  --border-color-disabled: var(--color-metro-medium-light);
+  --color: var(--color-white);
+  --color-hover: var(--color-white);
+  --color-focus: var(--color-white);
+  --color-hover-focus: var(--color-white);
+  --color-disabled: var(--color-white);
+  --focus-outline-color: var(--color-black);
+  --submit-input-focus-gutter-color: var(--color-white);
+}
