@@ -1,0 +1,32 @@
+.hdbt_taxonomy__wrapper {
+  margin-left: -#{$spacing-quarter};
+  margin-right: -#{$spacing-quarter};
+
+  .label {
+    @include font-size(18px, 30px);
+    color: $color-black-90;
+    font-weight: $font-weight-medium;
+    margin: 0 $spacing-quarter $spacing-half;
+
+    @include breakpoint($breakpoint-m) {
+      @include font-size(24px, 30px);
+      margin: 0 $spacing-quarter $spacing;
+    }
+  }
+
+  .hdbt_taxonomy {
+    display: flex;
+    flex-flow: row wrap;
+
+    span {
+      @include font-size(16px, 24px);
+      background-color: $color-black;
+      border-radius: $spacing-and-half;
+      color: $color-white;
+      font-weight: $font-weight-regular;
+      margin: $spacing-quarter;
+      padding: $spacing-half $spacing-double;
+      text-decoration: none;
+    }
+  }
+}

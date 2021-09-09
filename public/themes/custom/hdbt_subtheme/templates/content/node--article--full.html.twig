@@ -127,9 +127,7 @@
             <div class="{{ node.bundle|clean_class }}__keywords">
               {% embed "@hdbt/misc/container.twig" with {container_element: 'keywords'} %}
                 {% block container_content %}
-                  <div class="keywords__wrapper">
-                    {{ content.field_keywords }}
-                  </div>
+                  {{ content.field_keywords }}
                 {% endblock container_content %}
               {% endembed %}
             </div>
@@ -141,9 +139,7 @@
             <div class="{{ node.bundle|clean_class }}__phenomena">
               {% embed "@hdbt/misc/container.twig" with {container_element: 'phenomena'} %}
                 {% block container_content %}
-                  <div class="phenomena__wrapper">
-                    {{ content.field_phenomena }}
-                  </div>
+                  {{ content.field_phenomena }}
                 {% endblock container_content %}
               {% endembed %}
             </div>
@@ -153,9 +149,7 @@
             <div class="{{ node.bundle|clean_class }}__neighbourhoods">
               {% embed "@hdbt/misc/container.twig" with {container_element: 'neighbourhoods'} %}
                 {% block container_content %}
-                  <div class="neighbourhoods__wrapper">
-                    {{ content.field_neighbourhoods }}
-                  </div>
+                  {{ content.field_neighbourhoods }}
                 {% endblock container_content %}
               {% endembed %}
             </div>
