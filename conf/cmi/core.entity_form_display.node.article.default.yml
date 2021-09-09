@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.article.field_end_year
     - field.field.node.article.field_finna_id
     - field.field.node.article.field_formats
+    - field.field.node.article.field_geolocation
     - field.field.node.article.field_keywords
     - field.field.node.article.field_languages
     - field.field.node.article.field_lead
@@ -23,6 +24,7 @@ dependencies:
     - node.type.article
   module:
     - field_group
+    - geofield_map
     - media_library
     - metatag
     - paragraphs
@@ -57,7 +59,7 @@ third_party_settings:
         - field_languages
         - group_location
       parent_name: ''
-      weight: 6
+      weight: 7
       format_type: details
       region: content
       format_settings:
@@ -95,6 +97,20 @@ third_party_settings:
         id: ''
         classes: ''
       label: Aikakausi
+    group_geolocation:
+      children:
+        - field_geolocation
+      parent_name: ''
+      weight: 6
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Sijainti kartalla'
 _core:
   default_config_hash: pCNOhgqtZB0RYWLFELZhHp654GnKfoQ_Dbd2v2MIrWU
 id: node.article.default
@@ -104,7 +120,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -145,7 +161,7 @@ content:
     type: string_textfield
     region: content
   field_content:
-    weight: 7
+    weight: 8
     settings:
       title: Lohko
       title_plural: Lohkot
@@ -198,6 +214,50 @@ content:
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
+  field_geolocation:
+    weight: 39
+    settings:
+      map_geocoder:
+        control: 1
+        settings:
+          providers:
+            openstreetmap:
+              checked: true
+              weight: 0
+          min_terms: 4
+          delay: 800
+          options: ''
+      map_google_places:
+        places_additional_options: ''
+        places_control: false
+      map_library: leaflet
+      map_type_google: roadmap
+      map_type_leaflet: OpenStreetMap_Mapnik
+      map_type_selector: true
+      map_dimensions:
+        width: 100%
+        height: 450px
+      zoom:
+        start: 6
+        focus: 12
+        min: 0
+        max: 22
+      geoaddress_field:
+        field: '0'
+        disabled: true
+        hidden: false
+      default_value:
+        lat: !!float 0
+        lon: !!float 0
+      click_to_find_marker: false
+      click_to_place_marker: false
+      hide_coordinates: false
+      html5_geolocation: false
+      map_google_api_key: ''
+      zoom_level: 5
+    third_party_settings: {  }
+    type: geofield_map
+    region: content
   field_keywords:
     type: select2_entity_reference
     weight: 33
@@ -234,7 +294,7 @@ content:
     type: media_library_widget
     region: content
   field_metatags:
-    weight: 19
+    weight: 20
     settings:
       sidebar: false
     third_party_settings: {  }
@@ -276,7 +336,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -284,17 +344,17 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 12
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 16
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -302,14 +362,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 15
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 13
     region: content
     third_party_settings: {  }
   title:
@@ -321,13 +381,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
@@ -337,12 +397,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 17
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 18
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }

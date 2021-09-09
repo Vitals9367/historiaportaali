@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.article.field_end_year
     - field.field.node.article.field_finna_id
     - field.field.node.article.field_formats
+    - field.field.node.article.field_geolocation
     - field.field.node.article.field_keywords
     - field.field.node.article.field_languages
     - field.field.node.article.field_lead
@@ -50,6 +51,7 @@ hidden:
   field_end_year: true
   field_finna_id: true
   field_formats: true
+  field_geolocation: true
   field_keywords: true
   field_languages: true
   field_lead: true
@@ -59,3 +61,4 @@ hidden:
   field_start_year: true
   langcode: true
   links: true
+  search_api_excerpt: true
