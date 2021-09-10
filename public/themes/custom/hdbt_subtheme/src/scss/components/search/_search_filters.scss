@@ -27,6 +27,38 @@
     label {
       color: $color-white;
     }
+
+    .form-actions {
+      margin-bottom: $spacing-double;
+    }
+  }
+
+  .year-interval__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-white;
+    border: 0;
+    box-sizing: border-box;
+    color: $color-black-90;
+    font-size: 1.125em;
+    height: 56px;
+    line-height: normal;
+    padding: 0 $spacing;
+
+    label {
+      color: $color-black-90;
+    }
+  }
+
+  .year-interval__form-items {
+    background: $color-white;
+    padding: $spacing;
+    border-top: 1px solid $color-black-10;
+
+    .hds-text-input .hds-text-input__input {
+      border: 2px solid $color-black-50;
+    }
   }
 
   .facets-summary {

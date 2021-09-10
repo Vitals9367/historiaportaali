@@ -1,5 +1,16 @@
 <?php
 
+/** 
+ * Implements hook_theme().
+ */
+function helhist_search_theme($existing, $type, $theme, $path) {
+  return [
+    'year_interval_toggle' => [
+      'variables' => []
+    ]
+  ];
+}
+
 /**
  * Implements hook_form_views_exposed_form_alter().
  */
@@ -10,5 +21,40 @@ function helhist_search_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\
     // Move form action buttons below the Keyword-field
     $form['keywords']['#weight'] = -2;
     $form['actions']['#weight'] = -1;
+    
+    if (array_key_exists('start_year', $form) && array_key_exists('end_year', $form)) {
+      $form['year_interval'] = _get_year_interval_render_array($form);
+
+      unset($form['start_year']);
+      unset($form['end_year']);
+
+      $form['#attached']['library'][] = 'hdbt_subtheme/search-form';
+    }
   }
+}
+
+function _get_year_interval_render_array($form) {
+  return [
+    '#type' => 'container',
+    '#attributes' => [
+      'class' => [
+        'year-interval',
+        'form-item'
+      ]
+    ],
+    'toggle' => [
+      '#theme' => 'year_interval_toggle'
+    ],
+    'form_items' => [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => [
+          'year-interval__form-items',
+          'hidden'
+        ]
+      ],
+      'start_year' => $form['start_year'],
+      'end_year' => $form['end_year']
+    ]
+  ];
 }
