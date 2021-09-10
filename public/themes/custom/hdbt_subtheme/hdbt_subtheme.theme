@@ -5,8 +5,6 @@
  * Functions to support theming in the HDBT Subtheme.
  */
 
-use Drupal\views\ViewExecutable;
-
 /**
  * Helper function to get the icons path.
  *
@@ -70,15 +68,6 @@ function hdbt_subtheme_preprocess_field(&$variables, $hook) {
 
       $variables['items'][$key]['term_machine_name'] = $term_machine_name;
     }
-  }
-}
-
-/**
- * Implements hook_views_pre_render().
- */
-function hdbt_subtheme_views_pre_render(ViewExecutable $view) {
-  if (isset($view) && ($view->storage->id() == 'search')) {
-    $view->element['#attached']['library'][] = 'hdbt_subtheme/search-view';
   }
 }
 
