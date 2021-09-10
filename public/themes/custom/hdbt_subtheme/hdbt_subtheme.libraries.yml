@@ -10,11 +10,3 @@ global-scripting:
     dist/js/bundle.min.js: {}
   dependencies:
     - core/drupal
-
-search-view:
-  version: 1.x
-  js:
-    dist/js/search-view.min.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
