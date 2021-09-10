@@ -10,8 +10,3 @@ third_party_settings:
       label: Aikakausi
     group_geolocation:
       label: 'Sijainti kartalla'
-content:
-  field_content:
-    settings:
-      title: Lohko
-      title_plural: Lohkot

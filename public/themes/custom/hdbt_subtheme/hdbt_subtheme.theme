@@ -70,3 +70,17 @@ function hdbt_subtheme_preprocess_field(&$variables, $hook) {
     }
   }
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function hdbt_subtheme_theme_suggestions_field_alter(&$suggestions, $variables) {
+  $taxonomy_fields = [
+    'field__field_keywords',
+    'field__field_phenomena',
+    'field__field_neighbourhoods',
+  ];
+  if (count(array_intersect($taxonomy_fields, $suggestions)) > 0) {
+    $suggestions[] = 'field__hdbt_taxonomy__' . $variables['element']['#view_mode'];
+  }
+}
