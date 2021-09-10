@@ -17,6 +17,7 @@ regions:
   sidebar_first: First sidebar
   sidebar_second: Second sidebar
   before_content: Before content
+  search_filters: Search filters
   content: Content
   after_content: After content
   before_footer: Before footer
