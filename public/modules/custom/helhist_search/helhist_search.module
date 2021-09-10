@@ -12,34 +12,3 @@ function helhist_search_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\
     $form['actions']['#weight'] = -1;
   }
 }
-
-function _generate_select_from_taxonomy_vocabulary($title, $vocabulary_id) {
-  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-  $select_options = [];
-
-  $term_query = \Drupal::entityQuery('taxonomy_term');
-  $term_query->condition('vid', $vocabulary_id);
-  $tids = $term_query->execute();
-
-  $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($tids);
-
-  foreach ($terms as $term) {
-    if ($term->hasTranslation($language)) {
-      $translated_term = $term->getTranslation($language);
-      $term_name = $translated_term->getName();
-    } else {
-      $term_name = $term->getName();
-    }
-
-    $select_options[$term->id()] = $term_name;
-  }
-
-  return [
-    '#type' => 'select2',
-    '#title' => $title,
-    '#options' => $select_options,
-    '#select2' => [
-      'placeholder' => t($title)
-    ]
-  ];
-}
