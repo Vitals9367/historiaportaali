@@ -1,36 +1,27 @@
-uuid: 380e61d3-b514-4660-b9a7-d18fa2d664b1
-langcode: en
+uuid: 3fb64b35-643e-41fb-9db2-b6aa1fca6a1f
+langcode: fi
 status: true
 dependencies:
+  config:
+    - facets_summary.facets_summary.search_facet_summary
   module:
     - context
-    - ctools
-    - hdbt_content
+    - facets_summary
+    - system
   theme:
     - hdbt_subtheme
-_core:
-  default_config_hash: nH8M6u66xNnGzjplyiDZAKKeyzDR6NFyTMXNwDYzldk
-id: heroblock
+id: searchfacetsummary
 theme: hdbt_subtheme
-region: before_content
-weight: -12
+region: search_filters
+weight: -9
 provider: null
-plugin: hero_block
+plugin: 'facets_summary_block:search_facet_summary'
 settings:
-  id: hero_block
-  label: 'Hero block'
-  provider: hdbt_content
+  id: 'facets_summary_block:search_facet_summary'
+  label: 'Search: Facet summary'
+  provider: facets_summary
   label_display: '0'
 visibility:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      landing_page: landing_page
-      listing_page: listing_page
-      page: page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   context_all:
     id: context_all
     values: ''
@@ -50,3 +41,7 @@ visibility:
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false
