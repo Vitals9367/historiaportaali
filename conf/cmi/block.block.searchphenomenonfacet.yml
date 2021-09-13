@@ -1,36 +1,28 @@
-uuid: 380e61d3-b514-4660-b9a7-d18fa2d664b1
-langcode: en
+uuid: 72cc3dbf-0ddc-4163-a7d0-ce0e8ac5a279
+langcode: fi
 status: true
 dependencies:
+  config:
+    - facets.facet.search_phenomenon_facet
   module:
     - context
-    - ctools
-    - hdbt_content
+    - facets
+    - system
   theme:
     - hdbt_subtheme
-_core:
-  default_config_hash: nH8M6u66xNnGzjplyiDZAKKeyzDR6NFyTMXNwDYzldk
-id: heroblock
+id: searchphenomenonfacet
 theme: hdbt_subtheme
-region: before_content
-weight: -12
+region: search_filters
+weight: -11
 provider: null
-plugin: hero_block
+plugin: 'facet_block:search_phenomenon_facet'
 settings:
-  id: hero_block
-  label: 'Hero block'
-  provider: hdbt_content
+  id: 'facet_block:search_phenomenon_facet'
+  label: 'Search: Phenomenon facet'
+  provider: facets
   label_display: '0'
+  block_id: searchphenomenonfacet
 visibility:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      landing_page: landing_page
-      listing_page: listing_page
-      page: page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   context_all:
     id: context_all
     values: ''
@@ -50,3 +42,7 @@ visibility:
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false
