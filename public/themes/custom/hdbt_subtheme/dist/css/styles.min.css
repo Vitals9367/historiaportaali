@@ -172,12 +172,26 @@ body {
     padding: 0 16px; }
     .search-filters .year-interval__toggle label {
       color: #1a1a1a; }
-  .search-filters .year-interval__form-items {
+  .search-filters .year-interval__form {
     background: #ffffff;
     padding: 16px;
     border-top: 1px solid #e5e5e5; }
+  .search-filters .year-interval__form-items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .search-filters .year-interval__form-items label {
+      color: #1a1a1a; }
     .search-filters .year-interval__form-items .hds-text-input .hds-text-input__input {
       border: 2px solid #808080; }
+    .search-filters .year-interval__form-items .item-divider {
+      margin-top: 7px;
+      padding: 0 4px; }
+      .search-filters .year-interval__form-items .item-divider svg {
+        vertical-align: middle; }
   .search-filters .facets-summary ul {
     list-style: none; }
     .search-filters .facets-summary ul li {
