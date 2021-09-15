@@ -7,6 +7,9 @@ function helhist_search_theme($existing, $type, $theme, $path) {
   return [
     'year_interval_toggle' => [
       'variables' => []
+    ],
+    'year_interval_field_divider' => [
+      'variables' => []
     ]
   ];
 }
@@ -45,16 +48,28 @@ function _get_year_interval_render_array($form) {
     'toggle' => [
       '#theme' => 'year_interval_toggle'
     ],
-    'form_items' => [
+    'form_container' => [
       '#type' => 'container',
       '#attributes' => [
         'class' => [
-          'year-interval__form-items',
+          'year-interval__form',
           'hidden'
         ]
       ],
-      'start_year' => $form['start_year'],
-      'end_year' => $form['end_year']
+      'items_container' => [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => [
+            'year-interval__form-items',
+            'hidden'
+          ]
+        ],
+        'start_year' => $form['start_year'],
+        'divider' => [
+          '#theme' => 'year_interval_field_divider'
+        ],
+        'end_year' => $form['end_year']
+      ]
     ]
   ];
 }
