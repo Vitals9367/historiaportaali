@@ -3,7 +3,7 @@
   Drupal.behaviors.searchForm = {
     attach: function attach() {
       $('.search__exposed-filters .year-interval__toggle').on('click', function() {
-        $('.search__exposed-filters .year-interval__form-items').toggleClass('hidden');
+        $('.search__exposed-filters .year-interval__form').toggleClass('hidden');
       });
     },
   };
