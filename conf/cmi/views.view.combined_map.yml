@@ -63,7 +63,7 @@ display:
           entity_source: __base_table
           name_field: ''
           description_field: '#rendered_entity_ajax'
-          view_mode: full
+          view_mode: map_item
           leaflet_map: 'OSM Mapnik'
           height: '100'
           height_unit: vh
@@ -86,15 +86,15 @@ display:
           weight: ''
           icon:
             iconType: marker
-            iconUrl: ''
-            shadowUrl: ''
+            iconUrl: '{% include ''@hdbt/misc/icon.twig'' with {icon: ''location''} %}'
+            shadowUrl: '{% include ''@hdbt/misc/icon.twig'' with {icon: ''location''} %}'
             className: ''
             html: '<div></div>'
             html_class: leaflet-map-divicon
             circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
             iconSize:
-              x: ''
-              'y': ''
+              x: '25'
+              'y': '41'
             iconAnchor:
               x: ''
               'y': ''
