@@ -1,0 +1,45 @@
+.views--combined-map {
+  .map-item {
+    h3 {
+      @include font-size(16px, 20px);
+      font-weight: $font-weight-bold;
+      margin: 0 0 $spacing-half;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .metadata-item {
+      display: flex;
+      align-items: center;
+      background-color: $sand;
+      color: $color-metro-dark;
+      min-height: $spacing-double;
+      padding: 0 $spacing-half;
+      margin-right: $spacing;
+      margin-bottom: $spacing-half;
+      font-size: 14px;
+      line-height: 1.4em;
+    }
+
+    .format-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .format-icon {
+      margin-right: $spacing-quarter;
+
+      svg {
+        vertical-align: middle;
+      } 
+    }
+  }
+}

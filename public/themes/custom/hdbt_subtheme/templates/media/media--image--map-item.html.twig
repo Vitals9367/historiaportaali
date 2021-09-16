@@ -1,0 +1,67 @@
+{#
+/**
+ * @file
+ * Theme override to present a media item.
+ *
+ * Available variables:
+ * - media: The media item, with limited access to object properties and
+ *   methods. Only method names starting with "get", "has", or "is" and
+ *   a few common methods such as "id", "label", and "bundle" are available.
+ *   For example:
+ *   - entity.getEntityTypeId() will return the entity type ID.
+ *   - entity.hasField('field_example') returns TRUE if the entity includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   Calling other methods, such as entity.delete(), will result in
+ *   an exception.
+ *   See \Drupal\Core\Entity\EntityInterface for a full list of methods.
+ * - name: Name of the media item.
+ * - content: Media content.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - attributes: HTML attributes for the containing element.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ *
+ * @see template_preprocess_media()
+ */
+#}
+
+<div class="map-item media">
+  {{ title_prefix }}
+    <h3{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ name }}</a>
+    </h3>
+  {{ title_suffix }}
+
+  {% if content.field_media_image|render %}
+    <div class="map-item__image">
+      {{ content.field_media_image }}
+    </div>
+  {% endif %}
+  
+  <div class="metadata-wrapper">
+    <div class="metadata-row">
+      {% if content.field_phenomena|render %}
+        <div class="map-item__phenomena metadata-item">
+          {{ content.field_phenomena }}
+        </div>
+      {% endif %}
+
+      {% if content.field_formats|render %}
+        <div class="map-item__formats metadata-item">
+          {{ content.field_formats }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="map-item__link-to-content">
+      <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}">
+        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Link to content'|t } %}
+      </a>
+    </div>
+  </div>
+</div>
