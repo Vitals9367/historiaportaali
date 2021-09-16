@@ -57,6 +57,7 @@ module:
   helfi_media: 0
   helfi_platform_config: 0
   helhist_admin_forms: 0
+  helhist_map: 0
   helhist_search: 0
   image: 0
   image_style_quality: 0
@@ -66,6 +67,7 @@ module:
   jquery_ui_touch_punch: 0
   language: 0
   leaflet: 0
+  leaflet_views: 0
   link: 0
   linkit: 0
   locale: 0
