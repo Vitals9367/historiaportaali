@@ -12,6 +12,10 @@
       &.active {
         background: $color-metro-dark;
       }
+
+      &:hover {
+        background: $color-black-70;
+      }
     }
   }
 }
