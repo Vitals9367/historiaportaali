@@ -11,5 +11,6 @@ is_admin: false
 permissions:
   - 'access content'
   - 'display eu cookie compliance popup'
+  - 'use search_api_autocomplete for search'
   - 'view media'
   - 'view remote entities'

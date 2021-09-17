@@ -5,6 +5,7 @@ const glob = require('glob');
 const globImporter = require('node-sass-glob-importer');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('@nuxt/friendly-errors-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
@@ -126,6 +127,26 @@ module.exports = {
           view: '-view'
         }
       },
+    }),
+    new CopyPlugin({
+      'patterns': [
+        {
+          'context': './',
+          'from': 'node_modules/hyphenopoly/min/{Hyphenopoly_Loader,Hyphenopoly}.js',
+          'to': path.resolve(__dirname, 'dist') + '/js/hyphenopoly/',
+          'force': true,
+          'flatten': true
+        }, {
+          'context': './',
+          'from': 'node_modules/hyphenopoly/min/patterns/{fi,sv,en-gb,ru}.wasm',
+          'to': path.resolve(__dirname, 'dist') + '/js/hyphenopoly/patterns/',
+          'globOptions': {
+            'extglob': true
+          },
+          'force': true,
+          'flatten': true
+        },
+      ]
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].min.css',

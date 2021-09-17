@@ -1,0 +1,31 @@
+<?php
+
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_post_execute().
+ */
+function helhist_map_views_post_execute(ViewExecutable $view) {
+  if ($view->id() == 'combined_map' && $view->current_display == 'page_1') {
+    $media_view_result = views_get_view_result('media_map', 'block');
+
+    // Make media result indexes to follow article result indexes
+    $new_media_index = count($view->result);
+    foreach ($media_view_result as $key => $m_result) {
+      $media_view_result[$key]->index = $new_media_index;
+      $new_media_index++;
+    }
+
+    // Merge media view results to article view results
+    $view->result = array_merge($view->result, $media_view_result);
+    $view->total_rows = count($view->result);
+  }
+}
+
+/**
+ * Implements hook_leaflet_map_info_alter().
+ */
+function helhist_map_leaflet_map_info_alter(array &$map_info) {
+  $map_info['OSM Mapnik']['icon']['iconUrl'] = '/themes/custom/hdbt_subtheme/src/icons/map_marker.svg';
+  $map_info['OSM Mapnik']['icon']['iconSize'] = ['x' => '40', 'y' => '40'];
+}
