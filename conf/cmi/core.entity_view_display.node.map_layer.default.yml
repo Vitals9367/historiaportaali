@@ -1,0 +1,56 @@
+uuid: 0f8d02ca-5b85-4bf0-b370-e85ce7924974
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.map_layer.field_bottom_right_coordinate
+    - field.field.node.map_layer.field_map_era
+    - field.field.node.map_layer.field_map_image_url
+    - field.field.node.map_layer.field_top_left_coordinate
+    - node.type.map_layer
+  module:
+    - user
+id: node.map_layer.default
+targetEntityType: node
+bundle: map_layer
+mode: default
+content:
+  field_bottom_right_coordinate:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_map_era:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_map_image_url:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_top_left_coordinate:
+    weight: 105
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true
