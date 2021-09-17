@@ -1,0 +1,17 @@
+.map-controls__container {
+  .map-controls__map-era {
+    display: flex;
+    align-items: center;
+
+    .map-controls__map-era-item {
+      background: $color-black-80;
+      color: $color-white;
+      padding: $spacing-half $spacing;
+      cursor: pointer;
+      
+      &.active {
+        background: $color-metro-dark;
+      }
+    }
+  }
+}

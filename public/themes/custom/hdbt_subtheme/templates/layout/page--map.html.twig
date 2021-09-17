@@ -22,5 +22,9 @@
     </header>
   {% endif %}
 
+  {% if page.before_content %}
+    {{ page.before_content }}
+  {% endif %}
+
   {{ page.content }}
 </div>
