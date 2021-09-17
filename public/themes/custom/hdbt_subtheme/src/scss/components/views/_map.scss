@@ -1,0 +1,66 @@
+.views--combined-map {
+  .map-item {
+    h3 {
+      @include font-size(16px, 20px);
+      font-weight: $font-weight-bold;
+      margin: 0 0 $spacing-half;
+
+      a {
+        text-decoration: none;
+        color: var(--hdbt-default-link-color);
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .map-item__image {
+      margin-bottom: $spacing-half;
+
+      img {
+        vertical-align: middle;
+      }
+    }
+
+    .map-item__phenomena span,
+    .map-item__formats .format-wrapper {
+      display: inline-block;
+      background-color: $sand;
+      color: $color-metro-dark;
+      padding: $spacing-half $spacing-half;
+      margin-bottom: $spacing-half;
+      @include font-size(14px, 18px);
+    }
+
+    .format-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .format-icon {
+      margin-right: $spacing-quarter;
+
+      svg {
+        vertical-align: middle;
+      } 
+    }
+
+    .map-item__year {
+      display: inline-block;
+      @include font-size(14px, 14px);
+      font-weight: $font-weight-bold;
+      background-color: $sand;
+      padding: $spacing-half $spacing-half;
+      margin-bottom: $spacing-half;
+    }
+
+    .map-item__link-to-content {
+      a {
+        color: var(--hdbt-default-link-color);
+      }
+    }
+  }
+}

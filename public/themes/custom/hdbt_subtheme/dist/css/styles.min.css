@@ -299,6 +299,63 @@ body {
       padding: 8px 32px;
       text-decoration: none; }
 
+.views--combined-map .map-item h3 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 8px; }
+  .views--combined-map .map-item h3 a {
+    text-decoration: none;
+    color: var(--color-black-90);
+    color: var(--hdbt-default-link-color); }
+
+.views--combined-map .map-item img {
+  max-width: 100%;
+  height: auto; }
+
+.views--combined-map .map-item .map-item__image {
+  margin-bottom: 8px; }
+  .views--combined-map .map-item .map-item__image img {
+    vertical-align: middle; }
+
+.views--combined-map .map-item .map-item__phenomena span, .views--combined-map .map-item .map-item__formats .format-wrapper {
+  display: inline-block;
+  background-color: #FAF9F7;
+  color: #bd2f00;
+  padding: 8px 8px;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  line-height: 1.125rem; }
+
+.views--combined-map .map-item .format-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.views--combined-map .map-item .format-icon {
+  margin-right: 4px; }
+  .views--combined-map .map-item .format-icon svg {
+    vertical-align: middle; }
+
+.views--combined-map .map-item .map-item__year {
+  display: inline-block;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  font-weight: 700;
+  background-color: #FAF9F7;
+  padding: 8px 8px;
+  margin-bottom: 8px; }
+
+.views--combined-map .map-item .map-item__link-to-content a {
+  color: var(--color-black-90);
+  color: var(--hdbt-default-link-color); }
+
 .views--listings {
   margin: 32px 0; }
   .views--listings .views-row {

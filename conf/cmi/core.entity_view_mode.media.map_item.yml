@@ -1,0 +1,10 @@
+uuid: d1418fa7-ac54-425d-83a3-4f68ba5b28ab
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.map_item
+label: 'Map item'
+targetEntityType: media
+cache: true
