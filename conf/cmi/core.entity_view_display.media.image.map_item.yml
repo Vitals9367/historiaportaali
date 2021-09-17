@@ -1,0 +1,101 @@
+uuid: b3edab4d-2fcb-44f7-b912-342c30e1888a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.map_item
+    - field.field.media.image.field_authors
+    - field.field.media.image.field_buildings
+    - field.field.media.image.field_buildings_info
+    - field.field.media.image.field_copyrights
+    - field.field.media.image.field_end_year
+    - field.field.media.image.field_finna_id
+    - field.field.media.image.field_formats
+    - field.field.media.image.field_geolocation
+    - field.field.media.image.field_keywords
+    - field.field.media.image.field_languages
+    - field.field.media.image.field_media_image
+    - field.field.media.image.field_neighbourhoods
+    - field.field.media.image.field_phenomena
+    - field.field.media.image.field_photographer
+    - field.field.media.image.field_start_year
+    - field.field.media.image.field_transcript
+    - image.style.original_xxs
+    - media.type.image
+  module:
+    - image
+_core:
+  default_config_hash: in_XCvnpxCs_Bfi1xBUEGLq1TwGghNZOnnJsyyeWqQE
+id: media.image.map_item
+targetEntityType: media
+bundle: image
+mode: map_item
+content:
+  field_end_year:
+    type: number_integer
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+  field_formats:
+    type: entity_reference_label
+    weight: 5
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_media_image:
+    label: hidden
+    weight: 1
+    settings:
+      image_style: original_xxs
+      image_link: content
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_phenomena:
+    type: entity_reference_label
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_start_year:
+    type: number_integer
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+  name:
+    type: string
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_authors: true
+  field_buildings: true
+  field_buildings_info: true
+  field_copyrights: true
+  field_finna_id: true
+  field_geolocation: true
+  field_keywords: true
+  field_languages: true
+  field_neighbourhoods: true
+  field_photographer: true
+  field_transcript: true
+  langcode: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true
