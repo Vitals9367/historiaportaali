@@ -1,0 +1,12 @@
+<div class="map-controls__container">
+  <div class="map-controls__map-era">
+    <div class="map-controls__map-era-item active" data-map-era="present">
+      {{ 'Present'|t }}
+    </div>
+    {% for era in map_eras %}
+      <div class="map-controls__map-era-item" data-map-era="{{ era.title }}" data-map-image-url="{{ era.imageUrl }}" data-map-bounds="{{ era.bounds }}">
+        {{ era.title }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
