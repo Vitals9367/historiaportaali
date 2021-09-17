@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.storage.media.field_geolocation
     - media.type.image
+    - taxonomy.vocabulary.phenomena
   module:
     - geofield
     - leaflet_views
     - media
+    - taxonomy
     - user
 id: media_map
 label: 'Media map'
@@ -299,6 +301,54 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: string
+        field_phenomena_target_id:
+          id: field_phenomena_target_id
+          table: media__field_phenomena
+          field: field_phenomena_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_phenomena_target_id_op
+            label: Phenomenon
+            description: ''
+            use_operator: false
+            operator: field_phenomena_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_phenomena_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              admin: '0'
+              content_producer: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: phenomena
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       sorts: {  }
       title: 'Media map'
       header: {  }
@@ -312,22 +362,27 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
+        - user
         - user.permissions
       tags:
         - 'config:field.storage.media.field_geolocation'
-  block:
-    display_plugin: block
-    id: block
-    display_title: Block
+  page_1:
+    display_plugin: page
+    id: page_1
+    display_title: Page
     position: 1
     display_options:
       display_extenders:
         metatag_display_extender: {  }
+      path: '<none>'
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
+        - user
         - user.permissions
       tags:
         - 'config:field.storage.media.field_geolocation'
