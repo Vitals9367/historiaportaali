@@ -86,15 +86,15 @@ display:
           weight: ''
           icon:
             iconType: marker
-            iconUrl: '{% include ''@hdbt/misc/icon.twig'' with {icon: ''location''} %}'
-            shadowUrl: '{% include ''@hdbt/misc/icon.twig'' with {icon: ''location''} %}'
+            iconUrl: ''
+            shadowUrl: ''
             className: ''
             html: '<div></div>'
             html_class: leaflet-map-divicon
             circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
             iconSize:
-              x: '25'
-              'y': '41'
+              x: ''
+              'y': ''
             iconAnchor:
               x: ''
               'y': ''
