@@ -33,7 +33,7 @@
 <div class="map-item media">
   {{ title_prefix }}
     <h3{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ name }}</a>
+      <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}" rel="bookmark">{{ name }}</a>
     </h3>
   {{ title_suffix }}
 

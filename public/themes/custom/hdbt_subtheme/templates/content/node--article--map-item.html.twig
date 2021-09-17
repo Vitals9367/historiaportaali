@@ -87,7 +87,7 @@
       <a href="{{ url }}" rel="bookmark">{{ label }}</a>
     </h3>
   {{ title_suffix }}
-  
+
   {% if content.field_liftup_image|render %}
     <div class="map-item__image">
       {{ content.field_liftup_image }}
@@ -95,24 +95,33 @@
   {% endif %}
 
   <div class="metadata-wrapper">
-    <div class="metadata-row">
-      {% if content.field_phenomena|render %}
-        <div class="map-item__phenomena metadata-item">
-          {{ content.field_phenomena }}
-        </div>
-      {% endif %}
+    {% if content.field_phenomena|render %}
+      <div class="map-item__phenomena metadata-item">
+        {{ content.field_phenomena }}
+      </div>
+    {% endif %}
 
-      {% if content.field_formats|render %}
-        <div class="map-item__formats metadata-item">
-          {{ content.field_formats }}
-        </div>
-      {% endif %}
-    </div>
+    {% if content.field_formats|render %}
+      <div class="map-item__formats metadata-item">
+        {{ content.field_formats }}
+      </div>
+    {% endif %}
 
-    <div class="map-item__link-to-content">
-      <a href="{{ url }}">
-        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Link to content'|t } %}
-      </a>
-    </div>
+    {% if content.field_start_year|render %}
+      <div class="map-item__year metadata-item">
+        <span>{{ content.field_start_year }}</span>
+        
+        {% if content.field_end_year|render %}
+          <span>-</span>
+          <span>{{ content.field_end_year }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="map-item__link-to-content">
+    <a href="{{ url }}">
+      {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Link to content'|t } %}
+    </a>
   </div>
 </div>

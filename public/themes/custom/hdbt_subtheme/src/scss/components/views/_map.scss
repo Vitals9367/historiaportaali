@@ -7,6 +7,7 @@
 
       a {
         text-decoration: none;
+        color: var(--hdbt-default-link-color);
       }
     }
 
@@ -15,17 +16,22 @@
       height: auto;
     }
 
-    .metadata-item {
-      display: flex;
-      align-items: center;
+    .map-item__image {
+      margin-bottom: $spacing-half;
+
+      img {
+        vertical-align: middle;
+      }
+    }
+
+    .map-item__phenomena span,
+    .map-item__formats .format-wrapper {
+      display: inline-block;
       background-color: $sand;
       color: $color-metro-dark;
-      min-height: $spacing-double;
-      padding: 0 $spacing-half;
-      margin-right: $spacing;
+      padding: $spacing-half $spacing-half;
       margin-bottom: $spacing-half;
-      font-size: 14px;
-      line-height: 1.4em;
+      @include font-size(14px, 18px);
     }
 
     .format-wrapper {
@@ -40,6 +46,21 @@
       svg {
         vertical-align: middle;
       } 
+    }
+
+    .map-item__year {
+      display: inline-block;
+      @include font-size(14px, 14px);
+      font-weight: $font-weight-bold;
+      background-color: $sand;
+      padding: $spacing-half $spacing-half;
+      margin-bottom: $spacing-half;
+    }
+
+    .map-item__link-to-content {
+      a {
+        color: var(--hdbt-default-link-color);
+      }
     }
   }
 }
