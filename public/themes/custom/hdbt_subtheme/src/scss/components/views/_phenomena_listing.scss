@@ -1,14 +1,24 @@
 .views--listings {
-  margin: $spacing-double 0;
+  display: flex;
+  flex-flow: row wrap;
+  margin: $spacing-double (-$spacing-half);
 
   .views-row {
+    flex: 0 100%;
     margin-bottom: $spacing;
+
+    @include breakpoint($breakpoint-m) {
+      flex: 0 49%;
+    }
+
+    @include breakpoint($breakpoint-l) {
+      flex: 0 32%;
+    }
   }
 
   article.node--view-mode-listing-item {
-    @include breakpoint($breakpoint-m) {
-      display: flex;
-    }
+    padding: 0 $spacing-half;
+    height: 100%;
 
     .thumbnail-image {
       img {
@@ -19,6 +29,7 @@
     .content-wrapper {
       background: white;
       padding: $spacing;
+      height: 100%;
 
       h2 {
         @include font-size(20px, 24px);
