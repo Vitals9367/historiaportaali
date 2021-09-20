@@ -53,15 +53,9 @@ class MapControlsBlock extends BlockBase {
     foreach ($map_layer_nodes as $node) {
       $map_era = $node->get('field_map_era')->getString();
 
-      $layer_bounds = [
-        'topLeft' => $node->get('field_top_left_coordinate')->getString(),
-        'bottomRight' => $node->get('field_bottom_right_coordinate')->getString()
-      ];
-
       $eras[$map_era] = [
         'title' => $map_era,
-        'imageUrl' => $node->get('field_map_image_url')->getString(),
-        'bounds' => json_encode($layer_bounds)
+        'map_wms_title' => $node->get('field_map_wms_title')->getString()
       ];
     }
 
