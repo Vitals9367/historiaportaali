@@ -8,6 +8,7 @@
 namespace Drupal\helhist_map\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\node\Entity\Node;
 
 /**
  * Provides a Map Controls block
@@ -32,7 +33,21 @@ class MapControlsBlock extends BlockBase {
   }
 
   private function getMapEras() {
-    $map_layer_nodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'map_layer']);
+    $query = \Drupal::entityTypeManager()
+      ->getListBuilder('node')
+      ->getStorage()
+      ->getQuery();
+    $query->condition('type', 'map_layer');
+    $query->condition('status', 1);
+    $query->sort('field_map_era', 'DESC');
+
+    $map_layer_nids = $query->execute();
+    
+    if (empty($map_layer_nids)) {
+      return [];
+    }
+
+    $map_layer_nodes = Node::loadMultiple($map_layer_nids);
 
     $eras = [];
     foreach ($map_layer_nodes as $node) {
