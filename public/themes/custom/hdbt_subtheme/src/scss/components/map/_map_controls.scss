@@ -9,12 +9,12 @@
       padding: $spacing-half $spacing;
       cursor: pointer;
       
-      &.active {
-        background: $color-metro-dark;
-      }
-
       &:hover {
         background: $color-black-70;
+      }
+
+      &.active {
+        background: $color-metro-dark;
       }
     }
   }
