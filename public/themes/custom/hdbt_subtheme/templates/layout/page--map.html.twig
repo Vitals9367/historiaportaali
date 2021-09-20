@@ -5,6 +5,15 @@
  */
 #}
 
+{% set page_classes = [
+    node.getType() ? 'page-type--' ~ node.getType()|clean_class,
+    'wrapper',
+    sidebar_first_output ? 'has-sidebar has-sidebar--first',
+    sidebar_second_output ? 'has-sidebar has-sidebar--second',
+    'map-view-page'
+  ]
+%}
+
 <div{{ create_attribute({'class': page_classes} ) }}>
   {% if page.header_top or page.header_bottom or page.header_branding %}
     <header role="banner" class="header">

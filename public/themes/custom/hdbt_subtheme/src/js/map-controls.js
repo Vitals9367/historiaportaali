@@ -12,30 +12,32 @@
 
       $controls.on('click', function(e) {
         let selectedEra = $(e.target).data('map-era');
-        let mapImageUrl = $(e.target).data('map-image-url');
-        let layerBounds = $(e.target).data('map-bounds');
+        let mapWMSTitle = $(e.target).data('map-wms-title');
 
-        Drupal.behaviors.mapControls.loadEraLayer(lMap, selectedEra, mapImageUrl, layerBounds);
+        Drupal.behaviors.mapControls.loadEraLayer(lMap, selectedEra, mapWMSTitle);
 
         $controls.removeClass('active');
         $(e.target).addClass('active');
-      });      
+      });
     },
 
-    loadEraLayer: function(lMap, era, mapImageUrl, layerBounds) {
+    loadEraLayer: function(lMap, era, mapWMSTitle) {
       Drupal.behaviors.mapControls.removeMapEraLayers(lMap);
 
-      if (mapImageUrl && layerBounds && era !== 'present') {
-        let topLeftLatLng = layerBounds.topLeft.split(',');
-        let bottomRightLatLng = layerBounds.bottomRight.split(',');
+      if (mapWMSTitle && era !== 'present') {
+        let mapLayer = L.tileLayer.wms('https://kartta.hel.fi/ws/geoserver/avoindata/wms', {
+          layers: mapWMSTitle,
+          format: 'image/png',
+          transparent: true
+        });
 
-        L.imageOverlay(mapImageUrl, [topLeftLatLng, bottomRightLatLng], {className: 'era'}).addTo(lMap);
+        mapLayer.addTo(lMap);
       }
     },
 
     removeMapEraLayers: function(lMap) {
-      let eraLayers = Object.entries(lMap._layers).filter(([key, layer]) => layer.options.className == 'era');
-        
+      let eraLayers = Object.entries(lMap._layers).filter(([key, layer]) => layer.hasOwnProperty('wmsParams'));
+
       if (eraLayers.length > 0) {
         eraLayers.forEach(layer => layer[1].remove());
       }

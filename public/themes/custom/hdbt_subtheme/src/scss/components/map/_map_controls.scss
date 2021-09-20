@@ -1,3 +1,10 @@
+#block-helhistmapcontrols {
+  position: absolute;
+  top: 120px;
+  z-index: 10;
+  left: 80px;
+}
+
 .map-controls__container {
   .map-controls__map-era {
     display: flex;
