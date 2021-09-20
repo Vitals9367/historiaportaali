@@ -1,0 +1,25 @@
+uuid: ead2c7dc-da1e-42f1-a670-41bc45e1c096
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.content_and_media
+    - views.view.combined_map
+  module:
+    - search_api
+id: search_facet_summary_map
+name: 'Search: Facet summary (map)'
+facets:
+  search_phenomenon_facet_map:
+    checked: true
+    label: 'Search: Phenomenon facet (map)'
+    separator: ', '
+    weight: 0
+    show_count: false
+facet_source_id: 'search_api:views_page__combined_map__page_1'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '45'
+    settings: {  }

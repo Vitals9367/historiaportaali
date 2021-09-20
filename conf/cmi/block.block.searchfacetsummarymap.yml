@@ -1,27 +1,26 @@
-uuid: 894740ca-9c82-41e9-be54-a99818e7aa0d
+uuid: 6946a73c-3aac-4051-80b1-c15a761e7407
 langcode: en
 status: true
 dependencies:
   config:
-    - views.view.search
+    - facets_summary.facets_summary.search_facet_summary_map
   module:
     - context
+    - facets_summary
     - system
-    - views
   theme:
     - hdbt_subtheme
-id: exposedformsearchpage
+id: searchfacetsummarymap
 theme: hdbt_subtheme
 region: search_filters
-weight: -13
+weight: 0
 provider: null
-plugin: 'views_exposed_filter_block:search-page'
+plugin: 'facets_summary_block:search_facet_summary_map'
 settings:
-  id: 'views_exposed_filter_block:search-page'
-  label: ''
-  provider: views
+  id: 'facets_summary_block:search_facet_summary_map'
+  label: 'Search: Facet summary (map)'
+  provider: facets_summary
   label_display: '0'
-  views_label: ''
 visibility:
   context_all:
     id: context_all
@@ -44,5 +43,5 @@ visibility:
       user: '@user.current_user_context:current_user'
   request_path:
     id: request_path
-    pages: /search
+    pages: /map
     negate: false

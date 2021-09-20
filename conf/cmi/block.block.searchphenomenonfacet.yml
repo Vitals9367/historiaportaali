@@ -1,5 +1,5 @@
 uuid: 72cc3dbf-0ddc-4163-a7d0-ce0e8ac5a279
-langcode: fi
+langcode: en
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ dependencies:
 id: searchphenomenonfacet
 theme: hdbt_subtheme
 region: search_filters
-weight: -11
+weight: -12
 provider: null
 plugin: 'facet_block:search_phenomenon_facet'
 settings:

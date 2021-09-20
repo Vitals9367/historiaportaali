@@ -1,5 +1,5 @@
 uuid: 352b63d2-63f2-481c-beaf-0a4418d791d8
-langcode: fi
+langcode: en
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ dependencies:
 id: searchformatfacet
 theme: hdbt_subtheme
 region: search_filters
-weight: -10
+weight: -11
 provider: null
 plugin: 'facet_block:search_format_facet'
 settings:
