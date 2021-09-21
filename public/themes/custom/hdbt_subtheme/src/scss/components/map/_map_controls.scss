@@ -2,13 +2,21 @@
   position: absolute;
   top: 120px;
   z-index: 10;
-  left: 80px;
+  left: 20px;
+  width: 100%;
+
+
+  @include breakpoint($breakpoint-m) {
+    left: 80px;
+  }
 }
 
 .map-controls__container {
   .map-controls__map-era {
     display: flex;
     align-items: center;
+    overflow-x: scroll;
+    white-space: nowrap;
 
     .map-controls__map-era-item {
       background: $color-black-80;
