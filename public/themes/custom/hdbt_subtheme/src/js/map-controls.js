@@ -2,7 +2,7 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.mapControls = {
     attach: function(context, settings) {
-      var self = this;
+      let self = this;
 
       $(document).on('leaflet.map', function(e, settings, lMap, mapid) {
         self.bindEraControls(lMap);
@@ -10,7 +10,7 @@
     },
 
     bindEraControls: function(lMap) {
-      var self = this;
+      let self = this;
       let $controls = $('.map-controls__map-era .map-controls__map-era-item');
 
       $controls.on('click', function(e) {
@@ -26,8 +26,7 @@
     },
 
     loadEraLayer: function(lMap, era, mapApi, mapWMSTitle) {
-      var self = this;
-      self.removeMapEraLayers(lMap);
+      let self = this;
 
       let mapApiUrl = self.getMapApiUrl(mapApi);
 
@@ -39,14 +38,31 @@
         });
 
         mapLayer.addTo(lMap);
+        
+        // Remove other layers after the new layer has loaded
+        mapLayer.on('load', function(ev) {
+          self.removeOtherMapLayers(lMap, mapLayer);
+        });
+      }
+
+      if (era == 'present') {
+        self.removeOtherMapLayers(lMap, null);
       }
     },
 
-    removeMapEraLayers: function(lMap) {
-      let eraLayers = Object.entries(lMap._layers).filter(([key, layer]) => layer.hasOwnProperty('wmsParams'));
+    removeOtherMapLayers: function(lMap, newLayer) {
+      let allMapLayers = Object.entries(lMap._layers).filter(([key, layer]) => layer.wmsParams?.layers);
+      let layersToBeDeleted;
 
-      if (eraLayers.length > 0) {
-        eraLayers.forEach(layer => layer[1].remove());
+      // Remove all layers if the new layer isn't passed
+      if (!newLayer) {
+        layersToBeDeleted = allMapLayers;
+      } else {
+        layersToBeDeleted = allMapLayers.filter(([key, layer]) => layer.wmsParams.layers !== newLayer.wmsParams.layers);
+      }
+      
+      if (layersToBeDeleted.length) {
+        layersToBeDeleted.forEach(layer => layer[1].remove());
       }
     },
 
