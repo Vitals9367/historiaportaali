@@ -6,6 +6,8 @@
 
       $(document).on('leaflet.map', function(e, settings, lMap, mapid) {
         self.bindEraControls(lMap);
+        self.bindZoomControls(lMap);
+        self.bindLocateControl(lMap);
       });
     },
 
@@ -88,6 +90,45 @@
 
     hideLoadingSpinner: function() {
       $('#map-loading-overlay').fadeOut(150);
+    },
+
+    bindZoomControls: function(lMap) {
+      let $zoomInBtn = $('.map-controls__control-button#zoom-in-btn');
+      let $zoomOutBtn = $('.map-controls__control-button#zoom-out-btn');
+
+      $zoomInBtn.on('click', function() {
+        lMap.zoomIn();
+      });
+
+      $zoomOutBtn.on('click', function() {
+        lMap.zoomOut();
+      });
+    },
+
+    bindLocateControl: function(lMap) {
+      let self = this;
+      let $locateBtn = $('.map-controls__control-button#locate-btn');
+
+      $locateBtn.on('click', function() {
+        if (!navigator.geolocation) {
+          console.log('Geolocation is not supported by your browser');
+        } else {
+          self.showLoadingSpinner();
+          
+          navigator.geolocation.getCurrentPosition((position) => {
+            self.hideLoadingSpinner();
+
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+            
+            lMap.panTo([userLat, userLng]);
+            lMap.setZoom(15);
+          }, (error) => {
+            console.log('Err: ' + error);
+            self.hideLoadingSpinner();
+          });
+        }
+      });
     }
   };
   // eslint-disable-next-line no-undef

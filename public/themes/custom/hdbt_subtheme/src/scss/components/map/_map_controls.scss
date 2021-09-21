@@ -1,17 +1,14 @@
-#block-helhistmapcontrols {
+.map-controls__top-container {
   position: absolute;
   top: 120px;
   z-index: 1001;
   left: 20px;
-  width: 100%;
-
-
+  width: 90%;
+  
   @include breakpoint($breakpoint-m) {
     left: 80px;
   }
-}
 
-.map-controls__container {
   .map-controls__map-era {
     display: flex;
     align-items: center;
@@ -32,5 +29,31 @@
         background: $color-metro-dark;
       }
     }
+  }
+}
+
+.map-controls__sidebar-container {
+  position: absolute;
+  right: 30px;
+  top: 200px;
+  z-index: 1001;
+}
+
+.map-controls__control {
+  margin-bottom: $spacing-half;
+}
+
+.map-controls__control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: $color-black-80;
+  color: $color-white;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-metro-dark;
   }
 }
