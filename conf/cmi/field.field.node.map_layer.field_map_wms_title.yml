@@ -10,7 +10,7 @@ field_name: field_map_wms_title
 entity_type: node
 bundle: map_layer
 label: 'WMS title'
-description: 'The title of the map in the Helsinki spatial data service (https://kartta.hel.fi).'
+description: 'The title of the map in the Helsinki spatial data service (e.g. Opaskartta_1940).'
 required: true
 translatable: false
 default_value: {  }

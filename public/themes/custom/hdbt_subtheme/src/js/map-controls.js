@@ -2,30 +2,37 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.mapControls = {
     attach: function(context, settings) {
+      var self = this;
+
       $(document).on('leaflet.map', function(e, settings, lMap, mapid) {
-        Drupal.behaviors.mapControls.bindEraControls(lMap);
+        self.bindEraControls(lMap);
       });
     },
 
     bindEraControls: function(lMap) {
+      var self = this;
       let $controls = $('.map-controls__map-era .map-controls__map-era-item');
 
       $controls.on('click', function(e) {
-        let selectedEra = $(e.target).data('map-era');
-        let mapWMSTitle = $(e.target).data('map-wms-title');
+        let selectedEra = $(e.target).data('map-era')
+            mapApi = $(e.target).data('map-api')
+            mapWMSTitle = $(e.target).data('map-wms-title');
 
-        Drupal.behaviors.mapControls.loadEraLayer(lMap, selectedEra, mapWMSTitle);
+        self.loadEraLayer(lMap, selectedEra, mapApi, mapWMSTitle);
 
         $controls.removeClass('active');
         $(e.target).addClass('active');
       });
     },
 
-    loadEraLayer: function(lMap, era, mapWMSTitle) {
-      Drupal.behaviors.mapControls.removeMapEraLayers(lMap);
+    loadEraLayer: function(lMap, era, mapApi, mapWMSTitle) {
+      var self = this;
+      self.removeMapEraLayers(lMap);
+
+      let mapApiUrl = self.getMapApiUrl(mapApi);
 
       if (mapWMSTitle && era !== 'present') {
-        let mapLayer = L.tileLayer.wms('https://kartta.hel.fi/ws/geoserver/avoindata/wms', {
+        let mapLayer = L.tileLayer.wms(mapApiUrl, {
           layers: mapWMSTitle,
           format: 'image/png',
           transparent: true
@@ -40,6 +47,19 @@
 
       if (eraLayers.length > 0) {
         eraLayers.forEach(layer => layer[1].remove());
+      }
+    },
+
+    getMapApiUrl: function(mapApi) {
+      switch (mapApi) {
+        case 'kartta_hel_fi':
+          return 'https://kartta.hel.fi/ws/geoserver/avoindata/wms';
+
+        case 'geoserver_hel_fi':
+          return 'http://geoserver.hel.fi/geoserver/ows';
+
+        default:
+          return '';
       }
     }
   };

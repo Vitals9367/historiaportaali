@@ -3,16 +3,25 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - field.field.node.map_layer.field_map_api
     - field.field.node.map_layer.field_map_era
     - field.field.node.map_layer.field_map_wms_title
     - node.type.map_layer
   module:
+    - options
     - user
 id: node.map_layer.default
 targetEntityType: node
 bundle: map_layer
 mode: default
 content:
+  field_map_api:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_map_era:
     weight: 104
     label: above

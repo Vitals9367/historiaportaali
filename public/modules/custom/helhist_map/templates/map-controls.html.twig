@@ -4,7 +4,7 @@
       {{ 'Present'|t }}
     </div>
     {% for era in map_eras %}
-      <div class="map-controls__map-era-item" role="button" data-map-era="{{ era.title }}" data-map-wms-title="{{ era.map_wms_title }}">
+      <div class="map-controls__map-era-item" role="button" data-map-era="{{ era.title }}" data-map-api="{{ era.map_api }}" data-map-wms-title="{{ era.map_wms_title }}">
         {{ era.title }}
       </div>
     {% endfor %}

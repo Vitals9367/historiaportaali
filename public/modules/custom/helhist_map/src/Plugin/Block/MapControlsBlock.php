@@ -55,6 +55,7 @@ class MapControlsBlock extends BlockBase {
 
       $eras[$map_era] = [
         'title' => $map_era,
+        'map_api' => $node->get('field_map_api')->getString(),
         'map_wms_title' => $node->get('field_map_wms_title')->getString()
       ];
     }

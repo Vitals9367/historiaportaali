@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.map_layer.field_map_api
     - field.field.node.map_layer.field_map_era
     - field.field.node.map_layer.field_map_wms_title
     - node.type.map_layer
@@ -20,6 +21,7 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_map_api: true
   field_map_era: true
   field_map_wms_title: true
   langcode: true
