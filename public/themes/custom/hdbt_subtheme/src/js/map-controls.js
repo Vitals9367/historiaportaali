@@ -31,6 +31,8 @@
       let mapApiUrl = self.getMapApiUrl(mapApi);
 
       if (mapWMSTitle && era !== 'present') {
+        self.showLoadingSpinner();
+
         let mapLayer = L.tileLayer.wms(mapApiUrl, {
           layers: mapWMSTitle,
           format: 'image/png',
@@ -42,6 +44,7 @@
         // Remove other layers after the new layer has loaded
         mapLayer.on('load', function(ev) {
           self.removeOtherMapLayers(lMap, mapLayer);
+          self.hideLoadingSpinner();
         });
       }
 
@@ -77,6 +80,14 @@
         default:
           return '';
       }
+    },
+
+    showLoadingSpinner: function() {
+      $('#map-loading-overlay').fadeIn(150);
+    },
+
+    hideLoadingSpinner: function() {
+      $('#map-loading-overlay').fadeOut(150);
     }
   };
   // eslint-disable-next-line no-undef
