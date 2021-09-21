@@ -1,7 +1,7 @@
 <div class="map-controls__container">
-  <div class="map-controls__map-era" aria-label="{{ 'Map era selector'|t }}">
+  <div class="map-controls__map-era" aria-label="{{ 'Map era selector'|t({}, {'context' : 'Map selectors'}) }}">
     <div class="map-controls__map-era-item active" role="button" data-map-era="present">
-      {{ 'Present'|t }}
+      {{ 'Present'|t({}, {'context' : 'Map selectors'}) }}
     </div>
     {% for era in map_eras %}
       <div class="map-controls__map-era-item" role="button" data-map-era="{{ era.title }}" data-map-api="{{ era.map_api }}" data-map-wms-title="{{ era.map_wms_title }}">
