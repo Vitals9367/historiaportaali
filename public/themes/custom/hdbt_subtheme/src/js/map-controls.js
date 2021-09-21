@@ -56,7 +56,7 @@
           return 'https://kartta.hel.fi/ws/geoserver/avoindata/wms';
 
         case 'geoserver_hel_fi':
-          return 'http://geoserver.hel.fi/geoserver/ows';
+          return 'https://geoserver.hel.fi/geoserver/ows';
 
         default:
           return '';
