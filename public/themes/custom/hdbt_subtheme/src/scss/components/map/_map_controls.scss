@@ -15,6 +15,15 @@
     overflow-x: scroll;
     white-space: nowrap;
 
+    &::-webkit-scrollbar {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-top: 1px solid #333;
+      background: #bd2f00;
+    }
+
     .map-controls__map-era-item {
       background: $color-black-80;
       color: $color-white;

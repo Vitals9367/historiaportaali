@@ -1,5 +1,5 @@
 uuid: 0e75b641-e073-475e-add1-b657f2ca7742
-langcode: fi
+langcode: en
 status: true
 dependencies: {  }
 name: map_view_page
