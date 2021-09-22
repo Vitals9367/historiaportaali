@@ -18,3 +18,11 @@ search-form:
   dependencies:
     - core/jquery
     - core/drupal
+
+map-view:
+  version: 1.x
+  js:
+    dist/js/map-controls.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

@@ -91,8 +91,10 @@ module:
   paragraphs_library: 0
   path: 0
   path_alias: 0
+  rabbit_hole: 0
   redirect: 0
   responsive_image: 0
+  rh_node: 0
   scheduler: 0
   search_api: 0
   search_api_autocomplete: 0
