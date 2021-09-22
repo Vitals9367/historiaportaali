@@ -124,10 +124,37 @@
             lMap.panTo([userLat, userLng]);
             lMap.setZoom(15);
           }, (error) => {
-            console.log('Err: ' + error);
+            if (error.code === 1) {
+              self.showGeolocationDeniedBox();
+            }
             self.hideLoadingSpinner();
           });
         }
+      });
+    },
+
+    showGeolocationDeniedBox: function() {
+      let title = Drupal.t('Location data blocked', {}, {context: 'Map selectors'});
+      let description = Drupal.t('Unfortunately, we are unable to show places on the map based on your location until you agree to use your location.', {}, {context: 'Map selectors'});
+      let closeBtnText = Drupal.t('Close', {}, {context: 'Map selectors'});
+
+      $('.leaflet-container').prepend(`
+        <div id="geolocation-denied-overlay" style="display:none;">
+          <div class="info-box">
+            <div class="info-header">
+              <span class="info-icon"></span>
+              <h3>${title}</h3>
+              <div class="close-btn" role="button">${closeBtnText}</div>
+            </div>
+            <p>${description}</p>
+          </div>
+        </div>
+      `);
+
+      $('#geolocation-denied-overlay').fadeIn(150);
+
+      $('#geolocation-denied-overlay .close-btn').on('click', function() {
+        $('#geolocation-denied-overlay').fadeOut(150);
       });
     }
   };

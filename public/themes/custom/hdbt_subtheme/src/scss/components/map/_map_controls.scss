@@ -1,9 +1,9 @@
 .map-controls__top-container {
   position: absolute;
   top: 120px;
-  z-index: 1001;
+  z-index: 2;
   left: 20px;
-  width: 90%;
+  max-width: 90%;
   
   @include breakpoint($breakpoint-m) {
     left: 80px;
@@ -36,7 +36,7 @@
   position: absolute;
   right: 30px;
   top: 200px;
-  z-index: 1001;
+  z-index: 2;
 }
 
 .map-controls__control {
@@ -55,5 +55,61 @@
 
   &:hover {
     background: $color-metro-dark;
+  }
+}
+
+#geolocation-denied-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  background: rgba(0,0,0,0.4);
+
+  .info-box {
+    background: $color-white;
+    border-top: 6px solid $color-metro-dark;
+    padding: $spacing;
+    max-width: 400px;
+    cursor: default;
+
+    .info-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: $spacing;
+    }
+
+    span.info-icon {
+      background: url('../../src/icons/info-circle.svg') no-repeat left center;
+      background-size: 100%;
+      width: 22px;
+      height: 22px;
+      margin-right: $spacing-half;
+    }
+
+    h3 {
+      @include font-size(18px, 20px);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    p {
+      @include font-size(15px, 24px);
+      margin: 0;
+    }
+
+    .close-btn {
+      cursor: pointer;
+      background: url('../../src/icons/cross.svg') no-repeat center;
+      background-size: 22px;
+      width: 22px;
+      height: 22px;
+      text-indent: -20000px;
+      margin-left: auto;
+    }
   }
 }
