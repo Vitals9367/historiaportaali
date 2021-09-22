@@ -1,13 +1,34 @@
 <?php
 
 use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
+
+/**
+* Implements hook_theme().
+*/
+function helhist_map_theme($existing, $type, $theme, $path) {
+  return [
+    'map_controls' => [
+      'template' => 'map-controls',
+      'variables' => [
+        'map_eras' => []
+      ]
+    ]
+  ];
+}
 
 /**
  * Implements hook_views_post_execute().
  */
 function helhist_map_views_post_execute(ViewExecutable $view) {
   if ($view->id() == 'combined_map' && $view->current_display == 'page_1') {
-    $media_view_result = views_get_view_result('media_map', 'block');
+    // Apply exposed filters to media_map view result
+    $exposed_filters = $view->getExposedInput();
+    $media_view = Views::getView('media_map');
+    $media_view->setDisplay('page_1');
+    $media_view->setExposedInput($exposed_filters);
+    $media_view->execute();
+    $media_view_result = $media_view->result;
 
     // Make media result indexes to follow article result indexes
     $new_media_index = count($view->result);
@@ -19,6 +40,15 @@ function helhist_map_views_post_execute(ViewExecutable $view) {
     // Merge media view results to article view results
     $view->result = array_merge($view->result, $media_view_result);
     $view->total_rows = count($view->result);
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function helhist_map_views_pre_render(ViewExecutable $view) {
+  if ($view->storage->id() == 'combined_map' && $view->current_display == 'page_1') {
+    $view->element['#attached']['library'][] = 'hdbt_subtheme/map-view';
   }
 }
 

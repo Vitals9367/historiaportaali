@@ -1,31 +1,27 @@
-uuid: 352b63d2-63f2-481c-beaf-0a4418d791d8
+uuid: 2107ac69-33bc-466d-9ba5-ee292e5e7d83
 langcode: en
 status: true
 dependencies:
-  config:
-    - facets.facet.search_format_facet
   module:
     - context
-    - facets
-    - system
+    - helhist_map
   theme:
     - hdbt_subtheme
-id: searchformatfacet
+id: helhistmapcontrols
 theme: hdbt_subtheme
-region: search_filters
-weight: -10
+region: content
+weight: -13
 provider: null
-plugin: 'facet_block:search_format_facet'
+plugin: helhist_map_map_controls_block
 settings:
-  id: 'facet_block:search_format_facet'
-  label: 'Search: Format facet'
-  provider: facets
+  id: helhist_map_map_controls_block
+  label: 'HelHist Map Controls'
+  provider: helhist_map
   label_display: '0'
-  block_id: searchformatfacet
 visibility:
   context_all:
     id: context_all
-    values: ''
+    values: map_view_page
     negate: null
   context:
     id: context
@@ -42,7 +38,3 @@ visibility:
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
-  request_path:
-    id: request_path
-    pages: /search
-    negate: false

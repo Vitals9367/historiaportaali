@@ -1,0 +1,28 @@
+uuid: 3b84ecc7-f48a-42dc-8c12-68a9c4c5c3da
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.map_layer.field_map_api
+    - field.field.node.map_layer.field_map_era
+    - field.field.node.map_layer.field_map_wms_title
+    - node.type.map_layer
+  module:
+    - user
+id: node.map_layer.teaser
+targetEntityType: node
+bundle: map_layer
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_map_api: true
+  field_map_era: true
+  field_map_wms_title: true
+  langcode: true
+  search_api_excerpt: true

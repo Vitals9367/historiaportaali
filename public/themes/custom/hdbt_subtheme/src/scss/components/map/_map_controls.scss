@@ -1,0 +1,45 @@
+#block-helhistmapcontrols {
+  position: absolute;
+  top: 120px;
+  z-index: 1001;
+  left: 20px;
+  width: 100%;
+
+
+  @include breakpoint($breakpoint-m) {
+    left: 80px;
+  }
+}
+
+.map-controls__container {
+  .map-controls__map-era {
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-top: 1px solid #333;
+      background: #bd2f00;
+    }
+
+    .map-controls__map-era-item {
+      background: $color-black-80;
+      color: $color-white;
+      padding: $spacing-half $spacing;
+      cursor: pointer;
+      
+      &:hover {
+        background: $color-black-70;
+      }
+
+      &.active {
+        background: $color-metro-dark;
+      }
+    }
+  }
+}
