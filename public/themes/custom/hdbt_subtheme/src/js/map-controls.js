@@ -119,9 +119,11 @@
             self.hideLoadingSpinner();
 
             const userLat = position.coords.latitude;
-            const userLng = position.coords.longitude;
+            const userLon = position.coords.longitude;
             
-            lMap.panTo([userLat, userLng]);
+            self.addUserLocationMarker(userLat, userLon, lMap);
+            
+            lMap.panTo([userLat, userLon]);
             lMap.setZoom(15);
           }, (error) => {
             if (error.code === 1) {
@@ -131,6 +133,21 @@
           });
         }
       });
+    },
+
+    addUserLocationMarker: function(userLat, userLon, lMap) {
+      let userLatLng = new L.LatLng(userLat, userLon);
+
+      let userIcon = L.icon({
+        iconSize: ['36', '36'],
+        iconUrl: '/themes/custom/hdbt_subtheme/src/icons/user.svg'
+      });
+
+      let userMarker = L.marker(userLatLng, {
+        icon: userIcon
+      });
+      
+      userMarker.addTo(lMap);
     },
 
     showGeolocationDeniedBox: function() {
