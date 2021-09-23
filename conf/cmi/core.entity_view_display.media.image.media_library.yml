@@ -12,6 +12,7 @@ dependencies:
     - field.field.media.image.field_finna_id
     - field.field.media.image.field_formats
     - field.field.media.image.field_geolocation
+    - field.field.media.image.field_image_caption
     - field.field.media.image.field_keywords
     - field.field.media.image.field_languages
     - field.field.media.image.field_media_image
@@ -50,6 +51,7 @@ hidden:
   field_finna_id: true
   field_formats: true
   field_geolocation: true
+  field_image_caption: true
   field_keywords: true
   field_languages: true
   field_media_image: true
@@ -60,4 +62,5 @@ hidden:
   field_transcript: true
   langcode: true
   name: true
+  search_api_excerpt: true
   uid: true
