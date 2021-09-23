@@ -1,32 +1,32 @@
 <div class="map-controls__top-container">
   <div class="map-controls__map-era" aria-label="{{ 'Map era selector'|t({}, {'context' : 'Map selectors'}) }}">
-    <div class="map-controls__map-era-item active" role="button" data-map-era="present">
+    <button class="map-controls__control-button map-controls__map-era-item active" role="button" data-map-era="present">
       {{ 'Present'|t({}, {'context' : 'Map selectors'}) }}
-    </div>
+    </button>
     {% for era in map_eras %}
-      <div class="map-controls__map-era-item" role="button" data-map-era="{{ era.title }}" data-map-api="{{ era.map_api }}" data-map-wms-title="{{ era.map_wms_title }}">
+      <button class="map-controls__control-button map-controls__map-era-item" role="button" data-map-era="{{ era.title }}" data-map-api="{{ era.map_api }}" data-map-wms-title="{{ era.map_wms_title }}">
         {{ era.title }}
-      </div>
+      </button>
     {% endfor %}
   </div>
 </div>
 
 <div class="map-controls__sidebar-container">
   <div class="map-controls__control">
-    <div class="map-controls__control-button" id="zoom-in-btn" role="button" aria-label={{ 'Zoom in button'|t({}, {'context' : 'Map selectors'}) }}>
+    <button class="map-controls__control-button" id="zoom-in-btn" role="button" aria-label={{ 'Zoom in button'|t({}, {'context' : 'Map selectors'}) }}>
       {% include '@hdbt/misc/icon.twig' with {icon: 'zoom-in', label: 'Zoom in'|t({}, {'context' : 'Map selectors'}) } %}
-    </div>
+    </button>
   </div>
 
   <div class="map-controls__control">
-    <div class="map-controls__control-button" id="zoom-out-btn" role="button" aria-label={{ 'Zoom in button'|t({}, {'context' : 'Map selectors'}) }}>
+    <button class="map-controls__control-button" id="zoom-out-btn" role="button" aria-label={{ 'Zoom in button'|t({}, {'context' : 'Map selectors'}) }}>
       {% include '@hdbt/misc/icon.twig' with {icon: 'zoom-out', label: 'Zoom out'|t({}, {'context' : 'Map selectors'}) } %}
-    </div>
+    </button>
   </div>
 
   <div class="map-controls__control">
-    <div class="map-controls__control-button" id="locate-btn" role="button" aria-label={{ 'Locate me button'|t({}, {'context' : 'Map selectors'}) }}>
+    <button class="map-controls__control-button" id="locate-btn" role="button" aria-label={{ 'Locate me button'|t({}, {'context' : 'Map selectors'}) }}>
       {% include '@hdbt/misc/icon.twig' with {icon: 'locate', label: 'Locate me'|t({}, {'context' : 'Map selectors'}) } %}
-    </div>
+    </button>
   </div>
 </div>
