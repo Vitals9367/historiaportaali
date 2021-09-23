@@ -31,6 +31,7 @@
         "drupal/optional_end_date": "^1.2",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/search_api_autocomplete": "^1.5",
+        "drupal/twig_tweak": "^3.1",
         "drupal/views_menu_children_filter": "^1.0@RC",
         "drush/drush": "^10.4",
         "geocoder-php/nominatim-provider": "^5.5",
