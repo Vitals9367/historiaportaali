@@ -1,0 +1,11 @@
+uuid: ca6f5549-7ff7-4aa6-9399-3b313789ac03
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.map_layer
+id: node.map_layer
+target_entity_type_id: node
+target_bundle: map_layer
+default_langcode: site_default
+language_alterable: false

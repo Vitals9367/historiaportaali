@@ -1,3 +1,33 @@
+.map-view-page {
+  .region-content {
+    position: relative;
+  }
+
+  #map-loading-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 410;
+    
+    #spinner-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  #map-loading-spinner {
+    background: url('../../src/icons/loading-spinner.svg');
+    background-size: 100%;
+    width: 150px;
+    height: 150px;
+  }
+}
+
 .views--combined-map {
   .map-item {
     h3 {

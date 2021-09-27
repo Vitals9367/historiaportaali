@@ -1,0 +1,32 @@
+<div class="map-controls__top-container">
+  <div class="map-controls__map-era" aria-label="{{ 'Map era selector'|t({}, {'context' : 'Map selectors'}) }}">
+    <button class="map-controls__control-button map-controls__map-era-item active" role="button" data-map-era="present">
+      {{ 'Present'|t({}, {'context' : 'Map selectors'}) }}
+    </button>
+    {% for era in map_eras %}
+      <button class="map-controls__control-button map-controls__map-era-item" role="button" data-map-era="{{ era.title }}" data-map-api="{{ era.map_api }}" data-map-wms-title="{{ era.map_wms_title }}">
+        {{ era.title }}
+      </button>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="map-controls__sidebar-container">
+  <div class="map-controls__control">
+    <button class="map-controls__control-button" id="zoom-in-btn" role="button" aria-label={{ 'Zoom in button'|t({}, {'context' : 'Map selectors'}) }}>
+      {% include '@hdbt/misc/icon.twig' with {icon: 'zoom-in', label: 'Zoom in'|t({}, {'context' : 'Map selectors'}) } %}
+    </button>
+  </div>
+
+  <div class="map-controls__control">
+    <button class="map-controls__control-button" id="zoom-out-btn" role="button" aria-label={{ 'Zoom in button'|t({}, {'context' : 'Map selectors'}) }}>
+      {% include '@hdbt/misc/icon.twig' with {icon: 'zoom-out', label: 'Zoom out'|t({}, {'context' : 'Map selectors'}) } %}
+    </button>
+  </div>
+
+  <div class="map-controls__control">
+    <button class="map-controls__control-button" id="locate-btn" role="button" aria-label={{ 'Locate me button'|t({}, {'context' : 'Map selectors'}) }}>
+      {% include '@hdbt/misc/icon.twig' with {icon: 'locate', label: 'Locate me'|t({}, {'context' : 'Map selectors'}) } %}
+    </button>
+  </div>
+</div>
