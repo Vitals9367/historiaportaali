@@ -10,7 +10,7 @@ field_name: field_image_caption
 entity_type: media
 bundle: image
 label: Caption
-description: ''
+description: 'Will be displayed under the image on the page and when embedded in articles (if no caption is entered in the article itself).'
 required: false
 translatable: true
 default_value: {  }
