@@ -21,7 +21,7 @@ function helhist_map_theme($existing, $type, $theme, $path) {
  * Implements hook_views_post_execute().
  */
 function helhist_map_views_post_execute(ViewExecutable $view) {
-  if ($view->id() == 'combined_map' && $view->current_display == 'page_1') {
+  if ($view->id() == 'combined_map' && in_array($view->current_display, _getMapDisplays())) {
     // Apply exposed filters to media_map view result
     $exposed_filters = $view->getExposedInput();
     $media_view = Views::getView('media_map');
@@ -47,7 +47,7 @@ function helhist_map_views_post_execute(ViewExecutable $view) {
  * Implements hook_views_pre_render().
  */
 function helhist_map_views_pre_render(ViewExecutable $view) {
-  if ($view->storage->id() == 'combined_map' && $view->current_display == 'page_1') {
+  if ($view->storage->id() == 'combined_map' && in_array($view->current_display, _getMapDisplays())) {
     $view->element['#attached']['library'][] = 'hdbt_subtheme/map-view';
   }
 }
@@ -58,4 +58,11 @@ function helhist_map_views_pre_render(ViewExecutable $view) {
 function helhist_map_leaflet_map_info_alter(array &$map_info) {
   $map_info['OSM Mapnik']['icon']['iconUrl'] = '/themes/custom/hdbt_subtheme/src/icons/map_marker.svg';
   $map_info['OSM Mapnik']['icon']['iconSize'] = ['x' => '40', 'y' => '40'];
+}
+
+function _getMapDisplays() {
+  return [
+    'page_1',
+    'block'
+  ];
 }
