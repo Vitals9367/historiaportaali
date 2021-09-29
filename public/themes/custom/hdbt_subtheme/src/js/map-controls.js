@@ -151,6 +151,7 @@
     },
 
     showGeolocationDeniedBox: function() {
+      let self = this;
       let title = Drupal.t('Location data blocked', {}, {context: 'Map selectors'});
       let description = Drupal.t('Unfortunately, we are unable to show places on the map based on your location until you agree to use your location.', {}, {context: 'Map selectors'});
       let closeBtnText = Drupal.t('Close', {}, {context: 'Map selectors'});
@@ -171,8 +172,18 @@
       $('#geolocation-denied-overlay').fadeIn(150);
 
       $('#geolocation-denied-overlay .close-btn').on('click', function() {
-        $('#geolocation-denied-overlay').fadeOut(150);
+        self.hideGeoloactionDeniedBox();
       });
+
+      // Hide with escape key
+      $(document).keyup(function(e) {
+        if (e.keyCode === 27)
+          self.hideGeoloactionDeniedBox();
+      });
+    },
+
+    hideGeoloactionDeniedBox: function() {
+      $('#geolocation-denied-overlay').fadeOut(150);
     }
   };
   // eslint-disable-next-line no-undef
