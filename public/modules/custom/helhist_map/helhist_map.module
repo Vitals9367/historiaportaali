@@ -40,6 +40,17 @@ function helhist_map_views_post_execute(ViewExecutable $view) {
     // Merge media view results to article view results
     $view->result = array_merge($view->result, $media_view_result);
     $view->total_rows = count($view->result);
+
+    // Try to get the map center from field on map page
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof \Drupal\node\NodeInterface && $node->bundle() == 'map_page') {
+      if ($node->hasField('field_default_map_center') && !$node->get('field_default_map_center')->isEmpty()) {
+        $default_map_center = $node->get('field_default_map_center')->first()->getValue();
+        
+        $view->style_plugin->options['map_position']['center']['lat'] = $default_map_center['lat'];
+        $view->style_plugin->options['map_position']['center']['lon'] = $default_map_center['lon'];
+      }
+    }
   }
 }
 
