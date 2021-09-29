@@ -1,0 +1,32 @@
+uuid: ee7208be-8b37-43cc-9d8f-d7812de5ef13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.map_page.body
+    - field.field.node.map_page.field_default_map_center
+    - node.type.map_page
+  module:
+    - text
+    - user
+id: node.map_page.default
+targetEntityType: node
+bundle: map_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_default_map_center: true
+  langcode: true
+  search_api_excerpt: true

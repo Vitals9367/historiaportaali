@@ -1,0 +1,21 @@
+uuid: 499d46ac-58ca-48ec-bf85-87fd44c5f79e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_default_map_center
+    - node.type.map_page
+  module:
+    - geofield
+id: node.map_page.field_default_map_center
+field_name: field_default_map_center
+entity_type: node
+bundle: map_page
+label: 'Default map center'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield
