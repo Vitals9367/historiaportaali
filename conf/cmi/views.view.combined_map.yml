@@ -344,6 +344,25 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_geolocation'
+  block:
+    display_plugin: block
+    id: block
+    display_title: Block
+    position: 1
+    display_options:
+      display_extenders:
+        metatag_display_extender: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_geolocation'
   page_1:
     display_plugin: page
     id: page_1
