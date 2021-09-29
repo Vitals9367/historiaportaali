@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.map_page.body
     - field.field.node.map_page.field_default_map_center
+    - field.field.node.map_page.field_default_map_zoom_level
     - node.type.map_page
   module:
     - field_group
@@ -14,8 +15,9 @@ dependencies:
     - text
 third_party_settings:
   field_group:
-    group_default_map_center:
+    group_map_settings:
       children:
+        - field_default_map_zoom_level
         - field_default_map_center
       parent_name: ''
       weight: 2
@@ -27,7 +29,7 @@ third_party_settings:
         description: ''
         open: false
         required_fields: true
-      label: 'Default map center'
+      label: 'Map settings'
 id: node.map_page.default
 targetEntityType: node
 bundle: map_page
@@ -50,7 +52,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_default_map_center:
-    weight: 14
+    weight: 4
     settings:
       map_geocoder:
         control: 1
@@ -92,6 +94,13 @@ content:
       zoom_level: 5
     third_party_settings: {  }
     type: geofield_map
+    region: content
+  field_default_map_zoom_level:
+    weight: 3
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   langcode:
     type: language_select

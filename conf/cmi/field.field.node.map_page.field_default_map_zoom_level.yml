@@ -1,0 +1,25 @@
+uuid: 73c9c6dd-3084-46f5-8f71-bf47638247b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_default_map_zoom_level
+    - node.type.map_page
+id: node.map_page.field_default_map_zoom_level
+field_name: field_default_map_zoom_level
+entity_type: node
+bundle: map_page
+label: 'Default map zoom level'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 14
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

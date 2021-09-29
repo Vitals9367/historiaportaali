@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.map_page.body
     - field.field.node.map_page.field_default_map_center
+    - field.field.node.map_page.field_default_map_zoom_level
     - node.type.map_page
   module:
     - text
@@ -28,5 +29,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_default_map_center: true
+  field_default_map_zoom_level: true
   langcode: true
   search_api_excerpt: true
