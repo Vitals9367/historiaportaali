@@ -50,10 +50,18 @@ function helhist_admin_forms_form_node_form_alter(&$form, &$form_state, $form_id
     // Control Phenomena field visibility via Listing type selection.
     $form['field_phenomena']['#states'] = [
       'visible' => [
-        ':input[name="field_listing_type"]' => ['value' => 'article'],
+        ':input[name="field_listing_type"]' => ['value' => 'phenomenon'],
       ],
       'required' => [
-        ':input[name="field_listing_type"]' => ['value' => 'article'],
+        ':input[name="field_listing_type"]' => ['value' => 'phenomenon'],
+      ],
+    ];
+    $form['field_neighbourhoods']['#states'] = [
+      'visible' => [
+        ':input[name="field_listing_type"]' => ['value' => 'neighbourhood'],
+      ],
+      'required' => [
+        ':input[name="field_listing_type"]' => ['value' => 'neighbourhood'],
       ],
     ];
   }

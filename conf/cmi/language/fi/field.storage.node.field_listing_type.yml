@@ -1,6 +1,10 @@
 settings:
   allowed_values:
     -
-      label: Ilmiöt
+      label: Alasivut
     -
-      label: Artikkelit
+      label: 'Artikkelit ilmiön mukaan'
+    -
+      label: 'Artikkelit kaupunginosan mukaan'
+    -
+      label: 'Artikkelit (DEPREKOITUU)'
