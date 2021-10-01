@@ -28,6 +28,7 @@
         "drupal/helfi_tpr": "^1.0",
         "drupal/helfi_tunnistamo": "^1.0",
         "drupal/leaflet": "^2.1",
+        "drupal/leaflet_more_maps": "^2.1",
         "drupal/optional_end_date": "^1.2",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/search_api_autocomplete": "^1.5",
