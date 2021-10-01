@@ -101,7 +101,7 @@ content:
       leaflet_map: 'OSM Mapnik'
       height: 400
       height_unit: px
-      fullscreen_control: true
+      hide_empty_map: true
       reset_map:
         position: topright
         control: false
@@ -154,8 +154,8 @@ content:
           popup: false
         control: false
       popup: false
-      hide_empty_map: false
       disable_wheel: false
+      fullscreen_control: false
       gesture_handling: false
       leaflet_markercluster:
         control: false

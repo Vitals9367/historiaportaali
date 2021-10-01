@@ -8,6 +8,7 @@ global-scripting:
   version: 1.x
   js:
     dist/js/bundle.min.js: {}
+    dist/js/map-controls.min.js: {}
   dependencies:
     - core/drupal
 

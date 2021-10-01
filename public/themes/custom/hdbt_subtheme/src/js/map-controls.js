@@ -8,6 +8,7 @@
         self.bindEraControls(lMap);
         self.bindZoomControls(lMap);
         self.bindLocateControl(lMap);
+        lMap.removeControl(lMap.zoomControl);
       });
     },
 

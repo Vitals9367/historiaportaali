@@ -63,8 +63,17 @@
         </div>
 
         <div class="{{ right_column_classes|join(' ') }}">
-          {{ content.field_photographer }}
-          {{ content.field_geolocation }}
+          {% if content.field_photographer|render %}
+            <div class="{{ media.bundle()|clean_class }}__photographer">
+              {{ content.field_photographer }}
+            </div>
+          {% endif %}
+
+          {% if content.field_geolocation|render %}
+            <div class="{{ media.bundle()|clean_class }}__geolocation">
+              {{ content.field_geolocation }}
+            </div>
+          {% endif %}
         </div>
       </div>
     {% endblock %}
