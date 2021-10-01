@@ -73,8 +73,10 @@ function helhist_map_views_pre_render(ViewExecutable $view) {
  * Implements hook_leaflet_map_info_alter().
  */
 function helhist_map_leaflet_map_info_alter(array &$map_info) {
-  $map_info['OSM Mapnik']['icon']['iconUrl'] = '/themes/custom/hdbt_subtheme/src/icons/map_marker.svg';
-  $map_info['OSM Mapnik']['icon']['iconSize'] = ['x' => '40', 'y' => '40'];
+  foreach ($map_info as $map_name => $map) {
+    $map_info[$map_name]['icon']['iconUrl'] = '/themes/custom/hdbt_subtheme/src/icons/map_marker.svg';
+    $map_info[$map_name]['icon']['iconSize'] = ['x' => '40', 'y' => '40'];
+  }
 }
 
 function _getMapDisplays() {
