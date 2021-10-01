@@ -70,7 +70,7 @@ display:
           height_unit: px
           hide_empty_map: false
           disable_wheel: false
-          fullscreen_control: true
+          fullscreen_control: false
           gesture_handling: false
           reset_map:
             control: false
