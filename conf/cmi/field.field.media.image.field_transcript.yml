@@ -12,7 +12,7 @@ field_name: field_transcript
 entity_type: media
 bundle: image
 label: Transcript
-description: ''
+description: 'For screen-readers only: a written copy of the exact words or information (e.g. statistics, charts) contained in the image. Mainly meant for book or newspaper excerpts, not necessary for most photographs.'
 required: false
 translatable: true
 default_value: {  }

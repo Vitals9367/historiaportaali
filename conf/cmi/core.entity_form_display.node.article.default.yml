@@ -49,7 +49,7 @@ third_party_settings:
         id: ''
         classes: ''
         open: false
-      label: 'Historiaportaali Metatietokentät'
+      label: 'Historia.helsinki metatietokentät'
     group_finna_meta:
       children:
         - field_finna_id
@@ -68,7 +68,7 @@ third_party_settings:
         id: ''
         classes: ''
         open: false
-      label: 'Finna.fi Metatietokentät'
+      label: 'Finna.fi metatietokentät'
     group_location:
       children:
         - field_buildings

@@ -19,5 +19,11 @@
         height: auto;
       }
     }
+
+    .image__geolocation {
+      .map-controls__top-container {
+        display: none;
+      }
+    }
   }
 }

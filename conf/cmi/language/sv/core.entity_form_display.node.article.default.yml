@@ -1,3 +1,15 @@
+third_party_settings:
+  field_group:
+    group_historiaportaali_meta:
+      label: 'Historia.helsinki metadatafält'
+    group_finna_meta:
+      label: 'Finna.fi metadatafält'
+    group_location:
+      label: Förvaringsplats
+    group_year:
+      label: Tidsperiod
+    group_geolocation:
+      label: 'Position på kartan'
 content:
   field_content:
     settings:
