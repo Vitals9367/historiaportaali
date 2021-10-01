@@ -67,7 +67,7 @@ display:
           name_field: ''
           description_field: '#rendered_entity_ajax'
           view_mode: map_item
-          leaflet_map: 'OSM Mapnik'
+          leaflet_map: esri-world_topo_map
           height: '100'
           height_unit: vh
           hide_empty_map: false
