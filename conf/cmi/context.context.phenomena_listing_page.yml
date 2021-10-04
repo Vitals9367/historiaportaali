@@ -6,7 +6,7 @@ dependencies:
     - context_entity_field
     - node
 name: phenomena_listing_page
-label: 'Phenomena listing page'
+label: 'Sub-listing page'
 group: null
 description: ''
 requireAllConditions: true
@@ -23,7 +23,7 @@ conditions:
     id: 'entity_field:node'
     field_name: field_listing_type
     field_state: value
-    field_value: phenomenon
+    field_value: listing
     context_mapping:
       node: '@node.node_route_context:node'
     negate: 0
