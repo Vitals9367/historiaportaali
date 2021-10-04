@@ -6,9 +6,11 @@ dependencies:
     - core.entity_view_mode.node.listing_item
     - node.type.article
     - node.type.listing_page
+    - taxonomy.vocabulary.neighbourhoods
     - taxonomy.vocabulary.phenomena
   module:
     - node
+    - taxonomy
     - user
     - views_menu_children_filter
 id: listings
@@ -223,46 +225,6 @@ display:
       empty: {  }
       relationships: {  }
       arguments:
-        field_phenomena_target_id:
-          id: field_phenomena_target_id
-          table: node__field_phenomena
-          field: field_phenomena_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: default
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: taxonomy_tid
-          default_argument_options:
-            term_page: '1'
-            node: true
-            limit: true
-            vids:
-              phenomena: phenomena
-            anyall: +
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          break_phrase: false
-          not: false
-          plugin_id: numeric
         nid:
           id: nid
           table: node_field_data
@@ -299,6 +261,49 @@ display:
           entity_type: node
           entity_field: nid
           plugin_id: node_nid
+        term_node_tid_depth:
+          id: term_node_tid_depth
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: taxonomy_tid
+          default_argument_options:
+            term_page: '1'
+            node: true
+            limit: true
+            vids:
+              neighbourhoods: neighbourhoods
+              phenomena: phenomena
+            anyall: +
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: 1
+          break_phrase: false
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -587,7 +592,7 @@ display:
   phenomena_listing_block:
     display_plugin: block
     id: phenomena_listing_block
-    display_title: 'Phenomena listing block'
+    display_title: 'Sub-listing block'
     position: 1
     display_options:
       display_extenders:
