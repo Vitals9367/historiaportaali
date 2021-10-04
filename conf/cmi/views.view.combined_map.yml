@@ -67,23 +67,23 @@ display:
           name_field: ''
           description_field: '#rendered_entity_ajax'
           view_mode: map_item
-          leaflet_map: 'OSM Mapnik'
+          leaflet_map: esri-world_topo_map
           height: '100'
           height_unit: vh
           hide_empty_map: false
           disable_wheel: false
           fullscreen_control: false
-          gesture_handling: false
+          gesture_handling: true
           reset_map:
             control: false
             position: topright
           map_position:
-            force: false
+            force: true
             center:
-              lat: !!float 0
-              lon: !!float 0
-            zoom: 12
-            minZoom: 1
+              lat: 60.169856330105
+              lon: 24.93838811948
+            zoom: 14
+            minZoom: 4
             maxZoom: 18
             zoomFiner: 0
           weight: ''
@@ -333,6 +333,25 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_geolocation'
+  block:
+    display_plugin: block
+    id: block
+    display_title: Block
+    position: 1
+    display_options:
+      display_extenders:
+        metatag_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:

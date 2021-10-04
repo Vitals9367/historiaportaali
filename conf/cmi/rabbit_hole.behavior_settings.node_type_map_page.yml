@@ -1,0 +1,14 @@
+uuid: 3e923154-71bf-4f2d-80a1-f3f5b9d39948
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.map_page
+id: node_type_map_page
+entity_type_id: node_type
+entity_id: map_page
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

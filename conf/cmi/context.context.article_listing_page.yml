@@ -23,9 +23,9 @@ conditions:
     id: 'entity_field:node'
     field_name: field_listing_type
     field_state: value
-    field_value: article
+    field_value: listing
     context_mapping:
       node: '@node.node_route_context:node'
-    negate: 0
+    negate: 1
 reactions: {  }
 weight: 0
