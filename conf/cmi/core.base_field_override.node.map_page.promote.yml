@@ -1,0 +1,22 @@
+uuid: 235d176c-4dd8-44a7-94e0-29d7b11a4d5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.map_page
+id: node.map_page.promote
+field_name: promote
+entity_type: node
+bundle: map_page
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

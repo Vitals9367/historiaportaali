@@ -1,33 +1,29 @@
-uuid: c76f4b75-987d-4f4e-8cd5-a2117ff46566
+uuid: 06d01d36-d168-441d-a32d-33cf5cc713c8
 langcode: en
 status: true
 dependencies:
+  config:
+    - views.view.combined_map
   module:
     - context
     - ctools
+    - views
   theme:
     - hdbt_subtheme
-_core:
-  default_config_hash: cWAyHuLWbIx_Tsd04YPaUUGBOdvtYeKIjFXBXJhmi2w
-id: hdbt_page_title
+id: views_block__combined_map_block
 theme: hdbt_subtheme
 region: before_content
-weight: -14
+weight: 0
 provider: null
-plugin: page_title_block
+plugin: 'views_block:combined_map-block'
 settings:
-  id: page_title_block
-  label: 'Sivun otsikko'
-  provider: core
+  id: 'views_block:combined_map-block'
+  label: ''
+  provider: views
   label_display: '0'
+  views_label: ''
+  items_per_page: none
 visibility:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      map_page: map_page
-    negate: true
-    context_mapping:
-      node: '@node.node_route_context:node'
   context_all:
     id: context_all
     values: ''
@@ -47,3 +43,10 @@ visibility:
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      map_page: map_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

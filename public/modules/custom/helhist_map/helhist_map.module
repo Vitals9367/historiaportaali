@@ -21,7 +21,7 @@ function helhist_map_theme($existing, $type, $theme, $path) {
  * Implements hook_views_post_execute().
  */
 function helhist_map_views_post_execute(ViewExecutable $view) {
-  if ($view->id() == 'combined_map' && $view->current_display == 'page_1') {
+  if ($view->id() == 'combined_map' && in_array($view->current_display, _getMapDisplays())) {
     // Apply exposed filters to media_map view result
     $exposed_filters = $view->getExposedInput();
     $media_view = Views::getView('media_map');
@@ -40,6 +40,23 @@ function helhist_map_views_post_execute(ViewExecutable $view) {
     // Merge media view results to article view results
     $view->result = array_merge($view->result, $media_view_result);
     $view->total_rows = count($view->result);
+
+    
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof \Drupal\node\NodeInterface && $node->bundle() == 'map_page') {
+      // Get the map center from field
+      if ($node->hasField('field_default_map_center') && !$node->get('field_default_map_center')->isEmpty()) {
+        $default_map_center = $node->get('field_default_map_center')->first()->getValue();
+        $view->style_plugin->options['map_position']['center']['lat'] = $default_map_center['lat'];
+        $view->style_plugin->options['map_position']['center']['lon'] = $default_map_center['lon'];
+      }
+
+      // Get the map zoom level from field
+      if ($node->hasField('field_default_map_zoom_level') && !$node->get('field_default_map_zoom_level')->isEmpty()) {
+        $default_map_zoom_level = $node->get('field_default_map_zoom_level')->getString();
+        $view->style_plugin->options['map_position']['zoom'] = $default_map_zoom_level;
+      }
+    }
   }
 }
 
@@ -47,7 +64,7 @@ function helhist_map_views_post_execute(ViewExecutable $view) {
  * Implements hook_views_pre_render().
  */
 function helhist_map_views_pre_render(ViewExecutable $view) {
-  if ($view->storage->id() == 'combined_map' && $view->current_display == 'page_1') {
+  if ($view->storage->id() == 'combined_map' && in_array($view->current_display, _getMapDisplays())) {
     $view->element['#attached']['library'][] = 'hdbt_subtheme/map-view';
   }
 }
@@ -56,6 +73,15 @@ function helhist_map_views_pre_render(ViewExecutable $view) {
  * Implements hook_leaflet_map_info_alter().
  */
 function helhist_map_leaflet_map_info_alter(array &$map_info) {
-  $map_info['OSM Mapnik']['icon']['iconUrl'] = '/themes/custom/hdbt_subtheme/src/icons/map_marker.svg';
-  $map_info['OSM Mapnik']['icon']['iconSize'] = ['x' => '40', 'y' => '40'];
+  foreach ($map_info as $map_name => $map) {
+    $map_info[$map_name]['icon']['iconUrl'] = '/themes/custom/hdbt_subtheme/src/icons/map_marker.svg';
+    $map_info[$map_name]['icon']['iconSize'] = ['x' => '40', 'y' => '40'];
+  }
+}
+
+function _getMapDisplays() {
+  return [
+    'page_1',
+    'block'
+  ];
 }

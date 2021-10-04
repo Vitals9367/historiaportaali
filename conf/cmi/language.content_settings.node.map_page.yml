@@ -1,0 +1,16 @@
+uuid: 5c5dd914-1cac-4c1b-9d8a-bd060e644fbb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.map_page
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.map_page
+target_entity_type_id: node
+target_bundle: map_page
+default_langcode: fi
+language_alterable: true
