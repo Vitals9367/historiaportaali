@@ -5,6 +5,4 @@ settings:
     -
       label: 'Artikkelit ilmiön mukaan'
     -
-      label: 'Artikkelit kaupunginosan mukaan'
-    -
-      label: 'Artikkelit (DEPREKOITUU)'
+      label: 'Artikkelit alueen mukaan'
