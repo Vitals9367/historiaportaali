@@ -44,5 +44,5 @@ visibility:
       user: '@user.current_user_context:current_user'
   request_path:
     id: request_path
-    pages: /search
+    pages: "<front>\r\n/search"
     negate: false
