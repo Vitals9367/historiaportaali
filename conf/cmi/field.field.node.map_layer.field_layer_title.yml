@@ -1,0 +1,19 @@
+uuid: b4707737-ef21-4948-9b59-ea85cb522606
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_layer_title
+    - node.type.map_layer
+id: node.map_layer.field_layer_title
+field_name: field_layer_title
+entity_type: node
+bundle: map_layer
+label: 'Layer title'
+description: 'This will be the name of the layer in the map layer selector.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

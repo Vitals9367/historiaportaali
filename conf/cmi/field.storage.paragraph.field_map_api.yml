@@ -1,0 +1,27 @@
+uuid: 4ad6d6e1-2648-404b-8051-749da2cda76e
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_map_api
+field_name: field_map_api
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: kartta_hel_fi
+      label: kartta.hel.fi
+    -
+      value: geoserver_hel_fi
+      label: geoserver.hel.fi
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

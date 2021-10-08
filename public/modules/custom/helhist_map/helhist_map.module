@@ -11,7 +11,7 @@ function helhist_map_theme($existing, $type, $theme, $path) {
     'map_controls' => [
       'template' => 'map-controls',
       'variables' => [
-        'map_eras' => []
+        'map_layers' => []
       ]
     ]
   ];

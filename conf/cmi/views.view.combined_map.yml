@@ -68,7 +68,7 @@ display:
           description_field: '#rendered_entity_ajax'
           view_mode: map_item
           leaflet_map: esri-world_topo_map
-          height: '100'
+          height: '70'
           height_unit: vh
           hide_empty_map: false
           disable_wheel: false
