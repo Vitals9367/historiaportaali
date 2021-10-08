@@ -1,11 +1,11 @@
 <div class="map-controls__top-container">
-  <div class="map-controls__map-era" aria-label="{{ 'Map era selector'|t({}, {'context' : 'Map selectors'}) }}">
-    <button class="map-controls__control-button map-controls__map-era-item active" role="button" data-map-era="present">
+  <div class="map-controls__map-layer" aria-label="{{ 'Map layer selector'|t({}, {'context' : 'Map selectors'}) }}">
+    <button class="map-controls__control-button map-controls__map-layer-item active" role="button" data-map-layer-title="present">
       {{ 'Present'|t({}, {'context' : 'Map selectors'}) }}
     </button>
-    {% for era in map_eras %}
-      <button class="map-controls__control-button map-controls__map-era-item" role="button" data-map-era="{{ era.title }}" data-map-api="{{ era.map_api }}" data-map-wms-title="{{ era.map_wms_title }}">
-        {{ era.title }}
+    {% for layer in map_layers %}
+      <button class="map-controls__control-button map-controls__map-layer-item" role="button" data-map-layer-title="{{ layer.layer_title }}" data-map-api-endpoints="{{ layer.map_api_endpoints }}" data-map-api="{{ era.map_api }}" data-map-wms-title="{{ era.map_wms_title }}">
+        {{ layer.layer_title }}
       </button>
     {% endfor %}
   </div>

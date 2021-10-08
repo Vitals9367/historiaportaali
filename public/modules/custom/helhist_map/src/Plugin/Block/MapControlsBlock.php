@@ -26,20 +26,20 @@ class MapControlsBlock extends BlockBase {
   public function build() {
     $build = [
       '#theme' => 'map_controls',
-      '#map_eras' => $this->getMapEras()
+      '#map_layers' => $this->getMapLayers()
     ];
 
     return $build;
   }
 
-  private function getMapEras() {
+  private function getMapLayers() {
     $query = \Drupal::entityTypeManager()
       ->getListBuilder('node')
       ->getStorage()
       ->getQuery();
     $query->condition('type', 'map_layer');
     $query->condition('status', 1);
-    $query->sort('field_map_era', 'DESC');
+    $query->sort('field_layer_title', 'DESC');
 
     $map_layer_nids = $query->execute();
     
@@ -49,17 +49,27 @@ class MapControlsBlock extends BlockBase {
 
     $map_layer_nodes = Node::loadMultiple($map_layer_nids);
 
-    $eras = [];
+    $layers = [];
     foreach ($map_layer_nodes as $node) {
-      $map_era = $node->get('field_map_era')->getString();
+      $layer_title = $node->get('field_layer_title')->getString();
+      $map_layer_api_endpoints_field = $node->get('field_map_api_endpoints');
 
-      $eras[$map_era] = [
-        'title' => $map_era,
-        'map_api' => $node->get('field_map_api')->getString(),
-        'map_wms_title' => $node->get('field_map_wms_title')->getString()
+      $layer_api_endpoints = [];
+      foreach ($map_layer_api_endpoints_field as $endpoint) {
+        $endpoint_paragraph = $endpoint->entity;
+
+        $layer_api_endpoints[] = [
+          'map_api' => $endpoint_paragraph->get('field_map_api')->getString(),
+          'wms_title' => $endpoint_paragraph->get('field_map_wms_title')->getString()
+        ];
+      }
+
+      $layers[$layer_title] = [
+        'layer_title' => $layer_title,
+        'map_api_endpoints' => json_encode($layer_api_endpoints)
       ];
     }
 
-    return $eras;
+    return $layers;
   }
 }

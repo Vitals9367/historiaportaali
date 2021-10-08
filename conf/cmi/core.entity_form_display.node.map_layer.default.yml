@@ -3,11 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.map_layer.field_layer_title
     - field.field.node.map_layer.field_map_api
+    - field.field.node.map_layer.field_map_api_endpoints
     - field.field.node.map_layer.field_map_era
     - field.field.node.map_layer.field_map_wms_title
     - node.type.map_layer
   module:
+    - paragraphs
     - path
     - scheduler
 id: node.map_layer.default
@@ -17,17 +20,11 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 6
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_map_api:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_map_era:
+  field_layer_title:
     weight: 2
     settings:
       size: 60
@@ -35,8 +32,41 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_map_wms_title:
+  field_map_api:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_map_api_endpoints:
+    type: paragraphs
+    weight: 3
+    settings:
+      title: 'Map API endpoint'
+      title_plural: 'Map API endpoints'
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: map_api_endpoint
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_map_era:
     weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_map_wms_title:
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -52,7 +82,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 9
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -60,12 +90,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 9
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 10
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -73,14 +103,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 15
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 10
     region: content
     third_party_settings: {  }
   title:
@@ -93,7 +123,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -103,12 +133,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 11
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 12
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }

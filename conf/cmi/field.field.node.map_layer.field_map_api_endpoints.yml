@@ -1,0 +1,76 @@
+uuid: d0082bbf-4d3f-4ce2-aba0-ca5fdf190634
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_map_api_endpoints
+    - node.type.map_layer
+    - paragraphs.paragraphs_type.map_api_endpoint
+  module:
+    - entity_reference_revisions
+id: node.map_layer.field_map_api_endpoints
+field_name: field_map_api_endpoints
+entity_type: node
+bundle: map_layer
+label: 'Map API endpoints'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      map_api_endpoint: map_api_endpoint
+    target_bundles_drag_drop:
+      accordion:
+        weight: 17
+        enabled: false
+      accordion_item:
+        weight: 18
+        enabled: false
+      banner:
+        weight: 19
+        enabled: false
+      columns:
+        weight: 20
+        enabled: false
+      content_cards:
+        weight: 21
+        enabled: false
+      from_library:
+        weight: 22
+        enabled: false
+      gallery:
+        weight: 23
+        enabled: false
+      gallery_slide:
+        weight: 24
+        enabled: false
+      hero:
+        weight: 25
+        enabled: false
+      image:
+        weight: 26
+        enabled: false
+      liftup_with_image:
+        weight: 27
+        enabled: false
+      list_of_links:
+        weight: 28
+        enabled: false
+      list_of_links_item:
+        weight: 29
+        enabled: false
+      map_api_endpoint:
+        enabled: true
+        weight: 30
+      remote_video:
+        weight: 31
+        enabled: false
+      text:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

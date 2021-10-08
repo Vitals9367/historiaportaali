@@ -1,0 +1,10 @@
+uuid: ed338bed-dd05-4e75-97e3-f2b5db104ded
+langcode: en
+status: true
+dependencies: {  }
+id: map_api_endpoint
+label: 'Map layer API endpoint'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
