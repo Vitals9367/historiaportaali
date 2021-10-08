@@ -1,0 +1,45 @@
+<?php
+
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Entity\Vocabulary;
+
+/**
+ * Implements hook_pathauto_alias_alter().
+ */
+function helhist_article_pathauto_alias_alter(&$alias, array &$context) {
+   // Check if the content is node and the bundle is an article
+   if ($context['module'] === 'node' && $context['bundle'] === 'article') {
+
+    $node = $context['data']['node'];
+    $language = $context['language'];
+
+    $clean_string_service = \Drupal::service('pathauto.alias_cleaner');
+
+    // Phenomena field takes precedence
+    $termreference = $node->get('field_phenomena')->target_id != NULL ? $node->get('field_phenomena')->target_id : $node->get('field_neighbourhoods')->target_id;
+
+    if ($termreference != NULL) {
+      $node_label = $node->label();
+
+      $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($termreference);
+      // Get translation if possible
+      if ($term->hasTranslation($language)) {
+        $term = \Drupal::service('entity.repository')->getTranslationFromContext($term, $language);
+      }
+      $term_label = $term->label();
+
+      $vocabulary = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->load($term->bundle());
+      // This doesn't work because vocabulary names are translated through configuration, not entities?
+      $vocabulary = \Drupal::service('entity.repository')->getTranslationFromContext($vocabulary, $language);
+      $vocabulary_label = $vocabulary->label();
+
+      $vocabulary_label = '/' . $clean_string_service->cleanString($vocabulary_label);
+      $term_label = '/' . $clean_string_service->cleanString($term_label);
+      $node_label = '/' . $clean_string_service->cleanString($node_label);
+
+      $alias = $vocabulary_label . $term_label . $node_label;
+    }
+  }
+}
