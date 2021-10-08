@@ -84,3 +84,22 @@ function hdbt_subtheme_theme_suggestions_field_alter(&$suggestions, $variables) 
     $suggestions[] = 'field__hdbt_taxonomy__' . $variables['element']['#view_mode'];
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function hdbt_subtheme_form_views_exposed_form_alter(&$form, Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form['#id'] == 'views-exposed-form-search-page') {
+    // Hide year interval filter and add '/map' link on frontpage search block
+    if (\Drupal::service('path.matcher')->isFrontPage()) {
+      unset($form['year_interval']);
+
+      $label = 'Show places near me';
+      t($label);
+      $form['views_exposed_form']['#markup'] = '<a class="hds-button hds-button--primary" href="/map">
+                                                  <span class="hds-button__label">' . $label . '</span>
+                                                  <span aria-hidden="true" class="hds-icon hds-icon--location"></span>
+                                                </a>';
+    }
+  }
+}
