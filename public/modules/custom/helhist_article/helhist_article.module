@@ -30,10 +30,10 @@ function helhist_article_pathauto_alias_alter(&$alias, array &$context) {
       }
       $term_label = $term->label();
 
-      $vocabulary = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->load($term->bundle());
-      // This doesn't work because vocabulary names are translated through configuration, not entities?
-      $vocabulary = \Drupal::service('entity.repository')->getTranslationFromContext($vocabulary, $language);
-      $vocabulary_label = $vocabulary->label();
+      $vocabulary_config = \Drupal::config('taxonomy.vocabulary.' . $term->bundle());
+      $vocabulary_translated_config = \Drupal::languageManager()->getLanguageConfigOverride($language, 'taxonomy.vocabulary.' . $term->bundle());
+      // Use translation if possible
+      $vocabulary_label = $vocabulary_translated_config->get('name') == '' ? $vocabulary_config->get('name') : $vocabulary_translated_config->get('name');
 
       $vocabulary_label = '/' . $clean_string_service->cleanString($vocabulary_label);
       $term_label = '/' . $clean_string_service->cleanString($term_label);
