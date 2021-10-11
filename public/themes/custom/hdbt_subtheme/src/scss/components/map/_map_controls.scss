@@ -30,7 +30,7 @@
     padding: $spacing-half $spacing;
   }
 
-  .map-controls__map-era {
+  .map-controls__map-layer {
     display: flex;
     align-items: center;
     overflow-x: scroll;
@@ -43,6 +43,28 @@
     &::-webkit-scrollbar-thumb {
       border-top: 1px solid #333;
       background: #bd2f00;
+    }
+
+    .map-controls__map-layer-item {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        top: 15%;
+        right: 0;
+        display: block;
+        content: "";
+        width: 1px;
+        height: 70%;
+        padding: 3px 0;
+        box-sizing: border-box;
+        background-color: $color-black-50;
+      }
+
+      &:last-child:after,
+      &.active:after {
+        display: none;
+      }
     }
   }
 }
