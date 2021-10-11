@@ -1,0 +1,30 @@
+uuid: df49103b-3305-48e9-a00e-122e73a65fa5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.map_api_endpoint.field_map_api
+    - field.field.paragraph.map_api_endpoint.field_map_wms_title
+    - paragraphs.paragraphs_type.map_api_endpoint
+id: paragraph.map_api_endpoint.default
+targetEntityType: paragraph
+bundle: map_api_endpoint
+mode: default
+content:
+  field_map_api:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_map_wms_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

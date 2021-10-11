@@ -57,6 +57,7 @@ module:
   helfi_media: 0
   helfi_platform_config: 0
   helhist_admin_forms: 0
+  helhist_article: 0
   helhist_map: 0
   helhist_search: 0
   image: 0

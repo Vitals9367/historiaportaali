@@ -1,0 +1,21 @@
+uuid: b5dd9e7c-f488-4dc5-a6eb-0786e711f371
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_map_api
+    - paragraphs.paragraphs_type.map_api_endpoint
+  module:
+    - options
+id: paragraph.map_api_endpoint.field_map_api
+field_name: field_map_api
+entity_type: paragraph
+bundle: map_api_endpoint
+label: 'Map API'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

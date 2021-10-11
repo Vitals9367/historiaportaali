@@ -6,6 +6,7 @@ dependencies:
     - field.storage.paragraph.field_content_cards_content
     - node.type.article
     - node.type.landing_page
+    - node.type.listing_page
     - node.type.page
     - paragraphs.paragraphs_type.content_cards
 _core:
@@ -25,8 +26,9 @@ settings:
   handler_settings:
     target_bundles:
       article: article
-      landing_page: landing_page
       page: page
+      landing_page: landing_page
+      listing_page: listing_page
     sort:
       field: title
       direction: ASC

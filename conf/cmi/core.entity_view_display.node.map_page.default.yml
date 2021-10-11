@@ -3,24 +3,26 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.map_page.body
+    - field.field.node.map_page.field_content
     - field.field.node.map_page.field_default_map_center
     - field.field.node.map_page.field_default_map_zoom_level
     - node.type.map_page
   module:
-    - text
+    - entity_reference_revisions
     - user
 id: node.map_page.default
 targetEntityType: node
 bundle: map_page
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
+  field_content:
     weight: 1
-    settings: {  }
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
   links:
     weight: 0

@@ -3,5 +3,13 @@ display:
   default:
     display_options:
       title: Haku
+      exposed_form:
+        options:
+          submit_button: Hae
+      filters:
+        search_api_fulltext:
+          expose:
+            label: 'Hae sisällöstä'
+            placeholder: 'Paikka, henkilö, aihe, tapahtuma...'
   page:
     display_title: Hakusivu
