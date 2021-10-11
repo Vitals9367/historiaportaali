@@ -5,7 +5,7 @@
 trigger:
   branches:
     include:
-     - master
+    - master
 #    - release/*
 #    - refs/tags/*
   paths:
