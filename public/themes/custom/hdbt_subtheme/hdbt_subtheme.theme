@@ -94,8 +94,8 @@ function hdbt_subtheme_form_views_exposed_form_alter(&$form, Drupal\Core\Form\Fo
     if (\Drupal::service('path.matcher')->isFrontPage()) {
       unset($form['year_interval']);
 
-      $label = 'Show places near me';
-      t($label);
+      $label = t('Show places near me');
+
       $form['views_exposed_form']['#markup'] = '<a class="hds-button hds-button--primary" href="/map">
                                                   <span class="hds-button__label">' . $label . '</span>
                                                   <span aria-hidden="true" class="hds-icon hds-icon--location"></span>
