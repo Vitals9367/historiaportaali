@@ -87,6 +87,16 @@
     height: 50px;
     padding: 0;
   }
+
+  #map-comparison-btn {
+    width: 180px;
+    transform-origin: bottom left;
+    transform: translate(0, -180px) rotate(90deg);
+
+    .icon {
+      margin-right: 16px;
+    }
+  }
 }
 
 #geolocation-denied-overlay {
