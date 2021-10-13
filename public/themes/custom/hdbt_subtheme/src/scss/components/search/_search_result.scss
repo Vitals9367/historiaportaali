@@ -1,7 +1,17 @@
 .search-result {
   .search-result__image {
+    height: 200px;
     img {
-      vertical-align: middle;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .search-result__video {
+    height: 200px;
+    iframe {
+      width: 100%;
+      height: 100%;
     }
   }
 

@@ -17,8 +17,9 @@ content:
     weight: 0
     label: hidden
     settings:
-      view_mode: default
+      view_mode: remote_video
       link: false
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true
