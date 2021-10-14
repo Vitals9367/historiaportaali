@@ -72,11 +72,12 @@
 .map-controls__sidebar-container {
   position: absolute;
   right: 30px;
-  top: 200px;
+  top: 250px;
   z-index: 401;
 
   .map-controls__control {
     margin-bottom: $spacing-half;
+    width: 50px;
   }
   
   .map-controls__control-button {
@@ -95,6 +96,10 @@
 
     .icon {
       margin-right: 16px;
+    }
+
+    .comparison-enabled & {
+      background-color: $color-metro-dark;
     }
   }
 }
