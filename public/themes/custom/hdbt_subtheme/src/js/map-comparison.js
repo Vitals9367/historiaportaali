@@ -39,7 +39,9 @@
       comparisonMap = L.map('comparison-map-container', {
         center: mainMap.getCenter(),
         zoom: mainMap.getZoom(),
-        zoomControl: false
+        zoomControl: false,
+        gestureHandling: true,
+        mapName: 'comparison-map'
       });
 
       mainMap.eachLayer(layer => {

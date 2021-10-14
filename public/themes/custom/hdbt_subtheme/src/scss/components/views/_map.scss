@@ -11,16 +11,29 @@
 
   #comparison-map-container {
     display: none;
-    width: 50%;
-    height: 70vh;
+    width: 100%;
+    height: 45vh;
+
+    @include breakpoint($breakpoint-m) {
+      width: 50%;
+      height: 70vh;
+    }
   }
 
   &.comparison-enabled {
-    display: flex;
+    @include breakpoint($breakpoint-m) {
+      display: flex;
+    }
 
     #leaflet-map-view-combined-map-block {
-      width: 50%;
-    } 
+      width: 100%;
+      height: 45vh !important;
+      
+      @include breakpoint($breakpoint-m) {
+        width: 50%;
+        height: 70vh !important;
+      }
+    }
   }
 
   .map-item {

@@ -18,9 +18,19 @@
 .map-controls__top-container {
   position: absolute;
   top: 30px;
-  z-index: 401;
   left: 20px;
   max-width: 90%;
+  z-index: 401;
+
+  &.comparison-map {
+    top: auto;
+    bottom: 30px;
+
+    @include breakpoint($breakpoint-m) {
+      top: 30px;
+      bottom: auto;
+    }
+  }
   
   @include breakpoint($breakpoint-m) {
     left: 80px;
@@ -73,7 +83,7 @@
   position: absolute;
   right: 30px;
   top: 250px;
-  z-index: 401;
+  z-index: 501;
 
   .map-controls__control {
     margin-bottom: $spacing-half;

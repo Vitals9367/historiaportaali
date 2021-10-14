@@ -3,18 +3,30 @@
   Drupal.behaviors.mapControls = {
     attach: function(context, settings) {
       let self = this;
+      
+      L.Map.addInitHook(function () {
+        if (this.options?.mapName == 'comparison-map') {
+          self.bindLayerControls(this, 'comparison-map');
+        } else {
+          self.bindLayerControls(this, 'main-map');
+          self.bindZoomControls(this);
+          self.bindLocateControl(this);
+          this.removeControl(this.zoomControl);
+        }
 
-      $(document).on('leaflet.map', function(e, settings, lMap, mapid) {
-        self.bindLayerControls(lMap);
-        self.bindZoomControls(lMap);
-        self.bindLocateControl(lMap);
-        lMap.removeControl(lMap.zoomControl);
+        this.on('unload', function() {
+          if (this.options?.mapName == 'comparison-map') {
+            self.unBindLayerControls('comparison-map');
+          } else {
+            self.unBindLayerControls('main-map');
+          }
+        });
       });
     },
 
-    bindLayerControls: function(lMap) {
+    bindLayerControls: function(lMap, mapName) {
       let self = this;
-      let $controls = $('.map-controls__map-layer .map-controls__map-layer-item');
+      let $controls = $(`.map-controls__map-layer.${mapName} .map-controls__map-layer-item`);
 
       $controls.on('click', function(e) {
         let selectedLayerTitle = $(e.target).data('map-layer-title')
@@ -25,6 +37,11 @@
         $controls.removeClass('active');
         $(e.target).addClass('active');
       });
+    },
+
+    unBindLayerControls: function(mapName) {
+      let $controls = $(`.map-controls__map-layer.${mapName} .map-controls__map-layer-item`);
+      $controls.off('click');
     },
 
     handleLayerSelection: function(lMap, selectedLayerTitle, mapApiEndpoints) {
