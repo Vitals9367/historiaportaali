@@ -54,7 +54,9 @@
 
   {{ rows }}
 
-  <div id="comparison-map-container"></div>
+  <div id="comparison-map-container">
+    {{ drupal_block('helhist_map_comparison_map_controls_block') }}
+  </div>
 
   {{ empty }}
   {{ pager }}
