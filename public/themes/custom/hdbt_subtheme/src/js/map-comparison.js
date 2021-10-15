@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 (($, Drupal, drupalSettings) => {
   let mainMap;
-  let comparisonMap;
+  let comparisonMapContainer;
 
   Drupal.behaviors.mapComparison = {
     attach: function(context, settings) {
@@ -35,30 +35,49 @@
 
       $('#comparison-map-container').fadeIn(150);
 
+      // Re-position map after resize
       mainMap.invalidateSize();
 
       // Init comparison map
-      comparisonMap = L.map('comparison-map-container', {
-        center: mainMap.getCenter(),
-        zoom: mainMap.getZoom(),
-        zoomControl: false,
-        gestureHandling: true,
-        mapName: 'comparison-map'
-      });
+      const comparisonMapId = 'comparison-map-container';
+      const comparisonMapInitialized = self.initMap(comparisonMapId);
 
-      mainMap.eachLayer(layer => {
-        if (layer.hasOwnProperty('_tiles')) {
-          L.tileLayer(layer._url, {
-            attribution: layer.options.attribution
-          }).addTo(comparisonMap);
+      if (comparisonMapInitialized) {
+        self.bindMapEventHandlers();
+      }
+    },
+
+    initMap: function(mapId) {
+      let $container = $(`#${mapId}`);
+      const mainMapLeaflet = Object.values(drupalSettings.leaflet)[0];
+
+      if (!mainMapLeaflet) {
+        return false;
+      }
+
+      // Copy map definiton from the main map
+      let mapDefinition = mainMapLeaflet.map;
+      mapDefinition.settings.mapName = 'comparison-map';
+
+      // Init comparison map
+      if ($container.data('leaflet') === undefined) {
+        $container.data('leaflet', new Drupal.Leaflet(L.DomUtil.get(mapId), mapId, mapDefinition));
+
+        // Save map to a global variable
+        comparisonMapContainer = $container.data('leaflet');
+
+        // Add Leaflet Map Features from the main map.
+        if (mainMapLeaflet.features.length > 0) {
+          Drupal.Leaflet[mapId].markers = {};
+          Drupal.Leaflet[mapId].features = {};
+
+          $container.data('leaflet').add_features(mapId, mainMapLeaflet.features, true);
         }
-      });
+      }
 
-      comparisonMap.on('layeradd', function(e) {
-        console.log(comparisonMap);
-      });
+      comparisonMapContainer.lMap.setView(mainMap.getCenter(), mainMap.getZoom());
 
-      self.bindMapEventHandlers();
+      return true;
     },
 
     disableMapComparison: function() {
@@ -68,14 +87,13 @@
       $viewContainer.removeClass('comparison-enabled');
       $('#comparison-map-container').fadeOut(150);
 
-      comparisonMap.remove();
       self.removeMapEventHandlers();
       mainMap.invalidateSize();
     },
 
     bindMapEventHandlers: function() {
       mainMap.on('move', function(ev) {
-        comparisonMap.setView(mainMap.getCenter(), mainMap.getZoom());
+        comparisonMapContainer.lMap.setView(mainMap.getCenter(), mainMap.getZoom());
       });
     },
 
