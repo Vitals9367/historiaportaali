@@ -76,9 +76,16 @@ function hdbt_subtheme_preprocess_field(&$variables, $hook) {
  */
 function hdbt_subtheme_theme_suggestions_field_alter(&$suggestions, $variables) {
   $taxonomy_fields = [
+    // Historiaportaali metadata fields
     'field__field_keywords',
     'field__field_phenomena',
     'field__field_neighbourhoods',
+    // Finna metadata fields
+    'field__field_formats',
+    'field__field_authors',
+    'field__field_copyrights',
+    'field__field_languages',
+    'field__field_buildings',
   ];
   if (count(array_intersect($taxonomy_fields, $suggestions)) > 0) {
     $suggestions[] = 'field__hdbt_taxonomy__' . $variables['element']['#view_mode'];

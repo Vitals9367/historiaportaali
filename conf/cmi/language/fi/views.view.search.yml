@@ -11,5 +11,15 @@ display:
           expose:
             label: 'Hae sisällöstä'
             placeholder: 'Paikka, henkilö, aihe, tapahtuma...'
+        aggregated_start_year:
+          expose:
+            label: Alkaa
+        aggregated_end_year:
+          expose:
+            label: Päättyy
+      pager:
+        options:
+          views_infinite_scroll:
+            button_text: 'Lataa lisää'
   page:
     display_title: Hakusivu

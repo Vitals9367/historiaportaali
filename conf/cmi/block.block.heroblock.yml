@@ -25,6 +25,7 @@ visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
     bundles:
+      article: article
       landing_page: landing_page
       listing_page: listing_page
       page: page
