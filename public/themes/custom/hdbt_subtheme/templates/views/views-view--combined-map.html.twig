@@ -49,20 +49,29 @@
     </header>
   {% endif %}
 
-  {{ exposed }}
-  {{ attachment_before }}
+  <div class="map-container">
+    {{ exposed }}
+    {{ attachment_before }}
+    {{ rows }}
 
-  {{ rows }}
+    <div id="comparison-map-container">
+      {{ drupal_block('helhist_map_comparison_map_controls_block') }}
+    </div>
 
-  <div id="comparison-map-container">
-    {{ drupal_block('helhist_map_comparison_map_controls_block') }}
+    {{ drupal_block('helhist_map_map_controls_block') }}
+
+    <div id="map-loading-overlay">
+      <div id="spinner-container">
+        <div id="map-loading-spinner"></div>
+      </div>
+    </div>
+
+    {{ empty }}
+    {{ pager }}
+
+    {{ attachment_after }}
+    {{ more }}
   </div>
-
-  {{ empty }}
-  {{ pager }}
-
-  {{ attachment_after }}
-  {{ more }}
 
   {% if footer %}
     <footer>

@@ -5,6 +5,11 @@
 }
 
 .views--combined-map {
+  .map-container {
+    position: relative;
+    width: 100%;
+  }
+
   #leaflet-map-view-combined-map-block {
     width: 100%;
   }
@@ -21,8 +26,10 @@
   }
 
   &.comparison-enabled {
-    @include breakpoint($breakpoint-m) {
-      display: flex;
+    .map-container {
+      @include breakpoint($breakpoint-m) {
+        display: flex;
+      }
     }
 
     #leaflet-map-view-combined-map-block {

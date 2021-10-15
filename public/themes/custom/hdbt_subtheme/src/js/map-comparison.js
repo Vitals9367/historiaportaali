@@ -35,6 +35,8 @@
 
       $('#comparison-map-container').fadeIn(150);
 
+      mainMap.invalidateSize();
+
       // Init comparison map
       comparisonMap = L.map('comparison-map-container', {
         center: mainMap.getCenter(),
@@ -68,6 +70,7 @@
 
       comparisonMap.remove();
       self.removeMapEventHandlers();
+      mainMap.invalidateSize();
     },
 
     bindMapEventHandlers: function() {
