@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 (($, Drupal, drupalSettings) => {
   let mainMap;
-  let comparisonMapContainer;
+  let comparisonMap;
 
   Drupal.behaviors.mapComparison = {
     attach: function(context, settings) {
@@ -43,7 +43,7 @@
       const comparisonMapInitialized = self.initMap(comparisonMapId);
 
       if (comparisonMapInitialized) {
-        self.bindMapEventHandlers();
+        self.syncMaps();
       }
     },
 
@@ -64,7 +64,7 @@
         $container.data('leaflet', new Drupal.Leaflet(L.DomUtil.get(mapId), mapId, mapDefinition));
 
         // Save map to a global variable
-        comparisonMapContainer = $container.data('leaflet');
+        comparisonMap = $container.data('leaflet').lMap;
 
         // Add Leaflet Map Features from the main map.
         if (mainMapLeaflet.features.length > 0) {
@@ -74,8 +74,6 @@
           $container.data('leaflet').add_features(mapId, mainMapLeaflet.features, true);
         }
       }
-
-      comparisonMapContainer.lMap.setView(mainMap.getCenter(), mainMap.getZoom());
 
       return true;
     },
@@ -87,18 +85,28 @@
       $viewContainer.removeClass('comparison-enabled');
       $('#comparison-map-container').fadeOut(150);
 
-      self.removeMapEventHandlers();
+      self.unSyncMaps();
       mainMap.invalidateSize();
     },
 
-    bindMapEventHandlers: function() {
-      mainMap.on('move', function(ev) {
-        comparisonMapContainer.lMap.setView(mainMap.getCenter(), mainMap.getZoom());
-      });
+    syncMaps: function() {
+      if (!mainMap.isSynced(comparisonMap)) {
+        mainMap.sync(comparisonMap);
+      }
+      
+      if (!comparisonMap.isSynced(mainMap)) {
+        comparisonMap.sync(mainMap);
+      }
     },
 
-    removeMapEventHandlers: function() {
-      mainMap.off('move');
+    unSyncMaps: function() {
+      if (mainMap.isSynced(comparisonMap)) {
+        mainMap.unsync(comparisonMap);
+      }
+      
+      if (comparisonMap.isSynced(mainMap)) {
+        comparisonMap.unsync(mainMap);
+      }
     }
   };
   // eslint-disable-next-line no-undef
