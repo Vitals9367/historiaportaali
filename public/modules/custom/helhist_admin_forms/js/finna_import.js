@@ -5,12 +5,30 @@
 
       // Create input button
       $('#edit-field-finna-id-wrapper').after('<input id="finna" class="button" value="Finna.fi import"></input>');
-      $('#finna').button().click(function(){
+      $('#finna').button().click(function() {
+
+        $langcode = $('html').attr('lang');
 
         $finna_id = $('#edit-field-finna-id-0-value').val();
+        $finna_lang = {
+           fi: 'fi',
+           sv: 'sv',
+           en: 'en-gb' 
+        };
 
         // Main loop begins
-        $.getJSON('https://api.finna.fi/api/v1/record?id=' + $finna_id + '&prettyPrint=false&lng=fi', function(data) {
+        $.getJSON('https://api.finna.fi/api/v1/record?id=' + $finna_id + '&prettyPrint=false&lng=' + $finna_lang[$langcode], function(data) {
+
+          /* TODO: Combine loops and do something like this
+            $formats_field = [
+              {
+                field_uuid: '63DcPSsYfssc_2rLO90Cmlk-c4DwPmfe_Aj4iFdxcpM',
+                field_element: $('#edit-field-formats'),
+                field_json_wrapper: data['records'][0]['formats'],
+                field_json_object: ?
+              }
+            ];
+          */
 
           // Field: Formats
           var formats_data = data['records'][0]['formats'];
@@ -21,7 +39,7 @@
               text: element['translated']
             };
             // This URL should probably be resolved with regxp from #edit-field-formats...
-            $.getJSON('/select2_autocomplete/taxonomy_term/default:taxonomy_term/63DcPSsYfssc_2rLO90Cmlk-c4DwPmfe_Aj4iFdxcpM?term=' + format_data.text + '&_type=query&q=' + format_data.text, function(data) {
+            $.getJSON('/' + $langcode + '/select2_autocomplete/taxonomy_term/default:taxonomy_term/63DcPSsYfssc_2rLO90Cmlk-c4DwPmfe_Aj4iFdxcpM?term=' + format_data.text + '&_type=query&q=' + format_data.text, function(data) {
               if (data['results'].length > 0 && data['results'][0]['text'] === format_data.text) {
                 // Match found, use existing term ID for option
                 format_data.id = data['results'][0]['id'];
@@ -41,7 +59,7 @@
               text: element['name']
             };
             // This URL should probably be resolved with regxp from #edit-field-authors...
-            $.getJSON('/select2_autocomplete/taxonomy_term/default:taxonomy_term/nL39PHzAu3uXzCPe2BBSlw4VVVuZsLVS6RtbkaMLdS8?term=' + author_data.text + '&_type=query&q=' + author_data.text, function(data) {
+            $.getJSON('/' + $langcode + '/select2_autocomplete/taxonomy_term/default:taxonomy_term/nL39PHzAu3uXzCPe2BBSlw4VVVuZsLVS6RtbkaMLdS8?term=' + author_data.text + '&_type=query&q=' + author_data.text, function(data) {
               if (data['results'].length > 0 && data['results'][0]['text'] === author_data.text) {
                 // Match found, use existing term ID for option
                 author_data.id = data['results'][0]['id'];
@@ -61,8 +79,8 @@
               text: element['copyright']
             };
             // This URL should probably be resolved with regxp from #edit-field-copyrights...
-            $.getJSON('/select2_autocomplete/taxonomy_term/default:taxonomy_term/HSgHktR7ejpMhZd1Y-atx9Axw7SuNtwq0FT_sAh8smU?term=' + copyright_data.text + '&_type=query&q=' + copyright_data.text, function(data) {
-              if (data['results'][0]['text'] === copyright_data.text) {
+            $.getJSON('/' + $langcode + '/select2_autocomplete/taxonomy_term/default:taxonomy_term/HSgHktR7ejpMhZd1Y-atx9Axw7SuNtwq0FT_sAh8smU?term=' + copyright_data.text + '&_type=query&q=' + copyright_data.text, function(data) {
+              if (data['results'].length > 0 && data['results'][0]['text'] === copyright_data.text) {
                 // Match found, use existing term ID
                 copyright_data.id = data['results'][0]['id'];
               }
@@ -81,8 +99,8 @@
               text: element['translated']
             };
             // This URL should probably be resolved with regxp from #edit-field-buildings...
-            $.getJSON('/select2_autocomplete/taxonomy_term/default:taxonomy_term/8S0fSi9mz_jgq_PU9xvyDN2ir3lHAnsjmz7_9rnCThY?term=' + building_data.text + '&_type=query&q=' + building_data.text, function(data) {
-              if (data['results'][0]['text'] === building_data.text) {
+            $.getJSON('/' + $langcode + '/select2_autocomplete/taxonomy_term/default:taxonomy_term/8S0fSi9mz_jgq_PU9xvyDN2ir3lHAnsjmz7_9rnCThY?term=' + building_data.text + '&_type=query&q=' + building_data.text, function(data) {
+              if (data['results'].length > 0 && data['results'][0]['text'] === building_data.text) {
                 // Match found, use existing term ID
                 building_data.id = data['results'][0]['id'];
               }
