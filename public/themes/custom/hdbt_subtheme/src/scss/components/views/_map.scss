@@ -8,6 +8,7 @@
   .map-container {
     position: relative;
     width: 100%;
+    z-index: 100;
   }
 
   #leaflet-map-view-combined-map-block {
