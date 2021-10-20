@@ -17,23 +17,46 @@
 
 .map-controls__top-container {
   position: absolute;
-  top: 30px;
+  top: 20px;
   left: 20px;
   max-width: 90%;
   z-index: 401;
 
   &.comparison-map {
     top: auto;
-    bottom: 30px;
+    bottom: 20px;
 
     @include breakpoint($breakpoint-m) {
-      top: 30px;
+      top: 20px;
       bottom: auto;
     }
+
+    @include breakpoint($breakpoint-l) {
+      top: 30px;
+    }
   }
-  
-  @include breakpoint($breakpoint-m) {
+
+  @include breakpoint($breakpoint-l) {
+    left: 50px;
+    top: 30px;
+  }
+
+  @include breakpoint($breakpoint-xl) {
     left: 80px;
+  }
+
+  .comparison-enabled & {
+    @include breakpoint($breakpoint-m) {
+      left: 20px;
+
+      &.main-map {
+        max-width: 45%;
+      }
+    }
+  
+    @include breakpoint($breakpoint-l) {
+      left: 30px;
+    }
   }
 
   .map-controls__control-button {
@@ -81,9 +104,13 @@
 
 .map-controls__sidebar-container {
   position: absolute;
-  right: 30px;
+  right: 20px;
   top: 250px;
   z-index: 501;
+
+  @include breakpoint($breakpoint-m) {
+    right: 30px;
+  }
 
   .map-controls__control {
     margin-bottom: $spacing-half;

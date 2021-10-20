@@ -58,6 +58,7 @@
       // Copy map definiton from the main map
       let mapDefinition = mainMapLeaflet.map;
       mapDefinition.settings.mapName = 'comparison-map';
+      mapDefinition.settings.zoomControl = false;
 
       // Init comparison map
       if ($container.data('leaflet') === undefined) {
