@@ -84,6 +84,8 @@
 <article{{ attributes.addClass(classes) }}>
   {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_header'} %}
     {% block container_content %}
+      {% include "@hdbt_subtheme/misc/back-to-search-results.html.twig" %}
+      
       {% if content.field_lead|render %}
         <div class="{{ node.bundle|clean_class }}__lead">
           {{ content.field_lead }}
