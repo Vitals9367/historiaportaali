@@ -1,0 +1,16 @@
+uuid: aa6ca9db-1cfa-4747-879f-934680fc02b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.turning_points
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.turning_points
+target_entity_type_id: taxonomy_term
+target_bundle: turning_points
+default_langcode: fi
+language_alterable: true
