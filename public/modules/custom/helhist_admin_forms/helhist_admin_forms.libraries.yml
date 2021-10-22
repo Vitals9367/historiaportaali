@@ -1,0 +1,7 @@
+finna_import:
+  version: 1.x
+  js:
+    js/finna_import.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
