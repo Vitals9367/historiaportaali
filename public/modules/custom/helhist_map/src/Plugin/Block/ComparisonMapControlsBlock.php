@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\helhist_map\Plugin\Block\MapControlsBlock.
+ * Contains \Drupal\helhist_map\Plugin\Block\ComparisonMapControlsBlock.
  */
 
 namespace Drupal\helhist_map\Plugin\Block;
@@ -16,12 +16,12 @@ use Drupal\helhist_map\MapService;
  * Provides a Map Controls block
  *
  * @Block(
- *   id = "helhist_map_map_controls_block",
- *   admin_label = @Translation("HelHist Map Controls"),
+ *   id = "helhist_map_comparison_map_controls_block",
+ *   admin_label = @Translation("HelHist Comparison Map Controls"),
  *   category = @Translation("HelHist")
  * )
  */
-class MapControlsBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class ComparisonMapControlsBlock extends BlockBase implements ContainerFactoryPluginInterface {
   /**
    * @var \Drupal\helhist_map\MapService $map_service
    */
@@ -60,7 +60,7 @@ class MapControlsBlock extends BlockBase implements ContainerFactoryPluginInterf
    */
   public function build() {
     $build = [
-      '#theme' => 'map_controls',
+      '#theme' => 'comparison_map_controls',
       '#map_layers' => $this->mapService->getMapLayers()
     ];
 

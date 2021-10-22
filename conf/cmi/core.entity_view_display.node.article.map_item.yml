@@ -24,6 +24,7 @@ dependencies:
     - field.field.node.article.field_neighbourhoods
     - field.field.node.article.field_phenomena
     - field.field.node.article.field_start_year
+    - field.field.node.article.field_turning_points
     - node.type.article
   module:
     - user
@@ -90,5 +91,6 @@ hidden:
   field_liftup_image: true
   field_metatags: true
   field_neighbourhoods: true
+  field_turning_points: true
   langcode: true
   search_api_excerpt: true

@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.article.field_neighbourhoods
     - field.field.node.article.field_phenomena
     - field.field.node.article.field_start_year
+    - field.field.node.article.field_turning_points
     - node.type.article
   module:
     - field_group
@@ -39,6 +40,7 @@ third_party_settings:
       children:
         - field_phenomena
         - field_neighbourhoods
+        - field_turning_points
         - group_year
         - field_keywords
       parent_name: ''
@@ -90,7 +92,7 @@ third_party_settings:
         - field_start_year
         - field_end_year
       parent_name: group_historiaportaali_meta
-      weight: 32
+      weight: 33
       format_type: fieldset
       region: content
       format_settings:
@@ -288,7 +290,7 @@ content:
     region: content
   field_keywords:
     type: select2_entity_reference
-    weight: 33
+    weight: 34
     region: content
     settings:
       width: 100%
@@ -354,6 +356,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
+  field_turning_points:
+    weight: 32
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
   langcode:
     type: language_select

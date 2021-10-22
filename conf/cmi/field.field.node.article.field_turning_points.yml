@@ -1,16 +1,16 @@
-uuid: 0b0bd49f-4bd4-4adb-ba38-169d016cb0e9
+uuid: ca490f6a-01a5-4128-aeef-3171c0eab06d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_buildings
+    - field.storage.node.field_turning_points
     - node.type.article
-    - taxonomy.vocabulary.buildings
-id: node.article.field_buildings
-field_name: field_buildings
+    - taxonomy.vocabulary.turning_points
+id: node.article.field_turning_points
+field_name: field_turning_points
 entity_type: node
 bundle: article
-label: Buildings
+label: 'Turning points'
 description: ''
 required: false
 translatable: false
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      buildings: buildings
+      turning_points: turning_points
     sort:
       field: name
       direction: asc

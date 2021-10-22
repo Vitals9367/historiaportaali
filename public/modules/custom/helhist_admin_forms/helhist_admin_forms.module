@@ -97,6 +97,9 @@ function helhist_admin_forms_form_alter(&$form, &$form_state, $form_id) {
         // Default to checked if saved year is negative.
         '#default_value' => ($form['field_end_year']['widget'][0]['value']['#default_value'] < 0) ? TRUE : FALSE
       ];
+
+      $form['#attached']['library'][] = 'helhist_admin_forms/finna_import';
+
       break;
   }
 
