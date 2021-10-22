@@ -8,6 +8,7 @@ dependencies:
     - node.type.listing_page
     - taxonomy.vocabulary.neighbourhoods
     - taxonomy.vocabulary.phenomena
+    - taxonomy.vocabulary.turning_points
   module:
     - node
     - taxonomy
@@ -283,6 +284,7 @@ display:
             vids:
               neighbourhoods: neighbourhoods
               phenomena: phenomena
+              turning_points: turning_points
             anyall: +
           default_argument_skip_url: false
           summary_options:
