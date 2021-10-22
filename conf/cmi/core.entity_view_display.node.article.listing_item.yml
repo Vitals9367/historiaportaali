@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.article.field_metatags
     - field.field.node.article.field_neighbourhoods
     - field.field.node.article.field_phenomena
+    - field.field.node.article.field_reading_time
     - field.field.node.article.field_start_year
     - field.field.node.article.field_turning_points
     - node.type.article
@@ -68,6 +69,7 @@ hidden:
   field_metatags: true
   field_neighbourhoods: true
   field_phenomena: true
+  field_reading_time: true
   field_start_year: true
   field_turning_points: true
   langcode: true
