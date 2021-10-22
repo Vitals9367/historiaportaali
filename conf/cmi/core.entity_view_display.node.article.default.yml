@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.article.field_neighbourhoods
     - field.field.node.article.field_phenomena
     - field.field.node.article.field_start_year
+    - field.field.node.article.field_turning_points
     - node.type.article
   module:
     - entity_reference_revisions
@@ -125,5 +126,6 @@ hidden:
   field_hero: true
   field_languages: true
   field_liftup_image: true
+  field_turning_points: true
   langcode: true
   search_api_excerpt: true

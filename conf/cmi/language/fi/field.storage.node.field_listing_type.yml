@@ -6,3 +6,5 @@ settings:
       label: 'Artikkelit ilmiön mukaan'
     -
       label: 'Artikkelit alueen mukaan'
+    -
+      label: 'Artikkelit käännekohdan mukaan'

@@ -20,6 +20,9 @@ settings:
     -
       value: neighbourhood
       label: 'Articles by neighbourhood'
+    -
+      value: turning_point
+      label: 'Articles by turning point'
   allowed_values_function: ''
 module: options
 locked: false
