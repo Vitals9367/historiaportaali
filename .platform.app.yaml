@@ -52,6 +52,8 @@ hooks:
     curl -sS https://platform.sh/cli/installer | php
     composer clear-cache
     composer --no-ansi --no-interaction install --no-dev --no-progress --prefer-dist --optimize-autoloader
+    cd public/themes/custom/hdbt_subtheme
+    npm install
   # The deploy hook runs after your application has been deployed and started.
   deploy: |
     set -e
