@@ -226,7 +226,7 @@ display:
             operator: search_api_fulltext_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: keywords
+            identifier: s
             required: false
             remember: false
             multiple: false
@@ -391,7 +391,18 @@ display:
           plugin_id: search_api_language
       sorts: {  }
       title: Search
-      header: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: "<h2>Search Results</h2>\r\n[view:search_result_info]"
+          plugin_id: text_custom
       footer: {  }
       empty: {  }
       relationships: {  }

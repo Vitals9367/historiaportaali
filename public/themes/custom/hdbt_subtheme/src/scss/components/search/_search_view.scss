@@ -1,7 +1,12 @@
 .views--search {
   header {
     h2 {
-      margin: 0 0 $spacing-half;
+      margin: 0 0 $spacing;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
     }
   }
 
