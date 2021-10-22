@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.listing_page.field_listing_type
     - field.field.node.listing_page.field_neighbourhoods
     - field.field.node.listing_page.field_phenomena
+    - field.field.node.listing_page.field_turning_points
     - node.type.listing_page
   module:
     - user
@@ -40,5 +41,6 @@ hidden:
   field_listing_type: true
   field_neighbourhoods: true
   field_phenomena: true
+  field_turning_points: true
   langcode: true
   search_api_excerpt: true
