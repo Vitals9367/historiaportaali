@@ -60,6 +60,7 @@ module:
   helhist_article: 0
   helhist_map: 0
   helhist_search: 0
+  helhist_tokens: 0
   image: 0
   image_style_quality: 0
   jquery_ui: 0

@@ -20,10 +20,17 @@ search-form:
     - core/jquery
     - core/drupal
 
+leaflet-sync:
+  version: 0.2.4
+  js:
+    node_modules/leaflet.sync/L.Map.Sync.js: {}
+
 map-view:
   version: 1.x
   js:
     dist/js/map-controls.min.js: {}
+    dist/js/map-comparison.min.js: {}
   dependencies:
     - core/jquery
     - core/drupal
+    - hdbt_subtheme/leaflet-sync

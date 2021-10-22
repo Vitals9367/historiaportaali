@@ -17,13 +17,46 @@
 
 .map-controls__top-container {
   position: absolute;
-  top: 30px;
-  z-index: 401;
+  top: 20px;
   left: 20px;
   max-width: 90%;
-  
-  @include breakpoint($breakpoint-m) {
+  z-index: 401;
+
+  &.comparison-map {
+    top: auto;
+    bottom: 20px;
+
+    @include breakpoint($breakpoint-m) {
+      top: 20px;
+      bottom: auto;
+    }
+
+    @include breakpoint($breakpoint-l) {
+      top: 30px;
+    }
+  }
+
+  @include breakpoint($breakpoint-l) {
+    left: 50px;
+    top: 30px;
+  }
+
+  @include breakpoint($breakpoint-xl) {
     left: 80px;
+  }
+
+  .comparison-enabled & {
+    @include breakpoint($breakpoint-m) {
+      left: 20px;
+
+      &.main-map {
+        max-width: 45%;
+      }
+    }
+  
+    @include breakpoint($breakpoint-l) {
+      left: 30px;
+    }
   }
 
   .map-controls__control-button {
@@ -71,12 +104,17 @@
 
 .map-controls__sidebar-container {
   position: absolute;
-  right: 30px;
-  top: 200px;
-  z-index: 401;
+  right: 20px;
+  top: 250px;
+  z-index: 501;
+
+  @include breakpoint($breakpoint-m) {
+    right: 30px;
+  }
 
   .map-controls__control {
     margin-bottom: $spacing-half;
+    width: 50px;
   }
   
   .map-controls__control-button {
@@ -86,6 +124,20 @@
     width: 50px;
     height: 50px;
     padding: 0;
+  }
+
+  #map-comparison-btn {
+    width: 180px;
+    transform-origin: bottom left;
+    transform: translate(0, -180px) rotate(90deg);
+
+    .icon {
+      margin-right: 16px;
+    }
+
+    .comparison-enabled & {
+      background-color: $color-metro-dark;
+    }
   }
 }
 
