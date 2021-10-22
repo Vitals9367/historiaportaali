@@ -64,6 +64,14 @@ function helhist_admin_forms_form_node_form_alter(&$form, &$form_state, $form_id
         ':input[name="field_listing_type"]' => ['value' => 'neighbourhood'],
       ],
     ];
+    $form['field_turning_points']['#states'] = [
+      'visible' => [
+        ':input[name="field_listing_type"]' => ['value' => 'turning_point'],
+      ],
+      'required' => [
+        ':input[name="field_listing_type"]' => ['value' => 'turning_point'],
+      ],
+    ];
   }
 }
 

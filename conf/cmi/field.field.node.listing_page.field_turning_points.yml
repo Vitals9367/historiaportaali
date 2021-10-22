@@ -1,0 +1,29 @@
+uuid: 03f17cf7-3b55-45a5-b87f-3a1a0e120c43
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_turning_points
+    - node.type.listing_page
+    - taxonomy.vocabulary.turning_points
+id: node.listing_page.field_turning_points
+field_name: field_turning_points
+entity_type: node
+bundle: listing_page
+label: 'Turning points'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      turning_points: turning_points
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
