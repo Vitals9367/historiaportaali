@@ -11,6 +11,8 @@ type: "php:7.4"
 variables:
   php:
     memory_limit: "256M"
+  env:
+    NVM_VERSION: v0.38.0
 
 # Additional extensions
 runtime:
@@ -53,6 +55,12 @@ hooks:
     composer clear-cache
     composer --no-ansi --no-interaction install --no-dev --no-progress --prefer-dist --optimize-autoloader
     cd public/themes/custom/hdbt_subtheme
+    unset NPM_CONFIG_PREFIX
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | dash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install
+    nvm use
     npm install
   # The deploy hook runs after your application has been deployed and started.
   deploy: |
