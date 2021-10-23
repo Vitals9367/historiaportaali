@@ -101,15 +101,6 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-  field_reading_time:
-    weight: 10
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
-    region: content
   field_start_year:
     type: number_integer
     weight: 7
@@ -136,6 +127,7 @@ hidden:
   field_hero: true
   field_languages: true
   field_liftup_image: true
+  field_reading_time: true
   field_turning_points: true
   langcode: true
   search_api_excerpt: true

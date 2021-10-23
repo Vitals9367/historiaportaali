@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - context
+    - ctools
     - system
   theme:
     - hdbt_subtheme
@@ -44,3 +45,10 @@ visibility:
     id: request_path
     pages: "/search\r\n/map\r\n/kartta\r\n/haku"
     negate: true
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
