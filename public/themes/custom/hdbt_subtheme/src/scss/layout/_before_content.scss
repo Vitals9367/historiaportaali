@@ -1,0 +1,9 @@
+.before-content {
+  .page-type--article & {
+    background-color: $bg-yellow;
+  }
+
+  img {
+    vertical-align: middle;
+  }
+}

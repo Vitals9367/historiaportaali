@@ -85,7 +85,9 @@
 <article{{ attributes.addClass(classes) }}>
   {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_header'} %}
     {% block container_content %}
-      {{ content }}
+      {{ content|without('field_liftup_image') }}    
     {% endblock container_content %}
   {% endembed %}
+
+  {{ content.field_liftup_image }}
 </article>
