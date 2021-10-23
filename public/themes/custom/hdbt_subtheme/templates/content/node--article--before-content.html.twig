@@ -86,8 +86,11 @@
   {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_header'} %}
     {% block container_content %}
       {{ content|without('field_liftup_image') }}    
+      {{ drupal_block('system_breadcrumb_block') }}
     {% endblock container_content %}
   {% endembed %}
+
+  {% include '@hdbt/misc/koro.twig' with {koro: 'vibration', flip: true, color: '#FFE977'} %}
 
   {{ content.field_liftup_image }}
 </article>
