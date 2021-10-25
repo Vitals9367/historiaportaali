@@ -78,84 +78,26 @@
   node.isSticky() ? 'node--sticky',
   not node.isPublished() ? 'node--unpublished',
   view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  first_paragraph_grey ? 'has-first-gray-bg-block'
 ]
 %}
 
 <article{{ attributes.addClass(classes) }}>
   {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_header'} %}
     {% block container_content %}
-      {% if content.field_lead|render %}
-        <div class="{{ node.bundle|clean_class }}__lead">
-          {{ content.field_lead }}
-        </div>
-      {% endif %}
+      {{ content|without('field_liftup_image', 'field_reading_time') }}
 
-      {{ drupal_block('hdbt_content_social_sharing_block') }}
+      {% embed "@hdbt_subtheme/misc/reading-time.html.twig" %}
+        {% block reading_time_value %}
+          {{ content.field_reading_time }}
+        {% endblock %}
+      {% endembed %}
 
-      {% if content.field_author|render %}
-        <div class="{{ node.bundle|clean_class }}__author">
-          {{ content.field_author }}
-        </div>
-      {% endif %}
-
-      {% set created_date = node.createdtime|format_date('medium') %}
-      {% if created_date|render %}
-        <div class="{{ node.bundle|clean_class }}__date">
-          {{ created_date }}
-        </div>
-      {% endif %}
+      {{ drupal_block('system_breadcrumb_block') }}
     {% endblock container_content %}
   {% endembed %}
 
-  {% if content.field_content|render %}
-    <div class="{{ node.bundle|clean_class }}__content">
-      {{ content.field_content }}
-    </div>
-  {% endif %}
+  {% include '@hdbt/misc/koro.twig' with {koro: 'vibration', flip: true, color: '#FFE977'} %}
 
-  {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
-    {% block container_content %}
-      {% set left_column_classes = ['columns__column'] %}
-      {% set right_column_classes = ['columns__column'] %}
-
-      {% set left_column_classes = left_column_classes|merge(['column--50']) %}
-      {% set right_column_classes = right_column_classes|merge(['column--50']) %}
-
-      <div class="columns__content">
-        <div class="{{ left_column_classes|join(' ') }}">
-          {% if content.field_keywords|render %}
-            <div class="{{ node.bundle|clean_class }}__keywords">
-              {% embed "@hdbt/misc/container.twig" with {container_element: 'keywords'} %}
-                {% block container_content %}
-                  {{ content.field_keywords }}
-                {% endblock container_content %}
-              {% endembed %}
-            </div>
-          {% endif %}
-        </div>
-
-        <div class="{{ right_column_classes|join(' ') }}">
-          {% if content.field_phenomena|render %}
-            <div class="{{ node.bundle|clean_class }}__phenomena">
-              {% embed "@hdbt/misc/container.twig" with {container_element: 'phenomena'} %}
-                {% block container_content %}
-                  {{ content.field_phenomena }}
-                {% endblock container_content %}
-              {% endembed %}
-            </div>
-          {% endif %}
-
-          {% if content.field_neighbourhoods|render %}
-            <div class="{{ node.bundle|clean_class }}__neighbourhoods">
-              {% embed "@hdbt/misc/container.twig" with {container_element: 'neighbourhoods'} %}
-                {% block container_content %}
-                  {{ content.field_neighbourhoods }}
-                {% endblock container_content %}
-              {% endembed %}
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    {% endblock %}
-  {% endembed %}
+  {{ content.field_liftup_image }}
 </article>

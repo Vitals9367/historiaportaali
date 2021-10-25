@@ -1,0 +1,10 @@
+uuid: 89a1a442-2524-47f2-a56f-4b31f85676eb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.before_content
+label: 'Before content'
+targetEntityType: node
+cache: true

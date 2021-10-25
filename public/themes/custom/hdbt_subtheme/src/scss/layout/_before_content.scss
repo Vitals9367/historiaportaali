@@ -1,0 +1,17 @@
+.before-content {
+  .page-type--article & {
+    background-color: $bg-yellow;
+
+    .breadcrumb {
+      margin: $spacing-double 0;
+    }
+
+    .main-image {
+      margin-top: -35px;
+  
+      img {
+        vertical-align: middle;
+      }
+    }
+  }
+}

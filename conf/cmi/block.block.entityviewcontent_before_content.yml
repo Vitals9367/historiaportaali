@@ -1,28 +1,26 @@
-uuid: 06d01d36-d168-441d-a32d-33cf5cc713c8
+uuid: 0cd600da-d06a-4cd4-a695-e84eb8ad2d23
 langcode: en
 status: true
 dependencies:
-  config:
-    - views.view.combined_map
   module:
     - context
     - ctools
-    - views
   theme:
     - hdbt_subtheme
-id: views_block__combined_map_block
+id: entityviewcontent_before_content
 theme: hdbt_subtheme
 region: before_content
-weight: -11
+weight: -13
 provider: null
-plugin: 'views_block:combined_map-block'
+plugin: 'entity_view:node'
 settings:
-  id: 'views_block:combined_map-block'
-  label: ''
-  provider: views
+  id: 'entity_view:node'
+  label: 'Entity view (Content) - Before content'
+  provider: ctools
   label_display: '0'
-  views_label: ''
-  items_per_page: none
+  view_mode: before_content
+  context_mapping:
+    entity: '@node.node_route_context:node'
 visibility:
   context_all:
     id: context_all
@@ -46,7 +44,7 @@ visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
     bundles:
-      map_page: map_page
+      article: article
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'

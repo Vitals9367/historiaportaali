@@ -1,0 +1,20 @@
+.tools__container {
+  margin-top: 0 !important;
+
+    & > div {
+    @include breakpoint($breakpoint-m) {
+      margin-top: $spacing;
+    }
+  }
+}
+
+.breadcrumb__container + .tools__container {
+  margin-top: 0 !important;
+
+  & > div {
+    @include breakpoint($breakpoint-m) {
+      margin-bottom: ($spacing + $spacing-quarter);
+      margin-top: (-$spacing-half);
+    }
+  }
+}

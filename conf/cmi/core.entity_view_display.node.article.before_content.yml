@@ -1,8 +1,9 @@
-uuid: 101d692e-be0e-43f6-8501-9832d82fdffd
+uuid: 2accefae-fa34-4733-b30b-e8a76df2b662
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.before_content
     - field.field.node.article.field_author
     - field.field.node.article.field_authors
     - field.field.node.article.field_buildings
@@ -27,107 +28,57 @@ dependencies:
     - field.field.node.article.field_turning_points
     - node.type.article
   module:
-    - entity_reference_revisions
-    - metatag
     - user
 _core:
   default_config_hash: iP63ruNj8P30AR0u-V9j_M03qHUEpzx-qneyWJtGvNw
-id: node.article.default
+id: node.article.before_content
 targetEntityType: node
 bundle: article
-mode: default
+mode: before_content
 content:
-  field_author:
+  field_liftup_image:
+    type: entity_reference_entity_view
     weight: 2
+    region: content
+    label: hidden
+    settings:
+      view_mode: main_image
+      link: false
+    third_party_settings: {  }
+  field_reading_time:
+    weight: 1
     label: inline
     settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_content:
-    weight: 3
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
-  field_end_year:
-    type: number_integer
-    weight: 8
-    region: content
-    label: hidden
-    settings:
       thousand_separator: ''
       prefix_suffix: false
     third_party_settings: {  }
-  field_keywords:
-    weight: 4
-    label: above
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_lead:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
-  field_metatags:
-    weight: 9
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: metatag_empty_formatter
-    region: content
-  field_neighbourhoods:
-    type: entity_reference_label
-    weight: 6
-    region: content
-    label: above
-    settings:
-      link: false
-    third_party_settings: {  }
-  field_phenomena:
-    type: entity_reference_label
-    weight: 5
-    region: content
-    label: above
-    settings:
-      link: false
-    third_party_settings: {  }
-  field_start_year:
     type: number_integer
-    weight: 7
     region: content
-    label: hidden
-    settings:
-      thousand_separator: ''
-      prefix_suffix: false
-    third_party_settings: {  }
   links:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_author: true
   field_authors: true
   field_buildings: true
   field_buildings_info: true
+  field_content: true
   field_copyrights: true
+  field_end_year: true
   field_finna_id: true
   field_formats: true
   field_geolocation: true
   field_has_hero: true
   field_hero: true
+  field_keywords: true
   field_languages: true
-  field_liftup_image: true
-  field_reading_time: true
+  field_lead: true
+  field_metatags: true
+  field_neighbourhoods: true
+  field_phenomena: true
+  field_start_year: true
   field_turning_points: true
   langcode: true
   search_api_excerpt: true
