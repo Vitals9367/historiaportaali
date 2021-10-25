@@ -1,0 +1,5 @@
+<div class="container {{ container_element|replace({'_':'-'}) }}__container" style="{{ container_style }}">
+  {% block container_content %}
+    {{ content }}
+  {% endblock %}
+</div>
