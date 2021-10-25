@@ -77,83 +77,30 @@
   node.isPromoted() ? 'node--promoted',
   node.isSticky() ? 'node--sticky',
   not node.isPublished() ? 'node--unpublished',
-  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class
 ]
 %}
 
 <article{{ attributes.addClass(classes) }}>
-  {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_header'} %}
+  {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_content_top'} %}
     {% block container_content %}
-      {% if content.field_lead|render %}
-        <div class="{{ node.bundle|clean_class }}__lead">
-          {{ content.field_lead }}
+      {{ content.field_formats }}
+
+      {% if content.field_start_year|render is not empty %}
+        <div class="era">
+          {% include '@hdbt/misc/icon.twig' with {icon: 'calendar', label: 'Calendar'|t } %}
+          <span class="era__start">{{ content.field_start_year }}</span>
+          {% if content.field_end_year|render is not empty %}
+            <span class="era__divider"> - </span>
+            <span class="era__end">{{ content.field_end_year }}</span>
+          {% endif %}
         </div>
       {% endif %}
 
-      {% if content.field_author|render %}
-        <div class="{{ node.bundle|clean_class }}__author">
-          {{ content.field_author }}
-        </div>
-      {% endif %}
-
-      {% set created_date = node.createdtime|format_date('medium') %}
-      {% if created_date|render %}
-        <div class="{{ node.bundle|clean_class }}__date">
-          {{ created_date }}
-        </div>
+      {% if content.field_geolocation|render is not empty %}
+        {{ content.field_geolocation }}
       {% endif %}
     {% endblock container_content %}
   {% endembed %}
-
-  {% if content.field_content|render %}
-    <div class="{{ node.bundle|clean_class }}__content">
-      {{ content.field_content }}
-    </div>
-  {% endif %}
-
-  {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
-    {% block container_content %}
-      {% set left_column_classes = ['columns__column'] %}
-      {% set right_column_classes = ['columns__column'] %}
-
-      {% set left_column_classes = left_column_classes|merge(['column--50']) %}
-      {% set right_column_classes = right_column_classes|merge(['column--50']) %}
-
-      <div class="columns__content">
-        <div class="{{ left_column_classes|join(' ') }}">
-          {% if content.field_keywords|render %}
-            <div class="{{ node.bundle|clean_class }}__keywords">
-              {% embed "@hdbt/misc/container.twig" with {container_element: 'keywords'} %}
-                {% block container_content %}
-                  {{ content.field_keywords }}
-                {% endblock container_content %}
-              {% endembed %}
-            </div>
-          {% endif %}
-        </div>
-
-        <div class="{{ right_column_classes|join(' ') }}">
-          {% if content.field_phenomena|render %}
-            <div class="{{ node.bundle|clean_class }}__phenomena">
-              {% embed "@hdbt/misc/container.twig" with {container_element: 'phenomena'} %}
-                {% block container_content %}
-                  {{ content.field_phenomena }}
-                {% endblock container_content %}
-              {% endembed %}
-            </div>
-          {% endif %}
-
-          {% if content.field_neighbourhoods|render %}
-            <div class="{{ node.bundle|clean_class }}__neighbourhoods">
-              {% embed "@hdbt/misc/container.twig" with {container_element: 'neighbourhoods'} %}
-                {% block container_content %}
-                  {{ content.field_neighbourhoods }}
-                {% endblock container_content %}
-              {% endembed %}
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    {% endblock %}
-  {% endembed %}
+  <div class="divider"></div>
 </article>

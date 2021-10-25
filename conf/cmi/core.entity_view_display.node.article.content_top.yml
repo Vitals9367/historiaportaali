@@ -1,0 +1,99 @@
+uuid: cc729421-ac47-4568-81e6-90cc2b672e7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.content_top
+    - field.field.node.article.field_author
+    - field.field.node.article.field_authors
+    - field.field.node.article.field_buildings
+    - field.field.node.article.field_buildings_info
+    - field.field.node.article.field_content
+    - field.field.node.article.field_copyrights
+    - field.field.node.article.field_end_year
+    - field.field.node.article.field_finna_id
+    - field.field.node.article.field_formats
+    - field.field.node.article.field_geolocation
+    - field.field.node.article.field_has_hero
+    - field.field.node.article.field_hero
+    - field.field.node.article.field_keywords
+    - field.field.node.article.field_languages
+    - field.field.node.article.field_lead
+    - field.field.node.article.field_liftup_image
+    - field.field.node.article.field_metatags
+    - field.field.node.article.field_neighbourhoods
+    - field.field.node.article.field_phenomena
+    - field.field.node.article.field_reading_time
+    - field.field.node.article.field_start_year
+    - field.field.node.article.field_turning_points
+    - node.type.article
+  module:
+    - geofield
+    - user
+_core:
+  default_config_hash: iP63ruNj8P30AR0u-V9j_M03qHUEpzx-qneyWJtGvNw
+id: node.article.content_top
+targetEntityType: node
+bundle: article
+mode: content_top
+content:
+  field_end_year:
+    type: number_integer
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+  field_formats:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_geolocation:
+    type: geofield_latlon
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      output_format: decimal
+    third_party_settings: {  }
+  field_start_year:
+    type: number_integer
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_author: true
+  field_authors: true
+  field_buildings: true
+  field_buildings_info: true
+  field_content: true
+  field_copyrights: true
+  field_finna_id: true
+  field_has_hero: true
+  field_hero: true
+  field_keywords: true
+  field_languages: true
+  field_lead: true
+  field_liftup_image: true
+  field_metatags: true
+  field_neighbourhoods: true
+  field_phenomena: true
+  field_reading_time: true
+  field_turning_points: true
+  langcode: true
+  search_api_excerpt: true
