@@ -38,6 +38,8 @@
 <article{{ attributes.addClass(classes) }}>
   {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
     {% block container_content %}
+      {% include "@hdbt_subtheme/misc/back-to-search-results.html.twig" %}
+
       <h2 class="columns__title">{{ content.name }}</h2>
 
       {% set left_column_classes = ['columns__column'] %}
