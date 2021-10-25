@@ -1,0 +1,12 @@
+.reading-time {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    margin-right: $spacing-half;
+  }
+
+  .label {
+    margin-right: $spacing-quarter;
+  }
+}

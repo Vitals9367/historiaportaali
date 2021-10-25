@@ -11,6 +11,8 @@ type: "php:7.4"
 variables:
   php:
     memory_limit: "256M"
+  env:
+    NVM_VERSION: v0.38.0
 
 # Additional extensions
 runtime:
@@ -52,6 +54,15 @@ hooks:
     curl -sS https://platform.sh/cli/installer | php
     composer clear-cache
     composer --no-ansi --no-interaction install --no-dev --no-progress --prefer-dist --optimize-autoloader
+    cd public/themes/custom/hdbt_subtheme
+    # install correct node version before running npm install
+    unset NPM_CONFIG_PREFIX
+    export NVM_DIR="$PLATFORM_APP_DIR/.nvm"
+    curl -f -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install
+    nvm use
+    npm install
   # The deploy hook runs after your application has been deployed and started.
   deploy: |
     set -e

@@ -7,9 +7,9 @@ global-styling:
 global-scripting:
   version: 1.x
   js:
-    dist/js/bundle.min.js: {}
-    dist/js/map-controls.min.js: {}
+    dist/js/common.min.js: {}
   dependencies:
+    - core/jquery
     - core/drupal
 
 search-form:
@@ -34,3 +34,8 @@ map-view:
     - core/jquery
     - core/drupal
     - hdbt_subtheme/leaflet-sync
+
+reading-time:
+  version: 1.x
+  js:
+    dist/js/reading-time.min.js: {}
