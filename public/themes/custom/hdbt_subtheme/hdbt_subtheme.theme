@@ -44,6 +44,16 @@ function hdbt_subtheme_theme_suggestions_block_alter(&$suggestions) {
 }
 
 /**
+ * Implements hook_preprocess_node().
+ */
+function hdbt_subtheme_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if ($node->bundle() == 'article') {
+    $variables['#attached']['library'][] = 'hdbt_subtheme/reading-time';
+  }
+}
+
+/**
  * Implements hook_preprocess_field().
  */
 function hdbt_subtheme_preprocess_field(&$variables, $hook) {

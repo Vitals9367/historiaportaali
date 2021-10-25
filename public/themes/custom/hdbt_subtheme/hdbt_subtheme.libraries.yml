@@ -34,3 +34,8 @@ map-view:
     - core/jquery
     - core/drupal
     - hdbt_subtheme/leaflet-sync
+
+reading-time:
+  version: 1.x
+  js:
+    dist/js/reading-time.min.js: {}
