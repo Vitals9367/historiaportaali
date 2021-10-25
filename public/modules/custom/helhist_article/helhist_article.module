@@ -17,8 +17,14 @@ function helhist_article_pathauto_alias_alter(&$alias, array &$context) {
 
     $clean_string_service = \Drupal::service('pathauto.alias_cleaner');
 
-    // Phenomena field takes precedence
-    $termreference = $node->get('field_phenomena')->target_id != NULL ? $node->get('field_phenomena')->target_id : $node->get('field_neighbourhoods')->target_id;
+    // Phenomena field takes precedence, then neighbourhoods, then turning points
+    if ($node->get('field_phenomena')->target_id != NULL) {
+      $termreference = $node->get('field_phenomena')->target_id;
+    } else if ($node->get('field_neighbourhoods')->target_id != NULL) {
+      $termreference = $node->get('field_neighbourhoods')->target_id;
+    } else if ($node->get('field_turning_points')->target_id != NULL) {
+      $termreference = $node->get('field_turning_points')->target_id;
+    }
 
     if ($termreference != NULL) {
       $node_label = $node->label();
