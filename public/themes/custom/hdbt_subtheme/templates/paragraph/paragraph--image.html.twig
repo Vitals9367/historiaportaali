@@ -90,16 +90,39 @@
                   %}
                 {% endif %}
                 {# Link image to media entity page #}
-                <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}">{{ image }}</a>
+                <div class="media--image__content_image">
+                  <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}">{{ image }}</a>
+                </div>
+                <div class="media--image__content_info">
+                  {% spaceless %}
+                    <div class="media--image_content_name">
+                      <h3>{{ media.label() }}</h3>
+                    </div>
+                  {% endspaceless %}
+
+                  {% if caption %}
+                    <div class="media--image__content_caption">
+                      {{ caption }}
+                    </div>
+                  {% endif %}
+                  {% if media.fields.field_start_year is not empty or media.fields.field_geolocation is not empty %}
+                    <div class="divider"></div>
+                    {% if media.fields.field_geolocation is not empty %}
+                      <div class="media--image__content_map_link">
+                        {% include '@hdbt/misc/icon.twig' with {icon: 'location', label: 'Location marker icon'|t } %}
+                        <a href="/fi/kartta?id={{ media.id() }}">Show on map</a>
+                      </div>
+                    {% endif %}
+
+                    {% if media.fields.field_start_year.value is not empty %}
+                      <div class="media--image__content_era">
+                        {{ media.fields.field_start_year.value }}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </div>
               {% endif %}
             {% endfor %}
-          {% endif %}
-          {% if caption %}
-            {% spaceless %}
-              <figcaption class="media--image__caption">
-                {{ caption }}
-              </figcaption>
-            {% endspaceless %}
           {% endif %}
         </div>
       {% endblock %}

@@ -1,0 +1,19 @@
+.paragraph-content .image {
+  .media--image__content_info {
+    position: relative;
+    margin: (-$spacing-double) $spacing-double 0 (-$spacing-double);
+    padding: $spacing-double;
+    background-color: $color-gold-light;
+  }
+
+  .divider {
+    height: 2px;
+    width: 100%;
+    margin: $spacing 0;
+    background-color: $color-black-30;
+  }
+
+  h3 {
+    margin: 0 0 $spacing;
+  }
+}

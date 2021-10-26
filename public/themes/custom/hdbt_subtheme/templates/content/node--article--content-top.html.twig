@@ -107,7 +107,7 @@
 
       <div class="show-on-map">
         {% include '@hdbt/misc/icon.twig' with {icon: 'location', label: 'Location marker icon'|t } %}
-        <a href="{{ map_url }}?nid={{ node.id() }}">Show on map</a>
+        <a href="{{ map_url }}?id={{ node.id() }}">Show on map</a>
       </div>
     {% endblock container_content %}
   {% endembed %}

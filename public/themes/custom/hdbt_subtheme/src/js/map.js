@@ -9,18 +9,18 @@
       $(document).on('leaflet.map', function(e, settings, lMap, mapid) {
         if (mapid == 'leaflet-map-view-combined-map-block') {
           map = lMap;
-          const nidFromUrl = self.getUrlParameter('nid');
+          const idFromUrl = self.getUrlParameter('id');
 
-          if (nidFromUrl) {
-            self.openPopupByNid(nidFromUrl);
+          if (idFromUrl) {
+            self.openPopupByNid(idFromUrl);
           }
         }
       });
     },
 
-    openPopupByNid: function(nid) {
+    openPopupByNid: function(id) {
       map.eachLayer(layer => {
-        if (layer.options?.entity_id == nid) {
+        if (layer.options?.entity_id == id) {
           // Center map to the selected marker and open popup
           map.setView(layer._latlng, 15);
           layer.openPopup();
