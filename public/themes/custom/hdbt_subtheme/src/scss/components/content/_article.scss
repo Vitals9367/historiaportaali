@@ -29,6 +29,15 @@
       .era {
         margin-left: $spacing-double;
       }
+
+      .show-on-map {
+        margin-left: $spacing-double;
+
+        a {
+          color: $color-metro-dark;
+          text-decoration: none;
+        }
+      }
     }
 
     .article__keywords,

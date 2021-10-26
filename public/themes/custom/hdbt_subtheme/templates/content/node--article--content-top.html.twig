@@ -81,6 +81,14 @@
 ]
 %}
 
+{% if node.langcode.langcode == 'fi' %}
+  {% set map_url = '/fi/kartta' %}
+{% elseif node.langcode.langcode == 'sv' %}
+  {% set map_url = '/sv/karta' %}
+{% else %}
+  {% set map_url = '/en/map' %}
+{% endif %}
+
 <article{{ attributes.addClass(classes) }}>
   {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_content_top'} %}
     {% block container_content %}
@@ -97,9 +105,10 @@
         </div>
       {% endif %}
 
-      {% if content.field_geolocation|render is not empty %}
-        {{ content.field_geolocation }}
-      {% endif %}
+      <div class="show-on-map">
+        {% include '@hdbt/misc/icon.twig' with {icon: 'location', label: 'Location marker icon'|t } %}
+        <a href="{{ map_url }}?nid={{ node.id() }}">Show on map</a>
+      </div>
     {% endblock container_content %}
   {% endembed %}
   <div class="divider"></div>
