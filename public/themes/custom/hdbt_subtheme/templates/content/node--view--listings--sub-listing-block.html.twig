@@ -70,34 +70,40 @@
  *   in different view modes.
  */
 #}
-
 {%
   set classes = [
-  'node--type-' ~ node.bundle|clean_class,
-  node.isPromoted() ? 'node--promoted',
-  node.isSticky() ? 'node--sticky',
-  not node.isPublished() ? 'node--unpublished',
-  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-  first_paragraph_grey ? 'has-first-gray-bg-block'
-]
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    first_paragraph_grey ? 'has-first-gray-bg-block'
+  ]
 %}
+{% if node.field_phenomena.target_id %}
+  {% set term_reference = node.field_phenomena.target_id %}
+{% elseif node.field_neighbourhoods.target_id %}
+  {% set term_reference = node.field_neighbourhoods.target_id %}
+{% elseif node.field_turning_points.target_id %}
+  {% set term_reference = node.field_turning_points.target_id %}
+{% endif %}
 
 <article{{ attributes.addClass(classes) }}>
-
-  <div class="thumbnail-image">
-    {% include '@hdbt/media/image--card.html.twig' with {content: content.field_liftup_image } %}
-  </div>  
+  {% if content.field_liftup_image|render %}
+    <div class="thumbnail-image">
+      {% include '@hdbt/media/image--card.html.twig' with {content: content.field_liftup_image } %}
+    </div>
+  {% endif %}
 
   <div class="content-wrapper">
     {{ title_prefix }}
-    {% if label and not page %}
       <h2{{ title_attributes }}>
         <a href="{{ url }}" rel="bookmark">{{ label }}</a>
       </h2>
-    {% endif %}
     {{ title_suffix }}
-    {{ content|without('field_lower_content', 'field_liftup_image') }}
-    <a href={{ url }} class="arrow-btn"></a>
+    <span>{{ drupal_view_result('listings', 'article_listing_block', node.id(), term_reference)|length }} {{ 'articles'|t }}</span>
+    <a href="{{ url }}">
+      {% include '@hdbt/misc/icon.twig' with { icon: 'arrow-right', label: 'Link to content'|t } %}
+    </a>
   </div>
-
 </article>
