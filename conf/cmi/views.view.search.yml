@@ -401,7 +401,7 @@ display:
           admin_label: ''
           empty: false
           tokenize: false
-          content: "<h2>Search Results</h2>\r\n[view:search_result_info]"
+          content: "<h2>Search results</h2>\r\n[view:search_result_info]"
           plugin_id: text_custom
       footer: {  }
       empty: {  }

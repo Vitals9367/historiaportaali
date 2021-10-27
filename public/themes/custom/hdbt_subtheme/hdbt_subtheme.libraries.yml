@@ -28,6 +28,7 @@ leaflet-sync:
 map-view:
   version: 1.x
   js:
+    dist/js/map.min.js: {}
     dist/js/map-controls.min.js: {}
     dist/js/map-comparison.min.js: {}
   dependencies:

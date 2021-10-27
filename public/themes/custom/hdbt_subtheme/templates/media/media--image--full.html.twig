@@ -112,7 +112,12 @@
         <div class="{{ right_column_classes|join(' ') }}">
           {% if content.field_finna_id|render %}
             <div class="{{ media.bundle()|clean_class }}__finna_id">
-              {{ content.field_finna_id }}
+              <div class="hdbt_taxonomy__wrapper">
+                <div class="label">{{ content.field_finna_id['#title'] }}</div>
+                <div class="hdbt_taxonomy">
+                  <span>{{ content.field_finna_id.0 }}</span>
+                </div>
+              </div>
             </div>
           {% endif %}
 
