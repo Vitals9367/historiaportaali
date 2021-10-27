@@ -2,10 +2,6 @@
   margin: $spacing 0;
   max-width: $content-width-max;
 
-  @include breakpoint($breakpoint-m) {
-    padding-left: $spacing-triple * 2;
-  }
-
   a {
     color: $color-metro-dark;
     cursor: pointer;

@@ -21,5 +21,8 @@ display:
         options:
           views_infinite_scroll:
             button_text: 'Lataa lisää'
+      header:
+        area_text_custom:
+          content: "<h2>Hakutulokset</h2>\r\n[view:search_result_info]"
   page:
     display_title: Hakusivu

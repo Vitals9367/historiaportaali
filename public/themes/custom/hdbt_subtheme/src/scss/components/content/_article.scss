@@ -1,4 +1,10 @@
 .page-type--article {
+  #back-to-search-results {
+    @include breakpoint($breakpoint-m) {
+      padding-left: $spacing-triple * 2;
+    }
+  }
+
   .node--type-article {
     &.node--view-mode-content-top {
       padding-bottom: $spacing-double;
