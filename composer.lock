@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "870dae1ef9cd6ff5bd1c1e803c0f8c85",
+    "content-hash": "2b420bffe99f6ee31b90e92b6b8d08b0",
     "packages": [
         {
             "name": "City-of-Helsinki/php-hauki-client",
@@ -5060,6 +5060,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Add entity id to marker options": "custom-patches/leaflet_add_entity_id_to_marker_options.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -6377,7 +6380,8 @@
             "homepage": "https://www.drupal.org/project/term_merge",
             "support": {
                 "source": "https://git.drupalcode.org/project/term_merge"
-            }
+            },
+            "time": "2020-06-18T06:45:08+00:00"
         },
         {
             "name": "drupal/term_reference_change",
@@ -16492,5 +16496,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
