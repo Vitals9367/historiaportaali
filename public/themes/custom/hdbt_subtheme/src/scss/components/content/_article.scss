@@ -1,7 +1,7 @@
 .page-type--article {
   .node--type-article {
     &.node--view-mode-content-top {
-      margin-bottom: $spacing-double;
+      padding-bottom: $spacing-double;
 
       .divider {
         margin: $spacing-double auto 0;
@@ -9,6 +9,11 @@
         height: 3px;
         background-color: $color-silver-medium-light;
       }
+    }
+
+    .article-header {
+      background-color: $color-white;
+      padding: 0 $spacing-double $spacing-double;
     }
 
     .article-content-top__container {
@@ -19,6 +24,7 @@
       svg {
         vertical-align: middle;
         margin-top: -4px;
+        margin-right: 5px;
       }
 
       .format-wrapper {
@@ -38,6 +44,10 @@
           text-decoration: none;
         }
       }
+    }
+
+    .article__content {
+      padding: 0 $spacing-double;
     }
 
     .article__keywords,

@@ -77,7 +77,7 @@
     .map-item__phenomena span,
     .map-item__formats .format-wrapper {
       display: inline-block;
-      background-color: $sand;
+      background-color: $color-sand;
       color: $color-metro-dark;
       padding: $spacing-half $spacing-half;
       margin-bottom: $spacing-half;
@@ -102,7 +102,7 @@
       display: inline-block;
       @include font-size(14px, 14px);
       font-weight: $font-weight-bold;
-      background-color: $sand;
+      background-color: $color-sand;
       padding: $spacing-half $spacing-half;
       margin-bottom: $spacing-half;
     }

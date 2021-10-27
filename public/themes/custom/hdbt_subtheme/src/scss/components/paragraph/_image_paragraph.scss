@@ -1,9 +1,25 @@
 .paragraph-content .image {
-  .media--image__content_info {
+  margin-bottom: $spacing-double;
+  
+  .media--image__content__info {
     position: relative;
     margin: (-$spacing-double) $spacing-double 0 (-$spacing-double);
     padding: $spacing-double;
     background-color: $color-gold-light;
+
+    svg {
+      vertical-align: middle;
+      margin-top: -3px;
+      margin-right: 5px;
+    }
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  .media--image__content__caption {
+    margin-top: $spacing;
   }
 
   .divider {
@@ -13,7 +29,19 @@
     background-color: $color-black-30;
   }
 
-  h3 {
-    margin: 0 0 $spacing;
+  .media--image__content__meta {
+    display: flex;
+    align-items: center;
+    color: $color-metro-dark;
+    font-weight: $font-weight-bold;
+
+    > div {
+      margin-right: $spacing-double;
+    }
+
+    a {
+      color: $color-metro-dark;
+      text-decoration: none;
+    }
   }
 }

@@ -90,35 +90,43 @@
                   %}
                 {% endif %}
                 {# Link image to media entity page #}
-                <div class="media--image__content_image">
+                <div class="media--image__content__image">
                   <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}">{{ image }}</a>
                 </div>
-                <div class="media--image__content_info">
+                <div class="media--image__content__info">
                   {% spaceless %}
-                    <div class="media--image_content_name">
+                    <div class="media--image__content__name">
                       <h3>{{ media.label() }}</h3>
                     </div>
                   {% endspaceless %}
 
                   {% if caption %}
-                    <div class="media--image__content_caption">
+                    <div class="media--image__content__caption">
                       {{ caption }}
                     </div>
                   {% endif %}
                   {% if media.fields.field_start_year is not empty or media.fields.field_geolocation is not empty %}
                     <div class="divider"></div>
-                    {% if media.fields.field_geolocation is not empty %}
-                      <div class="media--image__content_map_link">
-                        {% include '@hdbt/misc/icon.twig' with {icon: 'location', label: 'Location marker icon'|t } %}
-                        <a href="/fi/kartta?id={{ media.id() }}">Show on map</a>
-                      </div>
-                    {% endif %}
+                    
+                    <div class="media--image__content__meta">
+                      {% if media.fields.field_geolocation is not empty %}
+                        <div class="media--image__content__map_link">
+                          {% include '@hdbt/misc/icon.twig' with {icon: 'location', label: 'Location marker icon'|t } %}
+                          <a href="/fi/kartta?id={{ media.id() }}">Show on map</a>
+                        </div>
+                      {% endif %}
 
-                    {% if media.fields.field_start_year.value is not empty %}
-                      <div class="media--image__content_era">
-                        {{ media.fields.field_start_year.value }}
-                      </div>
-                    {% endif %}
+                      {% if media.fields.field_start_year.value is not empty %}
+                        <div class="media--image__content__era">
+                          {% include '@hdbt/misc/icon.twig' with {icon: 'calendar', label: 'Calendar'|t } %}
+                          <span class="era__start">{{ media.fields.field_start_year.value }}</span>
+                          {% if media.fields.field_end_year.value is not empty %}
+                            <span class="era__divider"> - </span>
+                            <span class="era__end">{{ media.fields.field_end_year.value }}</span>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                    </div>
                   {% endif %}
                 </div>
               {% endif %}

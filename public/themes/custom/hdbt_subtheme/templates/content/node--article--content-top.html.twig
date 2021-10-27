@@ -92,7 +92,12 @@
 <article{{ attributes.addClass(classes) }}>
   {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_content_top'} %}
     {% block container_content %}
-      {{ content.field_formats }}
+      <div class="format-wrapper">
+        <span class="format-icon format-article">
+          {% include '@hdbt/misc/icon.twig' with {icon: 'document', label: 'Article'|t } %}
+        </span>
+        <span class="format-name">{{ 'Article'|t }}</span>
+      </div>
 
       {% if content.field_start_year|render is not empty %}
         <div class="era">
@@ -105,10 +110,12 @@
         </div>
       {% endif %}
 
-      <div class="show-on-map">
-        {% include '@hdbt/misc/icon.twig' with {icon: 'location', label: 'Location marker icon'|t } %}
-        <a href="{{ map_url }}?id={{ node.id() }}">Show on map</a>
-      </div>
+      {% if content.field_geolocation.value is not empty %}
+        <div class="show-on-map">
+          {% include '@hdbt/misc/icon.twig' with {icon: 'location', label: 'Location marker icon'|t } %}
+          <a href="{{ map_url }}?id={{ node.id() }}">Show on map</a>
+        </div>
+      {% endif %}
     {% endblock container_content %}
   {% endembed %}
   <div class="divider"></div>

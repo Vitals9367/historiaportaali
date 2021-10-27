@@ -28,7 +28,6 @@ dependencies:
     - field.field.node.article.field_turning_points
     - node.type.article
   module:
-    - geofield
     - user
 _core:
   default_config_hash: iP63ruNj8P30AR0u-V9j_M03qHUEpzx-qneyWJtGvNw
@@ -39,7 +38,7 @@ mode: content_top
 content:
   field_end_year:
     type: number_integer
-    weight: 3
+    weight: 4
     region: content
     label: hidden
     settings:
@@ -48,28 +47,29 @@ content:
     third_party_settings: {  }
   field_formats:
     type: entity_reference_label
-    weight: 1
+    weight: 2
     region: content
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
-  field_geolocation:
-    type: geofield_latlon
-    weight: 4
-    region: content
-    label: hidden
-    settings:
-      output_format: decimal
-    third_party_settings: {  }
   field_start_year:
     type: number_integer
-    weight: 2
+    weight: 3
     region: content
     label: hidden
     settings:
       thousand_separator: ''
       prefix_suffix: false
+    third_party_settings: {  }
+  langcode:
+    type: language
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+      native_language: false
     third_party_settings: {  }
   links:
     weight: 0
@@ -84,6 +84,7 @@ hidden:
   field_content: true
   field_copyrights: true
   field_finna_id: true
+  field_geolocation: true
   field_has_hero: true
   field_hero: true
   field_keywords: true
@@ -95,5 +96,4 @@ hidden:
   field_phenomena: true
   field_reading_time: true
   field_turning_points: true
-  langcode: true
   search_api_excerpt: true
