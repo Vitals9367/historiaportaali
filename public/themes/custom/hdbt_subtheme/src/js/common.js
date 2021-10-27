@@ -10,11 +10,17 @@
         (previousUrl.includes('/haku') ||
         previousUrl.includes('/search'))
       ) {
-        $linkContainer = $('#back-to-search-results', context);
+        const $backToSearchResultsEl = $('#back-to-search-results', context);
+        const $container = $backToSearchResultsEl.closest('.container');
 
-        if ($linkContainer.length) {
-          $('a', $linkContainer).attr('href', previousUrl);
-          $linkContainer.show();
+        if ($backToSearchResultsEl.length) {
+          $('a', $backToSearchResultsEl).attr('href', previousUrl);
+
+          if (!$container.is(':visible')) {
+            $container.show();
+          }
+
+          $backToSearchResultsEl.show();
         }
       }
     },

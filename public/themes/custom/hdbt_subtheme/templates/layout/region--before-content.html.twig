@@ -14,7 +14,7 @@
 #}
 {% if content %}
   <div{{ attributes.addClass('before-content') }}>
-    {% embed "@hdbt/misc/container.twig" %}
+    {% embed "@hdbt_subtheme/misc/container.twig" with {container_element: 'back-to-search-results', container_style: 'display: none;'} %}
       {% block container_content %}
         {% include "@hdbt_subtheme/misc/back-to-search-results.html.twig" %}
       {% endblock container_content %}
