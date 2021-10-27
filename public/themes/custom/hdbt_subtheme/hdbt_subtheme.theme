@@ -90,6 +90,7 @@ function hdbt_subtheme_theme_suggestions_field_alter(&$suggestions, $variables) 
     'field__field_keywords',
     'field__field_phenomena',
     'field__field_neighbourhoods',
+    'field__field_turning_points',
     // Finna metadata fields
     'field__field_formats',
     'field__field_authors',
