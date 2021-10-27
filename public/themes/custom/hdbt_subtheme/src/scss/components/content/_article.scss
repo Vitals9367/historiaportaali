@@ -1,5 +1,11 @@
 .page-type--article {
   .node--type-article {
+    #back-to-search-results {
+      @include breakpoint($breakpoint-m) {
+        padding-left: $spacing-triple * 2;
+      }
+    }
+
     .article__keywords,
     .article__phenomena,
     .article__neighbourhoods {
