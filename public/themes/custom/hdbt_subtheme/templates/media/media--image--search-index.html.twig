@@ -41,9 +41,8 @@
     <div class="metadata-row">
       <div class="search-result__bundle metadata-item">
         <span class="bundle-icon bundle-{{ entity_type }}">
-          {% include '@hdbt/misc/icon.twig' with { icon: 'camera', label: 'Media'|t } %}
+          {% include '@hdbt/misc/icon.twig' with { icon: 'camera', label: 'Image'|t } %}
         </span>
-        <span class="bundle-name">{{ 'Media'|t }}</span>
       </div>
 
       {% if content.field_phenomena|render %}
