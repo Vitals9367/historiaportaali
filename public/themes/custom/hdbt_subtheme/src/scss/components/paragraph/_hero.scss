@@ -1,0 +1,26 @@
+.hero {
+  .hero__title {
+    font-weight: $font-weight-bold;
+    margin-top: $spacing-double;
+    margin-bottom: $spacing-double;
+    hyphens: none;
+
+    @include breakpoint($breakpoint-m) {
+      margin-top: $spacing-triple;
+      margin-bottom: $spacing-triple;
+    }
+  }
+}
+
+.hero--bg-color--helhist-yellow {
+  background-color: $color-bg-yellow;
+
+  .hero__image-container {
+    color: $color-bg-yellow;
+  }
+
+  .hds-button--secondary {
+    --background-color-hover: var(--color-gold-medium-light);
+    --background-color-hover-focus: var(--color-gold-medium-light);
+  }
+}
