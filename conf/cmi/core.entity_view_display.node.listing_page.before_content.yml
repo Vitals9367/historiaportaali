@@ -1,0 +1,38 @@
+uuid: fbda5c01-ab8e-4082-a430-5bdb96d66ee2
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.before_content
+    - field.field.node.listing_page.body
+    - field.field.node.listing_page.field_has_hero
+    - field.field.node.listing_page.field_hero
+    - field.field.node.listing_page.field_liftup_image
+    - field.field.node.listing_page.field_listing_type
+    - field.field.node.listing_page.field_neighbourhoods
+    - field.field.node.listing_page.field_phenomena
+    - field.field.node.listing_page.field_turning_points
+    - node.type.listing_page
+  module:
+    - user
+id: node.listing_page.before_content
+targetEntityType: node
+bundle: listing_page
+mode: before_content
+content:
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_has_hero: true
+  field_hero: true
+  field_liftup_image: true
+  field_listing_type: true
+  field_neighbourhoods: true
+  field_phenomena: true
+  field_turning_points: true
+  langcode: true
+  search_api_excerpt: true
