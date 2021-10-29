@@ -2,9 +2,22 @@
   position: relative;
   background-color: $color-black-80;
   margin-bottom: $spacing-sextuple;
+
+  .path-frontpage & {
+    margin: (-$spacing-triple) $spacing $spacing-double;
+    
+    @include breakpoint($breakpoint-xl) {
+      margin: (-$spacing-triple) auto $spacing-double;
+      max-width: $content-area-wrapper-width-max;
+    }
+  }
   
   .filters {
     padding: $spacing-double 0;
+
+    .path-frontpage & {
+      padding-top: 0;
+    }
   }
 
   .hds-koros {
