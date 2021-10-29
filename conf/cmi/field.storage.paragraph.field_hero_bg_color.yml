@@ -49,6 +49,9 @@ settings:
     -
       value: tram
       label: Tram
+    -
+      value: helhist-yellow
+      label: 'Helsinki History Yellow'
   allowed_values_function: ''
 module: options
 locked: false

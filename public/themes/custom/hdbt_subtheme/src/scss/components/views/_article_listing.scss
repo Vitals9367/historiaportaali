@@ -9,6 +9,7 @@
 
     @include breakpoint($breakpoint-m) {
       flex: 1 50%;
+      max-width: 50%;
     }
   }
 

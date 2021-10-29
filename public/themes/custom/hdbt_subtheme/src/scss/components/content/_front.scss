@@ -1,12 +1,5 @@
 .path-frontpage {
   #views-exposed-form-search-page {
-    flex-flow: column;
-
-    @include breakpoint($breakpoint-s) {
-      display: flex;
-      flex-flow: row wrap;
-    }
-
     .hds-text-input {
       width: 100%;
     }
@@ -42,6 +35,29 @@
                             0 0 0 calc(var(--outline-gutter) + var(--outline-width)) var(--focus-outline-color);
         box-shadow: 0 0 0 var(--outline-gutter) var(--submit-input-focus-gutter-color),
                     0 0 0 calc(var(--outline-gutter) + var(--outline-width)) var(--focus-outline-color);
+      }
+    }
+
+    a.link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-white;
+      text-decoration: none;
+      margin-top: $spacing-double;
+
+      @include breakpoint($breakpoint-s) {
+        justify-content: initial;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      .hds-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: $spacing-half; 
       }
     }
   }
