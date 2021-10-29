@@ -1,13 +1,12 @@
 .hero {
   h1.hero__title {
     font-weight: $font-weight-bold;
-    margin-top: $spacing-double;
-    margin-bottom: $spacing-double;
+    margin-top: $spacing;
+    margin-bottom: $spacing;
     hyphens: none;
 
-    @include breakpoint($breakpoint-m) {
-      margin-top: $spacing-triple;
-      margin-bottom: $spacing-triple;
+    @include breakpoint($breakpoint-l) {
+      @include font-size($fontsize-heading-xl, $lineheight-m);
     }
   }
 
@@ -17,8 +16,8 @@
       margin-bottom: $spacing;
 
       @include breakpoint($breakpoint-m) {
-        margin-top: $spacing;
-        margin-bottom: $spacing-triple;
+        margin-top: 0;
+        margin-bottom: $spacing-double;
       }
     }
   }
@@ -28,7 +27,15 @@
     margin: $spacing 0 0;
 
     @include breakpoint($breakpoint-m) {
-      margin: $spacing-triple 0 0;
+      margin: $spacing-double 0 0;
+    }
+  }
+}
+
+.hero--with-image-bottom {
+  .hero__image-container {
+    @include breakpoint($breakpoint-l) {
+      height: 450px;
     }
   }
 }
