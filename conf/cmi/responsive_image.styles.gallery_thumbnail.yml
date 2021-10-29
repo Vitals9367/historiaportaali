@@ -11,22 +11,22 @@ id: gallery_thumbnail
 label: 'Gallery thumbnail'
 image_style_mappings:
   -
-    breakpoint_id: hdbt.xs
+    breakpoint_id: hdbt_subtheme.xs
     multiplier: 1x
     image_mapping_type: image_style
     image_mapping: 1_1_thumbnail
   -
-    breakpoint_id: hdbt.xs
+    breakpoint_id: hdbt_subtheme.xs
     multiplier: 2x
     image_mapping_type: image_style
     image_mapping: 1_1_thumbnail_2x
   -
-    breakpoint_id: hdbt.xxs
+    breakpoint_id: hdbt_subtheme.xxs
     multiplier: 1x
     image_mapping_type: image_style
     image_mapping: 1_1_thumbnail
   -
-    breakpoint_id: hdbt.xxs
+    breakpoint_id: hdbt_subtheme.xxs
     multiplier: 2x
     image_mapping_type: image_style
     image_mapping: 1_1_thumbnail_2x
