@@ -4,10 +4,10 @@
   margin-bottom: $spacing-sextuple;
 
   .path-frontpage & {
-    margin: (-$spacing-triple) $spacing $spacing-double;
-    
+    margin: $spacing;
+
     @include breakpoint($breakpoint-xl) {
-      margin: (-$spacing-triple) auto $spacing-double;
+      margin: $spacing-double auto;
       max-width: $content-area-wrapper-width-max;
     }
   }

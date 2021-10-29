@@ -1,0 +1,17 @@
+<div class="map-lift">
+  {% embed "@hdbt/misc/container.twig" with {container_element: 'block'} %}
+    {% block container_content %}
+      <h5 class="map-lift__subtitle">Kartta</h5>
+      <h3 class="map-lift__title">Tutustu kaupungin historiaan sijaintisi perusteella</h3>
+      <p class="map-lift__description">Voit tutustua Helsingin historiallisiin paikkoihin ja tietoihin vuorovaikutteisen kartan avulla</p>
+      <div class="map-lift__image">
+        <a href="{{ map_node_url }}">
+          <img src="{{ base_path ~ directory }}/src/images/map_comparison.png" alt="" />
+        </a>
+      </div>
+      <a href="{{ map_node_url }}">
+        {% include '@hdbt/button/button.html.twig' with {type: 'primary', disabled: false, label: 'Tutustu interaktiiviseen karttapalveluun' } %}
+      </a>
+    {% endblock %}
+  {% endembed %}
+</div>
