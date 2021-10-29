@@ -31,13 +31,6 @@ class MapLiftBlock extends BlockBase implements ContainerFactoryPluginInterface 
   protected $languageManager;
 
   /**
-   * The path alias manager service.
-   *
-   * @var \Drupal\path_alias\AliasManagerInterface
-   */
-  protected $pathAliasManager;
-
-  /**
    * @param array $configuration
    * @param string $plugin_id
    * @param mixed $plugin_definition
