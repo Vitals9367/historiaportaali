@@ -47,6 +47,19 @@
         height: 70vh !important;
       }
     }
+
+    .center-pointer {
+      display: block !important;
+      position: absolute;
+      z-index: 401;
+      top: 50%;
+      left: 50%;
+      margin: -16px 0 0 -16px;
+
+      .icon {
+        transform: rotate(45deg);
+      }
+    }
   }
 
   .map-item {
