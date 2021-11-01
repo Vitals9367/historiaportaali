@@ -4,11 +4,10 @@
   color: $color-white;
   margin: (-$spacing-quadruple) $spacing $spacing-double;
   padding-bottom: $spacing-double;
-  max-width: $content-area-wrapper-width-max;
-  max-width: 960px;
+  max-width: 900px;
 
-  @include breakpoint($breakpoint-xl) {
-    margin: (-$spacing-quadruple) auto $spacing-double;
+  @include breakpoint($breakpoint-l) {
+    margin: (-$spacing-octuple) auto $spacing-double;
   }
 
   h3 {

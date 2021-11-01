@@ -8,7 +8,7 @@
 
     @include breakpoint($breakpoint-xl) {
       margin: $spacing-double auto;
-      max-width: $content-area-wrapper-width-max;
+      max-width: 900px;
     }
   }
   
