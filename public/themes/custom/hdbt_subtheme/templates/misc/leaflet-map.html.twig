@@ -17,4 +17,8 @@
  *
  */
 #}
-<div id="{{ map_id }}" style="min-width: 150px; {% if height is not empty %}height: {{ height }}{% endif %}"></div>
+<div id="{{ map_id }}" style="min-width: 150px; {% if height is not empty %}height: {{ height }}{% endif %}">
+  <div class="center-pointer" style="display:none;">
+    {% include '@hdbt/misc/icon.twig' with {icon: 'cross'} %}
+  </div>
+</div>
