@@ -94,12 +94,6 @@
                   <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}">{{ image }}</a>
                 </div>
                 <div class="media--image__content__info">
-                  {% spaceless %}
-                    <div class="media--image__content__name">
-                      <h3>{{ media.label() }}</h3>
-                    </div>
-                  {% endspaceless %}
-
                   {% if caption %}
                     <div class="media--image__content__caption">
                       {{ caption }}
