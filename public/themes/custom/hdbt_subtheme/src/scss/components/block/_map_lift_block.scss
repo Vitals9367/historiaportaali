@@ -41,4 +41,12 @@
   .map-lift__image {
     margin-bottom: $spacing;
   }
+
+  button {
+    width: 100%;
+
+    @include breakpoint($breakpoint-s) {
+      width: initial;
+    }
+  }
 }
