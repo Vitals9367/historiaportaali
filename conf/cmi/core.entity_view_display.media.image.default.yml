@@ -94,7 +94,7 @@ content:
     type: leaflet_formatter_default
     weight: 5
     region: content
-    label: above
+    label: hidden
     settings:
       multiple_map: false
       popup_content: ''

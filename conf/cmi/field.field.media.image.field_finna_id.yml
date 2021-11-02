@@ -9,7 +9,7 @@ id: media.image.field_finna_id
 field_name: field_finna_id
 entity_type: media
 bundle: image
-label: 'Finna ID'
+label: 'Finna.fi record'
 description: ''
 required: false
 translatable: false

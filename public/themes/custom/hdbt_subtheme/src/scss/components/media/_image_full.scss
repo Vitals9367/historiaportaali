@@ -1,7 +1,18 @@
 .media--type-image {
   &.media--view-mode-full {
+    .before-content {
+      .page-title {
+        h1 {
+          margin-bottom: $spacing;
+          margin-top: 0;
+          max-width: $content-width-max;
+        }
+      }
+    }
 
-    .columns__container:nth-child(1) {
+    .main-content {
+      margin-top: $spacing;
+
       .label {
         @include font-size(18px, 30px);
         color: $color-black-90;
@@ -14,22 +25,48 @@
         }
       }
 
-      .image__media_image {
-        img {
-          width: 100%;
-          height: auto;
+      .columns__container:nth-child(1) {
+        .image__media_image {
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .image__geolocation {
+          .map-controls__top-container {
+            display: none;
+          }
         }
       }
 
-      .image__geolocation {
-        .map-controls__top-container {
-          display: none;
+      .columns__container:nth-child(2) {
+        margin-top: $spacing-double;
+
+        .image__photographer {
+          margin-bottom: $spacing-double;
+
+          span {
+            @include font-size(16px, 24px);
+            background-color: $color-black;
+            border-radius: $spacing-and-half;
+            color: $color-white;
+            font-weight: $font-weight-regular;
+            margin: $spacing-quarter;
+            padding: $spacing-half $spacing-double;
+            text-decoration: none;
+            display: inline-flex;
+          }
+        }
+
+        .image__finna_id {
+          margin-bottom: $spacing-double;
+
+          a {
+            text-decoration: none;
+          }
         }
       }
-    }
-
-    .columns__container:nth-child(2) {
-      margin-top: $spacing-double;
     }
   }
 }
