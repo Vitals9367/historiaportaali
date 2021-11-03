@@ -1,0 +1,19 @@
+uuid: 5a40a5f2-4294-410a-adf7-3a8eb0eca135
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_cards_subtitle
+    - paragraphs.paragraphs_type.content_cards
+id: paragraph.content_cards.field_content_cards_subtitle
+field_name: field_content_cards_subtitle
+entity_type: paragraph
+bundle: content_cards
+label: Subtitle
+description: 'Subtitle is displayed above the main title.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

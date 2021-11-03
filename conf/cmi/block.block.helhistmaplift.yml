@@ -1,0 +1,45 @@
+uuid: 1dbbfebd-b993-4b7c-892c-3008481499bf
+langcode: fi
+status: true
+dependencies:
+  module:
+    - context
+    - helhist_map
+    - system
+  theme:
+    - hdbt_subtheme
+id: helhistmaplift
+theme: hdbt_subtheme
+region: before_content
+weight: 0
+provider: null
+plugin: helhist_map_map_lift_block
+settings:
+  id: helhist_map_map_lift_block
+  label: 'HelHist Map Lift'
+  provider: helhist_map
+  label_display: '0'
+visibility:
+  context_all:
+    id: context_all
+    values: ''
+    negate: null
+  context:
+    id: context
+    values: ''
+    negate: null
+  user_status:
+    id: user_status
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false

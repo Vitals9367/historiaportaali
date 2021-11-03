@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.content_cards.field_content_cards_content
     - field.field.paragraph.content_cards.field_content_cards_design
+    - field.field.paragraph.content_cards.field_content_cards_subtitle
     - field.field.paragraph.content_cards.field_content_cards_title
     - paragraphs.paragraphs_type.content_cards
   module:
@@ -17,7 +18,7 @@ bundle: content_cards
 mode: default
 content:
   field_content_cards_content:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       view_mode: teaser
@@ -26,13 +27,13 @@ content:
     type: entity_reference_entity_view
     region: content
   field_content_cards_design:
-    weight: 1
+    weight: 2
     label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_key
     region: content
-  field_content_cards_title:
+  field_content_cards_subtitle:
     weight: 0
     label: hidden
     settings:
@@ -40,4 +41,13 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-hidden: {  }
+  field_content_cards_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true
