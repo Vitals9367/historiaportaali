@@ -74,7 +74,7 @@ $card_spacing: $spacing-and-half;
   }
 
   @include breakpoint($breakpoint-l) {
-    width: 25%;
+    width: 25% !important;
   }
 }
 
@@ -85,7 +85,8 @@ $card_spacing: $spacing-and-half;
   .content-card__metadata {
     display: flex;
     align-items: flex-start;
-    margin: 0 0 $spacing;
+    flex-wrap: wrap;
+    margin: 0 0 $spacing-half;
   }
 
   .content-card__metadata-item {
@@ -96,8 +97,23 @@ $card_spacing: $spacing-and-half;
     min-height: $spacing-double;
     padding: 0 $spacing-half;
     margin-right: $spacing;
+    margin-bottom: $spacing-half;
     font-size: 14px;
     line-height: 1.4em;
+
+    svg {
+      vertical-align: middle;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  .content-card__metadata-item__text {
+    padding: $spacing-half 0;
+    line-height: $lineheight-s;
+    white-space: nowrap;
   }
 
   .bundle-wrapper {
@@ -115,7 +131,7 @@ $card_spacing: $spacing-and-half;
   }
 
   h3 {
-    margin: 0 0 $spacing;
+    margin: 0;
     font-size: 18px;
     font-weight: $font-weight-bold;
 
@@ -136,7 +152,7 @@ $card_spacing: $spacing-and-half;
     }
 
     @include breakpoint($breakpoint-l) {
-      --icon-proportions: 2.2rem;
+      --icon-proportions: 2rem;
     }
   }
 }

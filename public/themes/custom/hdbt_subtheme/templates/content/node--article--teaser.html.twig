@@ -104,19 +104,21 @@
     <div class="content-card__content">
       <div class="content-card__metadata">
         <div class="content-card__bundle content-card__metadata-item">
-          <span class="bundle-icon bundle-article">
+          <span class="content-card__metadata-item__icon bundle-article">
             {% include '@hdbt/misc/icon.twig' with { icon: 'document', label: 'Article'|t } %}
           </span>
-          <span class="bundle-name">{{ 'Article'|t }}</span>
+          <span class="content-card__metadata-item__text">{{ 'Article'|t }}</span>
         </div>
 
         {% if content.field_phenomena|render %}
           <div class="content-card__phenomena content-card__metadata-item">
-            {{ content.field_phenomena }}
+            <span class="content-card__metadata-item__text">
+              {{ content.field_phenomena }}
+            </span>
           </div>
         {% endif %}
       </div>
-      
+
       {{ title_prefix }}
       <h3{{ title_attributes.addClass(title_classes) }}>
         {{ label }}
