@@ -1,6 +1,7 @@
 .before-content {
   .page-type--article &,
-  .media--type-image & {
+  .media--type-image &,
+  .media--type-remote-video & {
     background-color: $color-bg-yellow;
     padding-top: $spacing-double;
 

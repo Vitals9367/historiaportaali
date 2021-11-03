@@ -36,53 +36,69 @@
 ]
 %}
 <article{{ attributes.addClass(classes) }}>
-  {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
-    {% block container_content %}
-      {% include "@hdbt_subtheme/misc/back-to-search-results.html.twig" %}
-      
-      <h2 class="columns__title">{{ content.name }}</h2>
+  <div class="before-content">
+    {% embed "@hdbt_subtheme/misc/container.twig" with {container_element: 'back-to-search-results', container_style: 'display: none;'} %}
+      {% block container_content %}
+        {% include "@hdbt_subtheme/misc/back-to-search-results.html.twig" %}
+      {% endblock container_content %}
+    {% endembed %}
 
-      {% set left_column_classes = ['columns__column'] %}
-      {% set right_column_classes = ['columns__column'] %}
-
-      {% set left_column_classes = left_column_classes|merge(['column--70']) %}
-      {% set right_column_classes = right_column_classes|merge(['column--30']) %}
-
-      <div class="columns__content">
-        <div class="{{ left_column_classes|join(' ') }}">
-          {% if content.field_media_oembed_video|render %}
-            <div class="{{ media.bundle()|clean_class }}__media_remote_video">
-              {{ content.field_media_oembed_video }}
-            </div>
-          {% endif %}
+    {% embed "@hdbt/misc/container.twig" with {container_element: media.bundle()|clean_class ~ '_header'} %}
+      {% block container_content %}
+        <div class="page-title">
+          {{ drupal_block('page_title_block', wrapper=false) }}
         </div>
+        {{ drupal_block('system_breadcrumb_block') }}
+        {{ drupal_block('hdbt_content_social_sharing_block') }}
+      {% endblock container_content %}
+    {% endembed %}
 
-        <div class="{{ right_column_classes|join(' ') }}">
+    {% include '@hdbt/misc/koro.twig' with {koro: 'vibration', color: '#FAF9F7'} %}
+  </div>
 
+  <div class="main-content">
+    {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
+      {% block container_content %}
+        {% set left_column_classes = ['columns__column'] %}
+        {% set right_column_classes = ['columns__column'] %}
+
+        {% set left_column_classes = left_column_classes|merge(['column--70']) %}
+        {% set right_column_classes = right_column_classes|merge(['column--30']) %}
+
+        <div class="columns__content">
+          <div class="{{ left_column_classes|join(' ') }}">
+            {% if content.field_media_oembed_video|render %}
+              <div class="{{ media.bundle()|clean_class }}__media_remote_video">
+                {{ content.field_media_oembed_video }}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="{{ right_column_classes|join(' ') }}">
+
+          </div>
         </div>
-      </div>
-    {% endblock %}
-  {% endembed %}
+      {% endblock %}
+    {% endembed %}
 
-  {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
-    {% block container_content %}
-      <h2 class="columns__title">{{ 'Additional information'|trans }}</h2>
+    {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
+      {% block container_content %}
+        {% set left_column_classes = ['columns__column'] %}
+        {% set right_column_classes = ['columns__column'] %}
 
-      {% set left_column_classes = ['columns__column'] %}
-      {% set right_column_classes = ['columns__column'] %}
+        {% set left_column_classes = left_column_classes|merge(['column--50']) %}
+        {% set right_column_classes = right_column_classes|merge(['column--50']) %}
 
-      {% set left_column_classes = left_column_classes|merge(['column--50']) %}
-      {% set right_column_classes = right_column_classes|merge(['column--50']) %}
+        <div class="columns__content">
+          <div class="{{ left_column_classes|join(' ') }}">
 
-      <div class="columns__content">
-        <div class="{{ left_column_classes|join(' ') }}">
+          </div>
 
+          <div class="{{ right_column_classes|join(' ') }}">
+
+          </div>
         </div>
-
-        <div class="{{ right_column_classes|join(' ') }}">
-
-        </div>
-      </div>
-    {% endblock %}
-  {% endembed %}
+      {% endblock %}
+    {% endembed %}
+  </div>
 </article>
