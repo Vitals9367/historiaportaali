@@ -1,0 +1,52 @@
+#block-helhistmaplift {
+  position: relative;
+  background-color: $color-black-80;
+  color: $color-white;
+  margin: (-$spacing-quadruple) $spacing $spacing-double;
+  padding-bottom: $spacing-double;
+  max-width: 900px;
+
+  @include breakpoint($breakpoint-l) {
+    margin: (-$spacing-octuple) auto $spacing-double;
+  }
+
+  h3 {
+    margin: 0 0 $spacing;
+    font-weight: $font-weight-bold;
+
+    @include breakpoint($breakpoint-l) {
+      @include font-size($fontsize-heading-m, $lineheight-s);
+    }
+  }
+
+  h5 {
+    @include font-size($fontsize-body-m, $lineheight-s);
+    margin-top: 0;
+    margin-bottom: $spacing;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0 0 $spacing;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .map-lift__image {
+    margin-bottom: $spacing;
+  }
+
+  button {
+    width: 100%;
+
+    @include breakpoint($breakpoint-s) {
+      width: initial;
+    }
+  }
+}

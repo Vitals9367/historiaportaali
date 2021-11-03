@@ -1,0 +1,21 @@
+uuid: db7950f1-4efa-40e5-92dd-7c062a008bc6
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_content_cards_subtitle
+field_name: field_content_cards_subtitle
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

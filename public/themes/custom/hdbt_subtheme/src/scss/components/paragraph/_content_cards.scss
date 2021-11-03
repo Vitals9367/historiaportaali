@@ -1,0 +1,16 @@
+.content-cards__subtitle {
+  margin-top: 0;
+  margin-bottom: $spacing-half;
+  text-transform: uppercase;
+}
+
+.content-cards__title {
+  @include font-size($fontsize-heading-m, $lineheight-m);
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-double;
+  margin-top: 0;
+
+  @include breakpoint($breakpoint-s) {
+    @include font-size($fontsize-heading-l, $lineheight-m);
+  }
+}
