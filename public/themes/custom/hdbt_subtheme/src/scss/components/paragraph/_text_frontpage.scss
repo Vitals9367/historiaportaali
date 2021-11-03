@@ -1,0 +1,19 @@
+.path-frontpage .text {
+  @include font-size(18px, 27px);
+  margin-top: $spacing-double - $spacing-and-half;
+  text-align: center;
+
+  @include breakpoint($breakpoint-l) {
+    margin-top: $spacing-quadruple - $spacing-and-half;
+  }
+
+  .text__text-content {
+    max-width: $content-width-max;
+
+    @include breakpoint($breakpoint-m) {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0;
+    }
+  }
+}

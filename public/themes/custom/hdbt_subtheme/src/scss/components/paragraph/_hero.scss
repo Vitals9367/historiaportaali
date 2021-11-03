@@ -34,8 +34,12 @@
 
 .hero--with-image-bottom {
   .hero__image-container {
-    @include breakpoint($breakpoint-l) {
+    @include breakpoint($breakpoint-m) {
       height: 450px;
+    }
+
+    @include breakpoint($breakpoint-l) {
+      height: 550px;
     }
   }
 }
