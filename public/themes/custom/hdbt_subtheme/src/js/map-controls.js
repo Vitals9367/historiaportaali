@@ -32,16 +32,30 @@
         let selectedLayerTitle = $(e.target).data('map-layer-title')
             mapApiEndpoints = $(e.target).data('map-api-endpoints');
 
-        self.handleLayerSelection(lMap, selectedLayerTitle, mapApiEndpoints);
-
-        $controls.removeClass('active');
-        $(e.target).addClass('active');
+        if ($(e.target).is('.active')) {
+          self.toggleLayerSelectorVisibility(mapName);
+        } else {
+          self.handleLayerSelection(lMap, selectedLayerTitle, mapApiEndpoints);
+          self.toggleLayerSelectorVisibility(mapName);
+          $controls.removeClass('active');
+          $(e.target).addClass('active');
+        }
       });
     },
 
     unBindLayerControls: function(mapName) {
       let $controls = $(`.map-controls__map-layer.${mapName} .map-controls__map-layer-item`);
       $controls.off('click');
+    },
+
+    toggleLayerSelectorVisibility: function(mapName) {
+      let $controlsContainer = $(`.map-controls__map-layer.${mapName}`);
+      
+      if ($controlsContainer.is('.open')) {
+        $controlsContainer.removeClass('open');
+      } else {
+        $controlsContainer.addClass('open');
+      }
     },
 
     handleLayerSelection: function(lMap, selectedLayerTitle, mapApiEndpoints) {
