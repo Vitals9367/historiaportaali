@@ -1,6 +1,11 @@
 .paragraph-content .image {
   margin-bottom: $spacing-double;
-  
+
+  @include breakpoint(0px $breakpoint-s) {
+    padding-left: $spacing-and-half;
+    padding-right: $spacing-and-half;
+  }
+
   .media--image__content__info {
     position: relative;
     margin: (-$spacing-double) $spacing-double 0 (-$spacing-double);
@@ -35,5 +40,12 @@
       color: $color-metro-dark;
       text-decoration: none;
     }
+  }
+}
+
+.columns__column > .image {
+  @include breakpoint(0px $breakpoint-s) {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

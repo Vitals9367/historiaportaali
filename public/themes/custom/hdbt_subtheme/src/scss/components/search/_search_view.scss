@@ -20,6 +20,9 @@
 
   .views-row {
     max-width: 320px;
-    margin-bottom: $spacing-double;
+    
+    @include breakpoint($breakpoint-m) {
+      margin-bottom: $spacing-double;
+    }
   }
 }

@@ -3,10 +3,18 @@
   .media--type-image &,
   .media--type-remote-video & {
     background-color: $color-bg-yellow;
-    padding-top: $spacing-double;
+    padding-top: $spacing;
+
+    @include breakpoint($breakpoint-s) {
+      padding-top: $spacing-double;
+    }
 
     .breadcrumb {
-      margin: $spacing-double 0;
+      margin: $spacing-and-half 0;
+
+      @include breakpoint($breakpoint-s) {
+        margin: $spacing-double 0;
+      }
     }
 
     .main-image {
