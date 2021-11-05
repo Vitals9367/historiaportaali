@@ -87,12 +87,6 @@
     {% block container_content %}
       {{ content|without('field_liftup_image', 'field_reading_time') }}
 
-      {% embed "@hdbt_subtheme/misc/reading-time.html.twig" %}
-        {% block reading_time_value %}
-          {{ content.field_reading_time }}
-        {% endblock %}
-      {% endembed %}
-
       {{ drupal_block('system_breadcrumb_block') }}
 
       {{ drupal_block('hdbt_content_social_sharing_block') }}
