@@ -88,6 +88,12 @@ $card_spacing: $spacing-and-half;
   }
 }
 
+.content-card__image {
+  img {
+    object-fit: cover;
+  }
+}
+
 .content-card__content {
   background: $color-white;
   padding: $spacing;
