@@ -13,6 +13,14 @@
     .main-content {
       margin-top: $spacing;
 
+      @include breakpoint($breakpoint-s) {
+        margin-top: $spacing-double;
+      }
+
+      @include breakpoint($breakpoint-m) {
+        margin-top: $spacing-quadruple;
+      }
+
       .label {
         @include font-size(18px, 30px);
         color: $color-black-90;

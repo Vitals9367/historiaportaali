@@ -124,7 +124,7 @@ display:
               remote_video: search_index
               soundcloud: search_index
             'entity:node':
-              article: search_index
+              article: teaser
       fields:
         article_end_year:
           table: search_api_index_content_and_media

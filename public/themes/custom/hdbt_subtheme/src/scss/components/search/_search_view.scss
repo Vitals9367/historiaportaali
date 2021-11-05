@@ -15,11 +15,37 @@
   }
 
   .columns__content {
-    flex-wrap: wrap;
+    align-items: initial;
+    flex-flow: row wrap;
+    margin: 0;
+
+    @include breakpoint($breakpoint-s) {
+      margin: 0 -2%;
+    }
+
+    @include breakpoint($breakpoint-m) {
+      margin: 0 -1%;
+    }
   }
 
   .views-row {
-    max-width: 320px;
+    background: $color-white;
+    flex: 1 1 100%;
     margin-bottom: $spacing-double;
+    
+    @include breakpoint($breakpoint-s) {
+      flex: 0 1 46%;
+      margin: 0 2% $spacing-double 2%;
+    }
+
+    @include breakpoint($breakpoint-m) {
+      flex: 0 1 31%;
+      margin: 0 1% $spacing-double 1%;
+    }
+
+    @include breakpoint($breakpoint-l) {
+      flex: 0 1 23%;
+      margin: 0 1% $spacing 1%;
+    }
   }
 }
