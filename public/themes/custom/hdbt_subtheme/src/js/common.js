@@ -3,24 +3,30 @@
   Drupal.behaviors.themeCommon = {
     attach: function (context, settings) {
 
-      // Show 'Back to search results'-button if the user
-      // is coming from the search page
+      // Show 'Back'-link if the user
+      // is coming from another page
       let previousUrl = document.referrer;
-      if (previousUrl && 
-        (previousUrl.includes('/haku') ||
-        previousUrl.includes('/search'))
-      ) {
-        const $backToSearchResultsEl = $('#back-to-search-results', context);
-        const $container = $backToSearchResultsEl.closest('.container');
+      if (previousUrl) {
+        // Default to the generic back link
+        let $backLinkEl = $('.generic-back-link', context);
 
-        if ($backToSearchResultsEl.length) {
-          $('a', $backToSearchResultsEl).attr('href', previousUrl);
+        // Use 'Back to search results'-link if the user
+        // is coming from the search page
+        if (previousUrl.includes('/haku') ||
+            previousUrl.includes('/search')) {
+          $backLinkEl = $('.back-to-search-results', context);
+        }
+        
+        const $container = $backLinkEl.closest('.container');
+
+        if ($backLinkEl.length) {
+          $('a', $backLinkEl).attr('href', previousUrl);
 
           if (!$container.is(':visible')) {
             $container.show();
           }
 
-          $backToSearchResultsEl.show();
+          $backLinkEl.show();
         }
       }
     },
