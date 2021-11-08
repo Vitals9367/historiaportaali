@@ -1,6 +1,6 @@
 h1 {
   @include font-size($fontsize-heading-l);
-  font-weight: $font-weight-regular;
+  font-weight: $font-weight-bold;
 
   @include breakpoint($breakpoint-m) {
     @include font-size($fontsize-heading-xl);

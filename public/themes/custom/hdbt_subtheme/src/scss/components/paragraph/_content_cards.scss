@@ -63,18 +63,34 @@ $card_spacing: $spacing-and-half;
 
   &:first-of-type {
     padding-left: 0;
-  }
 
-  @include breakpoint($breakpoint-s) {
-    width: 50%;
-
-    &:first-of-type {
+    @include breakpoint($breakpoint-s) {
       padding-left: $card_spacing;
     }
   }
 
   @include breakpoint($breakpoint-l) {
-    width: 25% !important;
+    width: 25%;
+  }
+}
+
+.views--search {
+  .content-card {
+    width: auto;
+
+    &:first-of-type {
+      padding-left: 0;
+    }
+  }
+
+  .content-card__link {
+    width: 100%;
+  }
+}
+
+.content-card__image {
+  img {
+    object-fit: cover;
   }
 }
 
@@ -114,6 +130,10 @@ $card_spacing: $spacing-and-half;
     padding: $spacing-half 0;
     line-height: $lineheight-s;
     white-space: nowrap;
+  }
+
+  .content-card__bundle .content-card__metadata-item__text {
+    padding-left: $spacing-quarter;
   }
 
   .bundle-wrapper {
