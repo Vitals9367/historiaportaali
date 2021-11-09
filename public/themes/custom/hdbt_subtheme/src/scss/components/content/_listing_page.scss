@@ -13,6 +13,7 @@
     &.node--view-mode-before-content {
       .listing-page-header__container {
         margin-bottom: $spacing-double;
+        padding-top: 0;
 
         @include breakpoint($breakpoint-m) {
           margin-bottom: $spacing-triple;
