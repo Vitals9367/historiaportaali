@@ -27,7 +27,6 @@ visibility:
     bundles:
       article: article
       landing_page: landing_page
-      listing_page: listing_page
       page: page
     negate: false
     context_mapping:
