@@ -45,6 +45,7 @@ visibility:
     id: 'entity_bundle:node'
     bundles:
       article: article
+      listing_page: listing_page
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'

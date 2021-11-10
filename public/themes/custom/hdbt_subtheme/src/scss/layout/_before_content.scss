@@ -1,5 +1,6 @@
 .before-content {
   .page-type--article &,
+  .page-type--listing-page &,
   .media--type-image &,
   .media--type-remote-video & {
     background-color: $color-bg-yellow;
@@ -22,6 +23,18 @@
   
       img {
         vertical-align: middle;
+        width: 100%;
+        object-fit: cover;
+        object-position: bottom;
+        height: 60vw;
+
+        @include breakpoint($breakpoint-m) {
+          height: 40vw;
+        }
+
+        @include breakpoint($breakpoint-xl) {
+          height: 30vw;
+        }
       }
     }
   }
