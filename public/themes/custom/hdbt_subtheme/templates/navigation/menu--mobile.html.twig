@@ -36,12 +36,14 @@
 
   {% if items %}
     <ul{{ attributes.addClass(menu_classes) }}>
+      {% if menu_level == 0 %}
       <li class="search-link">
         <a href="{{ path('view.search.page') }}">
           <span>{% include '@hdbt/misc/icon.twig' with {icon: 'search'} %}</span>
           <span>{{ 'Search'|t({}, {'context': 'Mobile menu'}) }}</span>
         </a>
       </li>
+      {% endif %}
 
       {% for item in items %}
         {% set level = menu_level + 1 %}
