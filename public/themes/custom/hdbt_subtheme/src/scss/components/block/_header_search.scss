@@ -1,0 +1,52 @@
+.block--header-search {
+  display: none;
+  position: static;
+  z-index: 100;
+
+  @include breakpoint($breakpoint-m) {
+    display: block;
+    margin: 0 $spacing 0 auto;
+    order: 2;
+  }
+
+  .header-search__form-wrapper {
+    display: none;
+    position: absolute;
+    top: unset;
+    left: 0;
+    right: 0;
+    background-color: $color-white;
+    padding: $spacing-and-half $spacing-double;
+    margin-top: 15px;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #ccc;
+
+    .hds-text-input--search {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hds-text-input__input-wrapper {
+      display: flex;
+      height: 100%;
+      position: relative;
+
+      input {
+        background-image: none;
+      }
+
+      .hds-button {
+        position: absolute;
+        right: 0;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  [aria-expanded=true] + .header-search__form-wrapper {
+    display: block;
+  }
+}
