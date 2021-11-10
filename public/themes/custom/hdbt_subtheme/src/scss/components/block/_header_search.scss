@@ -9,6 +9,10 @@
     order: 2;
   }
 
+  .hds-button--search-toggle[aria-expanded="true"] {
+    background-color: var(--color-black-5);
+  }
+
   .header-search__form-wrapper {
     display: none;
     position: absolute;
