@@ -1,26 +1,27 @@
-uuid: 3fb64b35-643e-41fb-9db2-b6aa1fca6a1f
+uuid: 7f3cb62f-c8a1-4347-a812-ec671d5562d6
 langcode: en
 status: true
 dependencies:
   config:
-    - facets_summary.facets_summary.search_facet_summary
+    - facets.facet.search_neighbourhoods_facet
   module:
     - context
-    - facets_summary
+    - facets
     - system
   theme:
     - hdbt_subtheme
-id: searchfacetsummary
+id: searchneighbourhoodsfacet
 theme: hdbt_subtheme
 region: search_filters
-weight: -8
+weight: -9
 provider: null
-plugin: 'facets_summary_block:search_facet_summary'
+plugin: 'facet_block:search_neighbourhoods_facet'
 settings:
-  id: 'facets_summary_block:search_facet_summary'
-  label: 'Search: Facet summary'
-  provider: facets_summary
+  id: 'facet_block:search_neighbourhoods_facet'
+  label: 'Search: Neighbourhoods facet'
+  provider: facets
   label_display: '0'
+  block_id: searchneighbourhoodsfacet
 visibility:
   context_all:
     id: context_all
