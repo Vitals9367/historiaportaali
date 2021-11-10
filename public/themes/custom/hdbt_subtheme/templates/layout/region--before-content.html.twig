@@ -14,7 +14,7 @@
 #}
 {% if content %}
   <div{{ attributes.addClass('before-content') }}>
-    {% if has_hero %}
+    {% if has_hero and not is_frontpage %}
       {{ drupal_block('hero_block') }}
     {% else %}
       {% if not is_frontpage %}
