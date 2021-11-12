@@ -46,6 +46,13 @@
           $searchToggleBtn.attr('aria-expanded', false);
         }
       });
+
+      // Hide header search form on escape key press
+      $(document).keyup(function(e) {
+        if (e.key === "Escape") {
+          $searchToggleBtn.attr('aria-expanded', false);
+        }
+      });
     },
   };
   // eslint-disable-next-line no-undef
