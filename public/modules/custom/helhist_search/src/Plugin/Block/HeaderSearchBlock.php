@@ -10,7 +10,7 @@ namespace Drupal\helhist_search\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 
 /**
- * Provides a Map Controls block
+ * Provides a Header Search block
  *
  * @Block(
  *   id = "helhist_search_header_search_block",
