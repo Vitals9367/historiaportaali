@@ -29,6 +29,30 @@
           $backLinkEl.show();
         }
       }
+
+      // Header search form
+      const $searchToggleBtn = $('.header-search .hds-button--search-toggle');
+      if ($searchToggleBtn.length) {
+        $searchToggleBtn.on('click', function(e) {
+          $(this).attr('aria-expanded', function (i, attr) {
+            return attr == 'true' ? 'false' : 'true'
+          });
+        });
+      }
+
+      // Hide header search form if clicked outside the search element
+      $(document).on('click', function(event) {
+        if (!$(event.target).closest('.header-search').length) {
+          $searchToggleBtn.attr('aria-expanded', false);
+        }
+      });
+
+      // Hide header search form on escape key press
+      $(document).keyup(function(e) {
+        if (e.key === "Escape") {
+          $searchToggleBtn.attr('aria-expanded', false);
+        }
+      });
     },
   };
   // eslint-disable-next-line no-undef

@@ -10,6 +10,9 @@ function helhist_search_theme($existing, $type, $theme, $path) {
     ],
     'year_interval_field_divider' => [
       'variables' => []
+    ],
+    'header_search' => [
+      'variables' => []
     ]
   ];
 }
