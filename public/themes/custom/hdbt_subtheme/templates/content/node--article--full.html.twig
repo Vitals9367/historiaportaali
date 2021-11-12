@@ -82,30 +82,30 @@
 %}
 
 <article{{ attributes.addClass(classes) }}>
-  {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_header'} %}
-    {% block container_content %}
-      {% if content.field_lead|render %}
-        <div class="{{ node.bundle|clean_class }}__lead">
-          {{ content.field_lead }}
-        </div>
-      {% endif %}
+  <div class="article-header">
+    {% embed "@hdbt/misc/container.twig" with {container_element: node.bundle|clean_class ~ '_header'} %}
+      {% block container_content %}
+        {% if content.field_lead|render %}
+          <div class="{{ node.bundle|clean_class }}__lead">
+            {{ content.field_lead }}
+          </div>
+        {% endif %}
 
-      {{ drupal_block('hdbt_content_social_sharing_block') }}
+        {% if content.field_author|render %}
+          <div class="{{ node.bundle|clean_class }}__author">
+            {{ content.field_author }}
+          </div>
+        {% endif %}
 
-      {% if content.field_author|render %}
-        <div class="{{ node.bundle|clean_class }}__author">
-          {{ content.field_author }}
-        </div>
-      {% endif %}
-
-      {% set created_date = node.createdtime|format_date('medium') %}
-      {% if created_date|render %}
-        <div class="{{ node.bundle|clean_class }}__date">
-          {{ created_date }}
-        </div>
-      {% endif %}
-    {% endblock container_content %}
-  {% endembed %}
+        {% set created_date = node.createdtime|format_date('medium') %}
+        {% if created_date|render %}
+          <div class="{{ node.bundle|clean_class }}__date">
+            {{ created_date }}
+          </div>
+        {% endif %}
+      {% endblock container_content %}
+    {% endembed %}
+  </div>
 
   {% if content.field_content|render %}
     <div class="{{ node.bundle|clean_class }}__content">

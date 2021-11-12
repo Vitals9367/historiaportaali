@@ -1,5 +1,111 @@
 .page-type--article {
+  .back-to-search-results__container {
+    padding-top: 0;
+  }
+
+  .back-to-search-results {
+    @include breakpoint($breakpoint-m) {
+      padding-left: $spacing-triple * 2;
+    }
+  }
+
   .node--type-article {
+    &.node--view-mode-content-top {
+      padding-bottom: 0;
+
+      @include breakpoint($breakpoint-s) {
+        padding-bottom: $spacing-double;
+      }
+
+      .divider {
+        margin: $spacing auto 0;
+        max-width: 300px;
+        height: 3px;
+        background-color: $color-silver-medium-light;
+
+        @include breakpoint($breakpoint-s) {
+          margin: $spacing-double auto 0;
+        }
+      }
+    }
+
+    .article-header {
+      background-color: $color-white;
+      padding: 0 0 $spacing-double;
+
+      @include breakpoint($breakpoint-s) {
+        padding: 0 $spacing-double $spacing-double;
+      }
+    }
+
+    &.node--view-mode-before-content {
+      .article-header__container {
+        @include breakpoint(0px $breakpoint-s) {
+          padding-top: $spacing;
+        }
+      }
+    }
+
+    &.node--view-mode-full {
+      .article-header__container {
+        @include breakpoint(0px $breakpoint-s) {
+          margin-bottom: 0;
+
+          .article__date {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .columns {
+        @include breakpoint(0px $breakpoint-s) {
+          margin-top: $spacing;
+        }
+      }
+    }
+
+    .article-content-top__container {
+      display: flex;
+      justify-content: center;
+      color: $color-metro-dark;
+
+      @include breakpoint(0px $breakpoint-s) {
+        padding-top: 0;
+      }
+
+      svg {
+        vertical-align: middle;
+        margin-top: -4px;
+        margin-right: 5px;
+      }
+
+      .format-wrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      .era {
+        margin-left: $spacing-double;
+      }
+
+      .show-on-map {
+        margin-left: $spacing-double;
+
+        a {
+          color: $color-metro-dark;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .article__content {
+      padding: 0;
+
+      @include breakpoint($breakpoint-s) {
+        padding: 0 $spacing-double;
+      }
+    }
+
     .article__keywords,
     .article__phenomena,
     .article__neighbourhoods {

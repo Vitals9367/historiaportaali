@@ -1,6 +1,5 @@
 .hdbt_taxonomy__wrapper {
-  margin-left: -#{$spacing-quarter};
-  margin-right: -#{$spacing-quarter};
+  margin: 0 -#{$spacing-quarter} $spacing-double -#{$spacing-quarter};
 
   .label {
     @include font-size(18px, 30px);

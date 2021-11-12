@@ -9,6 +9,7 @@
 
     @include breakpoint($breakpoint-m) {
       flex: 1 50%;
+      max-width: 50%;
     }
   }
 
@@ -39,6 +40,10 @@
         @include font-size(20px, 24px);
         font-weight: $font-weight-bold;
         margin: 0 0 $spacing;
+      }
+
+      span {
+        margin-bottom: $spacing;
       }
 
       .icon {

@@ -45,13 +45,10 @@
 
 {% if label_hidden %}
   {% for item in items %}
-    <span>{{ item.content }}</span>
+    {{ item.content }}
   {% endfor %}
 {% else %}
-  <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
-  <div class="phenomena">
-    {% for item in items %}
-      <span>{{ item.content }}</span>
-    {% endfor %}
-  </div>
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
 {% endif %}

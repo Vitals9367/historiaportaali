@@ -22,7 +22,9 @@ dependencies:
     - field.field.node.article.field_metatags
     - field.field.node.article.field_neighbourhoods
     - field.field.node.article.field_phenomena
+    - field.field.node.article.field_reading_time
     - field.field.node.article.field_start_year
+    - field.field.node.article.field_turning_points
     - node.type.article
   module:
     - field_group
@@ -39,8 +41,10 @@ third_party_settings:
       children:
         - field_phenomena
         - field_neighbourhoods
+        - field_turning_points
         - group_year
         - field_keywords
+        - field_reading_time
       parent_name: ''
       weight: 7
       format_type: details
@@ -90,7 +94,7 @@ third_party_settings:
         - field_start_year
         - field_end_year
       parent_name: group_historiaportaali_meta
-      weight: 32
+      weight: 44
       format_type: fieldset
       region: content
       format_settings:
@@ -288,7 +292,7 @@ content:
     region: content
   field_keywords:
     type: select2_entity_reference
-    weight: 33
+    weight: 45
     region: content
     settings:
       width: 100%
@@ -329,7 +333,7 @@ content:
     type: metatag_firehose
     region: content
   field_neighbourhoods:
-    weight: 31
+    weight: 42
     settings:
       width: 100%
       autocomplete: true
@@ -339,7 +343,7 @@ content:
     type: select2_entity_reference
     region: content
   field_phenomena:
-    weight: 30
+    weight: 41
     settings:
       width: 100%
       autocomplete: true
@@ -348,12 +352,29 @@ content:
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
+  field_reading_time:
+    weight: 46
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
   field_start_year:
     weight: 37
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
+  field_turning_points:
+    weight: 43
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
   langcode:
     type: language_select

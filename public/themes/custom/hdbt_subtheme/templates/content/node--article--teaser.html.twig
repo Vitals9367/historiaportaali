@@ -71,33 +71,64 @@
  */
 #}
 
+{% set image = content.field_liftup_image %}
+
 {%
   set classes = [
-  'node--type-' ~ node.bundle|clean_class,
-  node.isPromoted() ? 'node--promoted',
-  node.isSticky() ? 'node--sticky',
-  not node.isPublished() ? 'node--unpublished',
-  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-  first_paragraph_grey ? 'has-first-gray-bg-block'
-]
+    'content-card',
+    'content-card--' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'content-card--promoted',
+    node.isSticky() ? 'content-card--sticky',
+    not node.isPublished() ? 'content-card--unpublished',
+    view_mode ? 'content-card--design-' ~ view_mode|clean_class,
+  ]
+%}
+
+{%
+  set title_classes = [
+    'content-card__title'
+  ]
 %}
 
 <article{{ attributes.addClass(classes) }}>
 
-  <div class="thumbnail-image">
-    {% include '@hdbt/media/image--card.html.twig' with {content: content.field_liftup_image } %}
-  </div>  
+  <a href="{{ url }}" class="content-card__link" rel="bookmark">
+    <div class="content-card__image">
+      {% if image.0 %}
+        {{ image }}
+      {% else %}
+        {% include '@hdbt/media/image--card.html.twig' with {content: '' } %}
+      {% endif %}
+    </div>
 
-  <div class="content-wrapper">
-    {{ title_prefix }}
-    {% if label and not page %}
-      <h2{{ title_attributes }}>
-        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-      </h2>
-    {% endif %}
-    {{ title_suffix }}
-    {{ content|without('field_lower_content', 'field_liftup_image') }}
-    <a href={{ url }} class="arrow-btn"></a>
-  </div>
+    <div class="content-card__content">
+      <div class="content-card__metadata">
+        <div class="content-card__bundle content-card__metadata-item">
+          <span class="content-card__metadata-item__icon bundle-article">
+            {% include '@hdbt/misc/icon.twig' with { icon: 'document', label: 'Article'|t } %}
+          </span>
+          <span class="content-card__metadata-item__text">{{ 'Article'|t }}</span>
+        </div>
+
+        {% if content.field_phenomena|render %}
+          <div class="content-card__phenomena content-card__metadata-item">
+            <span class="content-card__metadata-item__text">
+              {{ content.field_phenomena }}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+
+      {{ title_prefix }}
+      <h3{{ title_attributes.addClass(title_classes) }}>
+        {{ label }}
+      </h3>
+      {{ title_suffix }}
+      
+      <span class="content-card__arrow{% if target_new %} is-outbound{% endif %}">
+        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Go to content'|t } %}
+      </span>
+    </div>
+  </a>
 
 </article>

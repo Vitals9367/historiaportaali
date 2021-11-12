@@ -1,0 +1,51 @@
+.paragraph-content .image {
+  margin-bottom: $spacing-double;
+
+  @include breakpoint(0px $breakpoint-s) {
+    padding-left: $spacing-and-half;
+    padding-right: $spacing-and-half;
+  }
+
+  .media--image__content__info {
+    position: relative;
+    margin: (-$spacing-double) $spacing-double 0 (-$spacing-double);
+    padding: $spacing-double;
+    background-color: $color-gold-light;
+
+    svg {
+      vertical-align: middle;
+      margin-top: -3px;
+      margin-right: 5px;
+    }
+  }
+
+  .divider {
+    height: 2px;
+    width: 100%;
+    margin: $spacing 0;
+    background-color: $color-black-30;
+  }
+
+  .media--image__content__meta {
+    display: flex;
+    align-items: center;
+    color: $color-metro-dark;
+    font-weight: $font-weight-bold;
+
+    > div {
+      margin-right: $spacing-double;
+    }
+
+    a {
+      color: $color-metro-dark;
+      text-decoration: none;
+    }
+  }
+}
+
+.columns__column > .image {
+  @include breakpoint(0px $breakpoint-s) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -36,121 +36,153 @@
 ]
 %}
 <article{{ attributes.addClass(classes) }}>
-  {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
-    {% block container_content %}
-      <h2 class="columns__title">{{ content.name }}</h2>
-
-      {% set left_column_classes = ['columns__column'] %}
-      {% set right_column_classes = ['columns__column'] %}
-
-      {% set left_column_classes = left_column_classes|merge(['column--70']) %}
-      {% set right_column_classes = right_column_classes|merge(['column--30']) %}
-
-      <div class="columns__content">
-        <div class="{{ left_column_classes|join(' ') }}">
-          {% if content.field_media_image|render %}
-            <div class="{{ media.bundle()|clean_class }}__media_image">
-              {{ content.field_media_image }}
-            </div>
-          {% endif %}
-          {% if content.field_image_caption|render %}
-            {% spaceless %}
-              <figcaption class="media--image__caption">
-                {{ content.field_image_caption }}
-              </figcaption>
-            {% endspaceless %}
-          {% endif %}
+  <div class="before-content">
+    {% embed "@hdbt/misc/container.twig" with {container_element: media.bundle()|clean_class ~ '_header'} %}
+      {% block container_content %}
+        <div class="page-title">
+          {{ drupal_block('page_title_block', wrapper=false) }}
         </div>
+        {% include "@hdbt_subtheme/misc/back-to-search-results.html.twig" %}
+        {% include "@hdbt_subtheme/misc/generic-back-link.html.twig" %}
+        {{ drupal_block('hdbt_content_social_sharing_block') }}
+      {% endblock container_content %}
+    {% endembed %}
 
-        <div class="{{ right_column_classes|join(' ') }}">
-          {% if content.field_photographer|render %}
-            <div class="{{ media.bundle()|clean_class }}__photographer">
-              {{ content.field_photographer }}
-            </div>
-          {% endif %}
+    {% include '@hdbt/misc/koro.twig' with {koro: 'vibration', color: '#FAF9F7'} %}
+  </div>
 
-          {% if content.field_geolocation|render %}
-            <div class="{{ media.bundle()|clean_class }}__geolocation">
-              {{ content.field_geolocation }}
-            </div>
-          {% endif %}
+  <div class="main-content">
+    {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
+      {% block container_content %}
+        {% set left_column_classes = ['columns__column'] %}
+        {% set right_column_classes = ['columns__column'] %}
+
+        {% set left_column_classes = left_column_classes|merge(['column--70']) %}
+        {% set right_column_classes = right_column_classes|merge(['column--30']) %}
+
+        <div class="columns__content">
+          <div class="{{ left_column_classes|join(' ') }}">
+            {% if content.field_media_image|render %}
+              <div class="{{ media.bundle()|clean_class }}__media_image">
+                {{ content.field_media_image }}
+              </div>
+            {% endif %}
+            {% if content.field_image_caption|render %}
+              {% spaceless %}
+                <figcaption class="media--image__caption">
+                  {{ content.field_image_caption }}
+                </figcaption>
+              {% endspaceless %}
+            {% endif %}
+          </div>
+
+          <div class="{{ right_column_classes|join(' ') }}">
+            {% if content.field_geolocation|render %}
+              <div class="{{ media.bundle()|clean_class }}__geolocation">
+                {{ content.field_geolocation }}
+              </div>
+            {% endif %}
+          </div>
         </div>
-      </div>
-    {% endblock %}
-  {% endembed %}
+      {% endblock %}
+    {% endembed %}
 
-  {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
-    {% block container_content %}
-      <h2 class="columns__title">{{ 'Additional information'|trans }}</h2>
+    {% embed "@hdbt/misc/container.twig" with {container_element: 'columns'} %}
+      {% block container_content %}
+        <h2 class="columns__title">{{ 'Additional information'|trans }}</h2>
 
-      {% set left_column_classes = ['columns__column'] %}
-      {% set right_column_classes = ['columns__column'] %}
+        {% set left_column_classes = ['columns__column'] %}
+        {% set right_column_classes = ['columns__column'] %}
 
-      {% set left_column_classes = left_column_classes|merge(['column--50']) %}
-      {% set right_column_classes = right_column_classes|merge(['column--50']) %}
+        {% set left_column_classes = left_column_classes|merge(['column--50']) %}
+        {% set right_column_classes = right_column_classes|merge(['column--50']) %}
 
-      <div class="columns__content">
-        <div class="{{ left_column_classes|join(' ') }}">
+        <div class="columns__content">
+          <div class="{{ left_column_classes|join(' ') }}">
+            {% if content.field_photographer|render %}
+              <div class="{{ media.bundle()|clean_class }}__photographer">
+                <div class="label">{{ content.field_photographer['#title'] }}</div>
+                <span>{{ content.field_photographer.0 }}</span>
+              </div>
+            {% endif %}
 
-          {% if content.field_phenomena|render %}
-            <div class="{{ media.bundle()|clean_class }}__phenomena">
-              {{ content.field_phenomena }}
-            </div>
-          {% endif %}
+            {% if content.field_phenomena|render %}
+              <div class="{{ media.bundle()|clean_class }}__phenomena">
+                {{ content.field_phenomena }}
+              </div>
+            {% endif %}
 
-          {% if content.field_neighbourhoods|render %}
-            <div class="{{ media.bundle()|clean_class }}__neighbourhoods">
-              {{ content.field_neighbourhoods }}
-            </div>
-          {% endif %}
+            {% if content.field_neighbourhoods|render %}
+              <div class="{{ media.bundle()|clean_class }}__neighbourhoods">
+                {{ content.field_neighbourhoods }}
+              </div>
+            {% endif %}
 
-          {{ content.field_start_year }} - {{ content.field_end_year }}
+            {% if content.field_start_year|render %}
+              <div class="{{ media.bundle()|clean_class }}__group_year">
+                {% set start_year = (content.field_start_year[0]['#markup'] > 0) ? content.field_start_year[0]['#markup'] : content.field_start_year[0]['#markup']|abs ~ ' ' ~ 'BCE'|t %}
+                {% if content.field_end_year.0 %}
+                  {% set end_year = (content.field_end_year[0]['#markup'] > 0) ? content.field_end_year[0]['#markup'] : content.field_end_year[0]['#markup']|abs ~ ' ' ~ 'BCE'|t %}
+                {% endif %}
+                {% set period = end_year ? start_year ~ ' – ' ~ end_year : start_year %}
+              <div class="hdbt_taxonomy__wrapper">
+                <div class="label">{{ 'Period'|t }}</div>
+                  <div class="hdbt_taxonomy">
+                    <span>{{ period }}</span>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="{{ right_column_classes|join(' ') }}">
+            {% if content.field_finna_id|render %}
+              <div class="{{ media.bundle()|clean_class }}__finna_id">
+                <div class="label">{{ content.field_finna_id['#title'] }}</div>
+                <a href="{{ 'https://finna.fi/Record/' ~ content.field_finna_id[0]['#context']['value'] }}" target="_blank" {{ create_attribute({'class': link_classes} ) }}>
+                  {% include '@hdbt/button/button.html.twig' with {type: 'primary', icon_first: true, icon_first_type: 'link-external', disabled: false, label: 'Open in new window'|t } %}
+                </a>
+              </div>
+            {% endif %}
+
+            {% if content.field_formats|render %}
+              <div class="{{ media.bundle()|clean_class }}__formats">
+                {{ content.field_formats }}
+              </div>
+            {% endif %}
+
+            {% if content.field_authors|render %}
+              <div class="{{ media.bundle()|clean_class }}__authors">
+                {{ content.field_authors }}
+              </div>
+            {% endif %}
+
+            {% if content.field_copyrights|render %}
+              <div class="{{ media.bundle()|clean_class }}__copyrights">
+                {{ content.field_copyrights }}
+              </div>
+            {% endif %}
+
+            {% if content.field_languages|render %}
+              <div class="{{ media.bundle()|clean_class }}__languages">
+                {{ content.field_languages }}
+              </div>
+            {% endif %}
+
+            {% if content.field_buildings|render %}
+              <div class="{{ media.bundle()|clean_class }}__buildings">
+                {{ content.field_buildings }}
+              </div>
+            {% endif %}
+
+            {% if content.field_buildings_info|render %}
+              <div class="{{ media.bundle()|clean_class }}__buildings_info">
+                {{ content.field_buildings_info }}
+              </div>
+            {% endif %}
+          </div>
         </div>
-
-        <div class="{{ right_column_classes|join(' ') }}">
-          {% if content.field_finna_id|render %}
-            <div class="{{ media.bundle()|clean_class }}__finna_id">
-              {{ content.field_finna_id }}
-            </div>
-          {% endif %}
-
-          {% if content.field_formats|render %}
-            <div class="{{ media.bundle()|clean_class }}__formats">
-              {{ content.field_formats }}
-            </div>
-          {% endif %}
-
-          {% if content.field_authors|render %}
-            <div class="{{ media.bundle()|clean_class }}__authors">
-              {{ content.field_authors }}
-            </div>
-          {% endif %}
-
-          {% if content.field_copyrights|render %}
-            <div class="{{ media.bundle()|clean_class }}__copyrights">
-              {{ content.field_copyrights }}
-            </div>
-          {% endif %}
-
-          {% if content.field_languages|render %}
-            <div class="{{ media.bundle()|clean_class }}__languages">
-              {{ content.field_languages }}
-            </div>
-          {% endif %}
-
-          {% if content.field_buildings|render %}
-            <div class="{{ media.bundle()|clean_class }}__buildings">
-              {{ content.field_buildings }}
-            </div>
-          {% endif %}
-
-          {% if content.field_buildings_info|render %}
-            <div class="{{ media.bundle()|clean_class }}__buildings_info">
-              {{ content.field_buildings_info }}
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    {% endblock %}
-  {% endembed %}
+      {% endblock %}
+    {% endembed %}
+  </div>
 </article>

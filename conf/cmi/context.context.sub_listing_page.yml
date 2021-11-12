@@ -5,7 +5,7 @@ dependencies:
   module:
     - context_entity_field
     - node
-name: phenomena_listing_page
+name: sub_listing_page
 label: 'Sub-listing page'
 group: null
 description: ''

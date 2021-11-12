@@ -8,7 +8,7 @@
   .map-container {
     position: relative;
     width: 100%;
-    z-index: 100;
+    z-index: 1;
   }
 
   #leaflet-map-view-combined-map-block {
@@ -47,6 +47,19 @@
         height: 70vh !important;
       }
     }
+
+    .center-pointer {
+      display: block !important;
+      position: absolute;
+      z-index: 401;
+      top: 50%;
+      left: 50%;
+      margin: -16px 0 0 -16px;
+
+      .icon {
+        transform: rotate(45deg);
+      }
+    }
   }
 
   .map-item {
@@ -77,7 +90,7 @@
     .map-item__phenomena span,
     .map-item__formats .format-wrapper {
       display: inline-block;
-      background-color: $sand;
+      background-color: $color-sand;
       color: $color-metro-dark;
       padding: $spacing-half $spacing-half;
       margin-bottom: $spacing-half;
@@ -102,7 +115,7 @@
       display: inline-block;
       @include font-size(14px, 14px);
       font-weight: $font-weight-bold;
-      background-color: $sand;
+      background-color: $color-sand;
       padding: $spacing-half $spacing-half;
       margin-bottom: $spacing-half;
     }

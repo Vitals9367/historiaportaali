@@ -1,0 +1,48 @@
+uuid: 7f3cb62f-c8a1-4347-a812-ec671d5562d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.search_neighbourhoods_facet
+  module:
+    - context
+    - facets
+    - system
+  theme:
+    - hdbt_subtheme
+id: searchneighbourhoodsfacet
+theme: hdbt_subtheme
+region: search_filters
+weight: -9
+provider: null
+plugin: 'facet_block:search_neighbourhoods_facet'
+settings:
+  id: 'facet_block:search_neighbourhoods_facet'
+  label: 'Search: Neighbourhoods facet'
+  provider: facets
+  label_display: '0'
+  block_id: searchneighbourhoodsfacet
+visibility:
+  context_all:
+    id: context_all
+    values: ''
+    negate: null
+  context:
+    id: context
+    values: ''
+    negate: null
+  user_status:
+    id: user_status
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false

@@ -29,38 +29,68 @@
  * @see template_preprocess_media()
  */
 #}
+{% set image = content.field_media_image %}
 
-<div class="search-result media">
-  {% if content.field_media_image|render %}
-    <div class="search-result__image">
-      {{ content.field_media_image }}
-    </div>
-  {% endif %}
-  
-  <div class="metadata-wrapper">
-    <div class="metadata-row">
-      {% if content.field_phenomena|render %}
-        <div class="search-result__phenomena metadata-item">
-          {{ content.field_phenomena }}
-        </div>
-      {% endif %}
+{%
+  set classes = [
+    'content-card',
+    'content-card--media',
+    not media.isPublished() ? 'content-card--unpublished',
+    view_mode ? 'content-card--design-' ~ view_mode|clean_class,
+  ]
+%}
 
-      {% if content.field_formats|render %}
-        <div class="search-result__formats metadata-item">
-          {{ content.field_formats }}
-        </div>
+{%
+  set title_classes = [
+    'content-card__title'
+  ]
+%}
+
+{% set entity_url = path('entity.media.canonical', { 'media': media.id }) %}
+
+<article{{ attributes.addClass(classes) }}>
+
+  <a href="{{ entity_url }}" class="content-card__link" rel="bookmark">
+    <div class="content-card__image">
+      {% if image.0 %}
+        {{ image }}
+      {% else %}
+        {% include '@hdbt/media/image--card.html.twig' with {content: '' } %}
       {% endif %}
     </div>
-    {{ title_prefix }}
-      <h3{{ title_attributes }}>
+
+    <div class="content-card__content">
+      <div class="content-card__metadata">
+        <div class="content-card__bundle content-card__metadata-item">
+          <span class="content-card__metadata-item__icon bundle-{{ media.bundle() }}">
+            {% include '@hdbt/misc/icon.twig' with { icon: 'camera', label: 'Image'|t } %}
+          </span>
+          {% if content.field_formats|render %}
+            <span class="content-card__metadata-item__text">
+              {{ content.field_formats }}
+            </span>
+          {% endif %}
+        </div>
+
+        {% if content.field_phenomena|render %}
+          <div class="content-card__phenomena content-card__metadata-item">
+            <span class="content-card__metadata-item__text">
+              {{ content.field_phenomena }}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+
+      {{ title_prefix }}
+      <h3{{ title_attributes.addClass(title_classes) }}>
         {{ content.name }}
       </h3>
-    {{ title_suffix }}
-
-    <div class="search-result__link-to-content">
-      <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}">
-        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Link to content'|t } %}
-      </a>
+      {{ title_suffix }}
+      
+      <span class="content-card__arrow{% if target_new %} is-outbound{% endif %}">
+        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Go to content'|t } %}
+      </span>
     </div>
-  </div>
-</div>
+  </a>
+  
+</article>

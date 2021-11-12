@@ -1,0 +1,15 @@
+.social-media-sharing {
+  .social-media-sharing__title {
+    display: flex;
+    align-items: center;
+    margin-right: $spacing;
+
+    .icon {
+      margin-right: $spacing-half;
+    }
+
+    svg {
+      vertical-align: middle;
+    }
+  }
+}

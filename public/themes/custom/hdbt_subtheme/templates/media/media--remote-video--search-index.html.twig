@@ -39,6 +39,12 @@
   
   <div class="metadata-wrapper">
     <div class="metadata-row">
+      <div class="search-result__bundle metadata-item">
+        <span class="bundle-icon bundle-{{ entity_type }}">
+          {% include '@hdbt/misc/icon.twig' with { icon: 'videocamera', label: 'Video'|t } %}
+        </span>
+      </div>
+
       {% if content.field_phenomena|render %}
         <div class="search-result__phenomena metadata-item">
           {{ content.field_phenomena }}

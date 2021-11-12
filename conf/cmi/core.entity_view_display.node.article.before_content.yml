@@ -1,0 +1,84 @@
+uuid: 2accefae-fa34-4733-b30b-e8a76df2b662
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.before_content
+    - field.field.node.article.field_author
+    - field.field.node.article.field_authors
+    - field.field.node.article.field_buildings
+    - field.field.node.article.field_buildings_info
+    - field.field.node.article.field_content
+    - field.field.node.article.field_copyrights
+    - field.field.node.article.field_end_year
+    - field.field.node.article.field_finna_id
+    - field.field.node.article.field_formats
+    - field.field.node.article.field_geolocation
+    - field.field.node.article.field_has_hero
+    - field.field.node.article.field_hero
+    - field.field.node.article.field_keywords
+    - field.field.node.article.field_languages
+    - field.field.node.article.field_lead
+    - field.field.node.article.field_liftup_image
+    - field.field.node.article.field_metatags
+    - field.field.node.article.field_neighbourhoods
+    - field.field.node.article.field_phenomena
+    - field.field.node.article.field_reading_time
+    - field.field.node.article.field_start_year
+    - field.field.node.article.field_turning_points
+    - node.type.article
+  module:
+    - user
+_core:
+  default_config_hash: iP63ruNj8P30AR0u-V9j_M03qHUEpzx-qneyWJtGvNw
+id: node.article.before_content
+targetEntityType: node
+bundle: article
+mode: before_content
+content:
+  field_liftup_image:
+    type: entity_reference_entity_view
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      view_mode: main_image
+      link: false
+    third_party_settings: {  }
+  field_reading_time:
+    weight: 1
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_author: true
+  field_authors: true
+  field_buildings: true
+  field_buildings_info: true
+  field_content: true
+  field_copyrights: true
+  field_end_year: true
+  field_finna_id: true
+  field_formats: true
+  field_geolocation: true
+  field_has_hero: true
+  field_hero: true
+  field_keywords: true
+  field_languages: true
+  field_lead: true
+  field_metatags: true
+  field_neighbourhoods: true
+  field_phenomena: true
+  field_start_year: true
+  field_turning_points: true
+  langcode: true
+  search_api_excerpt: true

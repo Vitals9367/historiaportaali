@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.hero.field_hero_image
     - field.field.paragraph.hero.field_hero_link
     - field.field.paragraph.hero.field_hero_link_design
+    - field.field.paragraph.hero.field_hero_subtitle
     - field.field.paragraph.hero.field_hero_title
     - paragraphs.paragraphs_type.hero
   module:
@@ -23,21 +24,21 @@ bundle: hero
 mode: default
 content:
   field_hero_bg_color:
-    weight: 5
+    weight: 6
     label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_key
     region: content
   field_hero_desc:
-    weight: 2
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_hero_design:
-    weight: 4
+    weight: 5
     label: inline
     settings: {  }
     third_party_settings: {  }
@@ -53,7 +54,7 @@ content:
     third_party_settings: {  }
     region: content
   field_hero_link:
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       trim_length: 80
@@ -65,13 +66,13 @@ content:
     type: link
     region: content
   field_hero_link_design:
-    weight: 6
+    weight: 7
     label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_key
     region: content
-  field_hero_title:
+  field_hero_subtitle:
     weight: 1
     label: hidden
     settings:
@@ -79,4 +80,13 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-hidden: {  }
+  field_hero_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -8,6 +8,7 @@ dependencies:
     - node.type.listing_page
     - taxonomy.vocabulary.neighbourhoods
     - taxonomy.vocabulary.phenomena
+    - taxonomy.vocabulary.turning_points
   module:
     - node
     - taxonomy
@@ -283,6 +284,7 @@ display:
             vids:
               neighbourhoods: neighbourhoods
               phenomena: phenomena
+              turning_points: turning_points
             anyall: +
           default_argument_skip_url: false
           summary_options:
@@ -589,9 +591,9 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  phenomena_listing_block:
+  sub_listing_block:
     display_plugin: block
-    id: phenomena_listing_block
+    id: sub_listing_block
     display_title: 'Sub-listing block'
     position: 1
     display_options:

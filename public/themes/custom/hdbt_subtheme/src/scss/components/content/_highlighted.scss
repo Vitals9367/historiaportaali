@@ -1,0 +1,5 @@
+.highlighted {
+  &::before {
+    background-color: $color-bg-yellow;
+  }
+}

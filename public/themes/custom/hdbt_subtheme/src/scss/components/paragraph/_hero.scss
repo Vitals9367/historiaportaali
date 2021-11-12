@@ -1,0 +1,58 @@
+.hero {
+  h1.hero__title {
+    font-weight: $font-weight-bold;
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+    hyphens: none;
+
+    @include breakpoint($breakpoint-l) {
+      @include font-size($fontsize-heading-xl, $lineheight-m);
+    }
+  }
+
+  &.hero--has-subtitle {
+    h1.hero__title {
+      margin-top: $spacing;
+      margin-bottom: $spacing;
+
+      @include breakpoint($breakpoint-m) {
+        margin-top: 0;
+        margin-bottom: $spacing-double;
+      }
+    }
+  }
+
+  h5.hero__subtitle {
+    text-transform: uppercase;
+    margin: $spacing 0 0;
+
+    @include breakpoint($breakpoint-m) {
+      margin: $spacing-double 0 0;
+    }
+  }
+}
+
+.hero--with-image-bottom {
+  .hero__image-container {
+    @include breakpoint($breakpoint-m) {
+      height: 450px;
+    }
+
+    @include breakpoint($breakpoint-l) {
+      height: 550px;
+    }
+  }
+}
+
+.hero--bg-color--helhist-yellow {
+  background-color: $color-bg-yellow;
+
+  .hero__image-container {
+    color: $color-bg-yellow;
+  }
+
+  .hds-button--secondary {
+    --background-color-hover: var(--color-gold-medium-light);
+    --background-color-hover-focus: var(--color-gold-medium-light);
+  }
+}

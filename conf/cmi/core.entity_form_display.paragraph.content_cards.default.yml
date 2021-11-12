@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.content_cards.field_content_cards_content
     - field.field.paragraph.content_cards.field_content_cards_design
+    - field.field.paragraph.content_cards.field_content_cards_subtitle
     - field.field.paragraph.content_cards.field_content_cards_title
     - paragraphs.paragraphs_type.content_cards
   module:
@@ -17,7 +18,7 @@ bundle: content_cards
 mode: default
 content:
   field_content_cards_content:
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -27,13 +28,21 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_content_cards_design:
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: design_field_widget
     region: content
-  field_content_cards_title:
+  field_content_cards_subtitle:
     weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_content_cards_title:
+    weight: 1
     settings:
       size: 60
       placeholder: ''

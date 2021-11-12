@@ -19,7 +19,13 @@ function helhist_map_theme($existing, $type, $theme, $path) {
       'variables' => [
         'map_layers' => []
       ]
-    ]
+      ],
+      'map_lift_block' => [
+        'template' => 'map-lift-block',
+        'variables' => [
+          'map_node_url' => ''
+        ]
+      ]
   ];
 }
 

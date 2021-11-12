@@ -45,7 +45,7 @@ content:
     weight: 0
     settings:
       image_style: 3_2_xxs
-      image_link: content
+      image_link: ''
     third_party_settings: {  }
     type: image
     region: content
@@ -63,7 +63,7 @@ content:
     region: content
     label: hidden
     settings:
-      link_to_entity: true
+      link_to_entity: false
     third_party_settings: {  }
 hidden:
   created: true
