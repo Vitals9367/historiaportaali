@@ -1,26 +1,23 @@
-uuid: 0cd600da-d06a-4cd4-a695-e84eb8ad2d23
-langcode: en
+uuid: 19cb3478-a014-45b9-8034-db8b32432ef7
+langcode: fi
 status: true
 dependencies:
   module:
     - context
-    - ctools
+    - helhist_search
   theme:
     - hdbt_subtheme
-id: entityviewcontent_before_content
+id: helhist_header_search
 theme: hdbt_subtheme
-region: before_content
-weight: -13
+region: header_branding
+weight: -15
 provider: null
-plugin: 'entity_view:node'
+plugin: helhist_search_header_search_block
 settings:
-  id: 'entity_view:node'
-  label: 'Entity view (Content) - Before content'
-  provider: ctools
+  id: helhist_search_header_search_block
+  label: 'HelHist Header Search'
+  provider: helhist_search
   label_display: '0'
-  view_mode: before_content
-  context_mapping:
-    entity: '@node.node_route_context:node'
 visibility:
   context_all:
     id: context_all
@@ -41,11 +38,3 @@ visibility:
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      article: article
-      listing_page: listing_page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'

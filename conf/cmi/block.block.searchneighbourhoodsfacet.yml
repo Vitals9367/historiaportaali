@@ -1,26 +1,27 @@
-uuid: 0cd600da-d06a-4cd4-a695-e84eb8ad2d23
+uuid: 7f3cb62f-c8a1-4347-a812-ec671d5562d6
 langcode: en
 status: true
 dependencies:
+  config:
+    - facets.facet.search_neighbourhoods_facet
   module:
     - context
-    - ctools
+    - facets
+    - system
   theme:
     - hdbt_subtheme
-id: entityviewcontent_before_content
+id: searchneighbourhoodsfacet
 theme: hdbt_subtheme
-region: before_content
-weight: -13
+region: search_filters
+weight: -9
 provider: null
-plugin: 'entity_view:node'
+plugin: 'facet_block:search_neighbourhoods_facet'
 settings:
-  id: 'entity_view:node'
-  label: 'Entity view (Content) - Before content'
-  provider: ctools
+  id: 'facet_block:search_neighbourhoods_facet'
+  label: 'Search: Neighbourhoods facet'
+  provider: facets
   label_display: '0'
-  view_mode: before_content
-  context_mapping:
-    entity: '@node.node_route_context:node'
+  block_id: searchneighbourhoodsfacet
 visibility:
   context_all:
     id: context_all
@@ -41,11 +42,7 @@ visibility:
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      article: article
-      listing_page: listing_page
+  request_path:
+    id: request_path
+    pages: /search
     negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'

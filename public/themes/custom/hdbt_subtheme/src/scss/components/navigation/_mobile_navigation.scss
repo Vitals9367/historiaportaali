@@ -1,0 +1,18 @@
+.mobile-navigation.mm-menu {
+  li.search-link {
+    padding: $spacing;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-black-80;
+      color: white;
+
+      .icon {
+        vertical-align: middle;
+        margin-right: $spacing;
+      }
+    }
+  }
+}

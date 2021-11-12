@@ -13,7 +13,7 @@ dependencies:
 id: searchfacetsummary
 theme: hdbt_subtheme
 region: search_filters
-weight: -9
+weight: -8
 provider: null
 plugin: 'facets_summary_block:search_facet_summary'
 settings:
