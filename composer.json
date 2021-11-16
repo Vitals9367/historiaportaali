@@ -10,6 +10,7 @@
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6.7",
         "drupal/better_exposed_filters": "^5.0@beta",
+        "drupal/colorbox": "^1.7",
         "drupal/context": "^4.1",
         "drupal/context_entity_field": "1.x-dev@dev",
         "drupal/core-composer-scaffold": "^9.1",
@@ -39,8 +40,10 @@
         "drupal/views_menu_children_filter": "^1.0@RC",
         "drush/drush": "^10.4",
         "geocoder-php/nominatim-provider": "^5.5",
+        "jackmoore/colorbox": "^1.6",
         "npm-asset/jquery-ui-touch-punch": "^0.2.3",
-        "oomphinc/composer-installers-extender": "^2.0"
+        "oomphinc/composer-installers-extender": "^2.0",
+        "wikimedia/composer-merge-plugin": "^2.0"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
@@ -80,6 +83,12 @@
             },
             "drupal/leaflet": {
                 "Add entity id to marker options": "custom-patches/leaflet_add_entity_id_to_marker_options.patch"
+            },
+            "drupal/elasticsearch_connector_autocomp": {
+                "Compatibility with elasticsearchconnector 8.x-7.x (https://www.drupal.org/project/elasticsearch_connector_autocomp/issues/3072676#comment-14208601)": "https://www.drupal.org/files/issues/2021-09-03/3072676-15.patch"
+            },
+            "drupal/colorbox": {
+                "Add support for remote video media (https://www.drupal.org/project/colorbox/issues/3021913#comment-14190141)": "https://www.drupal.org/files/issues/2021-08-13/add-document-ready-to-behavior.3021913-28.patch"
             }
         },
         "installer-types": ["bower-asset", "npm-asset"],
@@ -110,6 +119,16 @@
             "drush/{$name}": [
                 "type:drupal-drush"
             ]
+        },
+        "merge-plugin": {
+            "include": [
+                "public/modules/custom/*/composer.json",
+                "public/profiles/custom/*/composer.json",
+                "public/themes/custom/*/composer.json",
+                "public/modules/contrib/colorbox/composer.json"
+            ],
+            "replace": false,
+            "ignore-duplicates": true
         }
     },
     "repositories": [
