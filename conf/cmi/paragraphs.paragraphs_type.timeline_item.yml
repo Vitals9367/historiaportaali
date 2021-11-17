@@ -1,0 +1,10 @@
+uuid: a32f1546-3d77-453e-be51-d58f8da67d39
+langcode: en
+status: true
+dependencies: {  }
+id: timeline_item
+label: 'Timeline item'
+icon_uuid: null
+icon_default: null
+description: 'One item in a timeline that includes year and content.'
+behavior_plugins: {  }

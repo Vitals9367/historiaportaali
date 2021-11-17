@@ -1,0 +1,36 @@
+uuid: 1b550570-7f2a-44ba-a9f3-d3185613eae2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.timeline_item.field_timeline_item_article
+    - field.field.paragraph.timeline_item.field_timeline_item_year
+    - paragraphs.paragraphs_type.timeline_item
+  module:
+    - select2
+id: paragraph.timeline_item.default
+targetEntityType: paragraph
+bundle: timeline_item
+mode: default
+content:
+  field_timeline_item_article:
+    weight: 2
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_timeline_item_year:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
