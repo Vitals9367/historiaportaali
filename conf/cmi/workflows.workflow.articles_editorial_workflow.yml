@@ -1,0 +1,54 @@
+uuid: 4c3569cf-f93b-433d-86b7-aa8bccf717de
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+  module:
+    - content_moderation
+id: articles_editorial_workflow
+label: 'Articles editorial workflow'
+type: content_moderation
+type_settings:
+  states:
+    draft:
+      label: Draft
+      published: false
+      default_revision: false
+      weight: -2
+    for_review:
+      published: false
+      default_revision: false
+      label: 'For review'
+      weight: -1
+    published:
+      label: Published
+      published: true
+      default_revision: true
+      weight: 0
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      to: draft
+      weight: -2
+      from:
+        - draft
+        - published
+    publish:
+      label: Publish
+      to: published
+      weight: 0
+      from:
+        - draft
+        - for_review
+        - published
+    submit_for_review:
+      label: 'Submit for review'
+      from:
+        - draft
+      to: for_review
+      weight: -1
+  entity_types:
+    node:
+      - article
+  default_moderation_state: draft
