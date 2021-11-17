@@ -1,0 +1,117 @@
+.paragraph-content .timeline {
+  .timeline__container {
+    position: relative;
+  }
+
+  .timeline__vertical-line {
+    position: absolute;
+    z-index: 1;
+    top: 84px;
+    left: 52px;
+    width: 2px;
+    background-color: $color-black;
+    height: 100%;
+  }
+  
+  .timeline__wrapper {
+    margin-bottom: $spacing-double;
+  }
+
+  .timeline-item__header {
+    font-size: $fontsize-body-xl;
+
+    .timeline-item__button {
+      display: flex;
+      align-items: center;
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      width: 100%;
+
+      &__icon {
+        &__circle {
+          position: relative;
+          z-index: 2;
+          width: 42px;
+          height: 42px;
+          border: 6px solid $color-metro-dark;
+          border-radius: 50%;
+          background-color: $color-white;
+          transition: background-color 0.2s;
+        }
+      }
+
+      &__content {
+        flex-grow: 1;
+        text-align: left;
+        margin-left: $spacing-double;
+        padding: $spacing;
+      }
+    }
+    
+
+    &.handorgel__header--open {
+      .timeline-item__button {
+        &__icon__circle {
+          background-color: $color-metro-dark;
+        }
+
+        &__content {
+          background-color: $color-white;
+        }
+      }
+    }
+  }
+
+  .timeline-item__content {
+    border: 0;
+    margin-top: 2px;
+    margin-left: 74px;
+
+    &__inner {
+      padding-top: $spacing-and-half;
+      padding-bottom: $spacing-and-half;
+    }
+  }
+
+  article.node--view-mode-timeline-item {
+    margin-bottom: $spacing-triple;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      font-weight: $font-weight-bold;
+      font-size: $fontsize-heading-m;
+      margin: 0 0 $spacing;
+    }
+    
+    .read-more {
+      display: flex;
+      align-items: center;
+      color: $color-metro-dark;
+      font-weight: $font-weight-bold;
+
+      svg {
+        vertical-align: middle;
+      }
+
+      .read-more__icon {
+        padding-left: $spacing-half;
+        transition: padding 0.12s;
+      }
+    }
+
+    .content-link {
+      text-decoration: none;
+
+      &:hover {
+        .read-more__icon {
+          padding-left: $spacing;
+        }
+      }
+    }
+  }
+}
