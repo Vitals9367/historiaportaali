@@ -2,16 +2,17 @@ uuid: a9a16338-945a-4a41-9025-d94400d94067
 langcode: en
 status: true
 dependencies:
+  module:
+    - search_api_location
+    - node
+    - search_api
+    - media
   config:
     - field.storage.media.field_end_year
     - field.storage.media.field_start_year
     - field.storage.node.field_end_year
     - field.storage.node.field_start_year
-    - search_api.server.database
-  module:
-    - node
-    - search_api
-    - media
+    - search_api.server.elasticsearch
 id: content_and_media
 name: 'Content and media'
 description: ''
@@ -35,6 +36,15 @@ field_settings:
       fields:
         - 'entity:media/field_formats:entity:tid'
         - 'entity:node/field_formats:entity:tid'
+  aggregated_geolocation:
+    label: 'Aggregated geolocation'
+    property_path: aggregated_field
+    type: location
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_geolocation'
+        - 'entity:node/field_geolocation'
   aggregated_keywords:
     label: 'Aggregated keywords'
     property_path: aggregated_field
@@ -196,4 +206,4 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 50
-server: database
+server: elasticsearch
