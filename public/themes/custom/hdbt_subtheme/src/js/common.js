@@ -53,7 +53,26 @@
           $searchToggleBtn.attr('aria-expanded', false);
         }
       });
+
+
+      // Add even / odd classes to Image and Video -paragraphs
+      Drupal.behaviors.themeCommon.addEvenOddClasses(context);
     },
+
+    addEvenOddClasses: function(context) {
+      let $articleContentContainer = $('.node--type-article.node--view-mode-full .paragraph-content', context);
+      let $elements = $('.image, .remote-video', $articleContentContainer);
+
+      if ($elements.length) {
+        $elements.each(function(index) {
+          if ((index % 2) == 0) {
+            $(this).addClass('odd');
+          } else {
+            $(this).addClass('even');
+          }
+        });
+      }
+    }
   };
   // eslint-disable-next-line no-undef
 })(jQuery, Drupal, drupalSettings);
