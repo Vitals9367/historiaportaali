@@ -1,5 +1,7 @@
 settings:
   allowed_values:
+    12:
+      label: 'Historiaportaali - Keltainen'
     0:
       label: Vaakuna
     1:
@@ -18,5 +20,3 @@ settings:
       label: Kesä
     11:
       label: Spåra
-    12:
-      label: 'Historiaportaali - Keltainen'
