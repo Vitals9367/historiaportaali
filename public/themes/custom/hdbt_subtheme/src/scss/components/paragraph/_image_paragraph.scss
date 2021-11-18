@@ -8,14 +8,26 @@
 
   .media--image__content__info {
     position: relative;
-    margin: (-$spacing-double) $spacing-double 0 (-$spacing-double);
+    margin: (-$spacing-and-half) $spacing-and-half 0 (-$spacing-and-half);
     padding: $spacing-double;
     background-color: $color-gold-light;
+
+    @include breakpoint($breakpoint-s) {
+      margin: (-$spacing-double) $spacing-double 0 (-$spacing-double);
+    }
 
     svg {
       vertical-align: middle;
       margin-top: -3px;
       margin-right: 5px;
+    }
+  }
+
+  &.even .media--image__content__info { 
+    margin: (-$spacing-and-half) (-$spacing-and-half) 0 $spacing-and-half;
+
+    @include breakpoint($breakpoint-s) {
+      margin: (-$spacing-double) (-$spacing-double) 0 $spacing-double;
     }
   }
 

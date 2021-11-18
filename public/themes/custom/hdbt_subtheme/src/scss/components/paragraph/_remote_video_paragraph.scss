@@ -1,0 +1,111 @@
+.paragraph-content .remote-video {
+  margin-bottom: $spacing-double;
+
+  .media--video__content__video {
+    position: relative;
+    cursor: pointer;
+    
+    img {
+      height: auto;
+      vertical-align: middle;
+    }
+
+    .media-video__play-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      color: $color-silver;
+      width: 50px;
+      height: 50px;
+      margin: -25px 0 0 -25px;
+      border-radius: 50%;
+      background-color: $color-white;
+      transition: color 0.12s, box-shadow 0.12s;
+
+      @include breakpoint($breakpoint-m) {
+        width: 80px;
+        height: 80px;
+        margin: -40px 0 0 -40px;
+      }
+
+      .icon {
+        --icon-proportions: 2rem;
+
+        @include breakpoint($breakpoint-m) {
+          --icon-proportions: 3rem;
+        }
+      }
+    }
+
+    &:hover {
+      .media-video__play-btn {
+        box-shadow: 0 3px 2px 0px rgba(0,0,0,0.3);
+        color: $color-black;
+      }
+    }
+  }
+
+  .media--video__content__info {
+    position: relative;
+    margin: (-$spacing-and-half) $spacing-and-half 0 (-$spacing-and-half);
+    padding: $spacing-double;
+    background-color: $color-gold-light;
+
+    @include breakpoint($breakpoint-s) {
+      margin: (-$spacing-double) $spacing-double 0 (-$spacing-double);
+    }
+
+    svg {
+      vertical-align: middle;
+      margin-top: -3px;
+      margin-right: 5px;
+    }
+  }
+
+  &.even .media--video__content__info { 
+    margin: (-$spacing-and-half) (-$spacing-and-half) 0 $spacing-and-half;
+    
+    @include breakpoint($breakpoint-s) {
+      margin: (-$spacing-double) (-$spacing-double) 0 $spacing-double;
+    }
+  }
+
+  .icon__external-link {
+    color: $color-metro-dark;
+    margin-bottom: $spacing-double;
+  }
+
+  a.media--video__content__external-link {
+    text-decoration: none;
+
+    button {
+      margin-top: $spacing-double;
+      border-color: $color-metro-dark;
+      color: $color-black;
+
+      .hds-icon--arrow-right {
+        color: $color-metro-dark;
+      }
+
+      &:hover {
+        background-color: $color-metro-dark;
+        color: $color-white;
+
+        .hds-icon--arrow-right {
+          color: $color-white;
+        }
+      }
+    }
+  }
+}
+
+.columns__column > .video {
+  @include breakpoint(0px $breakpoint-s) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
