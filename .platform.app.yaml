@@ -10,7 +10,7 @@ name: "app"
 type: "php:7.4"
 variables:
   php:
-    memory_limit: "256M"
+    memory_limit: "512"
   env:
     NVM_VERSION: v0.38.0
 
