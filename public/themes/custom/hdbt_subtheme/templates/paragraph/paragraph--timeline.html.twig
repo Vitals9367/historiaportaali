@@ -50,8 +50,15 @@
   <div{{ attributes.addClass(classes) }}>
     {% embed "@hdbt/misc/container.twig" with {container_element: 'timeline'} %}
       {% block container_content %}
-        <div class="timeline__vertical-line"></div>
-        {{ content.field_timeline_items }}
+        {% if content.field_timeline_title|render %}
+        <div class="timeline__title">
+          {{ content.field_timeline_title }}
+        </div>
+        {% endif %}
+        <div class="timeline__items">
+          <div class="timeline__vertical-line"></div>
+          {{ content.field_timeline_items }}
+        </div>
       {% endblock %}
     {% endembed %}
   </div>

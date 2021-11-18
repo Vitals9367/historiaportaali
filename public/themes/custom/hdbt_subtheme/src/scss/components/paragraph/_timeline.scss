@@ -1,20 +1,50 @@
 .paragraph-content .timeline {
+  margin-top: $spacing-double;
+
+  @include breakpoint($breakpoint-s) {
+    margin-top: $spacing-triple;
+  }
+
+  @include breakpoint($breakpoint-l) {
+    margin-top: $spacing-quadruple;
+  }
+
   .timeline__container {
+    position: relative;
+  }
+
+  .timeline__title h2 {
+    @include font-size($fontsize-heading-m, $lineheight-m);
+    font-weight: $font-weight-bold;
+    margin: 0 0 $spacing-and-half;
+
+    @include breakpoint($breakpoint-s) {
+      @include font-size($fontsize-heading-l, $lineheight-m);
+      margin: 0 0 $spacing-double;
+    }
+  }
+
+  .timeline__items {
     position: relative;
   }
 
   .timeline__vertical-line {
     position: absolute;
     z-index: 1;
-    top: 84px;
-    left: 52px;
-    width: 2px;
+    top: 62px;
+    left: 20px;
+    width: 3px;
     background-color: $color-black;
     height: 100%;
+    height: calc(100% - 95px);
   }
   
   .timeline__wrapper {
     margin-bottom: $spacing-double;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .timeline-item__header {
@@ -45,11 +75,17 @@
       &__content {
         flex-grow: 1;
         text-align: left;
-        margin-left: $spacing-double;
+        margin-left: $spacing-and-half;
         padding: $spacing;
+        transition: background-color 0.1s;
       }
     }
-    
+
+    &:hover {
+      .timeline-item__button__content {
+        background-color: $color-white;
+      }
+    }
 
     &.handorgel__header--open {
       .timeline-item__button {
@@ -59,6 +95,10 @@
 
         &__content {
           background-color: $color-white;
+          background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='24' height='24'/%3E %3Cpolygon fill='currentColor' points='18 7.5 13.5 12 18 16.5 16.5 18 12 13.5 7.5 18 6 16.5 10.5 12 6 7.5 7.5 6 12 10.5 16.5 6'/%3E %3C/g%3E %3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right $spacing center;
+          background-size: 23px;
         }
       }
     }
@@ -67,7 +107,7 @@
   .timeline-item__content {
     border: 0;
     margin-top: 2px;
-    margin-left: 74px;
+    margin-left: 66px;
 
     &__inner {
       padding-top: $spacing-and-half;
@@ -84,8 +124,13 @@
 
     h3 {
       font-weight: $font-weight-bold;
-      font-size: $fontsize-heading-m;
+      font-size: $fontsize-heading-xs;
+      line-height: $lineheight-m;
       margin: 0 0 $spacing;
+
+      @include breakpoint($breakpoint-s) {
+        font-size: $fontsize-heading-m;
+      }
     }
     
     .read-more {

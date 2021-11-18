@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.timeline.field_timeline_items
+    - field.field.paragraph.timeline.field_timeline_title
     - paragraphs.paragraphs_type.timeline
   module:
     - paragraphs
@@ -14,7 +15,7 @@ mode: default
 content:
   field_timeline_items:
     type: paragraphs
-    weight: 0
+    weight: 1
     settings:
       title: Lohko
       title_plural: Lohkot
@@ -30,6 +31,14 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
+    region: content
+  field_timeline_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
 hidden:
   created: true
