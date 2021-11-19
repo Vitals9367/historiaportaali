@@ -1,0 +1,82 @@
+uuid: c1803957-ef2f-4547-93e4-21b22614e1bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_timeline_items
+    - paragraphs.paragraphs_type.timeline
+    - paragraphs.paragraphs_type.timeline_item
+  module:
+    - entity_reference_revisions
+id: paragraph.timeline.field_timeline_items
+field_name: field_timeline_items
+entity_type: paragraph
+bundle: timeline
+label: Items
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      timeline_item: timeline_item
+    target_bundles_drag_drop:
+      accordion:
+        weight: 19
+        enabled: false
+      accordion_item:
+        weight: 20
+        enabled: false
+      banner:
+        weight: 21
+        enabled: false
+      columns:
+        weight: 22
+        enabled: false
+      content_cards:
+        weight: 23
+        enabled: false
+      from_library:
+        weight: 24
+        enabled: false
+      gallery:
+        weight: 25
+        enabled: false
+      gallery_slide:
+        weight: 26
+        enabled: false
+      hero:
+        weight: 27
+        enabled: false
+      image:
+        weight: 28
+        enabled: false
+      liftup_with_image:
+        weight: 29
+        enabled: false
+      list_of_links:
+        weight: 30
+        enabled: false
+      list_of_links_item:
+        weight: 31
+        enabled: false
+      map_api_endpoint:
+        weight: 32
+        enabled: false
+      remote_video:
+        weight: 33
+        enabled: false
+      text:
+        weight: 34
+        enabled: false
+      timeline:
+        weight: 35
+        enabled: false
+      timeline_item:
+        enabled: true
+        weight: 36
+field_type: entity_reference_revisions

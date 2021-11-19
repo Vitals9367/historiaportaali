@@ -1,0 +1,27 @@
+{#
+  Timeline values:
+    - heading_level: 'h2'
+    - heading:       'The heading'
+    - content:       'The content'
+#}
+
+{{ attach_library('hdbt_subtheme/timeline') }}
+
+<div class="timeline__wrapper timeline__handorgel">
+
+  <{{ heading_level|default('h2') }} class="timeline-item__header handorgel__header">
+    <button class="timeline-item__button timeline-item__button--toggle">
+      <div class="timeline-item__button__icon">
+        <div class="timeline-item__button__icon__circle"></div>
+      </div>
+      <div class="timeline-item__button__content">
+        {{ heading|default('Missing heading'|t) }}
+      </div>
+    </button>
+  </{{ heading_level|default('h2')}}>
+  <div class="timeline-item__content handorgel__content">
+    <div class="timeline-item__content__inner handorgel__content__inner">
+      {{ content|default('Missing content'|t) }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+uuid: cc8516e8-6f72-4e42-a2e8-5942928731d6
+langcode: en
+status: true
+dependencies: {  }
+id: media__image
+label: 'Media: Image'
+tags:
+  description: '[media:field_image_caption]'
+  og_description: '[media:field_image_caption]'
+  og_image_url: '[media:field_media_image:og_image:url], [site:base-url]/themes/contrib/hdbt/src/images/og-global.png'
+  twitter_cards_description: '[media:field_image_caption]'

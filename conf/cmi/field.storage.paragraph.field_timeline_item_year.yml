@@ -1,0 +1,21 @@
+uuid: 864b93d2-4ef3-43b4-aa3a-b347d2af4047
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_timeline_item_year
+field_name: field_timeline_item_year
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -5,9 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.media.remote_video
     - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.field_video_description
     - media.type.remote_video
   module:
-    - media
+    - colorbox
 _core:
   default_config_hash: bAXIHAvYIrUpUDe9w9dDlA3cpdnn84JUL30GZ7yjGMM
 id: media.remote_video.remote_video
@@ -16,16 +17,20 @@ bundle: remote_video
 mode: remote_video
 content:
   field_media_oembed_video:
-    type: oembed
+    type: remote_video_colorbox
     label: visually_hidden
     weight: 0
     settings:
-      max_width: 0
-      max_height: 0
+      max_width: '1024'
+      max_height: '768'
+      display: thumbnail
+      link_text: 'View Video'
+      image_style: 23_10_l_2x
     third_party_settings: {  }
     region: content
 hidden:
   created: true
+  field_video_description: true
   langcode: true
   name: true
   search_api_excerpt: true
