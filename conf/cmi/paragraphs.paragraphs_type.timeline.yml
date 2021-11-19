@@ -1,0 +1,10 @@
+uuid: b433afb7-4c76-4c6c-93b9-4cd1473e3a71
+langcode: en
+status: true
+dependencies: {  }
+id: timeline
+label: Timeline
+icon_uuid: null
+icon_default: null
+description: 'Timeline paragraph is used to create collapsable timelines.'
+behavior_plugins: {  }

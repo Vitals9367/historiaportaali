@@ -12,6 +12,13 @@ global-scripting:
     - core/jquery
     - core/drupal
 
+timeline:
+  version: 1.x
+  js:
+    dist/js/timeline-settings.min.js: {}
+  dependencies:
+    - hdbt/handorgel
+
 search-form:
   version: 1.x
   js:
