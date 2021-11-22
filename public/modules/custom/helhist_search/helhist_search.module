@@ -21,22 +21,27 @@ function helhist_search_theme($existing, $type, $theme, $path) {
  * Implements hook_form_views_exposed_form_alter().
  */
 function helhist_search_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  $view_ids = ['search'];
+  $view_ids = [
+                'search',
+                'combined_map'
+              ];
 
   if ($form_id == 'views_exposed_form' && in_array($form_state->get('view')->id(), $view_ids)) {
-    // Move form action buttons below the Keyword-field
-    $form['s']['#weight'] = -3;
-    $form['actions']['#weight'] = -2;
+    if ($form_state->get('view')->id() == 'search') {
+      // Move form action buttons below the Keyword-field
+      $form['s']['#weight'] = -3;
+      $form['actions']['#weight'] = -2;
 
-    $form['search_filters_title'] = [
-      '#type' => 'html_tag',
-      '#tag' => 'h4',
-      '#value' => t('Filter search results', [], ['context' => 'Search']),
-      '#attributes' => [
-        'class' => ['search-filters-title']
-      ],
-      '#weight' => -1
-    ];
+      $form['search_filters_title'] = [
+        '#type' => 'html_tag',
+        '#tag' => 'h4',
+        '#value' => t('Filter search results', [], ['context' => 'Search']),
+        '#attributes' => [
+          'class' => ['search-filters-title']
+        ],
+        '#weight' => -1
+      ];
+    }
 
     if (array_key_exists('start_year', $form) && array_key_exists('end_year', $form)) {
       $form['year_interval'] = _get_year_interval_render_array($form);
