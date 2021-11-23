@@ -7,7 +7,7 @@
       let self = this;
 
       $(document).on('leaflet.map', function(e, settings, lMap, mapid) {
-        if (mapid == 'leaflet-map-view-combined-map-block') {
+        if (mapid == 'leaflet-map-view-combined-map-page') {
           map = lMap;
           const idFromUrl = self.getUrlParameter('id');
 
