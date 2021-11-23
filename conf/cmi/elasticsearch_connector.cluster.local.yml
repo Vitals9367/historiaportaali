@@ -4,7 +4,7 @@ status: '1'
 dependencies: {  }
 cluster_id: local
 name: local
-url: 'http://elasticsearch:9200'
+url: 'http://elasticsearch01:9200'
 options:
   multiple_nodes_connection: true
   use_authentication: 0
