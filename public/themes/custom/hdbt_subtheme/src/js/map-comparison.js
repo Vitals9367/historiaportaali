@@ -19,7 +19,6 @@
       let $button = $('.map-controls__control #map-comparison-btn', context).once('comparison-button');
 
       $button.on('click', function() {
-        console.log('click');
         if (!$viewContainer.is('.comparison-enabled')) {
           self.enableMapComparison();
         } else {
