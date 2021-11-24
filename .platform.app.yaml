@@ -10,7 +10,7 @@ name: "app"
 type: "php:7.4"
 variables:
   php:
-    memory_limit: "256M"
+    memory_limit: "512M"
   env:
     NVM_VERSION: v0.38.0
 
@@ -32,7 +32,7 @@ relationships:
   #solr: "solrsearch:solr"
 
 # The size of the persistent disk of the application (in MB).
-disk: 2816
+disk: 4096
 
 # The 'mounts' describe writable, persistent filesystem mounts in the application. The keys are
 # directory paths, relative to the application root. The values are strings such as
@@ -48,12 +48,16 @@ mounts:
 build:
   flavor: composer
 
+dependencies:
+    php:
+        composer/composer: '^2'
+
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
   build: |
     curl -sS https://platform.sh/cli/installer | php
     composer clear-cache
-    composer --no-ansi --no-interaction install --no-dev --no-progress --prefer-dist --optimize-autoloader
+    php -d memory_limit=-1 /usr/bin/composer --no-ansi --no-interaction install --no-dev --no-progress --prefer-dist --optimize-autoloader
     cd public/themes/custom/hdbt_subtheme
     # install correct node version before running npm install
     unset NPM_CONFIG_PREFIX
