@@ -13,7 +13,7 @@ dependencies:
 id: searchphenomenonfacet
 theme: hdbt_subtheme
 region: search_filters
-weight: -11
+weight: -14
 provider: null
 plugin: 'facet_block:search_phenomenon_facet'
 settings:

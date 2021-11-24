@@ -13,7 +13,7 @@ dependencies:
 id: searchneighbourhoodsfacet
 theme: hdbt_subtheme
 region: search_filters
-weight: -9
+weight: -12
 provider: null
 plugin: 'facet_block:search_neighbourhoods_facet'
 settings:
