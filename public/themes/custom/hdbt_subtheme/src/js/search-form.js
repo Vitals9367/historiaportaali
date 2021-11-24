@@ -2,8 +2,8 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.searchForm = {
     attach: function attach(context) {
-      $('.search__exposed-filters .year-interval__toggle', context).on('click', function() {
-        $('.search__exposed-filters .year-interval__form').toggleClass('hidden');
+      $('.exposed-filters .year-interval__toggle', context).on('click', function() {
+        $('.exposed-filters .year-interval__form').toggleClass('hidden');
       });
     },
   };

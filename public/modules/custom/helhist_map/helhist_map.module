@@ -52,7 +52,6 @@ function helhist_map_views_post_execute(ViewExecutable $view) {
     // Merge media view results to article view results
     $view->result = array_merge($view->result, $media_view_result);
     $view->total_rows = count($view->result);
-
     
     $node = \Drupal::routeMatch()->getParameter('node');
     if ($node instanceof \Drupal\node\NodeInterface && $node->bundle() == 'map_page') {
@@ -93,7 +92,7 @@ function helhist_map_leaflet_map_info_alter(array &$map_info) {
 
 function _getMapDisplays() {
   return [
-    'page_1',
+    'page',
     'block'
   ];
 }
