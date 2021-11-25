@@ -1,0 +1,19 @@
+.page-type--map-page {
+  .search-filters {
+    margin-bottom: 0;
+
+    > .container {
+      padding-top: 0;
+    }
+
+    .filters {
+      padding: $spacing-and-half 0;
+    }
+  }
+}
+
+.exposed-filters__map {
+  .exposed-filters__container {
+    margin-top: $spacing-double;
+  }
+}
