@@ -16,6 +16,17 @@
           }
         }
       });
+
+      self.bindFilterToggle(context);
+    },
+
+    bindFilterToggle: function(context) {
+      $filterToggleBtn = $('.exposed-filters .toggle-filters-btn button', context).once();
+      $filterContainer = $('.exposed-filters .exposed-filters__container');
+
+      $filterToggleBtn.on('click', function() {
+        $filterContainer.slideToggle(150);
+      });
     },
 
     openPopupByNid: function(id) {

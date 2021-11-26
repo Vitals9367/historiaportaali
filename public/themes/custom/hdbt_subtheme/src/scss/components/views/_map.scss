@@ -62,6 +62,26 @@
     }
   }
 
+  .marker-cluster-small,
+  .marker-cluster-medium {
+    background-color: rgba(209, 67, 20, 0.7);
+    transition: box-shadow 0.08s;
+
+    &:hover {
+      box-shadow: 0px 0px 6px rgba(189, 47, 0, 0.6);
+    }
+
+    div {
+      background-color: rgba(189, 47, 0, 0.55);
+    }
+
+    span {
+      font-family: $font-default;
+      font-weight: $font-weight-bold;
+      color: white;
+    }
+  }
+
   .map-item {
     h3 {
       @include font-size(16px, 20px);
