@@ -21,7 +21,7 @@
         </div>
       {% endblock %}
     {% endembed %}
-    {% if not is_frontpage %}
+    {% if not is_frontpage and not hide_koro %}
       {% include '@hdbt/misc/koro.twig' with {koro: koro, flip: true, color: '#333333' } %}
     {% endif %}
   </div>
