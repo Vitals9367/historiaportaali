@@ -1,5 +1,6 @@
 track_enabled_base_fields: false
 local_task_enabled_entity_types:
+  - media
   - paragraphs_library_item
 usage_controller_items_per_page: 25
 edit_warning_message_entity_types:
@@ -8,3 +9,36 @@ delete_warning_message_entity_types:
   - paragraphs_library_item
 _core:
   default_config_hash: Bpksy-WBWXBfa88auy0xIMU9sbHkNFEFrqoskMDlMmo
+track_enabled_source_entity_types:
+  - crop
+  - media
+  - menu_link_content
+  - node
+  - paragraphs_library_item
+  - path_alias
+  - redirect
+  - search_api_task
+  - taxonomy_term
+  - paragraph
+track_enabled_target_entity_types:
+  - crop
+  - media
+  - menu_link_content
+  - node
+  - paragraphs_library_item
+  - path_alias
+  - redirect
+  - search_api_task
+  - taxonomy_term
+  - paragraph
+track_enabled_plugins:
+  - block_field
+  - dynamic_entity_reference
+  - entity_embed
+  - entity_reference
+  - html_link
+  - layout_builder
+  - link
+  - linkit
+  - media_embed
+site_domains: {  }

@@ -10,6 +10,7 @@ display:
                   rewrite:
                     filter_rewrite_values: '- Kaikki -|Valitse ilmiö'
           submit_button: Hae
+          reset_button_label: Palauta
       filters:
         field_start_year_value:
           expose:
