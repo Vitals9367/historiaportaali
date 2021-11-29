@@ -1,32 +1,31 @@
-uuid: 940e7b3b-901b-4669-aedc-4f7cb4abbac2
+uuid: 7be48079-0f19-4497-94e7-0bb5523bfd75
 langcode: en
-status: true
+status: false
 dependencies:
   config:
-    - views.view.listings
+    - views.view.search
   module:
     - context
+    - system
     - views
   theme:
     - hdbt_subtheme
-id: views_block__listings_sub_listing_block
+id: exposedformsearchexposed_sort
 theme: hdbt_subtheme
 region: content
-weight: -14
+weight: -16
 provider: null
-plugin: 'views_block:listings-sub_listing_block'
+plugin: 'views_exposed_filter_block:search-exposed_sort'
 settings:
-  id: 'views_block:listings-sub_listing_block'
+  id: 'views_exposed_filter_block:search-exposed_sort'
   label: ''
   provider: views
   label_display: '0'
   views_label: ''
-  items_per_page: none
-  context_mapping: {  }
 visibility:
   context_all:
     id: context_all
-    values: sub_listing_page
+    values: ''
     negate: null
   context:
     id: context
@@ -43,3 +42,7 @@ visibility:
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false

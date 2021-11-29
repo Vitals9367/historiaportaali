@@ -1,6 +1,6 @@
 uuid: 29dd0ed3-18f4-44cc-a920-61c1e1c60a36
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - views.view.combined_map

@@ -18,6 +18,15 @@ name: 'Content and media'
 description: ''
 read_only: false
 field_settings:
+  aggregated_authored_on:
+    label: 'Aggregated authored on'
+    property_path: aggregated_field
+    type: date
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/created'
+        - 'entity:node/created'
   aggregated_end_year:
     label: 'Aggregated end year'
     property_path: aggregated_field

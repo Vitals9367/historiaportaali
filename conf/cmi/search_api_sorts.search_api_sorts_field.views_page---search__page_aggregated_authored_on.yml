@@ -1,0 +1,11 @@
+uuid: 3bd50d38-954d-40bd-b572-cee2edee07d0
+langcode: en
+status: true
+dependencies: {  }
+id: views_page---search__page_aggregated_authored_on
+display_id: views_page---search__page
+field_identifier: aggregated_authored_on
+default_sort: true
+default_order: asc
+label: 'Authored on'
+weight: 0
