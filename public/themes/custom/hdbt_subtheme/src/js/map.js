@@ -26,6 +26,13 @@
 
       $filterToggleBtn.on('click', function() {
         $filterContainer.slideToggle(150);
+        if ($filterContainer.is(":visible") && $filterToggleBtn.find('span.hds-icon').hasClass('hds-icon--angle-down')) {
+          $filterToggleBtn.find('span.hds-icon').removeClass('hds-icon--angle-down');
+          $filterToggleBtn.find('span.hds-icon').addClass('hds-icon--angle-up');
+        } else {
+          $filterToggleBtn.find('span.hds-icon').removeClass('hds-icon--angle-up');
+          $filterToggleBtn.find('span.hds-icon').addClass('hds-icon--angle-down');
+        }
       });
     },
 
