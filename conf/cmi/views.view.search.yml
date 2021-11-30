@@ -8,7 +8,6 @@ dependencies:
   module:
     - better_exposed_filters
     - search_api
-    - views_infinite_scroll
 id: search
 label: Search
 module: views
@@ -89,15 +88,17 @@ display:
                   collapsible: false
                   is_secondary: false
       pager:
-        type: infinite_scroll
+        type: full
         options:
           items_per_page: 12
           offset: 0
           id: 0
           total_pages: null
           tags:
-            previous: ‹‹
-            next: ››
+            previous: ‹
+            next: ›
+            first: «
+            last: »
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -106,10 +107,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          views_infinite_scroll:
-            button_text: 'Load More'
-            automatically_load_content: false
-            initially_load_all_pages: false
+          quantity: 5
       style:
         type: default
       row:
