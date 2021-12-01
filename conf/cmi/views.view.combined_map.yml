@@ -8,6 +8,7 @@ dependencies:
     - node.type.article
     - taxonomy.vocabulary.phenomena
   module:
+    - better_exposed_filters
     - geofield
     - leaflet_views
     - node
@@ -43,15 +44,48 @@ display:
           query_comment: ''
           query_tags: {  }
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+            filter:
+              field_start_year_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              field_end_year_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              field_phenomena_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: '- All -|Select phenomenon'
+                  collapsible: false
+                  is_secondary: false
       pager:
         type: none
         options:
@@ -109,6 +143,10 @@ display:
             popupAnchor:
               x: ''
               'y': ''
+          leaflet_markercluster:
+            control: true
+            options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":false,"removeOutsideVisibleBounds":false}'
+            include_path: 0
           path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2","radius":"6"}'
           geocoder:
             control: false
@@ -219,6 +257,7 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
+          group: 1
         langcode:
           id: langcode
           table: node_field_data
@@ -261,6 +300,100 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
+        field_start_year_value:
+          id: field_start_year_value
+          table: node__field_start_year
+          field: field_start_year_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_start_year_value_op
+            label: Starts
+            description: ''
+            use_operator: false
+            operator: field_start_year_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: start_year
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              admin: '0'
+              content_producer: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        field_end_year_value:
+          id: field_end_year_value
+          table: node__field_end_year
+          field: field_end_year_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_end_year_value_op
+            label: Ends
+            description: ''
+            use_operator: false
+            operator: field_end_year_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: end_year
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              admin: '0'
+              content_producer: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
         field_phenomena_target_id:
           id: field_phenomena_target_id
           table: node__field_phenomena
@@ -274,7 +407,7 @@ display:
           exposed: true
           expose:
             operator_id: field_phenomena_target_id_op
-            label: Phenomenon
+            label: ''
             description: ''
             use_operator: false
             operator: field_phenomena_target_id_op
@@ -332,6 +465,11 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      use_ajax: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
@@ -362,9 +500,9 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_geolocation'
-  page_1:
+  page:
     display_plugin: page
-    id: page_1
+    id: page
     display_title: Page
     position: 1
     display_options:
@@ -380,6 +518,7 @@ display:
         weight: 0
         context: '0'
         menu_name: main
+      exposed_block: true
     cache_metadata:
       max-age: -1
       contexts:

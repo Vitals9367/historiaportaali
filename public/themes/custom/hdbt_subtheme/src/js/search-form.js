@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.searchForm = {
-    attach: function attach() {
-      $('.search__exposed-filters .year-interval__toggle').on('click', function() {
-        $('.search__exposed-filters .year-interval__form').toggleClass('hidden');
+    attach: function attach(context) {
+      $('.exposed-filters .year-interval__toggle', context).on('click', function() {
+        $('.exposed-filters .year-interval__form').toggleClass('hidden');
       });
     },
   };

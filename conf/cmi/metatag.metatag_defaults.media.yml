@@ -1,0 +1,9 @@
+uuid: dfee2ea7-ac51-4f20-b86f-dda1029306e4
+langcode: en
+status: true
+dependencies: {  }
+id: media
+label: Media
+tags:
+  og_site_name: '[site:name]'
+  og_title: '[media:name] | [site:name]'

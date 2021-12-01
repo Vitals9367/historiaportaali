@@ -46,6 +46,7 @@ function hdbt_subtheme_theme_suggestions_block_alter(&$suggestions) {
 function hdbt_subtheme_preprocess_region(&$variables) {
   $variables['is_frontpage'] = false;
   $variables['has_hero'] = false;
+  $variables['hide_koro'] = false;
 
   if (\Drupal::service('path.matcher')->isFrontPage()) {
     $variables['is_frontpage'] = true;
@@ -55,6 +56,9 @@ function hdbt_subtheme_preprocess_region(&$variables) {
   if ($node instanceof \Drupal\node\Entity\Node) {
     if ($node->hasField('field_has_hero')) {
       $variables['has_hero'] = intval($node->get('field_has_hero')->getString());
+    }
+    if ($node->bundle() == 'map_page') {
+      $variables['hide_koro'] = true;
     }
   }
 }
@@ -117,6 +121,25 @@ function hdbt_subtheme_theme_suggestions_field_alter(&$suggestions, $variables) 
   if (count(array_intersect($taxonomy_fields, $suggestions)) > 0) {
     $suggestions[] = 'field__hdbt_taxonomy__' . $variables['element']['#view_mode'];
   }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function hdbt_subtheme_theme_suggestions_region_alter(&$suggestions, $variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\Entity\Node) {
+    $suggestions[] = 'region__' . $variables['elements']['#region'] . '__' . $node->bundle();
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function hdbt_subtheme_theme_suggestions_image_formatter_alter(array &$suggestions, array $variables) {
+  $entity = $variables['item']->getEntity();
+  $field_name = $variables['item']->getParent()->getName();
+  $suggestions[] = 'image_formatter__' . $entity->getEntityTypeId() . '__' . $entity->bundle() . '__' . $field_name;
 }
 
 /**

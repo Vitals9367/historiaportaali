@@ -15,7 +15,7 @@ services:
       APP_ENV: "${APP_ENV:-dev}"
       DRUPAL_ROUTES: "https://varnish-${DRUPAL_HOSTNAME}"
       DRUSH_OPTIONS_URI: "https://${DRUPAL_HOSTNAME}"
-      #XDEBUG_ENABLE: "true"
+      XDEBUG_ENABLE: "true"
       SIMPLETEST_BASE_URL: "http://app:8080"
       SIMPLETEST_DB: "mysql://drupal:drupal@db:3306/drupal"
     networks:
@@ -36,6 +36,46 @@ services:
       - db_data:/var/lib/mysql
     ports:
       - 3306
+    networks:
+      - internal
+
+  elasticsearch01:
+    container_name: "${COMPOSE_PROJECT_NAME}-elasticsearch01"
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
+    environment:
+      - node.name=elasticsearch01
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=elasticsearch02
+      - cluster.initial_master_nodes=elasticsearch01,elasticsearch02
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+     - "9200:9200"
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+    networks:
+      - internal
+
+  elasticsearch02:
+    container_name: "${COMPOSE_PROJECT_NAME}-elasticsearch02"
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
+    environment:
+      - node.name=elasticsearch02
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=elasticsearch01
+      - cluster.initial_master_nodes=elasticsearch01,elasticsearch02
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data02:/usr/share/elasticsearch/data
     networks:
       - internal
 
@@ -68,3 +108,8 @@ volumes:
   ssh:
     name: stonehenge-ssh
     external: true
+  data01:
+    driver: local
+  data02:
+    driver: local
+  

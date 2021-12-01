@@ -7,13 +7,31 @@
       let self = this;
 
       $(document).on('leaflet.map', function(e, settings, lMap, mapid) {
-        if (mapid == 'leaflet-map-view-combined-map-block') {
+        if (mapid == 'leaflet-map-view-combined-map-page') {
           map = lMap;
           const idFromUrl = self.getUrlParameter('id');
 
           if (idFromUrl) {
             self.openPopupByNid(idFromUrl);
           }
+        }
+      });
+
+      self.bindFilterToggle(context);
+    },
+
+    bindFilterToggle: function(context) {
+      $filterToggleBtn = $('.exposed-filters .toggle-filters-btn button', context).once();
+      $filterContainer = $('.exposed-filters .exposed-filters__container');
+
+      $filterToggleBtn.on('click', function() {
+        $filterContainer.slideToggle(150);
+        if ($filterContainer.is(":visible") && $filterToggleBtn.find('span.hds-icon').hasClass('hds-icon--angle-down')) {
+          $filterToggleBtn.find('span.hds-icon').removeClass('hds-icon--angle-down');
+          $filterToggleBtn.find('span.hds-icon').addClass('hds-icon--angle-up');
+        } else {
+          $filterToggleBtn.find('span.hds-icon').removeClass('hds-icon--angle-up');
+          $filterToggleBtn.find('span.hds-icon').addClass('hds-icon--angle-down');
         }
       });
     },

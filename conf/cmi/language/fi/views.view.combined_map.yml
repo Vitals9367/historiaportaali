@@ -1,5 +1,24 @@
 display:
-  page_1:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          bef:
+            filter:
+              field_phenomena_target_id:
+                advanced:
+                  rewrite:
+                    filter_rewrite_values: '- Kaikki -|Valitse ilmiö'
+          submit_button: Hae
+          reset_button_label: Palauta
+      filters:
+        field_start_year_value:
+          expose:
+            label: Alkaa
+        field_end_year_value:
+          expose:
+            label: Päättyy
+  page:
     display_options:
       menu:
         title: Historia-kartta

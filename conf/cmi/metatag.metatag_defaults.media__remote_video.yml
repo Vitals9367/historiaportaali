@@ -1,0 +1,11 @@
+uuid: 9fb92aeb-2675-4088-9626-6a4d0249a81f
+langcode: en
+status: true
+dependencies: {  }
+id: media__remote_video
+label: 'Media: Remote video'
+tags:
+  description: '[media:field_video_description]'
+  og_description: '[media:field_video_description]'
+  og_image_url: '[media:thumbnail:og_image:url], [site:base-url]/themes/contrib/hdbt/src/images/og-global.png'
+  twitter_cards_description: '[media:field_video_description]'

@@ -118,5 +118,6 @@ if (getenv('PLATFORM_RELATIONSHIPS')) {
   if (!empty($relationships['elasticsearch'])) {
     $elasticsearch = $relationships['elasticsearch'];
     $config['elasticsearch_connector.cluster.search']['url'] = $elasticsearch[0]['host'];
+    $config['elasticsearch_connector.cluster.local']['url'] = $elasticsearch[0]['host'];
   }
 }
