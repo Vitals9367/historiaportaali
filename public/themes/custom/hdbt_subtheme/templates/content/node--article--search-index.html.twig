@@ -105,7 +105,7 @@
       {% endif %}
 
       {% if content.field_start_year|render %}
-        <div class="content-card__phenomena content-card__metadata-item">
+        <div class="content-card__year content-card__metadata-item">
           {% set start_year = (content.field_start_year[0]['#markup'] > 0) ? content.field_start_year[0]['#markup'] : content.field_start_year[0]['#markup']|abs ~ ' ' ~ 'BCE'|t %}
           {% if content.field_end_year.0 %}
             {% set end_year = (content.field_end_year[0]['#markup'] > 0) ? content.field_end_year[0]['#markup'] : content.field_end_year[0]['#markup']|abs ~ ' ' ~ 'BCE'|t %}
