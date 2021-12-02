@@ -36,6 +36,11 @@ targetEntityType: node
 bundle: article
 mode: before_content
 content:
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   field_liftup_image:
     type: entity_reference_entity_view
     weight: 2
