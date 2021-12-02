@@ -1,0 +1,11 @@
+uuid: 093ee11d-ea8c-4b14-80a8-8b389d68f7b1
+langcode: en
+status: true
+dependencies: {  }
+id: views_page---search__page_aggregated_start_year
+display_id: views_page---search__page
+field_identifier: aggregated_start_year
+default_sort: false
+default_order: asc
+label: Year
+weight: 0

@@ -36,6 +36,15 @@ targetEntityType: node
 bundle: article
 mode: teaser
 content:
+  field_end_year:
+    type: number_integer
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
   field_liftup_image:
     type: entity_reference_entity_view
     weight: 0
@@ -53,6 +62,15 @@ content:
     settings:
       link: false
     third_party_settings: {  }
+  field_start_year:
+    type: number_integer
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
 hidden:
   field_author: true
   field_authors: true
@@ -60,7 +78,6 @@ hidden:
   field_buildings_info: true
   field_content: true
   field_copyrights: true
-  field_end_year: true
   field_finna_id: true
   field_formats: true
   field_geolocation: true
@@ -72,7 +89,6 @@ hidden:
   field_metatags: true
   field_neighbourhoods: true
   field_reading_time: true
-  field_start_year: true
   field_turning_points: true
   langcode: true
   links: true
