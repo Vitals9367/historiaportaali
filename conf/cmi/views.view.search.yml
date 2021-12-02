@@ -8,7 +8,6 @@ dependencies:
   module:
     - better_exposed_filters
     - search_api
-    - views_infinite_scroll
 id: search
 label: Search
 module: views
@@ -32,14 +31,14 @@ display:
       query:
         type: views_query
         options:
-          bypass_access: false
-          skip_access: false
-          preserve_facet_query_args: false
+          skip_access: 0
+          bypass_access: 0
+          preserve_facet_query_args: 1
       exposed_form:
         type: bef
         options:
           submit_button: Search
-          reset_button: false
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
@@ -57,6 +56,16 @@ display:
               allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
+            sort:
+              plugin_id: bef_links
+              advanced:
+                combine: false
+                combine_rewrite: ''
+                reset: false
+                reset_label: ''
+                collapsible: false
+                collapsible_label: 'Sort options'
+                is_secondary: false
             filter:
               search_api_fulltext:
                 plugin_id: default
@@ -78,28 +87,18 @@ display:
                   placeholder_text: ''
                   collapsible: false
                   is_secondary: false
-              aggregated_phenomenon:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  is_secondary: false
-              aggregated_formats:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  is_secondary: false
       pager:
-        type: infinite_scroll
+        type: full
         options:
           items_per_page: 12
           offset: 0
           id: 0
           total_pages: null
           tags:
-            previous: ‹‹
-            next: ››
+            previous: ‹
+            next: ›
+            first: «
+            last: »
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -108,10 +107,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          views_infinite_scroll:
-            button_text: 'Load More'
-            automatically_load_content: false
-            initially_load_all_pages: false
+          quantity: 5
       style:
         type: default
       row:
@@ -412,7 +408,7 @@ display:
         operator: AND
         groups:
           1: AND
-      use_ajax: true
+      use_ajax: false
     cache_metadata:
       max-age: -1
       contexts:
