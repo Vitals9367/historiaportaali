@@ -38,39 +38,46 @@ mode: search_index
 content:
   content_moderation_control:
     weight: -20
-    settings: {  }
-    third_party_settings: {  }
+    settings: {}
+    third_party_settings: {}
     region: content
   field_formats:
     type: entity_reference_label
+  field_end_year:
+    type: number_integer
     weight: 3
     region: content
     label: hidden
     settings:
-      link: false
-    third_party_settings: {  }
+      thousand_separator: ""
+      prefix_suffix: false
+    third_party_settings: {}
   field_liftup_image:
     type: entity_reference_entity_view
-    weight: 1
+    weight: 0
     region: content
     label: hidden
     settings:
       view_mode: content_listing
       link: false
-    third_party_settings: {  }
+    third_party_settings: {}
   field_phenomena:
     type: entity_reference_label
-    weight: 2
+    weight: 1
     region: content
     label: hidden
     settings:
       link: false
-    third_party_settings: {  }
-  links:
-    weight: 0
+    third_party_settings: {}
+  field_start_year:
+    type: number_integer
+    weight: 2
     region: content
-    settings: {  }
-    third_party_settings: {  }
+    label: hidden
+    settings:
+      thousand_separator: ""
+      prefix_suffix: false
+    third_party_settings: {}
 hidden:
   field_author: true
   field_authors: true
@@ -78,8 +85,8 @@ hidden:
   field_buildings_info: true
   field_content: true
   field_copyrights: true
-  field_end_year: true
   field_finna_id: true
+  field_formats: true
   field_geolocation: true
   field_has_hero: true
   field_hero: true
@@ -89,7 +96,7 @@ hidden:
   field_metatags: true
   field_neighbourhoods: true
   field_reading_time: true
-  field_start_year: true
   field_turning_points: true
   langcode: true
+  links: true
   search_api_excerpt: true
