@@ -41,8 +41,6 @@ content:
     settings: {}
     third_party_settings: {}
     region: content
-  field_formats:
-    type: entity_reference_label
   field_end_year:
     type: number_integer
     weight: 3
