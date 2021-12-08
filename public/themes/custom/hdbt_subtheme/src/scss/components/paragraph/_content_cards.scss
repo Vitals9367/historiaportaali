@@ -129,6 +129,14 @@ $card_spacing: $spacing-and-half;
   .content-card__metadata-item__text {
     padding: $spacing-half 0;
     line-height: $lineheight-s;
+
+    & > span {
+      display: flex;
+
+      &:not(:last-child) {
+        margin-bottom: $spacing-half;
+      }
+    }
   }
 
   .content-card__bundle .content-card__metadata-item__text {

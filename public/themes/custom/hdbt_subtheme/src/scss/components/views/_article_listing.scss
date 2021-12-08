@@ -13,45 +13,34 @@
     }
   }
 
-  article.node--view-mode-listing-item {
-    padding: 0 $spacing-half;
+  article.content-card {
+    width: 100%;
     height: 100%;
-    display: flex;
 
-    .thumbnail-image {
+    .content-card__link {
       display: flex;
-      flex: 1 50%;
+      width: 100%;
+      height: 100%;
 
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-      }
-    }
+      .content-card__image {
+        width: 45%;
+        height: 100%;
 
-    .content-wrapper {
-      background: white;
-      padding: $spacing;
-      display: flex;
-      flex: 1 50%;
-      flex-flow: column;
-
-      h2 {
-        @include font-size(20px, 24px);
-        font-weight: $font-weight-bold;
-        margin: 0 0 $spacing;
+        & > div,
+        & > img {
+          height: 100%;
+        }
       }
 
-      span {
-        margin-bottom: $spacing;
+      .content-card__content {
+        width: 55%;
+        height: 100%;
       }
 
-      .icon {
-        color: $color-metro-dark;
-      }
-
-      a {
-        text-decoration: none;
+      .content-card__article-count,
+      .content-card__metadata {
+        display: flex;
+        margin-top: $spacing;
       }
     }
   }
