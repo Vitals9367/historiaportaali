@@ -71,57 +71,79 @@
  */
 #}
 
+{% set image = content.field_liftup_image %}
+
 {%
   set classes = [
-  'node--type-' ~ node.bundle|clean_class,
-  node.isPromoted() ? 'node--promoted',
-  node.isSticky() ? 'node--sticky',
-  not node.isPublished() ? 'node--unpublished',
-  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-]
+    'content-card',
+    'content-card--' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'content-card--promoted',
+    node.isSticky() ? 'content-card--sticky',
+    not node.isPublished() ? 'content-card--unpublished',
+    view_mode ? 'content-card--design-' ~ view_mode|clean_class,
+  ]
 %}
 
-<div class="map-item article">
-  {{ title_prefix }}
-    <h3{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h3>
-  {{ title_suffix }}
+{%
+  set title_classes = [
+    'content-card__title'
+  ]
+%}
 
-  {% if content.field_liftup_image|render %}
-    <div class="map-item__image">
-      {{ content.field_liftup_image }}
+<article{{ attributes.addClass(classes) }}>
+
+  <a href="{{ url }}" class="content-card__link" rel="bookmark">
+    <div class="content-card__image">
+      {% if image.0 %}
+        {{ image }}
+      {% else %}
+        <div class="image-placeholder">
+          {% include "@hdbt/misc/icon.twig" with { icon: 'helsinki' } %}
+        </div>
+      {% endif %}
     </div>
-  {% endif %}
 
-  <div class="metadata-wrapper">
-    {% if content.field_phenomena|render %}
-      <div class="map-item__phenomena metadata-item">
-        {{ content.field_phenomena }}
-      </div>
-    {% endif %}
+    <div class="content-card__content">
+      <div class="content-card__metadata">
+        <div class="content-card__bundle content-card__metadata-item">
+          <span class="content-card__metadata-item__icon bundle-article">
+            {% include '@hdbt/misc/icon.twig' with { icon: 'document', label: 'Article'|t } %}
+          </span>
+          <span class="content-card__metadata-item__text">{{ 'Article'|t }}</span>
+        </div>
 
-    {% if content.field_formats|render %}
-      <div class="map-item__formats metadata-item">
-        {{ content.field_formats }}
-      </div>
-    {% endif %}
+        {% if content.field_phenomena|render %}
+          <div class="content-card__phenomena content-card__metadata-item">
+            <span class="content-card__metadata-item__text">
+              {{ content.field_phenomena }}
+            </span>
+          </div>
+        {% endif %}
 
-    {% if content.field_start_year|render %}
-      <div class="map-item__year metadata-item">
-        <span>{{ content.field_start_year }}</span>
-        
-        {% if content.field_end_year|render %}
-          <span>-</span>
-          <span>{{ content.field_end_year }}</span>
+        {% if content.field_start_year|render %}
+          <div class="content-card__year content-card__metadata-item">
+            {% set start_year = (content.field_start_year[0]['#markup'] > 0) ? content.field_start_year[0]['#markup'] : content.field_start_year[0]['#markup']|abs ~ ' ' ~ 'BCE'|t %}
+            {% if content.field_end_year.0 %}
+              {% set end_year = (content.field_end_year[0]['#markup'] > 0) ? content.field_end_year[0]['#markup'] : content.field_end_year[0]['#markup']|abs ~ ' ' ~ 'BCE'|t %}
+            {% endif %}
+            {% set period = end_year ? start_year ~ ' – ' ~ end_year : start_year %}
+            <span class="content-card__metadata-item__text">
+              {{ period }}
+            </span>
+          </div>
         {% endif %}
       </div>
-    {% endif %}
-  </div>
 
-  <div class="map-item__link-to-content">
-    <a href="{{ url }}">
-      {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Link to content'|t } %}
-    </a>
-  </div>
-</div>
+      {{ title_prefix }}
+      <h3{{ title_attributes.addClass(title_classes) }}>
+        {{ label }}
+      </h3>
+      {{ title_suffix }}
+      
+      <span class="content-card__arrow{% if target_new %} is-outbound{% endif %}">
+        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Go to content'|t } %}
+      </span>
+    </div>
+  </a>
+
+</article>
