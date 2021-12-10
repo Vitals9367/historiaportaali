@@ -1,4 +1,6 @@
 {% if content %}
   <div class="label">{{ 'Used in articles'|t }}</div>
-  {{ content }}
+  {% for link in content %}
+    <span class="media-usage-link">{{ link }}</span>
+  {% endfor %}
 {% endif %}

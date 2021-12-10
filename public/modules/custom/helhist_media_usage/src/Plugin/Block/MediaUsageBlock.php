@@ -64,29 +64,32 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
    */
   public function build() {
     $media = \Drupal::routeMatch()->getParameter('media');
+
     // ListUsageController is a public function that returns the controller output.
     $controller = $this->classResolver->getInstanceFromDefinition('\Drupal\entity_usage\Controller\ListUsageController');
     $data = $controller->listUsagePage('media', $media->id());
 
-    // TODO: handle multiple usage rows.
+    // Get entity usage table rows from output.
     $rows = $data[0]['#rows'];
+    $content = [];
 
-    $link = $data[0]['#rows'][0][0];
-                           // ^ 1st row
-                              // ^ the link
-
-    // Get node title and replace link text with it.
-    if (!is_null($link)) {
-      $url = $link->getUrl()->toString();
-      $url_params = \Drupal\Core\Url::fromUserInput($url)->getRouteParameters();
-      $nid = $url_params['node'];
-      $node_title = \Drupal\node\Entity\Node::load($nid)->getTitle();
-      $link->setText($node_title);
+    foreach ($rows as $row) {
+      // Get link from entity usage table column.
+      $link = $row[0];
+      if (!is_null($link)) {
+        // Get node title and replace link text with it.
+        $url = $link->getUrl()->toString();
+        $url_params = \Drupal\Core\Url::fromUserInput($url)->getRouteParameters();
+        $nid = $url_params['node'];
+        $node_title = \Drupal\node\Entity\Node::load($nid)->getTitle();
+        $link->setText($node_title);
+        $content[] = $link;
+      }
     }
 
     return [
       '#theme' => 'media_usage_block',
-      '#content' => $link,
+      '#content' => $content,
       '#cache' => [
         'max-age' => 0,
       ]
