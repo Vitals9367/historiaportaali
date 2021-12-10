@@ -64,7 +64,6 @@
 
       if (selectedMarker) {
         // Center map to the selected marker
-        console.log(selectedMarker._latlng);
         map.setView(selectedMarker._latlng, zoomAmount);
 
         // Wait for the centering to finish before opening popup
