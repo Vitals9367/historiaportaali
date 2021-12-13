@@ -77,13 +77,20 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
       // Get link from entity usage table column.
       $link = $row[0];
       if (!is_null($link)) {
-        // Get node title and replace link text with it.
+        // Get node from link url.
         $url = $link->getUrl()->toString();
-        $url_params = \Drupal\Core\Url::fromUserInput($url)->getRouteParameters();
-        $nid = $url_params['node'];
-        $node_title = \Drupal\node\Entity\Node::load($nid)->getTitle();
-        $link->setText($node_title);
-        $content[] = $link;
+        $url_parts = array_filter(explode('/', $url));
+        $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        // Check that current lang translation exists, otherwise getRouteParameters throws UnexpectedValueException.
+        if (count($url_parts) && $url_parts[1] == $language) {
+          $url_params = \Drupal\Core\Url::fromUserInput($url)->getRouteParameters();
+          $node = \Drupal\node\Entity\Node::load($url_params['node']);
+          $node_type = $node->getType();
+          // Filter duplicates (old revisions, same media in liftup and content) and non-articles.
+          if (!in_array($node->id(), $content) && $node_type == 'article') {
+            $content[] = $node->id();
+          }
+        }
       }
     }
 
