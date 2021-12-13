@@ -65,7 +65,7 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
   public function build() {
     $media = \Drupal::routeMatch()->getParameter('media');
 
-    // ListUsageController is a public function that returns the controller output.
+    // listUsagePage is a public function that returns ListUsageController output.
     $controller = $this->classResolver->getInstanceFromDefinition('\Drupal\entity_usage\Controller\ListUsageController');
     $data = $controller->listUsagePage('media', $media->id());
 
