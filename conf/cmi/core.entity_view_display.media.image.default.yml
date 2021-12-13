@@ -98,7 +98,7 @@ content:
     settings:
       multiple_map: false
       popup_content: ''
-      leaflet_map: 'OSM Mapnik'
+      leaflet_map: esri-world_topo_map
       height: 400
       height_unit: px
       hide_empty_map: true
@@ -138,6 +138,10 @@ content:
         popupAnchor:
           x: ''
           'y': ''
+      leaflet_markercluster:
+        options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
+        control: false
+        include_path: false
       path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2","radius":"6"}'
       geocoder:
         settings:
@@ -157,10 +161,6 @@ content:
       disable_wheel: false
       fullscreen_control: false
       gesture_handling: false
-      leaflet_markercluster:
-        control: false
-        options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds": false}'
-        include_path: false
     third_party_settings: {  }
   field_image_caption:
     weight: 2
