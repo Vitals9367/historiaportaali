@@ -5,6 +5,7 @@ namespace Drupal\helhist_media_usage\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -79,12 +80,15 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
       if (!is_null($link)) {
         // Get node from link url.
         $url = $link->getUrl()->toString();
-        $url_parts = array_filter(explode('/', $url));
+        // Strip langcode.
+        $url = substr($url, 3);
         $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-        // Check that current lang translation exists, otherwise getRouteParameters throws UnexpectedValueException.
-        if (count($url_parts) && $url_parts[1] == $language) {
-          $url_params = \Drupal\Core\Url::fromUserInput($url)->getRouteParameters();
-          $node = \Drupal\node\Entity\Node::load($url_params['node']);
+        $url_path = \Drupal::service('path_alias.manager')->getPathByAlias($url, $language);
+        // If alias exists, we can extract node ID from path.
+        if(preg_match('/node\/(\d+)/', $url_path, $matches)) {
+          $node = \Drupal\node\Entity\Node::load($matches[1]);
+        }
+        if (!is_null($node)) {
           $node_type = $node->getType();
           // Filter duplicates (old revisions, same media in liftup and content) and non-articles.
           if (!in_array($node->id(), $content) && $node_type == 'article') {
