@@ -89,9 +89,8 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
           $node = \Drupal\node\Entity\Node::load($matches[1]);
         }
         if (!is_null($node)) {
-          $node_type = $node->getType();
           // Filter duplicates (old revisions, same media in liftup and content) and non-articles.
-          if (!in_array($node->id(), $content) && $node_type == 'article') {
+          if (!in_array($node->id(), $content) && $node->getType() == 'article') {
             $content[] = $node->id();
           }
         }
