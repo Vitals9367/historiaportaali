@@ -11,6 +11,8 @@
           map = lMap;
           const idFromUrl = self.getUrlParameter('id');
 
+          self.bindPopupPositioning();
+
           if (idFromUrl) {
             self.openPopupByNid(idFromUrl);
           }
@@ -37,12 +39,52 @@
     },
 
     openPopupByNid: function(id) {
+      let selectedMarker = null;
+      let zoomAmount = 15;
+
       map.eachLayer(layer => {
         if (layer.options?.entity_id == id) {
-          // Center map to the selected marker and open popup
-          map.setView(layer._latlng, 15);
-          layer.openPopup();
+          selectedMarker = layer;
         }
+
+        // Try to find the layer from marker groups
+        if (layer._group && !selectedMarker) {
+          const childMarkers = layer.getAllChildMarkers();
+          childMarkers.forEach(childMarker => {
+            if (childMarker.options?.entity_id == id) {
+              selectedMarker = childMarker;
+
+              // Zoom closer if the marker is inside a group to make
+              // sure that the marker is visible before opening popup
+              zoomAmount = 18;
+            }
+          });
+        }
+      });
+
+      if (selectedMarker) {
+        // Center map to the selected marker
+        map.setView(selectedMarker._latlng, zoomAmount);
+
+        // Wait for the centering to finish before opening popup
+        map.on('moveend', function() {
+          selectedMarker.openPopup();
+        });
+
+        map.on('popupopen', function() {
+          map.off('moveend');
+        });
+      }
+    },
+
+    bindPopupPositioning: function() {
+      map.on('popupopen', function(e) {
+        // Find the pixel location on the map where the popup anchor is
+        var px = map.project(e.target._popup._latlng);
+        // Find the height of the popup container and subtract from the Y axis of marker location
+        px.y -= e.target._popup._container.clientHeight;
+        // Pan to new center
+        map.panTo(map.unproject(px),{animate: true});
       });
     },
 

@@ -21,10 +21,10 @@ dependencies:
     - field.field.media.image.field_photographer
     - field.field.media.image.field_start_year
     - field.field.media.image.field_transcript
-    - image.style.3_2_xxs
     - media.type.image
+    - responsive_image.styles.content_cards
   module:
-    - image
+    - responsive_image
 _core:
   default_config_hash: in_XCvnpxCs_Bfi1xBUEGLq1TwGghNZOnnJsyyeWqQE
 id: media.image.search_index
@@ -53,10 +53,10 @@ content:
     label: hidden
     weight: 0
     settings:
-      image_style: 3_2_xxs
+      responsive_image_style: content_cards
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
     region: content
   field_phenomena:
     type: entity_reference_label
