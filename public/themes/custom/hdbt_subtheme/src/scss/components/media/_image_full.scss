@@ -42,8 +42,48 @@
         }
 
         .image__geolocation {
+          margin-bottom: $spacing-double;
+
+          .leaflet-control-container,
           .map-controls__top-container {
             display: none;
+          }
+        }
+
+        .image__usage {
+          article.content-card--design-listing-item {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        
+            .content-card__link {
+              display: flex;
+              width: 100%;
+              height: 100%;
+        
+              .content-card__image {
+                width: 35%;
+                
+                div,
+                img {
+                  height: 100%;
+                }
+              }
+        
+              .content-card__content {
+                width: 65%;
+              }
+        
+              .content-card__metadata {
+                display: flex;
+                margin-top: $spacing;
+
+                .content-card__phenomena,
+                .content-card__year {
+                  display: none;
+                }
+              }
+            }
           }
         }
       }

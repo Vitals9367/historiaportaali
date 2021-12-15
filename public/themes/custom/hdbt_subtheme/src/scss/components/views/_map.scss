@@ -82,67 +82,44 @@
     }
   }
 
-  .map-item {
-    h3 {
-      @include font-size(16px, 20px);
-      font-weight: $font-weight-bold;
-      margin: 0 0 $spacing-half;
+  .leaflet-popup {
+    .leaflet-popup-content-wrapper {
+      .leaflet-popup-content {
+        margin: -1px;
 
-      a {
-        text-decoration: none;
-        color: var(--hdbt-default-link-color);
+        article.content-card--design-map-item {
+          width: 100%;
+          padding: 0;
+
+          a {
+            width: 100%;
+            padding-bottom: 0;
+            border-radius: 12px;
+            color: var(--hdbt-default-link-color);
+
+            .content-card__content {
+              h3 {
+                font-size: 16px;
+                line-height: 1.2rem;
+              }
+            }
+          }
+        }
       }
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+    .leaflet-popup-close-button {
+      padding: 6px 0 0 0;
+      border-radius: 50%;
+      height: 24px;
+      width: 24px;
+      background: $color-black-80;
+      color: $color-white;
 
-    .map-item__image {
-      margin-bottom: $spacing-half;
-
-      img {
-        vertical-align: middle;
-      }
-    }
-
-    .map-item__phenomena span,
-    .map-item__formats .format-wrapper {
-      display: inline-block;
-      background-color: $color-sand;
-      color: $color-metro-dark;
-      padding: $spacing-half $spacing-half;
-      margin-bottom: $spacing-half;
-      @include font-size(14px, 18px);
-    }
-
-    .format-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .format-icon {
-      margin-right: $spacing-quarter;
-
-      svg {
-        vertical-align: middle;
-      } 
-    }
-
-    .map-item__year {
-      display: inline-block;
-      @include font-size(14px, 14px);
-      font-weight: $font-weight-bold;
-      background-color: $color-sand;
-      padding: $spacing-half $spacing-half;
-      margin-bottom: $spacing-half;
-    }
-
-    .map-item__link-to-content {
-      a {
-        color: var(--hdbt-default-link-color);
+      &:hover,
+      &:focus {
+        background: $color-black-70;
+        color: $color-white;
       }
     }
   }

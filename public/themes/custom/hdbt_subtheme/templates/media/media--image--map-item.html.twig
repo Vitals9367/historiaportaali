@@ -29,39 +29,79 @@
  * @see template_preprocess_media()
  */
 #}
+{% set image = content.field_media_image %}
 
-<div class="map-item media">
-  {{ title_prefix }}
-    <h3{{ title_attributes }}>
-      <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}" rel="bookmark">{{ name }}</a>
-    </h3>
-  {{ title_suffix }}
+{%
+  set classes = [
+    'content-card',
+    'content-card--media',
+    not media.isPublished() ? 'content-card--unpublished',
+    view_mode ? 'content-card--design-' ~ view_mode|clean_class,
+  ]
+%}
 
-  {% if content.field_media_image|render %}
-    <div class="map-item__image">
-      {{ content.field_media_image }}
+{%
+  set title_classes = [
+    'content-card__title'
+  ]
+%}
+
+{% set entity_url = path('entity.media.canonical', { 'media': media.id }) %}
+
+<article{{ attributes.addClass(classes) }}>
+
+  <a href="{{ entity_url }}" class="content-card__link" rel="bookmark">
+    <div class="content-card__image">
+      {% if image.0 %}
+        {{ image }}
+      {% else %}
+        <div class="image-placeholder">
+          {% include "@hdbt/misc/icon.twig" with { icon: 'helsinki' } %}
+        </div>
+      {% endif %}
     </div>
-  {% endif %}
+
+    <div class="content-card__content">
+      <div class="content-card__metadata">
+        <div class="content-card__bundle content-card__metadata-item">
+          <span class="content-card__metadata-item__icon bundle-image }}">
+            {% include '@hdbt/misc/icon.twig' with { icon: 'camera', label: 'Image'|t } %}
+          </span>
+          <span class="content-card__metadata-item__text">{{ 'Image'|t }}</span>
+        </div>
+
+        {% if content.field_phenomena|render %}
+          <div class="content-card__phenomena content-card__metadata-item">
+            <span class="content-card__metadata-item__text">
+              {{ content.field_phenomena }}
+            </span>
+          </div>
+        {% endif %}
+
+        {% if content.field_start_year|render %}
+          <div class="content-card__year content-card__metadata-item">
+            {% set start_year = (content.field_start_year[0]['#markup'] > 0) ? content.field_start_year[0]['#markup'] : content.field_start_year[0]['#markup']|abs ~ ' ' ~ 'BCE'|t %}
+            {% if content.field_end_year.0 %}
+              {% set end_year = (content.field_end_year[0]['#markup'] > 0) ? content.field_end_year[0]['#markup'] : content.field_end_year[0]['#markup']|abs ~ ' ' ~ 'BCE'|t %}
+            {% endif %}
+            {% set period = end_year ? start_year ~ ' – ' ~ end_year : start_year %}
+            <span class="content-card__metadata-item__text">
+              {{ period }}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+
+      {{ title_prefix }}
+        <h3{{ title_attributes.addClass(title_classes) }}>
+          {{ content.name }}
+        </h3>
+      {{ title_suffix }}
+
+      <span class="content-card__arrow{% if target_new %} is-outbound{% endif %}">
+        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Go to content'|t } %}
+      </span>
+    </div>
+  </a>
   
-  <div class="metadata-wrapper">
-    <div class="metadata-row">
-      {% if content.field_phenomena|render %}
-        <div class="map-item__phenomena metadata-item">
-          {{ content.field_phenomena }}
-        </div>
-      {% endif %}
-
-      {% if content.field_formats|render %}
-        <div class="map-item__formats metadata-item">
-          {{ content.field_formats }}
-        </div>
-      {% endif %}
-    </div>
-
-    <div class="map-item__link-to-content">
-      <a href="{{ path('entity.media.canonical', { 'media': media.id }) }}">
-        {% include '@hdbt/misc/icon.twig' with {icon: 'arrow-right', label: 'Link to content'|t } %}
-      </a>
-    </div>
-  </div>
-</div>
+</article>

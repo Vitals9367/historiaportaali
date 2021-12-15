@@ -62,6 +62,7 @@ module:
   helhist_admin_forms: 0
   helhist_article: 0
   helhist_map: 0
+  helhist_media_usage: 0
   helhist_search: 0
   helhist_tokens: 0
   image: 0
