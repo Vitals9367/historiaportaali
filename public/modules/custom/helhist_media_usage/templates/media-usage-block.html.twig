@@ -1,0 +1,8 @@
+{% if content %}
+  <div class="image__usage">
+    <div class="label">{{ 'Used in articles'|t }}</div>
+    {% for nid in content %}
+      {{ drupal_entity('node', nid, 'listing_item') }}
+    {% endfor %}
+  </div>
+{% endif %}

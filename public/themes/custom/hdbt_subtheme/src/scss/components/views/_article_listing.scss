@@ -24,17 +24,15 @@
 
       .content-card__image {
         width: 45%;
-        height: 100%;
 
-        & > div,
-        & > img {
+        div,
+        img {
           height: 100%;
         }
       }
 
       .content-card__content {
         width: 55%;
-        height: 100%;
       }
 
       .content-card__article-count,
