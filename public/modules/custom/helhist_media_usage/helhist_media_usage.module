@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function helhist_media_usage_theme() {
+  return [
+    'media_usage_block' => [
+      'variables' => [
+        'content' => [],
+      ],
+    ],
+  ];
+}
