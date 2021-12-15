@@ -5,8 +5,11 @@ namespace Drupal\helhist_media_usage\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\path_alias\AliasManagerInterface;
+use Drupal\Core\Url;
 
 /**
  * Provides a Media Usage block.
@@ -27,6 +30,27 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
   protected $classResolver;
 
   /**
+   * The current route match.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
+   */
+  protected $routeMatch;
+
+  /**
+   * The language manager service.
+   *
+   * @var \Drupal\Core\Language\LanguageManagerInterface
+   */
+  protected $languageManager;
+
+  /**
+   * Path alias manager.
+   *
+   * @var \Drupal\path_alias\AliasManagerInterface
+   */
+  protected $pathAliasManager;
+
+  /**
    * Constructs a new ControllerBlock object.
    *
    * @param array $configuration
@@ -37,15 +61,27 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
    *   The plugin implementation definition.
    * @param \Drupal\Core\DependencyInjection\ClassResolverInterface $class_resolver
    *   The class resolver service.
+   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+   *   The route match service.
+   * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
+   *   The language manager service.
+   * @param \Drupal\path_alias\AliasManagerInterface $path_alias_manager
+   *   The path alias manager service.
    */
   public function __construct(
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    ClassResolverInterface $class_resolver
+    ClassResolverInterface $class_resolver,
+    RouteMatchInterface $route_match,
+    LanguageManagerInterface $language_manager,
+    AliasManagerInterface $path_alias_manager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->classResolver = $class_resolver;
+    $this->routeMatch = $route_match;
+    $this->languageManager = $language_manager;
+    $this->pathAliasManager = $path_alias_manager;
   }
 
   /**
@@ -56,7 +92,10 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('class_resolver')
+      $container->get('class_resolver'),
+      $container->get('current_route_match'),
+      $container->get('language_manager'),
+      $container->get('path_alias.manager')
     );
   }
 
@@ -64,7 +103,7 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
    * {@inheritdoc}
    */
   public function build() {
-    $media = \Drupal::routeMatch()->getParameter('media');
+    $media = $this->routeMatch->getParameter('media');
 
     // listUsagePage is a public function that returns ListUsageController output.
     $controller = $this->classResolver->getInstanceFromDefinition('\Drupal\entity_usage\Controller\ListUsageController');
@@ -82,8 +121,8 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
         $url = $link->getUrl()->toString();
         // Strip langcode.
         $url = substr($url, 3);
-        $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-        $url_path = \Drupal::service('path_alias.manager')->getPathByAlias($url, $language);
+        $language = $this->languageManager->getCurrentLanguage()->getId();
+        $url_path = $this->pathAliasManager->getPathByAlias($url, $language);
         // If alias exists, we can extract node ID from path.
         if(preg_match('/node\/(\d+)/', $url_path, $matches)) {
           $node = \Drupal\node\Entity\Node::load($matches[1]);
