@@ -22,12 +22,10 @@ display:
           label: Otsikko
         type:
           label: Sisältötyyppi
-          separator: ', '
         name:
           label: Kirjoittaja
         langcode:
           label: Kieli
-          separator: ', '
         status:
           label: Tila
           settings:
@@ -37,6 +35,8 @@ display:
           label: Päivitetty
         operations:
           label: Toimenpiteet
+        current_state_views_field:
+          label: Julkaisutila
       filters:
         title:
           expose:
