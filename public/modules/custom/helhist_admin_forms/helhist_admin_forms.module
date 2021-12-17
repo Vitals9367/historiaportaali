@@ -95,6 +95,24 @@ function helhist_admin_forms_form_alter(&$form, &$form_state, $form_id) {
         '#default_value' => ($form['field_start_year']['widget'][0]['value']['#default_value'] < 0) ? TRUE : FALSE
       ];
 
+      $form['field_start_year']['widget'][0]['value']['#ajax'] = [
+        'callback' => 'helhist_admin_forms_ajax_end_year_default',
+        'event' => 'change',
+      ];
+
+      $form['field_start_year']['time_period'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Period'),
+        // Default to checked if years are different.
+        '#default_value' => ($form['field_start_year']['widget'][0]['value']['#default_value'] != $form['field_end_year']['widget'][0]['value']['#default_value']) ? TRUE : FALSE
+      ];
+
+      $form['field_end_year']['#states'] = [
+        'visible' => [
+          ':input[name="time_period"]' => ['checked' => TRUE],
+        ],
+      ];
+
       $form['field_end_year']['end_year_bce'] = [
         '#type' => 'checkbox',
         '#title' => t('BCE'),
@@ -112,6 +130,23 @@ function helhist_admin_forms_form_alter(&$form, &$form_state, $form_id) {
   }
 
   return $form;
+}
+
+/**
+* Implements Ajax custom callback function().
+*/
+function helhist_admin_forms_ajax_end_year_default($form, $form_state) {
+  if (!$form['field_start_year']['time_period']['#checked']) {
+    $response = new AjaxResponse();
+    $start_year = $form['field_start_year']['widget'][0]['value']['#value'];
+    $selector = '#edit-field-end-year-0-value';
+    $method = 'val';
+    // If not period, assign start year as end year.
+    $arguments = [$start_year];
+    $response->addCommand(new InvokeCommand($selector, $method, $arguments));
+
+    return $response;
+  }
 }
 
 /**
