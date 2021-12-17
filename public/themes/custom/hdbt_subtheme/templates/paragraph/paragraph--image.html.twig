@@ -61,7 +61,11 @@
             {# The image caption is attached to each image so we need to get it from the media entity #}
             {% for key, image in content.field_image %}
               {% if image.entity %}
-                {% set media = image.entity %}
+                {% if image.entity.hastranslation(language) %}
+                  {% set media = image.entity.translation(language) %}
+                {% else %}
+                  {% set media = image.entity %}
+                {% endif %}
                 {% set photographer = media.fields.field_photographer.value %}
                 {% if caption is null %}
                   {# If paragraph image caption is not set, try to get it from the media entity #}
@@ -78,7 +82,11 @@
           {% if content.field_image|render %}
             {% for key, image in content.field_image %}
               {% if image.entity %}
-                {% set media = image.entity %}
+                {% if image.entity.hastranslation(language) %}
+                  {% set media = image.entity.translation(language) %}
+                {% else %}
+                  {% set media = image.entity %}
+                {% endif %}
                 {% set alt = content.field_image_caption[0] is not empty ? caption : media.fields.field_media_image.alt %}
                 {% if original_aspect_ratio %}
                   {% set image =

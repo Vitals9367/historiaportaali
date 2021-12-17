@@ -73,7 +73,11 @@
             {# The image caption is attached to each image so we need to get it from the media entity #}
             {% for key, image in content.field_gallery_slide_media %}
               {% if image.entity %}
-                {% set media = image.entity %}
+                {% if image.entity.hastranslation(language) %}
+                  {% set media = image.entity.translation(language) %}
+                {% else %}
+                  {% set media = image.entity %}
+                {% endif %}
                 {% set photographer = media.fields.field_photographer.value %}
                 {% if caption is null %}
                   {# If paragraph image caption is not set, try to get it from the media entity #}
