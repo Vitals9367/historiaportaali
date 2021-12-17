@@ -63,6 +63,7 @@ display:
             name: name
             langcode: langcode
             status: status
+            current_state_views_field: current_state_views_field
             changed: changed
             operations: operations
           info:
@@ -101,6 +102,13 @@ display:
               responsive: ''
             status:
               sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            current_state_views_field:
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -583,54 +591,49 @@ display:
           plugin_id: bundle
           entity_type: node
           entity_field: type
-        status:
-          id: status
+        current_state_views_filter:
+          id: current_state_views_filter
           table: node_field_data
-          field: status
+          field: current_state_views_filter
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '='
-          value: '1'
+          operator: in
+          value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: ''
-            label: Status
+            operator_id: current_state_views_filter_op
+            label: 'Current state'
             description: ''
             use_operator: false
-            operator: status_op
-            identifier: status
+            operator: current_state_views_filter_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: current_state
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: true
+              anonymous: '0'
+              admin: '0'
+              content_producer: '0'
+            reduce: 0
+          is_grouped: false
           group_info:
-            label: 'Published status'
+            label: ''
             description: ''
-            identifier: status
+            identifier: ''
             optional: true
             widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items:
-              1:
-                title: Published
-                operator: '='
-                value: '1'
-              2:
-                title: Unpublished
-                operator: '='
-                value: '0'
-          plugin_id: boolean
+            group_items: {  }
           entity_type: node
-          entity_field: status
+          plugin_id: current_state_views_filter
         langcode:
           id: langcode
           table: node_field_data
@@ -730,7 +733,8 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       max-age: 0
-      tags: {  }
+      tags:
+        - 'config:workflow_list'
   page_1:
     display_options:
       path: admin/content/node
@@ -763,4 +767,5 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       max-age: 0
-      tags: {  }
+      tags:
+        - 'config:workflow_list'

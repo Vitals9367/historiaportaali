@@ -44,19 +44,12 @@ display:
         type:
           expose:
             label: Sisältötyyppi
-        status:
-          expose:
-            label: Tila
-          group_info:
-            label: Julkaisutila
-            group_items:
-              1:
-                title: Julkaistu
-              2:
-                title: Julkaisematon
         langcode:
           expose:
             label: Kieli
+        current_state_views_filter:
+          expose:
+            label: Julkaisutila
       title: Sisältö
       empty:
         area_text_custom:
