@@ -26,24 +26,17 @@ class NodeResaveBatch {
    */
   public static function batchOperation(array $chunk, array &$context) {
     foreach ($chunk as $nid) {
-      $latest_revision_nid = \Drupal::entityTypeManager()->getStorage('node')->getLatestRevisionId($nid);
-      $node = \Drupal::entityTypeManager()->getStorage('node')->loadRevision($latest_revision_nid);
+      $node = Node::load($nid);
 
-      if (!$node->moderation_state->value) {
-        $created = $node->getCreatedTime();
-        $node->setNewRevision(FALSE);
-        $node->save();
-
-        if ($node->isPublished()) {
-          $node->set('moderation_state', 'published');
-        } else {
-          $node->set('moderation_state', 'draft');
-        }
-
-        $node->setCreatedTime($changed);
-        $node->setNewRevision(FALSE);
-        $node->save();
+      if ($node->isPublished()) {
+        $node->set('moderation_state', 'published');
+      } else {
+        $node->set('moderation_state', 'draft');
       }
+
+      $created = $node->getCreatedTime();
+      $node->setCreatedTime($created);
+      $node->save();
 
       $context['results'][] = $nid;
     }
