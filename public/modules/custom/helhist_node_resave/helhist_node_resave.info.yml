@@ -1,0 +1,10 @@
+type: module
+name: HelHist Node Resave
+description: This module provides a form implementing Batch API to resave all nodes or all nodes of a selected type.
+package: 'Custom'
+core: 8.x
+core_version_requirement: ^8 || ^9
+configure: helhist_node_resave.form
+
+dependencies:
+  - drupal:node
