@@ -5,7 +5,7 @@ dependencies: {  }
 id: views_page---search__page_aggregated_authored_on
 display_id: views_page---search__page
 field_identifier: aggregated_authored_on
-default_sort: true
+default_sort: false
 default_order: asc
 label: 'Authored on'
-weight: 0
+weight: 2
