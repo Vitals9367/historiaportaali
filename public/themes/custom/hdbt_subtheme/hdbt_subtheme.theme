@@ -203,3 +203,11 @@ function _get_top_level_menu_parent_title_by_nid($node_id) {
 
   return $parent_title;
 }
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function hdbt_subtheme_preprocess_paragraph(&$variables) {
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['language'] = $language;
+}

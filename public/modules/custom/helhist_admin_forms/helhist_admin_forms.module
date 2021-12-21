@@ -143,3 +143,22 @@ function helhist_admin_forms_ajax_end_year_bce($form, $form_state) {
 
   return $response;
 }
+
+/**
+ * Implements hook_views_data().
+ */
+function helhist_admin_forms_views_data() {
+  $data['views']['table']['group'] = t('HelHist');
+  $data['views']['table']['join'] = [
+    '#global' => [],
+  ];
+
+  $data['views']['entity_translations_field'] = [
+    'title' => t('Translations'),
+    'help' => t('Lists available entity languages/translations.'),
+    'field' => [
+      'id' => 'entity_translations_field',
+    ],
+  ];
+  return $data;
+}
