@@ -44,16 +44,6 @@ display:
         type:
           expose:
             label: 'Тип материала'
-        status:
-          expose:
-            label: Статус
-          group_info:
-            label: 'Статус публикации'
-            group_items:
-              1:
-                title: Опубликовано
-              2:
-                title: 'Снято с публикации'
         langcode:
           expose:
             label: Язык

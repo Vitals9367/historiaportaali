@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7d33b13a2d1977937b0a12cd40cbf75",
+    "content-hash": "fee9c9b63c9ee860f0c69dceda6565b6",
     "packages": [
         {
             "name": "City-of-Helsinki/php-hauki-client",
@@ -2683,9 +2683,6 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "support": {
-                "source": "https://github.com/drupal/core/tree/9.2.10"
-            },
             "time": "2021-11-24T14:27:27+00:00"
         },
         {
@@ -2733,9 +2730,6 @@
             "keywords": [
                 "drupal"
             ],
-            "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.2.10"
-            },
             "time": "2021-08-24T12:04:07+00:00"
         },
         {
@@ -2820,9 +2814,6 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Locked core dependencies; require this project INSTEAD OF drupal/core.",
-            "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/9.2.10"
-            },
             "time": "2021-11-24T14:27:27+00:00"
         },
         {
@@ -6819,6 +6810,58 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/twig_tweak",
                 "issues": "https://www.drupal.org/project/issues/twig_tweak"
+            }
+        },
+        {
+            "name": "drupal/views_cm_current_state",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/views_cm_current_state.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_cm_current_state-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "74a509b18afbcccbd7f9cfc356355bde9487598e"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1613760456",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Adam_Moulsdale",
+                    "homepage": "https://www.drupal.org/user/3529100"
+                },
+                {
+                    "name": "baikho",
+                    "homepage": "https://www.drupal.org/user/2727459"
+                },
+                {
+                    "name": "rakesh.gectcr",
+                    "homepage": "https://www.drupal.org/user/1177822"
+                }
+            ],
+            "description": "This module provides the views field, to get the current state of the content from content moderation.",
+            "homepage": "https://www.drupal.org/project/views_cm_current_state",
+            "support": {
+                "source": "https://git.drupalcode.org/project/views_cm_current_state"
             }
         },
         {
@@ -12150,9 +12193,6 @@
             ],
             "description": "Handles serializing and deserializing data structures, including object graphs, into array structures or other formats like XML and JSON.",
             "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/serializer/tree/v4.4.35"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -13547,11 +13587,6 @@
                 "spdx",
                 "validator"
             ],
-            "support": {
-                "irc": "irc://irc.freenode.org/composer",
-                "issues": "https://github.com/composer/spdx-licenses/issues",
-                "source": "https://github.com/composer/spdx-licenses/tree/1.5.6"
-            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -13861,9 +13896,6 @@
                 "GPL-2.0-or-later"
             ],
             "description": "require-dev dependencies from drupal/drupal; use in addition to drupal/core-recommended to run tests from drupal/core.",
-            "support": {
-                "source": "https://github.com/drupal/core-dev/tree/9.2.10"
-            },
             "time": "2021-06-01T16:41:50+00:00"
         },
         {
@@ -14738,10 +14770,6 @@
                 "testing",
                 "xunit"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.9"
-            },
             "funding": [
                 {
                     "url": "https://github.com/sebastianbergmann",
@@ -15943,7 +15971,6 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
             "time": "2020-09-28T06:45:17+00:00"
         },
         {
@@ -16614,9 +16641,6 @@
             ],
             "description": "Provides utilities for PHPUnit, especially user deprecation notices management",
             "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/phpunit-bridge/tree/v5.3.11"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",

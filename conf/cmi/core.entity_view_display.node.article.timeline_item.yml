@@ -36,6 +36,11 @@ targetEntityType: node
 bundle: article
 mode: timeline_item
 content:
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   links:
     weight: 0
     region: content
