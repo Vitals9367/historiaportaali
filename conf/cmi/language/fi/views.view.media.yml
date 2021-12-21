@@ -4,27 +4,33 @@ display:
       fields:
         count:
           label: Käyttö
+        entity_translations_field:
+          label: Käännökset
         media_bulk_form:
           action_title: Toiminto
         thumbnail__target_id:
           label: Pienoiskuva
+          separator: ', '
         name:
           label: 'Mediatiedoston nimi'
+          separator: ', '
         bundle:
           label: Tyyppi
+          separator: ', '
         uid:
           label: Kirjoittaja
+          separator: ', '
         status:
           label: Tila
           settings:
             format_custom_true: Julkaistu
             format_custom_false: Julkaisematon
+          separator: ', '
         changed:
           label: Päivitetty
+          separator: ', '
         operations:
           label: Toimenpiteet
-        entity_translations_field:
-          label: Käännökset
       exposed_form:
         options:
           submit_button: Suodatin
@@ -37,6 +43,7 @@ display:
           expose:
             items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options_all_label: '- Kaikki -'
+            offset_label: Offset
           tags:
             previous: '‹ Edellinen'
             next: 'Seuraava ›'
@@ -62,8 +69,15 @@ display:
         langcode:
           expose:
             label: Kieli
+      title: Media
       empty:
         area_text_custom:
           content: 'Ei mediatiedostoja saatavilla.'
     display_title: Oletus
+  media_page_list:
+    display_title: Media
+    display_options:
+      menu:
+        title: Media
+label: Media
 description: 'Etsi ja ylläpidä mediatiedostoja.'
