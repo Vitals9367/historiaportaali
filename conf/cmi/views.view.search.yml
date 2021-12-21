@@ -250,6 +250,7 @@ display:
           min_length: null
           fields:
             - aggregated_keywords
+            - aggregated_title
           plugin_id: search_api_fulltext
         aggregated_start_year:
           id: aggregated_start_year

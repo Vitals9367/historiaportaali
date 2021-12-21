@@ -8,4 +8,4 @@ field_identifier: aggregated_start_year
 default_sort: false
 default_order: asc
 label: Year
-weight: 0
+weight: 1

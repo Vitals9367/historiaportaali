@@ -71,7 +71,6 @@ field_settings:
         - 'entity:media/field_phenomena'
         - 'entity:media/field_phenomena:entity:name'
         - 'entity:media/field_photographer'
-        - 'entity:media/name'
         - 'entity:node/field_content:entity:field_columns_title'
         - 'entity:node/field_content:entity:field_content_cards_title'
         - 'entity:node/field_content:entity:field_hero_title'
@@ -88,7 +87,6 @@ field_settings:
         - 'entity:node/field_phenomena:entity:name'
         - 'entity:node/field_turning_points'
         - 'entity:node/field_turning_points:entity:name'
-        - 'entity:node/title'
   aggregated_neighbourhoods:
     label: 'Aggregated neighbourhoods'
     property_path: aggregated_field
@@ -116,6 +114,16 @@ field_settings:
       fields:
         - 'entity:media/field_start_year'
         - 'entity:node/field_start_year'
+  aggregated_title:
+    label: 'Aggregated title'
+    property_path: aggregated_field
+    type: text
+    boost: !!float 3
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/name'
+        - 'entity:node/title'
   article_end_year:
     label: 'End year'
     datasource_id: 'entity:node'
@@ -196,6 +204,14 @@ processor_settings:
       preprocess_query: -20
   language_with_fallback: {  }
   rendered_item: {  }
+  type_boost:
+    boosts:
+      'entity:media':
+        datasource_boost: !!float 1
+      'entity:node':
+        datasource_boost: !!float 3
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo
