@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.map_layer.field_map_wms_title
     - node.type.map_layer
   module:
+    - content_moderation
     - paragraphs
     - path
     - scheduler
@@ -79,6 +80,12 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path
