@@ -32,7 +32,6 @@ module:
   entity_usage: 0
   facets: 0
   facets_summary: 0
-  features: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -52,9 +51,6 @@ module:
   hdbt_content: 0
   hdbt_hyphenopoly: 0
   helfi_api_base: 0
-  helfi_base_config: 0
-  helfi_content: 0
-  helfi_example_content: 0
   helfi_gdpr_compliance: 0
   helfi_languages: 0
   helfi_media: 0
@@ -125,6 +121,7 @@ module:
   toolbar: 0
   twig_tweak: 0
   update: 0
+  update_helper: 0
   user: 0
   views_cm_current_state: 0
   views_infinite_scroll: 0

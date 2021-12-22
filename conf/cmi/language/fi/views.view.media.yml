@@ -73,7 +73,7 @@ display:
       empty:
         area_text_custom:
           content: 'Ei mediatiedostoja saatavilla.'
-    display_title: Oletus
+    display_title: Isäntä
   media_page_list:
     display_title: Media
     display_options:

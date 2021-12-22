@@ -4,6 +4,9 @@ display:
       fields:
         current_state_views_field:
           label: Julkaisutila
+        langcode:
+          label: Kieli
+          separator: ', '
         title:
           label: Otsikko
         type:
@@ -11,9 +14,6 @@ display:
           separator: ', '
         name:
           label: Kirjoittaja
-        langcode:
-          label: Kieli
-          separator: ', '
         status:
           label: Tila
           settings:

@@ -12,7 +12,15 @@ absolute_paths: false
 hide_single_home_item: true
 title_from_page_when_available: true
 capitalizator_mode: ucwords
-capitalizator_ignored_words: 'of and or de del y o a'
+capitalizator_ignored_words:
+  - of
+  - and
+  - or
+  - de
+  - del
+  - 'y'
+  - o
+  - a
 capitalizator_forced_words_first_letter: false
 capitalizator_forced_words_case_sensitivity: true
 add_structured_data_jsonld: false
@@ -29,6 +37,13 @@ excluded_paths: ''
 replaced_titles: ''
 custom_paths: ''
 title_segment_as_link: false
-capitalizator_forced_words: ''
+capitalizator_forced_words: {  }
 _core:
   default_config_hash: WbbmDUuw3f_lfysBDqf7sbEWcZc0teQARF-NNkJAc78
+alternative_title_field: ''
+follow_redirects: false
+limit_segment_display: false
+segment_display_limit: ''
+truncator_mode: false
+truncator_length: null
+truncator_dots: false

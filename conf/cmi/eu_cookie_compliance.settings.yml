@@ -70,3 +70,7 @@ cookie_session: 0
 set_cookie_session_zero_on_disagree: 0
 _core:
   default_config_hash: 3RrxIsIKhpctxUjbgtMu4VprwWFPnVFIAKJmwa3_rI4
+cookie_value_disagreed: '0'
+cookie_value_agreed_show_thank_you: '1'
+cookie_value_agreed: '2'
+accessibility_focus: false
