@@ -18,6 +18,7 @@ content:
   field_gallery_slides:
     type: paragraphs
     weight: 0
+    region: content
     settings:
       title: Lohko
       title_plural: Lohkot
@@ -33,14 +34,13 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    region: content
   field_original_aspect_ratio:
+    type: boolean_checkbox
     weight: 1
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
 hidden:
   created: true
   status: true

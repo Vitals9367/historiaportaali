@@ -19,17 +19,17 @@ third_party_settings:
       children:
         - field_default_map_zoom_level
         - field_default_map_center
+      label: 'Map settings'
+      region: content
       parent_name: ''
       weight: 2
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: false
+        description: ''
         required_fields: true
-      label: 'Map settings'
 id: node.map_page.default
 targetEntityType: node
 bundle: map_page
@@ -42,7 +42,9 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_content:
+    type: paragraphs
     weight: 3
+    region: content
     settings:
       title: Lohko
       title_plural: Lohkot
@@ -58,59 +60,57 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: paragraphs
-    region: content
   field_default_map_center:
+    type: geofield_map
     weight: 4
+    region: content
     settings:
-      map_geocoder:
-        control: 1
-        settings:
-          providers:
-            openstreetmap:
-              checked: true
-              weight: 0
-          min_terms: 4
-          delay: 800
-          options: ''
-      map_google_places:
-        places_additional_options: ''
-        places_control: false
+      html5_geolocation: false
+      default_value:
+        lat: !!float 0
+        lon: !!float 0
       map_library: leaflet
-      map_type_google: roadmap
-      map_type_leaflet: OpenStreetMap_Mapnik
-      map_type_selector: true
+      map_google_api_key: ''
+      map_google_places:
+        places_control: false
+        places_additional_options: ''
       map_dimensions:
         width: 100%
         height: 450px
+      map_type_google: roadmap
+      map_type_leaflet: OpenStreetMap_Mapnik
+      map_type_selector: true
+      zoom_level: 5
       zoom:
         start: 6
         focus: 12
         min: 0
         max: 22
-      geoaddress_field:
-        field: '0'
-        disabled: true
-        hidden: false
-      default_value:
-        lat: !!float 0
-        lon: !!float 0
       click_to_find_marker: false
       click_to_place_marker: false
       hide_coordinates: false
-      html5_geolocation: false
-      map_google_api_key: ''
-      zoom_level: 5
+      geoaddress_field:
+        field: '0'
+        hidden: false
+        disabled: true
+      map_geocoder:
+        control: 1
+        settings:
+          providers:
+            openstreetmap:
+              weight: 0
+              checked: true
+          min_terms: 4
+          delay: 800
+          options: ''
     third_party_settings: {  }
-    type: geofield_map
-    region: content
   field_default_map_zoom_level:
+    type: number
     weight: 3
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   langcode:
     type: language_select
     weight: 0
@@ -126,10 +126,10 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 8
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
@@ -139,17 +139,17 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 14
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 9
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -167,12 +167,12 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 5
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
