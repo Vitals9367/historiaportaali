@@ -4,7 +4,7 @@ status: true
 dependencies:
   module:
     - context
-    - ctools
+    - node
   theme:
     - hdbt_subtheme
 _core:

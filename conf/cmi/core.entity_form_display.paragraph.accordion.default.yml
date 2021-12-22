@@ -13,6 +13,7 @@ dependencies:
   module:
     - hdbt_admin_editorial
     - paragraphs
+    - text
 _core:
   default_config_hash: tZ6NtHmnjneasCaF7pacBXWuaSGMMI-LdkayZNerXro
 id: paragraph.accordion.default

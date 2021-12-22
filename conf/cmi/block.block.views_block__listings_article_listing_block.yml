@@ -6,7 +6,7 @@ dependencies:
     - views.view.listings
   module:
     - context
-    - ctools
+    - node
     - views
   theme:
     - hdbt_subtheme

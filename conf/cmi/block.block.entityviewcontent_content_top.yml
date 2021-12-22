@@ -5,6 +5,7 @@ dependencies:
   module:
     - context
     - ctools
+    - node
   theme:
     - hdbt_subtheme
 id: entityviewcontent_content_top
