@@ -11,12 +11,12 @@ pattern: '[node:menu-link:parents:join-path]/[node:title]'
 selection_criteria:
   257ec7d4-ed47-4530-b985-dcd238a2c40c:
     id: node_type
-    bundles:
-      listing_page: listing_page
     negate: false
+    uuid: 257ec7d4-ed47-4530-b985-dcd238a2c40c
     context_mapping:
       node: node
-    uuid: 257ec7d4-ed47-4530-b985-dcd238a2c40c
+    bundles:
+      listing_page: listing_page
 selection_logic: and
 weight: -5
 relationships: {  }
