@@ -18,7 +18,6 @@ variables:
 runtime:
   extensions:
     - redis
-    - imagick
 
 # The relationships of the application with services or other applications.
 #
