@@ -1,7 +1,8 @@
-label: Содержимое
-description: 'Поиск материалов и управление ими'
+label: 'Moderated content'
+description: 'Find and moderate content.'
 display:
   default:
+    display_title: 'По умолчанию'
     display_options:
       exposed_form:
         options:
@@ -17,24 +18,26 @@ display:
             next: 'Следующий ›'
             first: '« Первая'
             last: 'Последняя »'
+          expose:
+            items_per_page_label: 'Элементов на страницу'
+            items_per_page_options_all_label: '- Все -'
+            offset_label: Пропустить
       fields:
         title:
           label: Заголовок
+          separator: ', '
         type:
           label: 'Тип материала'
           separator: ', '
         name:
           label: Автор
-        langcode:
-          label: Язык
           separator: ', '
-        status:
-          label: Статус
-          settings:
-            format_custom_true: Опубликовано
-            format_custom_false: 'Снято с публикации'
+        moderation_state:
+          label: 'Moderation state'
+          separator: ', '
         changed:
           label: Обновлено
+          separator: ', '
         operations:
           label: Операции
       filters:
@@ -44,19 +47,15 @@ display:
         type:
           expose:
             label: 'Тип материала'
+        moderation_state:
+          expose:
+            label: 'Moderation state'
         langcode:
           expose:
             label: Язык
-      title: Содержимое
+      title: 'Moderated content'
       empty:
         area_text_custom:
-          content: 'Нет доступных материалов.'
-    display_title: Основной
-  page_1:
-    display_options:
-      menu:
-        title: Содержимое
-      tab_options:
-        title: Содержимое
-        description: 'Поиск материалов и управление ими'
-    display_title: Страница
+          content: 'No moderated content available. Only pending versions of content, such as drafts, are listed here.'
+  moderated_content:
+    display_title: 'Moderated content'

@@ -1,7 +1,8 @@
-label: Content
-description: 'Hitta och hantera innehåll.'
+label: 'Moderated content'
+description: 'Find and moderate content.'
 display:
   default:
+    display_title: Förvald
     display_options:
       exposed_form:
         options:
@@ -17,24 +18,26 @@ display:
             next: 'Nästa ›'
             first: '« Första'
             last: 'Sista »'
+          expose:
+            items_per_page_label: 'Inlägg per sida'
+            items_per_page_options_all_label: '- Alla -'
+            offset_label: Kompensera
       fields:
         title:
           label: Titel
+          separator: ', '
         type:
           label: Innehållstyp
           separator: ', '
         name:
           label: Författare
-        langcode:
-          label: Språk
           separator: ', '
-        status:
-          label: Status
-          settings:
-            format_custom_true: Publicerad
-            format_custom_false: 'Ej publicerad'
+        moderation_state:
+          label: 'Moderation state'
+          separator: ', '
         changed:
           label: Uppdaterad
+          separator: ', '
         operations:
           label: Funktioner
       filters:
@@ -44,19 +47,15 @@ display:
         type:
           expose:
             label: Innehållstyp
+        moderation_state:
+          expose:
+            label: 'Moderation state'
         langcode:
           expose:
             label: Språk
-      title: Content
+      title: 'Moderated content'
       empty:
         area_text_custom:
-          content: 'Inget innehåll tillgängligt.'
-    display_title: Huvud
-  page_1:
-    display_options:
-      menu:
-        title: Content
-      tab_options:
-        title: Content
-        description: 'Hitta och hantera innehåll'
-    display_title: Sida
+          content: 'No moderated content available. Only pending versions of content, such as drafts, are listed here.'
+  moderated_content:
+    display_title: 'Moderated content'

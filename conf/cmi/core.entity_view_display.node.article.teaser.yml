@@ -36,6 +36,11 @@ targetEntityType: node
 bundle: article
 mode: teaser
 content:
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   field_end_year:
     type: number_integer
     weight: 3

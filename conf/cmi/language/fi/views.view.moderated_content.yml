@@ -1,0 +1,53 @@
+label: 'Moderated content'
+display:
+  default:
+    display_title: Oletus
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Suodatin
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+          sort_asc_label: Nousevasti
+          sort_desc_label: Laskevasti
+      pager:
+        options:
+          tags:
+            previous: '‹ Edellinen'
+            next: 'Seuraava ›'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+            offset_label: Offset
+      fields:
+        title:
+          label: Otsikko
+          separator: ', '
+        type:
+          label: Sisältötyyppi
+          separator: ', '
+        name:
+          label: Kirjoittaja
+          separator: ', '
+        moderation_state:
+          separator: ', '
+        changed:
+          label: Päivitetty
+          separator: ', '
+        operations:
+          label: Toimenpiteet
+      filters:
+        title:
+          expose:
+            label: Otsikko
+        type:
+          expose:
+            label: Sisältötyyppi
+        langcode:
+          expose:
+            label: Kieli
+      title: 'Moderated content'
+  moderated_content:
+    display_title: 'Moderated content'
