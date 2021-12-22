@@ -16,7 +16,7 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-recommended": "^9.1",
         "drupal/elasticsearch_connector": "^7.0@alpha",
-        "drupal/facets": "^1.8",
+        "drupal/facets": "^2.0",
         "drupal/geocoder": "^3.20",
         "drupal/geofield": "^1.34",
         "drupal/geofield_map": "^2.70",
