@@ -16,35 +16,35 @@ plugin: 'entity_view:node'
 settings:
   id: 'entity_view:node'
   label: 'Entity view (Content) - Content Top'
-  provider: ctools
   label_display: '0'
+  provider: ctools
   view_mode: content_top
   context_mapping:
     entity: '@node.node_route_context:node'
 visibility:
   context_all:
     id: context_all
-    values: ''
     negate: null
+    values: ''
   context:
     id: context
-    values: ''
     negate: null
+    values: ''
   user_status:
     id: user_status
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
     user_status:
       viewing_profile: '0'
       logged_viewing_profile: '0'
       own_page_true: '0'
       field_value: '0'
     user_fields: uid
-    negate: false
-    context_mapping:
-      user: '@user.current_user_context:current_user'
   'entity_bundle:node':
     id: 'entity_bundle:node'
-    bundles:
-      article: article
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles:
+      article: article

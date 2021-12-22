@@ -37,17 +37,17 @@ third_party_settings:
         - field_neighbourhoods
         - group_year
         - field_keywords
+      label: 'Historia.helsinki metatietokentät'
+      region: content
       parent_name: ''
       weight: 10
       format_type: details
-      region: content
       format_settings:
+        classes: ''
+        id: ''
+        open: false
         description: ''
         required_fields: true
-        id: ''
-        classes: ''
-        open: false
-      label: 'Historia.helsinki metatietokentät'
     group_finna_meta:
       children:
         - field_finna_id
@@ -56,59 +56,59 @@ third_party_settings:
         - field_copyrights
         - field_languages
         - group_location
+      label: 'Finna.fi metatietokentät'
+      region: content
       parent_name: ''
       weight: 12
       format_type: details
-      region: content
       format_settings:
+        classes: ''
+        id: ''
+        open: false
         description: ''
         required_fields: true
-        id: ''
-        classes: ''
-        open: false
-      label: 'Finna.fi metatietokentät'
     group_location:
       children:
         - field_buildings
         - field_buildings_info
+      label: Säilytyspaikka
+      region: content
       parent_name: group_finna_meta
       weight: 24
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: Säilytyspaikka
     group_year:
       children:
         - field_start_year
         - field_end_year
+      label: Aikakausi
+      region: content
       parent_name: group_historiaportaali_meta
       weight: 20
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: Aikakausi
     group_geolocation:
       children:
         - field_geolocation
+      label: 'Sijainti kartalla'
+      region: content
       parent_name: ''
       weight: 11
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: true
-      label: 'Sijainti kartalla'
 _core:
   default_config_hash: _j-Y1d8xzIrrkE3VLGHbEks1vFdg7kMl68UaYmxSGBo
 id: media.image.default
@@ -123,170 +123,170 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_authors:
+    type: select2_entity_reference
     weight: 21
+    region: content
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_buildings:
+    type: select2_entity_reference
     weight: 12
+    region: content
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_buildings_info:
+    type: string_textfield
     weight: 13
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_copyrights:
+    type: select2_entity_reference
     weight: 22
+    region: content
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_end_year:
+    type: number
     weight: 28
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   field_finna_id:
+    type: string_textfield
     weight: 19
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_formats:
+    type: select2_entity_reference
     weight: 20
+    region: content
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_geolocation:
+    type: geofield_map
     weight: 5
+    region: content
     settings:
-      map_geocoder:
-        control: 1
-        settings:
-          providers:
-            openstreetmap:
-              checked: true
-              weight: 0
-          min_terms: 4
-          delay: 800
-          options: ''
-      map_google_places:
-        places_additional_options: ''
-        places_control: false
+      html5_geolocation: false
+      default_value:
+        lat: !!float 0
+        lon: !!float 0
       map_library: leaflet
-      map_type_google: roadmap
-      map_type_leaflet: OpenStreetMap_Mapnik
-      map_type_selector: true
+      map_google_api_key: ''
+      map_google_places:
+        places_control: false
+        places_additional_options: ''
       map_dimensions:
         width: 100%
         height: 450px
+      map_type_google: roadmap
+      map_type_leaflet: OpenStreetMap_Mapnik
+      map_type_selector: true
+      zoom_level: 5
       zoom:
         start: 6
         focus: 12
         min: 0
         max: 22
-      geoaddress_field:
-        field: '0'
-        disabled: true
-        hidden: false
-      default_value:
-        lat: !!float 0
-        lon: !!float 0
       click_to_find_marker: false
       click_to_place_marker: false
       hide_coordinates: false
-      html5_geolocation: false
-      map_google_api_key: ''
-      zoom_level: 5
+      geoaddress_field:
+        field: '0'
+        hidden: false
+        disabled: true
+      map_geocoder:
+        control: 1
+        settings:
+          providers:
+            openstreetmap:
+              weight: 0
+              checked: true
+          min_terms: 4
+          delay: 800
+          options: ''
     third_party_settings: {  }
-    type: geofield_map
-    region: content
   field_image_caption:
+    type: string_textarea
     weight: 3
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
-    region: content
   field_keywords:
+    type: select2_entity_reference
     weight: 21
+    region: content
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_languages:
+    type: select2_entity_reference
     weight: 23
+    region: content
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_media_image:
+    type: image_focal_point
     weight: 2
+    region: content
     settings:
-      preview_image_style: media_library
       progress_indicator: throbber
+      preview_image_style: media_library
       preview_link: true
       offsets: '50,50'
     third_party_settings: {  }
-    type: image_focal_point
-    region: content
   field_neighbourhoods:
+    type: select2_entity_reference
     weight: 19
+    region: content
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_phenomena:
+    type: select2_entity_reference
     weight: 18
+    region: content
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_photographer:
     type: string_textfield
     weight: 5
@@ -296,20 +296,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_start_year:
+    type: number
     weight: 27
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   field_transcript:
+    type: text_textarea
     weight: 4
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   langcode:
     type: language_select
     weight: 0
@@ -333,10 +333,10 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 13
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   translation:
     weight: 8
@@ -346,11 +346,11 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 6
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
 hidden: {  }

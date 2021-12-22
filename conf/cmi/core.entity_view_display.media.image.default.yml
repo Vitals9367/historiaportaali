@@ -35,77 +35,80 @@ mode: default
 content:
   field_authors:
     type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
     weight: 13
     region: content
-    label: above
-    settings:
-      link: false
-    third_party_settings: {  }
   field_buildings:
     type: entity_reference_label
-    weight: 16
-    region: content
     label: above
     settings:
       link: false
     third_party_settings: {  }
+    weight: 16
+    region: content
   field_buildings_info:
     type: string
-    weight: 17
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 17
+    region: content
   field_copyrights:
     type: entity_reference_label
-    weight: 14
-    region: content
     label: above
     settings:
       link: false
     third_party_settings: {  }
+    weight: 14
+    region: content
   field_end_year:
     type: number_integer
-    weight: 9
-    region: content
     label: hidden
     settings:
       thousand_separator: ''
       prefix_suffix: false
     third_party_settings: {  }
+    weight: 9
+    region: content
   field_finna_id:
     type: string
-    weight: 11
-    region: content
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 11
+    region: content
   field_formats:
     type: entity_reference_label
-    weight: 12
-    region: content
     label: above
     settings:
       link: false
     third_party_settings: {  }
+    weight: 12
+    region: content
   field_geolocation:
     type: leaflet_formatter_default
-    weight: 5
-    region: content
     label: hidden
     settings:
       multiple_map: false
-      popup_content: ''
       leaflet_map: esri-world_topo_map
       height: 400
       height_unit: px
       hide_empty_map: true
+      disable_wheel: false
+      fullscreen_control: false
+      gesture_handling: false
       reset_map:
-        position: topright
         control: false
+        position: topright
+      popup: false
+      popup_content: ''
       map_position:
+        force: false
         center:
           lat: !!float 0
           lon: !!float 0
@@ -113,16 +116,12 @@ content:
         minZoom: 1
         maxZoom: 18
         zoomFiner: 0
-        force: false
       weight: ''
       icon:
         iconType: marker
         iconUrl: ''
         shadowUrl: ''
         className: ''
-        html: '<div></div>'
-        html_class: leaflet-map-divicon
-        circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
         iconSize:
           x: ''
           'y': ''
@@ -138,12 +137,16 @@ content:
         popupAnchor:
           x: ''
           'y': ''
+        html: '<div></div>'
+        html_class: leaflet-map-divicon
+        circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
       leaflet_markercluster:
-        options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
         control: false
+        options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
         include_path: false
       path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2","radius":"6"}'
       geocoder:
+        control: false
         settings:
           position: topright
           input_size: 25
@@ -154,94 +157,91 @@ content:
           min_terms: 4
           delay: 800
           zoom: 16
-          options: ''
           popup: false
-        control: false
-      popup: false
-      disable_wheel: false
-      fullscreen_control: false
-      gesture_handling: false
+          options: ''
     third_party_settings: {  }
+    weight: 5
+    region: content
   field_image_caption:
-    weight: 2
+    type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 2
     region: content
   field_keywords:
     type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
     weight: 10
     region: content
-    label: above
-    settings:
-      link: false
-    third_party_settings: {  }
   field_languages:
     type: entity_reference_label
-    weight: 15
-    region: content
     label: above
     settings:
       link: false
     third_party_settings: {  }
+    weight: 15
+    region: content
   field_media_image:
-    label: hidden
-    weight: 1
-    settings:
-      image_style: original_l
-      image_link: file
-    third_party_settings: {  }
     type: image
+    label: hidden
+    settings:
+      image_link: file
+      image_style: original_l
+    third_party_settings: {  }
+    weight: 1
     region: content
   field_neighbourhoods:
     type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
     weight: 7
     region: content
-    label: above
-    settings:
-      link: false
-    third_party_settings: {  }
   field_phenomena:
     type: entity_reference_label
-    weight: 6
-    region: content
     label: above
     settings:
       link: false
     third_party_settings: {  }
+    weight: 6
+    region: content
   field_photographer:
     type: string
-    weight: 4
-    region: content
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 4
+    region: content
   field_start_year:
     type: number_integer
-    weight: 8
-    region: content
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: false
     third_party_settings: {  }
+    weight: 8
+    region: content
   field_transcript:
     type: text_default
-    weight: 3
-    region: content
     label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 3
+    region: content
   name:
     type: string
-    weight: 0
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   created: true
   langcode: true
