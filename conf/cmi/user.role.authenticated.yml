@@ -1,7 +1,16 @@
 uuid: 2aaa90d3-acc1-4c5f-9a79-7b913a848123
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - eu_cookie_compliance
+    - filter
+    - helfi_api_base
+    - media
+    - search_api_autocomplete
+    - system
 _core:
   default_config_hash: 83Nuup-6oYkkdAsvg3nrR2pBOgtTXEV1JrzpCCLkYLM
 id: authenticated
@@ -12,5 +21,6 @@ permissions:
   - 'access content'
   - 'display eu cookie compliance popup'
   - 'use search_api_autocomplete for search'
+  - 'use text format full_html'
   - 'view media'
   - 'view remote entities'
