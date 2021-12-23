@@ -17,121 +17,23 @@ base_table: search_api_index_content_and_media
 base_field: search_api_id
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Default
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: none
-        options: {  }
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          skip_access: 0
-          bypass_access: 0
-          preserve_facet_query_args: 1
-      exposed_form:
-        type: bef
-        options:
-          submit_button: Search
-          reset_button: true
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: full_html
-          bef:
-            general:
-              autosubmit: true
-              autosubmit_exclude_textfield: true
-              autosubmit_textfield_delay: 500
-              autosubmit_hide: false
-              input_required: false
-              allow_secondary: false
-              secondary_label: 'Advanced options'
-              secondary_open: false
-            sort:
-              plugin_id: bef_links
-              advanced:
-                combine: false
-                combine_rewrite: ''
-                reset: false
-                reset_label: ''
-                collapsible: false
-                collapsible_label: 'Sort options'
-                is_secondary: false
-            filter:
-              search_api_fulltext:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  collapsible: false
-                  is_secondary: false
-              aggregated_start_year:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  is_secondary: false
-              aggregated_end_year:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  is_secondary: false
-      pager:
-        type: full
-        options:
-          items_per_page: 12
-          offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: ‹
-            next: ›
-            first: «
-            last: »
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 5
-      style:
-        type: default
-      row:
-        type: search_api
-        options:
-          view_modes:
-            'entity:media':
-              file: search_index
-              image: search_index
-              remote_video: search_index
-              soundcloud: search_index
-            'entity:node':
-              article: teaser
+      title: Search
       fields:
         article_end_year:
+          id: article_end_year
           table: search_api_index_content_and_media
           field: article_end_year
-          id: article_end_year
-          entity_type: null
-          entity_field: null
-          plugin_id: search_api_field
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -202,6 +104,89 @@ display:
             multi_type: separator
             multi_separator: ', '
             format_plural_values: {  }
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 12
+          total_pages: null
+          id: 0
+          tags:
+            next: ›
+            previous: ‹
+            first: «
+            last: »
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 5
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Search
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: true
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+            sort:
+              plugin_id: bef_links
+              advanced:
+                combine: false
+                combine_rewrite: ''
+                reset: false
+                reset_label: ''
+                collapsible: false
+                collapsible_label: 'Sort options'
+                is_secondary: false
+            filter:
+              search_api_fulltext:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              aggregated_start_year:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              aggregated_end_year:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts: {  }
+      arguments: {  }
       filters:
         search_api_fulltext:
           id: search_api_fulltext
@@ -210,6 +195,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_fulltext
           operator: and
           value: ''
           group: 1
@@ -231,8 +217,8 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
-            placeholder: 'Location, person, topic, event...'
             expose_fields: false
+            placeholder: 'Location, person, topic, event...'
             searched_fields_id: search_api_fulltext_searched_fields
           is_grouped: false
           group_info:
@@ -251,7 +237,6 @@ display:
           fields:
             - aggregated_keywords
             - aggregated_title
-          plugin_id: search_api_fulltext
         aggregated_start_year:
           id: aggregated_start_year
           table: search_api_index_content_and_media
@@ -259,6 +244,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_numeric
           operator: '>='
           value:
             min: ''
@@ -283,9 +269,9 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -298,7 +284,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_numeric
         aggregated_end_year:
           id: aggregated_end_year
           table: search_api_index_content_and_media
@@ -306,6 +291,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_numeric
           operator: '<='
           value:
             min: ''
@@ -330,9 +316,9 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -345,7 +331,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_numeric
         search_api_language:
           id: search_api_language
           table: search_api_index_content_and_media
@@ -353,6 +338,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_language
           operator: in
           value:
             '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
@@ -385,9 +371,31 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_language
-      sorts: {  }
-      title: Search
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:media':
+              file: search_index
+              image: search_index
+              remote_video: search_index
+              soundcloud: search_index
+            'entity:node':
+              article: teaser
+      query:
+        type: views_query
+        options:
+          skip_access: 0
+          bypass_access: 0
+          preserve_facet_query_args: 1
+      relationships: {  }
+      use_ajax: false
       header:
         area_text_custom:
           id: area_text_custom
@@ -396,20 +404,12 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: false
-          tokenize: false
-          content: "<h2>Search results</h2>\r\n[view:search_result_info]"
           plugin_id: text_custom
+          empty: false
+          content: "<h2>Search results</h2>\r\n[view:search_result_info]"
+          tokenize: false
       footer: {  }
-      empty: {  }
-      relationships: {  }
-      arguments: {  }
       display_extenders: {  }
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
-      use_ajax: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -422,20 +422,20 @@ display:
         - 'config:field.storage.node.field_end_year'
         - 'config:search_api.index.content_and_media'
   page:
-    display_plugin: page
     id: page
     display_title: 'Search page'
+    display_plugin: page
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      path: search
-      exposed_block: true
-      display_description: ''
       cache:
         type: none
       defaults:
         cache: false
+      display_description: ''
+      exposed_block: true
+      display_extenders:
+        metatag_display_extender: {  }
+      path: search
     cache_metadata:
       max-age: -1
       contexts:

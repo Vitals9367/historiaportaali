@@ -37,33 +37,33 @@ bundle: article
 mode: before_content
 content:
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
   field_liftup_image:
     type: entity_reference_entity_view
-    weight: 2
-    region: content
     label: hidden
     settings:
       view_mode: main_image
       link: false
     third_party_settings: {  }
+    weight: 2
+    region: content
   field_reading_time:
-    weight: 1
+    type: number_integer
     label: inline
     settings:
       thousand_separator: ''
       prefix_suffix: false
     third_party_settings: {  }
-    type: number_integer
+    weight: 1
     region: content
   links:
-    weight: 0
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   field_author: true
   field_authors: true

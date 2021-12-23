@@ -16,7 +16,7 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-recommended": "^9.1",
         "drupal/elasticsearch_connector": "^7.0@alpha",
-        "drupal/facets": "^1.8",
+        "drupal/facets": "^2.0",
         "drupal/geocoder": "^3.20",
         "drupal/geofield": "^1.34",
         "drupal/geofield_map": "^2.70",
@@ -26,9 +26,9 @@
         "drupal/helfi_azure_fs": "^1.0",
         "drupal/helfi_hauki": "^1.0",
         "drupal/helfi_linkedevents": "^1.0",
-        "drupal/helfi_platform_config": "^1",
+        "drupal/helfi_platform_config": "^2",
         "drupal/helfi_tpr": "^1.0",
-        "drupal/helfi_tunnistamo": "^1.0",
+        "drupal/helfi_tunnistamo": "^2.0",
         "drupal/leaflet": "^2.1",
         "drupal/leaflet_more_maps": "^2.1",
         "drupal/optional_end_date": "^1.2",
@@ -77,9 +77,6 @@
         },
         "enable-patching": true,
         "patches": {
-            "drupal/field_group": {
-                "Field groups not working in Media Library form (https://www.drupal.org/project/field_group/issues/3171458#comment-13961305)": "https://www.drupal.org/files/issues/2021-01-11/field_group-media_library_widget-3171458-14.patch"
-            },
             "drupal/core": {
                 "Paragraph widget buttons not visible in Claro/Gin admin theme (https://www.drupal.org/project/drupal/issues/3099026#comment-13786709)": "https://www.drupal.org/files/issues/2020-08-13/3099026-17.patch"
             },

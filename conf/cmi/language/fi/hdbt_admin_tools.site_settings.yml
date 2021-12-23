@@ -1,7 +1,7 @@
 footer_settings:
   footer_top_content:
     format: full_html
-    value: '<p><a href="#">Hae yhteystietoja ja numeroita</a></p><p><a href="#" class="hds-button hds-button--secondary"><span aria-hidden="true" class="hds-icon hds-icon--phone"></span><span class="hds-button__label">Helsinki-info 09 310 1691</span></a></p>'
+    value: '<p><a class="hds-button hds-button--secondary" href="https://www.hel.fi/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/"><span class="hds-button__label">Anna palautetta tai kysy</span></a></p>'
   footer_top_title: Yhteystiedot
 site_settings:
   theme_color: metro

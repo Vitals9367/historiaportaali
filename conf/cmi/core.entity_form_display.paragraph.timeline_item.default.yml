@@ -14,23 +14,23 @@ bundle: timeline_item
 mode: default
 content:
   field_timeline_item_article:
+    type: select2_entity_reference
     weight: 2
+    region: content
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
     third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_timeline_item_year:
+    type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
 hidden:
   created: true
   status: true

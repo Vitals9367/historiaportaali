@@ -23,150 +23,12 @@ base_table: node_field_data
 base_field: nid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Default
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: bef
-        options:
-          submit_button: Apply
-          reset_button: true
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: full_html
-          bef:
-            general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_textfield_delay: 500
-              autosubmit_hide: false
-              input_required: false
-              allow_secondary: false
-              secondary_label: 'Advanced options'
-              secondary_open: false
-            filter:
-              field_start_year_value:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  is_secondary: false
-              field_end_year_value:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  is_secondary: false
-              field_phenomena_target_id:
-                plugin_id: default
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: '- All -|Select phenomenon'
-                  collapsible: false
-                  is_secondary: false
-      pager:
-        type: none
-        options:
-          items_per_page: 0
-          offset: 0
-      style:
-        type: leaflet_map
-        options:
-          grouping: {  }
-          data_source: field_geolocation
-          entity_source: __base_table
-          name_field: ''
-          description_field: '#rendered_entity_ajax'
-          view_mode: map_item
-          leaflet_map: esri-world_topo_map
-          height: '70'
-          height_unit: vh
-          hide_empty_map: false
-          disable_wheel: false
-          fullscreen_control: false
-          gesture_handling: true
-          reset_map:
-            control: false
-            position: topright
-          map_position:
-            force: true
-            center:
-              lat: 60.169856330105
-              lon: 24.93838811948
-            zoom: 14
-            minZoom: 4
-            maxZoom: 18
-            zoomFiner: 0
-          weight: ''
-          icon:
-            iconType: marker
-            iconUrl: ''
-            shadowUrl: ''
-            className: ''
-            html: '<div></div>'
-            html_class: leaflet-map-divicon
-            circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
-            iconSize:
-              x: ''
-              'y': ''
-            iconAnchor:
-              x: ''
-              'y': ''
-            shadowSize:
-              x: ''
-              'y': ''
-            shadowAnchor:
-              x: ''
-              'y': ''
-            popupAnchor:
-              x: ''
-              'y': ''
-          leaflet_markercluster:
-            control: true
-            options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":false,"removeOutsideVisibleBounds":false,"disableClusteringAtZoom":18}'
-            include_path: 0
-          path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2","radius":"6"}'
-          geocoder:
-            control: false
-            settings:
-              position: topright
-              input_size: 25
-              providers:
-                openstreetmap:
-                  weight: '0'
-                  checked: 0
-              min_terms: 4
-              delay: 800
-              zoom: 16
-              popup: false
-              options: ''
-      row:
-        type: 'entity:node'
-        options:
-          relationship: none
-          view_mode: map_item
+      title: Map
       fields:
         field_geolocation:
           id: field_geolocation
@@ -175,6 +37,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -230,34 +93,107 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
+      pager:
+        type: none
+        options:
+          offset: 0
+          items_per_page: 0
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+            filter:
+              field_start_year_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              field_end_year_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              field_phenomena_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: '- All -|Select phenomenon'
+                  collapsible: false
+                  is_secondary: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: created
+          exposed: false
+          granularity: second
+      arguments: {  }
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
           field: type
-          value:
-            article: article
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          value:
+            article: article
+          group: 1
           expose:
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         langcode:
           id: langcode
           table: node_field_data
@@ -265,6 +201,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
           operator: in
           value:
             '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
@@ -297,9 +236,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: node
-          entity_field: langcode
-          plugin_id: language
         field_start_year_value:
           id: field_start_year_value
           table: node__field_start_year
@@ -307,6 +243,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: numeric
           operator: '>='
           value:
             min: ''
@@ -316,7 +253,7 @@ display:
           exposed: true
           expose:
             operator_id: field_start_year_value_op
-            label: Starts
+            label: Alkaa
             description: ''
             use_operator: false
             operator: field_start_year_value_op
@@ -331,9 +268,9 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -346,7 +283,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: numeric
         field_end_year_value:
           id: field_end_year_value
           table: node__field_end_year
@@ -354,6 +290,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: numeric
           operator: '<='
           value:
             min: ''
@@ -363,7 +300,7 @@ display:
           exposed: true
           expose:
             operator_id: field_end_year_value_op
-            label: Ends
+            label: Päättyy
             description: ''
             use_operator: false
             operator: field_end_year_value_op
@@ -378,9 +315,9 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -393,7 +330,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: numeric
         field_phenomena_target_id:
           id: field_phenomena_target_id
           table: node__field_phenomena
@@ -401,6 +337,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value: {  }
           group: 1
@@ -436,40 +373,104 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: select
-          limit: true
           vid: phenomena
+          type: select
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
-      sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          exposed: false
-          expose:
-            label: ''
-          granularity: second
-      title: Map
-      header: {  }
-      footer: {  }
-      empty: {  }
-      relationships: {  }
-      arguments: {  }
-      display_extenders: {  }
-      use_ajax: true
       filter_groups:
         operator: AND
         groups:
           1: AND
+      style:
+        type: leaflet_map
+        options:
+          grouping: {  }
+          data_source: field_geolocation
+          entity_source: __base_table
+          name_field: ''
+          description_field: '#rendered_entity_ajax'
+          view_mode: map_item
+          leaflet_map: esri-world_topo_map
+          height: '70'
+          height_unit: vh
+          hide_empty_map: false
+          disable_wheel: false
+          fullscreen_control: false
+          gesture_handling: true
+          reset_map:
+            control: false
+            position: topright
+          map_position:
+            force: true
+            center:
+              lat: 60.169856330105
+              lon: 24.93838811948
+            zoom: 14
+            minZoom: 4
+            maxZoom: 18
+            zoomFiner: 0
+          weight: ''
+          icon:
+            iconType: marker
+            iconUrl: ''
+            shadowUrl: ''
+            className: ''
+            iconSize:
+              x: ''
+              'y': ''
+            iconAnchor:
+              x: ''
+              'y': ''
+            shadowSize:
+              x: ''
+              'y': ''
+            shadowAnchor:
+              x: ''
+              'y': ''
+            popupAnchor:
+              x: ''
+              'y': ''
+            html: '<div></div>'
+            html_class: leaflet-map-divicon
+            circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
+          leaflet_markercluster:
+            control: true
+            options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":false,"removeOutsideVisibleBounds":false,"disableClusteringAtZoom":18}'
+            include_path: 0
+          path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2","radius":"6"}'
+          geocoder:
+            control: false
+            settings:
+              position: topright
+              input_size: 25
+              providers:
+                openstreetmap:
+                  weight: '0'
+                  checked: 0
+              min_terms: 4
+              delay: 800
+              zoom: 16
+              popup: false
+              options: ''
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: map_item
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
+      use_ajax: true
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -482,9 +483,9 @@ display:
       tags:
         - 'config:field.storage.node.field_geolocation'
   block:
-    display_plugin: block
     id: block
     display_title: Block
+    display_plugin: block
     position: 1
     display_options:
       display_extenders:
@@ -501,11 +502,12 @@ display:
       tags:
         - 'config:field.storage.node.field_geolocation'
   page:
-    display_plugin: page
     id: page
     display_title: Page
+    display_plugin: page
     position: 1
     display_options:
+      exposed_block: true
       display_extenders:
         metatag_display_extender: {  }
       path: '<none>'
@@ -513,12 +515,11 @@ display:
         type: none
         title: 'History on the map'
         description: ''
-        expanded: false
-        parent: ''
         weight: 0
-        context: '0'
+        expanded: false
         menu_name: main
-      exposed_block: true
+        parent: ''
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

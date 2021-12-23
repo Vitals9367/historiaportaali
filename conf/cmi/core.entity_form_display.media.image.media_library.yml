@@ -37,17 +37,17 @@ third_party_settings:
         - field_neighbourhoods
         - group_year
         - field_keywords
+      label: 'Historia.helsinki metatietokentät'
+      region: content
       parent_name: ''
       weight: 5
       format_type: details
-      region: content
       format_settings:
+        classes: ''
+        id: ''
+        open: false
         description: ''
         required_fields: true
-        id: ''
-        classes: ''
-        open: false
-      label: 'Historia.helsinki metatietokentät'
     group_finna_meta:
       children:
         - field_finna_id
@@ -56,59 +56,59 @@ third_party_settings:
         - field_copyrights
         - field_languages
         - group_location
+      label: 'Finna.fi metatietokentät'
+      region: content
       parent_name: ''
       weight: 7
       format_type: details
-      region: content
       format_settings:
+        classes: ''
+        id: ''
+        open: false
         description: ''
         required_fields: true
-        id: ''
-        classes: ''
-        open: false
-      label: 'Finna.fi metatietokentät'
     group_location:
       children:
         - field_buildings
         - field_buildings_info
+      label: Säilytyspaikka
+      region: content
       parent_name: group_finna_meta
       weight: 5
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: Säilytyspaikka
     group_year:
       children:
         - field_start_year
         - field_end_year
+      label: Aikakausi
+      region: content
       parent_name: group_historiaportaali_meta
       weight: 2
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: Aikakausi
     group_geolocation:
       children:
         - field_geolocation
+      label: 'Sijainti kartalla'
+      region: content
       parent_name: ''
       weight: 6
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: true
-      label: 'Sijainti kartalla'
 _core:
   default_config_hash: _WTCyWUZlB2FyBSgpuey9Y9okHz6R8gcAWQ3DUiyNuA
 id: media.image.media_library
@@ -184,44 +184,44 @@ content:
     weight: 4
     region: content
     settings:
-      map_geocoder:
-        control: 1
-        settings:
-          providers:
-            openstreetmap:
-              checked: true
-              weight: 0
-          min_terms: 4
-          delay: 800
-          options: ''
-      map_google_places:
-        places_additional_options: ''
-        places_control: false
+      html5_geolocation: false
+      default_value:
+        lat: !!float 0
+        lon: !!float 0
       map_library: leaflet
-      map_type_google: roadmap
-      map_type_leaflet: OpenStreetMap_Mapnik
-      map_type_selector: true
+      map_google_api_key: ''
+      map_google_places:
+        places_control: false
+        places_additional_options: ''
       map_dimensions:
         width: 100%
         height: 450px
+      map_type_google: roadmap
+      map_type_leaflet: OpenStreetMap_Mapnik
+      map_type_selector: true
+      zoom_level: 5
       zoom:
         start: 6
         focus: 12
         min: 0
         max: 22
-      geoaddress_field:
-        field: '0'
-        disabled: true
-        hidden: false
-      default_value:
-        lat: !!float 0
-        lon: !!float 0
       click_to_find_marker: false
       click_to_place_marker: false
       hide_coordinates: false
-      html5_geolocation: false
-      map_google_api_key: ''
-      zoom_level: 5
+      geoaddress_field:
+        field: '0'
+        hidden: false
+        disabled: true
+      map_geocoder:
+        control: 1
+        settings:
+          providers:
+            openstreetmap:
+              weight: 0
+              checked: true
+          min_terms: 4
+          delay: 800
+          options: ''
     third_party_settings: {  }
   field_image_caption:
     type: string_textarea
@@ -252,15 +252,15 @@ content:
       match_limit: 10
     third_party_settings: {  }
   field_media_image:
+    type: image_focal_point
     weight: 1
+    region: content
     settings:
-      preview_image_style: media_library
       progress_indicator: throbber
+      preview_image_style: media_library
       preview_link: true
       offsets: '50,50'
     third_party_settings: {  }
-    type: image_focal_point
-    region: content
   field_neighbourhoods:
     type: select2_entity_reference
     weight: 1
@@ -306,12 +306,12 @@ content:
     third_party_settings: {  }
   name:
     type: string_textfield
+    weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
-    weight: 0
     third_party_settings: {  }
-    region: content
   translation:
     weight: 8
     region: content

@@ -23,14 +23,26 @@ display:
         status:
           label: Tila
           settings:
-            format_custom_true: Julkaistu
             format_custom_false: Julkaisematon
+            format_custom_true: Julkaistu
           separator: ', '
         changed:
           label: Päivitetty
           separator: ', '
         operations:
           label: Toimenpiteet
+      title: Media
+      pager:
+        options:
+          tags:
+            next: 'Seuraava ›'
+            previous: '‹ Edellinen'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+            offset_label: Offset
       exposed_form:
         options:
           submit_button: Suodatin
@@ -38,17 +50,9 @@ display:
           exposed_sorts_label: Lajittele
           sort_asc_label: Nousevasti
           sort_desc_label: Laskevasti
-      pager:
-        options:
-          expose:
-            items_per_page_label: 'Merkintöjä sivua kohti'
-            items_per_page_options_all_label: '- Kaikki -'
-            offset_label: Offset
-          tags:
-            previous: '‹ Edellinen'
-            next: 'Seuraava ›'
-            first: '« Ensimmäinen'
-            last: 'Viimeinen »'
+      empty:
+        area_text_custom:
+          content: 'Ei mediatiedostoja saatavilla.'
       filters:
         name:
           expose:
@@ -69,10 +73,6 @@ display:
         langcode:
           expose:
             label: Kieli
-      title: Media
-      empty:
-        area_text_custom:
-          content: 'Ei mediatiedostoja saatavilla.'
     display_title: Oletus
   media_page_list:
     display_title: Media
