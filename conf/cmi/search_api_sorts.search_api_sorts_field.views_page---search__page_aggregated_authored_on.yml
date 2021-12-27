@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies: {  }
 id: views_page---search__page_aggregated_authored_on
+label: 'Authored on'
+weight: 2
 display_id: views_page---search__page
 field_identifier: aggregated_authored_on
 default_sort: false
 default_order: asc
-label: 'Authored on'
-weight: 2

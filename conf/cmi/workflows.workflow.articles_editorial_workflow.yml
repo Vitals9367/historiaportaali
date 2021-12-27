@@ -13,35 +13,35 @@ type_settings:
   states:
     draft:
       label: Draft
-      published: false
-      default_revision: false
       weight: -2
-    for_review:
       published: false
       default_revision: false
+    for_review:
       label: 'For review'
       weight: -1
+      published: false
+      default_revision: false
     published:
       label: Published
+      weight: 0
       published: true
       default_revision: true
-      weight: 0
   transitions:
     create_new_draft:
       label: 'Create New Draft'
-      to: draft
-      weight: -2
       from:
         - draft
         - published
+      to: draft
+      weight: -2
     publish:
       label: Publish
-      to: published
-      weight: 0
       from:
         - draft
         - for_review
         - published
+      to: published
+      weight: 0
     submit_for_review:
       label: 'Submit for review'
       from:

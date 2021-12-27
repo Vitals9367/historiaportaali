@@ -19,20 +19,20 @@ content:
   field_media_oembed_video:
     type: oembed
     label: hidden
-    weight: 0
     settings:
       max_width: 0
       max_height: 0
     third_party_settings: {  }
+    weight: 0
     region: content
   name:
     type: string
-    weight: 1
-    region: content
     label: hidden
     settings:
       link_to_entity: true
     third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
   created: true
   field_video_description: true

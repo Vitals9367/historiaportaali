@@ -19,49 +19,49 @@ bundle: map_layer
 mode: default
 content:
   field_layer_title:
-    weight: 108
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 108
     region: content
   field_map_api:
-    weight: 106
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 106
     region: content
   field_map_api_endpoints:
     type: entity_reference_revisions_entity_view
-    weight: 107
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 107
     region: content
   field_map_era:
-    weight: 104
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 104
     region: content
   field_map_wms_title:
-    weight: 105
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 105
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   langcode: true

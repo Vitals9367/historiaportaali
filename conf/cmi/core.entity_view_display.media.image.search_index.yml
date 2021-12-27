@@ -34,55 +34,55 @@ mode: search_index
 content:
   field_end_year:
     type: number_integer
-    weight: 4
-    region: content
     label: hidden
     settings:
       thousand_separator: ''
       prefix_suffix: false
     third_party_settings: {  }
+    weight: 4
+    region: content
   field_formats:
     type: entity_reference_label
-    weight: 1
-    region: content
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_media_image:
+    type: responsive_image
     label: hidden
-    weight: 0
     settings:
       responsive_image_style: content_cards
       image_link: ''
     third_party_settings: {  }
-    type: responsive_image
+    weight: 0
     region: content
   field_phenomena:
     type: entity_reference_label
-    weight: 2
-    region: content
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
+    weight: 2
+    region: content
   field_start_year:
     type: number_integer
-    weight: 3
-    region: content
     label: hidden
     settings:
       thousand_separator: ''
       prefix_suffix: false
     third_party_settings: {  }
+    weight: 3
+    region: content
   name:
     type: string
-    weight: 5
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 5
+    region: content
 hidden:
   created: true
   field_authors: true
