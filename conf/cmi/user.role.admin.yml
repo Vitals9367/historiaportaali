@@ -82,6 +82,7 @@ permissions:
   - 'administer taxonomy'
   - 'administer url aliases'
   - 'administer users'
+  - 'break content lock'
   - 'bypass node access'
   - 'cancel account'
   - 'change own username'
