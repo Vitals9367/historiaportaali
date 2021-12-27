@@ -40,6 +40,7 @@ dependencies:
     - path
     - pathauto
     - redirect
+    - role_delegation
     - scheduler
     - simple_sitemap
     - system
@@ -74,7 +75,6 @@ permissions:
   - 'administer paragraphs settings'
   - 'administer paragraphs types'
   - 'administer pathauto'
-  - 'administer permissions'
   - 'administer redirects'
   - 'administer scheduler'
   - 'administer site configuration'
@@ -82,6 +82,7 @@ permissions:
   - 'administer taxonomy'
   - 'administer url aliases'
   - 'administer users'
+  - 'assign all roles'
   - 'bypass node access'
   - 'cancel account'
   - 'change own username'
