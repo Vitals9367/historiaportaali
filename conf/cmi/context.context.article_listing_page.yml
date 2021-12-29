@@ -5,8 +5,8 @@ dependencies:
   module:
     - context_entity_field
     - node
-name: article_listing_page
 label: 'Article listing page'
+name: article_listing_page
 group: null
 description: ''
 requireAllConditions: true
@@ -14,11 +14,11 @@ disabled: false
 conditions:
   node_type:
     id: node_type
-    bundles: {  }
     negate: false
     uuid: f297c469-5b22-40e0-8b4f-dea3d6d04403
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles: {  }
   'entity_field:node':
     id: 'entity_field:node'
     field_name: field_listing_type

@@ -2,8 +2,8 @@ uuid: 0e75b641-e073-475e-add1-b657f2ca7742
 langcode: en
 status: true
 dependencies: {  }
-name: map_view_page
 label: 'Map view page'
+name: map_view_page
 group: null
 description: ''
 requireAllConditions: false
@@ -11,10 +11,9 @@ disabled: false
 conditions:
   view_inclusion:
     id: view_inclusion
-    view_inclusion:
-      view-combined_map-page_1: view-combined_map-page_1
     negate: false
     uuid: 40a995b4-4991-4e85-9307-d6862cf8b130
     context_mapping: {  }
+    view_inclusion: {  }
 reactions: {  }
 weight: 0

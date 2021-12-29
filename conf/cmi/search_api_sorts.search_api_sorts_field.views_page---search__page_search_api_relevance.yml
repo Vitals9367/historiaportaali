@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies: {  }
 id: views_page---search__page_search_api_relevance
+label: Relevance
+weight: 0
 display_id: views_page---search__page
 field_identifier: search_api_relevance
 default_sort: false
 default_order: desc
-label: Relevance
-weight: 0

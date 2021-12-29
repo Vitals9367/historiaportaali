@@ -1,7 +1,51 @@
 uuid: c7447b9b-c4e0-44b7-9a40-59797cae74e6
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - media.type.file
+    - media.type.image
+    - media.type.remote_video
+    - media.type.soundcloud
+    - node.type.article
+    - node.type.landing_page
+    - node.type.listing_page
+    - node.type.map_layer
+    - node.type.page
+    - taxonomy.vocabulary.authors
+    - taxonomy.vocabulary.buildings
+    - taxonomy.vocabulary.copyrights
+    - taxonomy.vocabulary.formats
+    - taxonomy.vocabulary.keywords
+    - taxonomy.vocabulary.languages
+    - taxonomy.vocabulary.neighbourhoods
+    - taxonomy.vocabulary.phenomena
+    - workflows.workflow.articles_editorial_workflow
+  module:
+    - config_translation
+    - content_moderation
+    - content_translation
+    - entity_usage
+    - eu_cookie_compliance
+    - file
+    - filter
+    - helfi_api_base
+    - locale
+    - media
+    - menu_link_content
+    - node
+    - paragraphs
+    - paragraphs_library
+    - path
+    - pathauto
+    - redirect
+    - role_delegation
+    - scheduler
+    - simple_sitemap
+    - system
+    - taxonomy
+    - toolbar
 _core:
   default_config_hash: oDxYEw5hRkjMNuwK8kHu8mvLUk1n07pQHZPC8JiU2nE
 id: admin
@@ -31,7 +75,6 @@ permissions:
   - 'administer paragraphs settings'
   - 'administer paragraphs types'
   - 'administer pathauto'
-  - 'administer permissions'
   - 'administer redirects'
   - 'administer scheduler'
   - 'administer site configuration'
@@ -39,6 +82,8 @@ permissions:
   - 'administer taxonomy'
   - 'administer url aliases'
   - 'administer users'
+  - 'assign all roles'
+  - 'break content lock'
   - 'bypass node access'
   - 'cancel account'
   - 'change own username'
