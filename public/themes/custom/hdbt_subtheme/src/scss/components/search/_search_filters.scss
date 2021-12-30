@@ -28,6 +28,7 @@
   .hds-text-input .hds-text-input__input {
     border: 0;
     background-position: calc(100% - var(--spacing-s)) center;
+    cursor: pointer;
   }
 
   .hds-text-input__input-wrapper .icon {
@@ -80,6 +81,7 @@
     height: 56px;
     line-height: normal;
     padding: 0 $spacing;
+    cursor: pointer;
 
     label {
       color: $color-black-90;

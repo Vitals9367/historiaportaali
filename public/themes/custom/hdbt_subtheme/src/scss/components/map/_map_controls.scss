@@ -60,7 +60,7 @@
   }
 
   .map-controls__control-button {
-    padding: $spacing-third ($spacing - $spacing-quarter);
+    padding: $spacing * .375 ($spacing * .75);
 
     @include breakpoint($breakpoint-m) {
       padding: $spacing-half $spacing;

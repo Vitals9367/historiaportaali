@@ -2,4 +2,12 @@
   .messages__container {
     padding: 0;
   }
+
+  .main-content {
+    margin-top: 0;
+
+    .views-element-container {
+      margin-bottom: $spacing-double;
+    }
+  }
 }

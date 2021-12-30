@@ -7,7 +7,7 @@
   max-width: 900px;
 
   @include breakpoint($breakpoint-l) {
-    margin: (-$spacing-octuple) auto $spacing-double;
+    margin: (-$spacing-quadruple * 2) auto $spacing-double;
   }
 
   h3 {
