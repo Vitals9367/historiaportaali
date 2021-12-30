@@ -37,7 +37,7 @@ function helhist_map_views_post_execute(ViewExecutable $view) {
     // Apply exposed filters to media_map view result
     $exposed_filters = $view->getExposedInput();
     $media_view = Views::getView('media_map');
-    $media_view->setDisplay('page_1');
+    $media_view->setDisplay('block');
     $media_view->setExposedInput($exposed_filters);
     $media_view->execute();
     $media_view_result = $media_view->result;
@@ -92,7 +92,6 @@ function helhist_map_leaflet_map_info_alter(array &$map_info) {
 
 function _getMapDisplays() {
   return [
-    'page',
     'block'
   ];
 }

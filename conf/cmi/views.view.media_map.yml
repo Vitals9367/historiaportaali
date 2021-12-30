@@ -448,6 +448,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      use_ajax: true
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -461,15 +462,16 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.media.field_geolocation'
-  page_1:
-    id: page_1
-    display_title: Page
-    display_plugin: page
+  block:
+    id: block
+    display_title: Block
+    display_plugin: block
     position: 1
     display_options:
       display_extenders:
-        metatag_display_extender: {  }
-      path: '<none>'
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
     cache_metadata:
       max-age: -1
       contexts:
