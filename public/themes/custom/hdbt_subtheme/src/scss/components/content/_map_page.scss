@@ -4,34 +4,53 @@
   }
 
   .search-filters {
-    .exposed-filters__accordion {
-      margin-top: 0;
+    margin-bottom: 0;
 
-      .accordion__container {
-        padding-top: 0;
+    .block__container {
+      padding-top: 0;
 
-          .accordion__wrapper {
-            border: 2px solid var(--color-white);
+      .exposed-filters__accordion {
+        margin-top: 0;
 
-          .accordion-item__header {
-            color: var(--color-white);
-            background-color: transparent;
-            border-top: none;
+        .accordion__container {
+          padding-top: 0;
 
-            .accordion-item__button--toggle::after {
-              filter: invert(1);
+            .accordion__wrapper {
+              border: 2px solid var(--color-white);
+
+            .accordion-item__header {
+              color: var(--color-white);
+              background-color: transparent;
+              border-top: none;
+
+              .accordion-item__button--toggle {
+                &[aria-expanded="false"] {
+                  &:hover,
+                  &:focus {
+                    background: darken($color-black-80, 10%);
+                  }
+                }
+
+                &:after {
+                  filter: invert(1);
+                }
+              }
             }
-          }
 
-          .accordion-item__content {
-            color: var(--color-white);
-            background-color: transparent;
+            .accordion-item__content {
+              color: var(--color-white);
+              background-color: transparent;
 
-            .accordion-item__content__inner {
-              padding-bottom: 32px;
+              .accordion-item__content__inner {
+                padding-bottom: 32px;
 
-              .accordion-item__button--close:focus {
-                box-shadow: 0 0 0 3px var(--color-white);
+                .filters {
+                  padding: $spacing 0;
+                }
+
+                .accordion-item__button--close:focus {
+                  box-shadow: 0 0 0 3px var(--color-white);
+                }
               }
             }
           }
