@@ -3,6 +3,43 @@
     padding: 0;
   }
 
+  .search-filters {
+    .exposed-filters__accordion {
+      margin-top: 0;
+
+      .accordion__container {
+        padding-top: 0;
+
+          .accordion__wrapper {
+            border: 2px solid var(--color-white);
+
+          .accordion-item__header {
+            color: var(--color-white);
+            background-color: transparent;
+            border-top: none;
+
+            .accordion-item__button--toggle::after {
+              filter: invert(1);
+            }
+          }
+
+          .accordion-item__content {
+            color: var(--color-white);
+            background-color: transparent;
+
+            .accordion-item__content__inner {
+              padding-bottom: 32px;
+
+              .accordion-item__button--close:focus {
+                box-shadow: 0 0 0 3px var(--color-white);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .main-content {
     margin-top: 0;
 
