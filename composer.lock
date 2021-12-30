@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fb0390cf761c48b2f3372a076aa2fe9",
+    "content-hash": "afdb897019c04c4c79f955242b7b58a4",
     "packages": [
         {
             "name": "City-of-Helsinki/php-hauki-client",
@@ -3132,6 +3132,80 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
+            }
+        },
+        {
+            "name": "drupal/ctools_views",
+            "version": "3.7.0",
+            "require": {
+                "drupal/core": "^8.8 || ^9",
+                "drupal/ctools": "^3"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-3.7",
+                    "datestamp": "1623860918",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "EclipseGc",
+                    "homepage": "https://www.drupal.org/user/61203"
+                },
+                {
+                    "name": "damiankloip",
+                    "homepage": "https://www.drupal.org/user/1037976"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "esmerel",
+                    "homepage": "https://www.drupal.org/user/164022"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "joelpittet",
+                    "homepage": "https://www.drupal.org/user/160302"
+                },
+                {
+                    "name": "merlinofchaos",
+                    "homepage": "https://www.drupal.org/user/26979"
+                },
+                {
+                    "name": "neclimdul",
+                    "homepage": "https://www.drupal.org/user/48673"
+                },
+                {
+                    "name": "sdboyer",
+                    "homepage": "https://www.drupal.org/user/146719"
+                },
+                {
+                    "name": "sun",
+                    "homepage": "https://www.drupal.org/user/54136"
+                },
+                {
+                    "name": "tim.plunkett",
+                    "homepage": "https://www.drupal.org/user/241634"
+                }
+            ],
+            "description": "A set of improvements to the core Views code that allows for greater control over Blocks.",
+            "homepage": "https://www.drupal.org/project/ctools",
+            "support": {
+                "source": "https://git.drupalcode.org/project/ctools"
             }
         },
         {
@@ -7690,6 +7764,72 @@
             "homepage": "https://www.drupal.org/project/view_unpublished",
             "support": {
                 "source": "https://git.drupalcode.org/project/view_unpublished"
+            }
+        },
+        {
+            "name": "drupal/views_block_filter_block",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/views_block_filter_block.git",
+                "reference": "09167e671e207c7cb11349e4e7c1d7dd24f062a1"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/ctools_views": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0+5-dev",
+                    "datestamp": "1632212856",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Etroid",
+                    "homepage": "https://www.drupal.org/user/3048985"
+                },
+                {
+                    "name": "angrytoast",
+                    "homepage": "https://www.drupal.org/user/2468092"
+                },
+                {
+                    "name": "iamEAP",
+                    "homepage": "https://www.drupal.org/user/1467594"
+                },
+                {
+                    "name": "jkopel",
+                    "homepage": "https://www.drupal.org/user/66207"
+                },
+                {
+                    "name": "nehajyoti",
+                    "homepage": "https://www.drupal.org/user/2804915"
+                },
+                {
+                    "name": "sumitmadan",
+                    "homepage": "https://www.drupal.org/user/1538790"
+                },
+                {
+                    "name": "yogeshmpawar",
+                    "homepage": "https://www.drupal.org/user/2922907"
+                }
+            ],
+            "description": "Provides blocks for Views exposed filters on View blocks.",
+            "homepage": "https://www.drupal.org/project/views_block_filter_block",
+            "support": {
+                "source": "https://git.drupalcode.org/project/views_block_filter_block"
             }
         },
         {
@@ -18041,12 +18181,12 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/better_exposed_filters": 10,
         "drupal/context_entity_field": 20,
         "drupal/elasticsearch_connector": 15,
         "drupal/rabbit_hole": 10,
         "drupal/search_api_location": 15,
         "drupal/term_merge": 20,
+        "drupal/views_block_filter_block": 20,
         "drupal/views_menu_children_filter": 5
     },
     "prefer-stable": true,

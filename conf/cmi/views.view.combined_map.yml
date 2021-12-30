@@ -488,38 +488,11 @@ display:
     display_plugin: block
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - user
-        - 'user.node_grants:view'
-        - user.permissions
-      tags:
-        - 'config:field.storage.node.field_geolocation'
-  page:
-    id: page
-    display_title: Page
-    display_plugin: page
-    position: 1
-    display_options:
       exposed_block: true
       display_extenders:
-        metatag_display_extender: {  }
-      path: '<none>'
-      menu:
-        type: none
-        title: 'History on the map'
-        description: ''
-        weight: 0
-        expanded: false
-        menu_name: main
-        parent: ''
-        context: '0'
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
     cache_metadata:
       max-age: -1
       contexts:
