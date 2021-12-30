@@ -104,6 +104,20 @@
       @include breakpoint($breakpoint-s) {
         padding: 0 $spacing-double;
       }
+
+      // Normalize paragraph content Y-margins.
+      .paragraph-content {
+        .text,
+        .image,
+        .gallery,
+        .list-of-links,
+        .content-cards,
+        .remote-video,
+        .timeline {
+          margin-top: 0;
+          margin-bottom: $spacing-triple;
+        }
+      }
     }
 
     .article__keywords,
