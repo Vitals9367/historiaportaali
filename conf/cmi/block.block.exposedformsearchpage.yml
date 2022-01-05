@@ -5,11 +5,19 @@ dependencies:
   config:
     - views.view.search
   module:
+    - blocache
     - context
     - system
     - views
   theme:
     - hdbt_subtheme
+third_party_settings:
+  blocache:
+    overridden: true
+    metadata:
+      max-age: -1
+      contexts: {  }
+      tags: {  }
 id: exposedformsearchpage
 theme: hdbt_subtheme
 region: search_filters

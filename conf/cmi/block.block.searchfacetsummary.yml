@@ -5,11 +5,19 @@ dependencies:
   config:
     - facets_summary.facets_summary.search_facet_summary
   module:
+    - blocache
     - context
     - facets_summary
     - system
   theme:
     - hdbt_subtheme
+third_party_settings:
+  blocache:
+    overridden: true
+    metadata:
+      max-age: -1
+      contexts: {  }
+      tags: {  }
 id: searchfacetsummary
 theme: hdbt_subtheme
 region: search_filters
