@@ -10,9 +10,14 @@ name: "app"
 type: "php:8.0"
 variables:
   php:
-    memory_limit: "128M"
+    memory_limit: "512M"
   env:
     NVM_VERSION: v0.38.0
+
+# Additional extensions
+runtime:
+  extensions:
+    - redis
 
 # The relationships of the application with services or other applications.
 #
@@ -21,6 +26,7 @@ variables:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
   database: "mysqldb:mysql"
+  redis: "rediscache:redis"
   elasticsearch: "elasticsearch:elasticsearch"
   #solr: "solrsearch:solr"
 
