@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "afdb897019c04c4c79f955242b7b58a4",
+    "content-hash": "8a6eff3fecc18c50d1266ac32eb90b12",
     "packages": [
         {
             "name": "City-of-Helsinki/php-hauki-client",
@@ -1945,17 +1945,11 @@
         },
         {
             "name": "drupal/better_exposed_filters",
-            "version": "5.0.0",
+            "version": "dev-5.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/better_exposed_filters.git",
-                "reference": "8.x-5.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-8.x-5.0.zip",
-                "reference": "8.x-5.0",
-                "shasum": "ef575591af202b5c6867841ce58e1f447455e502"
+                "reference": "9bfa328ea8b48b8b93642acc667b6bf06e905b1e"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -1966,12 +1960,15 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-5.x": "5.x-dev"
+                },
                 "drupal": {
-                    "version": "8.x-5.0",
-                    "datestamp": "1634748760",
+                    "version": "8.x-5.0+1-dev",
+                    "datestamp": "1635181294",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -3452,17 +3449,11 @@
         },
         {
             "name": "drupal/elasticsearch_connector",
-            "version": "7.0.0-alpha3",
+            "version": "dev-7.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/elasticsearch_connector.git",
-                "reference": "8.x-7.0-alpha3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/elasticsearch_connector-8.x-7.0-alpha3.zip",
-                "reference": "8.x-7.0-alpha3",
-                "shasum": "0752fc8b83479d10cdf314fc4225f6de17cc08e9"
+                "reference": "808b25c41b0425fa3851997c3613447cff88b565"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -3480,9 +3471,12 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-7.x": "7.x-dev"
+                },
                 "drupal": {
-                    "version": "8.x-7.0-alpha3",
-                    "datestamp": "1602658539",
+                    "version": "8.x-7.0-alpha3+8-dev",
+                    "datestamp": "1633696180",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -3932,17 +3926,11 @@
         },
         {
             "name": "drupal/facets",
-            "version": "2.0.0",
+            "version": "dev-2.0.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/facets.git",
-                "reference": "2.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/facets-2.0.0.zip",
-                "reference": "2.0.0",
-                "shasum": "d7f1f0a494757a174a819d779bcf13a3abbc60bb"
+                "reference": "fff31e4af94f685c94391c7a36d666f6eab3de76"
             },
             "require": {
                 "drupal/core": "^9.2 || ^10.0"
@@ -3955,12 +3943,15 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-2.0.x": "2.0.x-dev"
+                },
                 "drupal": {
-                    "version": "2.0.0",
-                    "datestamp": "1639140521",
+                    "version": "2.0.0+2-dev",
+                    "datestamp": "1640679788",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -18166,8 +18157,10 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "drupal/better_exposed_filters": 20,
         "drupal/context_entity_field": 20,
-        "drupal/elasticsearch_connector": 15,
+        "drupal/elasticsearch_connector": 20,
+        "drupal/facets": 20,
         "drupal/rabbit_hole": 10,
         "drupal/search_api_location": 15,
         "drupal/term_merge": 20,
