@@ -1,0 +1,4 @@
+helhist_search.disable_search_cache:
+  path: '/search'
+  options:
+    no_cache: 'TRUE'
