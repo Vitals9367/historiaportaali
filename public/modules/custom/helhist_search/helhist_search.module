@@ -13,6 +13,9 @@ function helhist_search_theme($existing, $type, $theme, $path) {
     ],
     'header_search' => [
       'variables' => []
+    ],
+    'search_frontend' => [
+      'variables' => []
     ]
   ];
 }
