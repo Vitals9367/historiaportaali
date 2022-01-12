@@ -6,8 +6,9 @@
   border-radius: 0;
   @include font-size(15px, 24px);
   
-  &:hover {
-    background: $color-black-70;
+  &:hover,
+  &:focus {
+    background: $color-black-90;
   }
 
   &.active {
@@ -60,7 +61,7 @@
   }
 
   .map-controls__control-button {
-    padding: $spacing-third ($spacing - $spacing-quarter);
+    padding: $spacing * .375 ($spacing * .75);
 
     @include breakpoint($breakpoint-m) {
       padding: $spacing-half $spacing;

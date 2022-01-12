@@ -49,8 +49,8 @@
   {% endfor %}
 {% else %}
   <div class="hdbt_taxonomy__wrapper">
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
-    <div class="hdbt_taxonomy">
+    <h3{{ title_attributes.addClass(title_classes) }} id={{ field_name }}>{{ label }}</h3>
+    <div class="hdbt_taxonomy" aria-labelledby={{ field_name }}>
       {% for item in items %}
         <span>{{ item.content }}</span>
       {% endfor %}
