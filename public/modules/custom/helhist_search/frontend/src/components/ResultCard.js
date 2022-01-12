@@ -22,7 +22,7 @@ const ResultCard = ({
           <div className="content-card__metadata">
             <div className="content-card__bundle content-card__metadata-item">
               <span className="content-card__metadata-item__icon bundle-image">
-              <svg aria-labelledby="camera-27315797" class="icon">
+              <svg aria-labelledby="camera-27315797" className="icon">
                 <title id="camera-27315797">Kuva</title>
                 <use xlinkHref  ="/themes/contrib/hdbt/dist/icons/sprite.svg#camera"></use>
               </svg>

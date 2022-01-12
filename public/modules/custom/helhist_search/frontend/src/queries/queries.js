@@ -1,25 +1,41 @@
 import gql from 'graphql-tag';
 
-const GET_NODES = gql`
-  query { 
-    searchAPISearch(index_id: "content_and_media", fulltext:{keys: ["historia"]} language: "fi", range: {offset: 0, limit: 30}, sort: {field: "aggregated_title", value: "asc"}) {
+const SEARCH_QUERY = gql`
+  query SEARCH_QUERY($keywords: [String]!, $limit: Int!, $offset: Int!, $langcodes: [String]!, $facetConditions: [ConditionInput]) {
+    searchAPISearch(index_id: "content_and_media", fulltext: {keys: $keywords} language: $langcodes, range: {offset: $offset, limit: $limit}, sort: {field: "aggregated_title", value: "asc"}, facets: {field: "aggregated_phenomena_title", limit: 0, operator: "=", min_count: 0, missing: false},
+      condition_group: {
+        conjunction: AND,
+        groups: [
+          {
+            conjunction: OR,
+            conditions: $facetConditions
+          }
+        ]
+      }
+    ) {
       result_count
       documents {
-        index_id
         ... on ContentAndMediaDoc {
           nid,
           mid,
           title: aggregated_title,
           image_url: listing_image_url,
           formats: aggregated_formats,
-          phenomenon: aggregated_phenomenon,
+          phenomenon: aggregated_phenomena_title,
           start_year: aggregated_start_year,
           image_url: listing_image_url,
           url
+        }
+      }
+      facets {
+        name
+        values {
+          count
+          filter
         }
       }
     }
   }
 `;
 
-export { GET_NODES };
+export { SEARCH_QUERY };

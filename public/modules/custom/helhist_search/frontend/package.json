@@ -7,9 +7,10 @@
     "@apollo/react-hooks": "^4.0.0",
     "graphql": "^16.2.0",
     "graphql-tag": "^2.12.6",
+    "hds-react": "^1.9.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-elasticsearch": "^3.1.0",
+    "react-hook-form": "^7.22.5",
     "react-scripts": "5.0.0"
   },
   "scripts": {

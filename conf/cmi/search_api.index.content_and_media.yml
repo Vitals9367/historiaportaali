@@ -3,16 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_end_year
-    - field.storage.node.field_start_year
     - field.storage.media.field_end_year
     - field.storage.media.field_start_year
+    - field.storage.node.field_end_year
+    - field.storage.node.field_start_year
     - search_api.server.elasticsearch
   module:
     - search_api_location
+    - media
     - node
     - search_api
-    - media
+    - helhist_search
 id: content_and_media
 name: 'Content and media'
 description: ''
@@ -54,6 +55,15 @@ field_settings:
       fields:
         - 'entity:media/field_geolocation'
         - 'entity:node/field_geolocation'
+  aggregated_image:
+    label: 'Aggregated image'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_media_image'
+        - 'entity:node/field_liftup_image'
   aggregated_keywords:
     label: 'Aggregated keywords'
     property_path: aggregated_field
@@ -96,6 +106,15 @@ field_settings:
       fields:
         - 'entity:media/field_neighbourhoods:entity:tid'
         - 'entity:node/field_neighbourhoods:entity:tid'
+  aggregated_phenomena_title:
+    label: 'Aggregated phenomena_title'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_phenomena:entity:name'
+        - 'entity:node/field_phenomena:entity:name'
   aggregated_phenomenon:
     label: 'Aggregated phenomenon'
     property_path: aggregated_field
@@ -140,6 +159,10 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_start_year
+  listing_image_url:
+    label: 'Listing Image URL'
+    property_path: listing_image_url
+    type: string
   media_end_year:
     label: 'End year'
     datasource_id: 'entity:media'
@@ -156,6 +179,22 @@ field_settings:
     dependencies:
       config:
         - field.storage.media.field_start_year
+  mid:
+    label: ID
+    datasource_id: 'entity:media'
+    property_path: mid
+    type: integer
+    dependencies:
+      module:
+        - media
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
   status:
     label: status
     datasource_id: 'entity:node'
@@ -172,6 +211,12 @@ field_settings:
     dependencies:
       module:
         - node
+  url:
+    label: URI
+    property_path: search_api_url
+    type: string
+    configuration:
+      absolute: false
 datasource_settings:
   'entity:media':
     bundles:
@@ -203,6 +248,7 @@ processor_settings:
       - aggregated_neighbourhoods
       - aggregated_phenomenon
   language_with_fallback: {  }
+  listing_image_url: {  }
   rendered_item: {  }
   type_boost:
     weights:
