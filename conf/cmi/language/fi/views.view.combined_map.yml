@@ -18,7 +18,3 @@ display:
         field_end_year_value:
           expose:
             label: Päättyy
-  page:
-    display_options:
-      menu:
-        title: Historia-kartta

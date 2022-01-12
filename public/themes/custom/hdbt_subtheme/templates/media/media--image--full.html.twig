@@ -104,8 +104,12 @@
           <div class="{{ left_column_classes|join(' ') }}">
             {% if content.field_photographer|render %}
               <div class="{{ media.bundle()|clean_class }}__photographer">
-                <div class="label">{{ content.field_photographer['#title'] }}</div>
-                <span>{{ content.field_photographer.0 }}</span>
+                <div class="hdbt_taxonomy__wrapper">
+                  <h3 class="label" id="field_photographer">{{ content.field_photographer['#title'] }}</h3>
+                  <div class="hdbt_taxonomy" aria-labelledby="field_photographer">
+                    <span>{{ content.field_photographer.0 }}</span>
+                  </div>
+                </div>
               </div>
             {% endif %}
 
@@ -130,8 +134,8 @@
                 {% endif %}
                 {% set period = years ? years : start_year %}
               <div class="hdbt_taxonomy__wrapper">
-                <div class="label">{{ 'Period'|t }}</div>
-                  <div class="hdbt_taxonomy">
+                <h3 class="label" id="field_group_year">{{ 'Period'|t }}</h3>
+                  <div class="hdbt_taxonomy" aria-labelledby="field_group_year">
                     <span>{{ period }}</span>
                   </div>
                 </div>

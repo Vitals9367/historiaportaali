@@ -12,6 +12,7 @@
 
     .breadcrumb {
       margin: $spacing-and-half 0;
+      padding: 0;
 
       @include breakpoint($breakpoint-s) {
         margin: $spacing-double 0;
@@ -19,7 +20,7 @@
     }
 
     .main-image {
-      margin-top: -35px;
+      margin-top: -50px;
   
       img {
         vertical-align: middle;

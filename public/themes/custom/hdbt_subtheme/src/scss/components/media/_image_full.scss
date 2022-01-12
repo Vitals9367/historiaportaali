@@ -91,22 +91,6 @@
       .columns__container:nth-child(2) {
         margin-top: $spacing-double;
 
-        .image__photographer {
-          margin-bottom: $spacing-double;
-
-          span {
-            @include font-size(16px, 24px);
-            background-color: $color-black;
-            border-radius: $spacing-and-half;
-            color: $color-white;
-            font-weight: $font-weight-regular;
-            margin: $spacing-quarter;
-            padding: $spacing-half $spacing-double;
-            text-decoration: none;
-            display: inline-flex;
-          }
-        }
-
         .image__finna_id {
           margin-bottom: $spacing-double;
 

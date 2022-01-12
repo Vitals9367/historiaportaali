@@ -9,6 +9,10 @@
     }
   }
 
+  .main-content {
+    margin-top: $spacing-double;
+  }
+
   .node--type-article {
     &.node--view-mode-content-top {
       padding-bottom: 0;
@@ -29,15 +33,6 @@
       }
     }
 
-    .article-header {
-      background-color: $color-white;
-      padding: 0 0 $spacing-double;
-
-      @include breakpoint($breakpoint-s) {
-        padding: 0 $spacing-double $spacing-double;
-      }
-    }
-
     &.node--view-mode-before-content {
       .article-header__container {
         @include breakpoint(0px $breakpoint-s) {
@@ -47,13 +42,23 @@
     }
 
     &.node--view-mode-full {
-      .article-header__container {
-        @include breakpoint(0px $breakpoint-s) {
+      margin-top: $spacing-double;
+
+      .article-header {
+        background-color: $color-white;
+        padding: 0 0 ($spacing * 1.5);
+        margin-bottom: $spacing-double;
+
+        .article-header__container {
           margin-bottom: 0;
 
           .article__date {
-            margin-bottom: 0;
+            color: var(--color-black-60);
           }
+        }
+
+        .article__date {
+          color: $text-color-gray;
         }
       }
 
@@ -103,6 +108,20 @@
 
       @include breakpoint($breakpoint-s) {
         padding: 0 $spacing-double;
+      }
+
+      // Normalize paragraph content Y-margins.
+      .paragraph-content {
+        .text,
+        .image,
+        .gallery,
+        .list-of-links,
+        .content-cards,
+        .remote-video,
+        .timeline {
+          margin-top: 0;
+          margin-bottom: $spacing-triple;
+        }
       }
     }
 

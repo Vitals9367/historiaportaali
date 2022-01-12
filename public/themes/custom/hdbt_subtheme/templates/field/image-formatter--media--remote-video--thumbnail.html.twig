@@ -16,6 +16,6 @@
 {% else %}
   {{ image }}
 {% endif %}
-<div class="media-video__play-btn">
+<button class="media-video__play-btn" type="button">
   {% include '@hdbt/misc/icon.twig' with {icon: 'playback-play', label: 'Play'|t } %}
-</div>
+</button>
