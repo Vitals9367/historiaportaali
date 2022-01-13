@@ -34,9 +34,11 @@ const SEARCH_QUERY = gql`
           mid,
           title: aggregated_title,
           image_url: listing_image_url,
-          formats: aggregated_formats,
+          formats: aggregated_formats_title,
           phenomenon: aggregated_phenomena_title,
+          neighbourhoods: aggregated_neighbourhoods_title,
           start_year: aggregated_start_year,
+          end_year: aggregated_end_year,
           image_url: listing_image_url,
           url
         }

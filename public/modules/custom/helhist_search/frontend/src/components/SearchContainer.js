@@ -9,6 +9,7 @@ import Pager from './Pager.js';
 
 const SearchContainer = () => {
   const [results, setResults] = useState();
+  const [resultCount, setResultCount] = useState(0);
   const [searchKeywords, setSearchKeywords] = useState([""]);
   const [facets, setFacets] = useState();
   const [activeFacets, setActiveFacets] = useState({});
@@ -42,6 +43,11 @@ const SearchContainer = () => {
     // Update results when query completes
     if (data?.searchAPISearch?.documents) {
       setResults(data.searchAPISearch.documents);
+    }
+
+    // Update result count
+    if (data?.searchAPISearch?.result_count) {
+      setResultCount(data.searchAPISearch.result_count);
     }
 
     // Update facets state
@@ -93,7 +99,7 @@ const SearchContainer = () => {
 
       <SearchResults 
         results={results}
-        resultCount={data?.searchAPISearch.result_count}
+        resultCount={resultCount}
       />
 
       {totalPages > 1 && (
