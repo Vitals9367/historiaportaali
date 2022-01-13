@@ -11,6 +11,7 @@ const SEARCH_QUERY = gql`
       facets: [
         {field: "aggregated_phenomena_title", limit: 0, operator: "=", min_count: 0, missing: false},
         {field: "aggregated_formats_title", limit: 0, operator: "=", min_count: 0, missing: false}
+        {field: "aggregated_neighbourhoods_title", limit: 0, operator: "=", min_count: 0, missing: false}
       ],
       condition_group: {
         conjunction: AND,
