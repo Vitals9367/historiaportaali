@@ -1,13 +1,13 @@
 import gql from 'graphql-tag';
 
 const SEARCH_QUERY = gql`
-  query SEARCH_QUERY($keywords: [String]!, $limit: Int!, $offset: Int!, $langcodes: [String]!, $facetConditions: [ConditionInput], $eraConditions: [ConditionInput]) {
+  query SEARCH_QUERY($keywords: [String]!, $limit: Int!, $offset: Int!, $langcodes: [String]!, $facetConditions: [ConditionInput], $eraConditions: [ConditionInput], $sort: [SortInput]) {
     searchAPISearch(
       index_id: "content_and_media", 
       fulltext: {keys: $keywords},
       language: $langcodes,
       range: {offset: $offset, limit: $limit},
-      sort: {field: "aggregated_title", value: "asc"},
+      sort: $sort,
       facets: [
         {field: "aggregated_phenomena_title", limit: 0, operator: "=", min_count: 0, missing: false},
         {field: "aggregated_formats_title", limit: 0, operator: "=", min_count: 0, missing: false}

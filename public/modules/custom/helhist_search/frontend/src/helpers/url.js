@@ -1,4 +1,4 @@
-const updateUrlParams = (activeFacets, currentPage) => {
+const updateUrlParams = (activeFacets, currentPage, currentSort, sortOrderAscending) => {
   const url = new URL(window.location);
 
   for (const [name, values] of Object.entries(activeFacets)) {
@@ -12,6 +12,13 @@ const updateUrlParams = (activeFacets, currentPage) => {
   }
 
   url.searchParams.set("page", currentPage);
+  url.searchParams.set("sort", currentSort);
+
+  if (sortOrderAscending) {
+    url.searchParams.set("sort_order", "ASC");
+  } else {
+    url.searchParams.set("sort_order", "DESC");
+  }
 
   window.history.pushState({}, '', url);
 }

@@ -1,17 +1,26 @@
 import React from 'react';
+import SortLinks from './SortLinks.js';
 import ResultCard from './ResultCard.js';
 
-const SearchResults = ({ results, resultCount }) => (
+const SearchResults = ({ results, resultCount, currentSort, onSortChange, sortOrderAscending }) => (
   <div className="search-results">
     <div className="container view__container">
       <header>
-        <h2>Hakutulokset</h2>
-        <h3>{resultCount} tulosta haulle</h3>
+        <div className="search-header__left">
+          <h2>Hakutulokset</h2>
+          <h3>{resultCount} tulosta haulle</h3>
+        </div>
+        <div className="search-header__right">
+          <SortLinks
+            currentSort={currentSort}
+            onSortChange={onSortChange}
+            sortOrderAscending={sortOrderAscending}
+          />
+        </div>
       </header>
 
       <div className="search-results-wrapper">        
         {results && results.map(result => {
-          console.log(results);
           const type = (result.nid ? 'article' : 'media');
           return (
             <ResultCard

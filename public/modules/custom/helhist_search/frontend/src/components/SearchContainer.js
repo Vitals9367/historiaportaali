@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { SEARCH_QUERY } from '../queries/queries.js';
 import { prepareFacetsForQuery, prepareEraForQuery } from '../helpers/conditions.js';
+import { prepareSortForQuery } from '../helpers/sort.js';
 import { updateUrlParams } from '../helpers/url.js';
 import SearchForm from './SearchForm.js';
 import SearchResults from './SearchResults';
 import Pager from './Pager.js';
 
 const SearchContainer = () => {
-  const [results, setResults] = useState();
-  const [resultCount, setResultCount] = useState(0);
   const [searchKeywords, setSearchKeywords] = useState([""]);
   const [facets, setFacets] = useState();
   const [activeFacets, setActiveFacets] = useState({});
+  const [selectedEra, setSelectedEra] = useState({startYear: false, endYear: false});
+  const [currentSort, setCurrentSort] = useState("relevance");
+  const [sortOrderAscending, setSortOrderAscending] = useState(false);
+  const [results, setResults] = useState();
+  const [resultCount, setResultCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [selectedEra, setSelectedEra] = useState({startYear: false, endYear: false});
   const [executeQuery, { loading, error, data }] = useLazyQuery(SEARCH_QUERY);
 
   const resultsPerPage = 15;
@@ -33,11 +36,20 @@ const SearchContainer = () => {
     setCurrentPage(newPage);
   }
 
+  const onSortChange = (newSort) => {
+    if (currentSort === newSort) {
+      setSortOrderAscending(prevState => !prevState);
+    } else {
+      setCurrentSort(newSort);
+      setSortOrderAscending(false);
+    }
+  }
+
   // Execute search on facet change
   useEffect(() => {
     executeSearch();
-    updateUrlParams(activeFacets, currentPage);
-  }, [activeFacets, currentPage]);
+    updateUrlParams(activeFacets, currentPage, currentSort, sortOrderAscending);
+  }, [activeFacets, currentPage, currentSort, sortOrderAscending]);
 
   useEffect(() => {
     // Update results when query completes
@@ -71,6 +83,7 @@ const SearchContainer = () => {
   const executeSearch = () => {
     const facetConditions = prepareFacetsForQuery(activeFacets);
     const eraConditions = prepareEraForQuery(selectedEra);
+    const sort = prepareSortForQuery(currentSort, sortOrderAscending);
 
     executeQuery({
       variables: {
@@ -79,7 +92,8 @@ const SearchContainer = () => {
         offset: (currentPage * resultsPerPage) - resultsPerPage,
         langcodes: ["fi"],
         facetConditions: facetConditions,
-        eraConditions: eraConditions
+        eraConditions: eraConditions,
+        sort: sort
       }
     });
   }
@@ -100,6 +114,9 @@ const SearchContainer = () => {
       <SearchResults 
         results={results}
         resultCount={resultCount}
+        currentSort={currentSort}
+        onSortChange={onSortChange}
+        sortOrderAscending={sortOrderAscending}
       />
 
       {totalPages > 1 && (
