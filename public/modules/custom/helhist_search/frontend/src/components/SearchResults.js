@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 import SortLinks from './SortLinks.js';
 import ResultCard from './ResultCard.js';
 
@@ -19,22 +20,24 @@ const SearchResults = ({ results, resultCount, currentSort, onSortChange, sortOr
         </div>
       </header>
 
-      <div className="search-results-wrapper">        
-        {results && results.map(result => {
-          const type = (result.nid ? 'article' : 'media');
-          return (
-            <ResultCard
-              key={(result.nid ? result.nid : result.mid)}
-              type={type}
-              title={result.title}
-              imageUrl={result.image_url}
-              formats={result.formats}
-              phenomenon={result.phenomenon}
-              startYear={result.start_year}
-              url={result.url}
-            />
-          )
-        })}
+      <div className="search-results-wrapper">
+        <AnimatePresence>
+          {results && results.map(result => {
+            const type = (result.nid ? 'article' : 'media');
+            return (
+              <ResultCard
+                key={(result.nid ? result.nid : result.mid)}
+                type={type}
+                title={result.title}
+                imageUrl={result.image_url}
+                formats={result.formats}
+                phenomenon={result.phenomenon}
+                startYear={result.start_year}
+                url={result.url}
+              />
+            )
+          })}
+        </AnimatePresence>
       </div>
     </div>
   </div>
