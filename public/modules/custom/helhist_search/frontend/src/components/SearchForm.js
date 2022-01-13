@@ -3,16 +3,18 @@ import { useForm } from 'react-hook-form';
 import { getAutocompleteResults } from '../helpers/autocomplete';
 import Facet from './Facet';
 
-const SearchForm = ({ facets, activeFacets, onFacetChange, executeSearch }) => {
+const SearchForm = ({ setSearchKeywords, facets, activeFacets, onFacetChange, executeSearch }) => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const watchKeywords = watch("keywords", "");
 
   const onSubmit = data => {
     const { keywords } = data;
-    executeSearch(keywords);
+    setSearchKeywords(keywords);
+    executeSearch();
   }
 
   useEffect(() => {
+
     if (watchKeywords.length < 3) {
       return;
     } 

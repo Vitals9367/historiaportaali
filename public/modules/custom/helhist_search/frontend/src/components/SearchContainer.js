@@ -6,7 +6,7 @@ import SearchForm from './SearchForm.js';
 import SearchResults from './SearchResults';
 
 const SearchContainer = () => {
-  const [searchKeywords, setSearchKeywords] = useState([]);
+  const [searchKeywords, setSearchKeywords] = useState([""]);
   const [facets, setFacets] = useState();
   const [activeFacets, setActiveFacets] = useState({});
   const [executeQuery, { loading, error, data }] = useLazyQuery(SEARCH_QUERY);
@@ -15,25 +15,8 @@ const SearchContainer = () => {
     setActiveFacets({...activeFacets, [name]: values});
   }
 
-  const executeSearch = (keywords) => {
-    if (keywords) {
-      setSearchKeywords(keywords);
-    }
-
-    const facetConditions = prepareFacetsForQuery(activeFacets);
-
-    executeQuery({
-      variables: {
-        keywords: [keywords ? keywords : ""],
-        limit: 20,
-        offset: 0,
-        langcodes: ["fi"],
-        facetConditions: facetConditions
-      }
-    });
-  }
-
   useEffect(() => {
+    // Execute search on facet change
     executeSearch();
   }, [activeFacets]);
 
@@ -51,9 +34,24 @@ const SearchContainer = () => {
     )
   }
 
+  const executeSearch = () => {
+    const facetConditions = prepareFacetsForQuery(activeFacets);
+
+    executeQuery({
+      variables: {
+        keywords: searchKeywords,
+        limit: 20,
+        offset: 0,
+        langcodes: ["fi"],
+        facetConditions: facetConditions
+      }
+    });
+  }
+
   return (
     <div className="search-container">
       <SearchForm 
+        setSearchKeywords={setSearchKeywords}
         searchKeywords={searchKeywords}
         facets={facets}
         activeFacets={activeFacets}
