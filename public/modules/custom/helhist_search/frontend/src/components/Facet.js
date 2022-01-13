@@ -1,14 +1,25 @@
 import React from 'react';
-import { Combobox } from 'hds-react/components/Combobox';
+import { Select } from 'hds-react/components/Select';
 
-const Facet = ({ name, values }) => (
-  <Combobox
-    required
-    label="Valitse ilmiö"
-    placeholder="Valitse ilmiö"
-    toggleButtonAriaLabel="Toggle menu"
-    options={values}
-  />
-)
+const Facet = ({ name, values, selectedValues, onFacetChange }) => {
+  const titleMap = {
+    "aggregated_phenomena_title": "Valitse ilmiö",
+    "aggregated_formats_title": "Valitse aineistolaji"
+  };
+
+  return (
+    <Select
+      multiselect
+      required
+      label={titleMap[name]}
+      placeholder={titleMap[name]}
+      options={values}
+      value={selectedValues}
+      clearButtonAriaLabel="Clear all selections"
+      selectedItemRemoveButtonAriaLabel="Remove ${value}"
+      onChange={(values) => onFacetChange(name, values)}
+    />
+  )
+}
 
 export default Facet;

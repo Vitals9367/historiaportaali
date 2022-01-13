@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { getAutocompleteResults } from '../helpers/autocomplete';
 import Facet from './Facet';
 
-const SearchForm = ({ facets, executeSearch }) => {
+const SearchForm = ({ facets, activeFacets, onFacetChange, executeSearch }) => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const watchKeywords = watch("keywords", "");
 
@@ -36,6 +36,8 @@ const SearchForm = ({ facets, executeSearch }) => {
             key={facet.name}
             name={facet.name}
             values={facet.values.map(value => {return {label: value.filter}})}
+            selectedValues={activeFacets[facet.name]}
+            onFacetChange={onFacetChange}
           />
         ))}
 

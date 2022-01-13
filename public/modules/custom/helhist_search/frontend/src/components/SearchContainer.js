@@ -1,49 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { SEARCH_QUERY } from '../queries/queries.js';
+import { prepareFacetsForQuery } from '../helpers/facets.js';
 import SearchForm from './SearchForm.js';
 import SearchResults from './SearchResults';
 
 const SearchContainer = () => {
   const [searchKeywords, setSearchKeywords] = useState([]);
-  const [facets, setFacets] = useState({});
+  const [facets, setFacets] = useState();
+  const [activeFacets, setActiveFacets] = useState({});
   const [executeQuery, { loading, error, data }] = useLazyQuery(SEARCH_QUERY);
 
+  const onFacetChange = (name, values) => {
+    setActiveFacets({...activeFacets, [name]: values});
+  }
+
   const executeSearch = (keywords) => {
-    setSearchKeywords(keywords);
+    if (keywords) {
+      setSearchKeywords(keywords);
+    }
+
+    const facetConditions = prepareFacetsForQuery(activeFacets);
 
     executeQuery({
       variables: {
-        keywords: [keywords],
+        keywords: [keywords ? keywords : ""],
         limit: 20,
         offset: 0,
         langcodes: ["fi"],
-        facetConditions: [
-          {"name": "aggregated_phenomena_title", "operator": "=", "value": "Arjen muuttuvat kasvot"},
-          {"name": "aggregated_phenomena_title", "operator": "=", "value": "Tapahtumia vuoden ympäri"}
-        ]
+        facetConditions: facetConditions
       }
     });
   }
 
   useEffect(() => {
-    executeQuery({
-      variables: {
-        keywords: [],
-        limit: 20,
-        offset: 0,
-        langcodes: ["fi"]
-      }
-    });
-  }, []);
+    executeSearch();
+  }, [activeFacets]);
 
-  if (error) return <div>Error :(</div>;
+  useEffect(() => {
+    // Update facets state when query completes
+    if (data?.searchAPISearch?.facets) {
+      setFacets(data.searchAPISearch.facets);
+    }
+  }, [data]);
+
+  if (error) {
+    console.log(error);
+    return (
+      <div>Error :(</div>
+    )
+  }
 
   return (
     <div className="search-container">
       <SearchForm 
         searchKeywords={searchKeywords}
-        facets={data?.searchAPISearch.facets}
+        facets={facets}
+        activeFacets={activeFacets}
+        onFacetChange={onFacetChange}
         executeSearch={executeSearch}
       />
 
