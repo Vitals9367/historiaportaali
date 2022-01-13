@@ -19,8 +19,8 @@ name: 'Content and media'
 description: ''
 read_only: false
 field_settings:
-  aggregated_authored_on:
-    label: 'Aggregated authored on'
+  aggregated_created:
+    label: 'Aggregated created'
     property_path: aggregated_field
     type: date
     configuration:
@@ -37,6 +37,15 @@ field_settings:
       fields:
         - 'entity:media/field_end_year'
         - 'entity:node/field_end_year'
+  aggregated_field:
+    label: 'Aggregated field'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/created'
+        - 'entity:node/created'
   aggregated_formats:
     label: 'Aggregated formats'
     property_path: aggregated_field
@@ -46,6 +55,15 @@ field_settings:
       fields:
         - 'entity:media/field_formats:entity:tid'
         - 'entity:node/field_formats:entity:tid'
+  aggregated_formats_title:
+    label: 'Aggregated formats title'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_formats:entity:name'
+        - 'entity:node/field_formats:entity:name'
   aggregated_geolocation:
     label: 'Aggregated geolocation'
     property_path: aggregated_field
@@ -106,6 +124,15 @@ field_settings:
       fields:
         - 'entity:media/field_neighbourhoods:entity:tid'
         - 'entity:node/field_neighbourhoods:entity:tid'
+  aggregated_neighbourhoods_title:
+    label: 'Aggregated neighbourhoods title'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:media/field_neighbourhoods:entity:name'
+        - 'entity:node/field_neighbourhoods:entity:name'
   aggregated_phenomena_title:
     label: 'Aggregated phenomena_title'
     property_path: aggregated_field
