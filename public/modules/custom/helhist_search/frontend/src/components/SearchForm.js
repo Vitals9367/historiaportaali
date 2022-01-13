@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { Button } from 'hds-react/components/Button';
 import { getAutocompleteResults } from '../helpers/autocomplete';
+import EraSelector from './EraSelector';
 import Facet from './Facet';
 
-const SearchForm = ({ setSearchKeywords, facets, activeFacets, onFacetChange, executeSearch }) => {
+const SearchForm = ({ setSearchKeywords, facets, activeFacets, onFacetChange, selectedEra, onEraChange, executeSearch }) => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const watchKeywords = watch("keywords", "");
 
@@ -33,6 +35,11 @@ const SearchForm = ({ setSearchKeywords, facets, activeFacets, onFacetChange, ex
           </div>
         </div>
 
+        <EraSelector
+          selectedEra={selectedEra}
+          onEraChange={onEraChange}
+        />
+
         {facets && facets.map(facet => (
           <Facet
             key={facet.name}
@@ -44,7 +51,7 @@ const SearchForm = ({ setSearchKeywords, facets, activeFacets, onFacetChange, ex
         ))}
 
         <div className="form-actions">
-          <input type="submit" className="button form-submit hds-button hds-button--primary" value="Hae" />
+          <Button type="submit" color="#bd2f00">Hae</Button>
         </div>
       </form>
     </div>

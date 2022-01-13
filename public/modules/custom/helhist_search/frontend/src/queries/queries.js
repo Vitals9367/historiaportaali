@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 const SEARCH_QUERY = gql`
-  query SEARCH_QUERY($keywords: [String]!, $limit: Int!, $offset: Int!, $langcodes: [String]!, $facetConditions: [ConditionInput]) {
+  query SEARCH_QUERY($keywords: [String]!, $limit: Int!, $offset: Int!, $langcodes: [String]!, $facetConditions: [ConditionInput], $eraConditions: [ConditionInput]) {
     searchAPISearch(
       index_id: "content_and_media", 
       fulltext: {keys: $keywords},
@@ -19,6 +19,10 @@ const SEARCH_QUERY = gql`
           {
             conjunction: AND,
             conditions: $facetConditions
+          },
+          {
+            conjunction: AND,
+            conditions: $eraConditions
           }
         ]
       }

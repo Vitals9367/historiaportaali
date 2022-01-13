@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { SEARCH_QUERY } from '../queries/queries.js';
-import { prepareFacetsForQuery } from '../helpers/facets.js';
+import { prepareFacetsForQuery, prepareEraForQuery } from '../helpers/conditions.js';
 import { updateUrlParams } from '../helpers/url.js';
 import SearchForm from './SearchForm.js';
 import SearchResults from './SearchResults';
 import Pager from './Pager.js';
 
 const SearchContainer = () => {
+  const [results, setResults] = useState();
   const [searchKeywords, setSearchKeywords] = useState([""]);
   const [facets, setFacets] = useState();
   const [activeFacets, setActiveFacets] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedEra, setSelectedEra] = useState({startYear: false, endYear: false});
   const [executeQuery, { loading, error, data }] = useLazyQuery(SEARCH_QUERY);
 
   const resultsPerPage = 15;
@@ -20,6 +22,10 @@ const SearchContainer = () => {
   const onFacetChange = (name, values) => {
     setActiveFacets({...activeFacets, [name]: values});
     setCurrentPage(1);
+  }
+
+  const onEraChange = (key, value) => {
+    setSelectedEra({...selectedEra, [key]: value});
   }
 
   const onPageChange = (newPage) => {
@@ -33,7 +39,12 @@ const SearchContainer = () => {
   }, [activeFacets, currentPage]);
 
   useEffect(() => {
-    // Update facets state when query completes
+    // Update results when query completes
+    if (data?.searchAPISearch?.documents) {
+      setResults(data.searchAPISearch.documents);
+    }
+
+    // Update facets state
     if (data?.searchAPISearch?.facets) {
       setFacets(data.searchAPISearch.facets);
     }
@@ -53,6 +64,7 @@ const SearchContainer = () => {
 
   const executeSearch = () => {
     const facetConditions = prepareFacetsForQuery(activeFacets);
+    const eraConditions = prepareEraForQuery(selectedEra);
 
     executeQuery({
       variables: {
@@ -60,7 +72,8 @@ const SearchContainer = () => {
         limit: resultsPerPage,
         offset: (currentPage * resultsPerPage) - resultsPerPage,
         langcodes: ["fi"],
-        facetConditions: facetConditions
+        facetConditions: facetConditions,
+        eraConditions: eraConditions
       }
     });
   }
@@ -73,11 +86,13 @@ const SearchContainer = () => {
         facets={facets}
         activeFacets={activeFacets}
         onFacetChange={onFacetChange}
+        selectedEra={selectedEra}
+        onEraChange={onEraChange}
         executeSearch={executeSearch}
       />
 
       <SearchResults 
-        results={data?.searchAPISearch.documents}
+        results={results}
         resultCount={data?.searchAPISearch.result_count}
       />
 
