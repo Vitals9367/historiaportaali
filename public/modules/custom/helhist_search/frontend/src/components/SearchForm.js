@@ -59,20 +59,20 @@ const SearchForm = ({
         <div className="filters">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-item hds-text-input">
-              <label htmlFor="keywords">{window.Drupal.t("Search from content", {}, {context: "Search"})}</label>
+              <label htmlFor="keywords">{window.Drupal ? window.Drupal.t("Search from content", {}, {context: "Search"}) : "Search from content"}</label>
               <div className="hds-text-input__input-wrapper">
-                <input placeholder={window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"})} className="form-text hds-text-input__input ui-autocomplete-input" data-search-api-autocomplete-search="search" type="text" name="keywords" {...register("keywords")} />
+                <input placeholder={window.Drupal ? window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"}) : "Location, person, topic, event..."} className="form-text hds-text-input__input ui-autocomplete-input" data-search-api-autocomplete-search="search" type="text" name="keywords" {...register("keywords")} />
               </div>
             </div>
 
             <div className="form-actions">
-              <Button type="submit">{window.Drupal.t("Search", {}, {context: "Search"})}</Button>
+              <Button type="submit">{window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}</Button>
               {searchHasFilters && (
-                <Button type="reset" onClick={() => handleReset()}>{window.Drupal.t("Clear", {}, {context: "Search"})}</Button>
+                <Button type="reset" onClick={() => handleReset()}>{window.Drupal ? window.Drupal.t("Clear", {}, {context: "Search"}) : "Clear"}</Button>
               )}
             </div>
 
-            <h4>{window.Drupal.t("Filter results", {}, {context: "Search"})}</h4>
+            <h4>{window.Drupal ? window.Drupal.t("Filter results", {}, {context: "Search"}) : "Filter results"}</h4>
 
             <div className="form-item">
               <EraSelector

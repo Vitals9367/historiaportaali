@@ -23,9 +23,9 @@ const SearchResults = ({
     <div className="container view__container">
       <header>
         <div className="search-header__left">
-          <h2>{window.Drupal.t("Search results", {}, {context: "Search"})}</h2>
+          <h2>{window.Drupal ? window.Drupal.t("Search results", {}, {context: "Search"}) : "Search results"}</h2>
           <h3>
-            {resultCount} {window.Drupal.t("results for search", {}, {context: "Search"})}
+            {resultCount} {window.Drupal ? window.Drupal.t("results for search", {}, {context: "Search"}) : "results for search"}
             {searchKeywords && (
               <span>: {searchKeywords}</span>
             )}
@@ -51,7 +51,7 @@ const SearchResults = ({
                 title={result.title}
                 imageUrl={result.image_url}
                 formats={result.formats}
-                phenomenon={result.phenomenon}
+                phenomena={result.phenomena}
                 startYear={result.start_year}
                 url={result.url}
               />

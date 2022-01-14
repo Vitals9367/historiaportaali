@@ -12,7 +12,7 @@ import Pager from './Pager.js';
 const SearchContainer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchKeywords, setSearchKeywords] = useState(getInitialValueFromUrl("s"));
-  const [activeFacets, setActiveFacets] = useState({});
+  const [activeFacets, setActiveFacets] = useState(getInitialValueFromUrl("facets"));
   const [selectedEra, setSelectedEra] = useState(getInitialValueFromUrl("era"));
   const [currentSort, setCurrentSort] = useState(getInitialValueFromUrl("sort"));
   const [sortOrderAscending, setSortOrderAscending] = useState(getInitialValueFromUrl("sort_order"));

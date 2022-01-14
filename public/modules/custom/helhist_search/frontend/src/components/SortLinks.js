@@ -4,29 +4,29 @@ import SortLink from './SortLink';
 const SortLinks = ({ currentSort, onSortChange, sortOrderAscending }) => {
   return (
     <div className="search-header__sort-container">
-      <h4>{window.Drupal.t("Sort:", {}, {context: "Search"})}</h4>
+      <h4>{window.Drupal ? window.Drupal.t("Sort:", {}, {context: "Search"}) : "Sort"}</h4>
       <ul className="sort-options">
         <SortLink
-          title={window.Drupal.t("Relevance", {}, {context: "Search"})}
+          title={window.Drupal ? window.Drupal.t("Relevance", {}, {context: "Search"}) : "Relevance"}
           active={currentSort === "relevance"}
           ascending={sortOrderAscending}
-          ariaLabel={window.Drupal.t("Sort by relevance", {}, {context: "Search"})}
+          ariaLabel={window.Drupal ? window.Drupal.t("Sort by relevance", {}, {context: "Search"}) : "Sort by relevance"}
           onPress={() => onSortChange("relevance")}
         />
 
         <SortLink
-          title={window.Drupal.t("Year", {}, {context: "Search"})}
+          title={window.Drupal ? window.Drupal.t("Year", {}, {context: "Search"}) : "Year"}
           active={currentSort === "year"}
           ascending={sortOrderAscending}
-          ariaLabel={window.Drupal.t("Sort by year", {}, {context: "Search"})}
+          ariaLabel={window.Drupal ? window.Drupal.t("Sort by year", {}, {context: "Search"}) : "Sort by year"}
           onPress={() => onSortChange("year")}
         />
 
         <SortLink
-          title={window.Drupal.t("Created", {}, {context: "Search"})}
+          title={window.Drupal ? window.Drupal.t("Created", {}, {context: "Search"}) : "Created"}
           active={currentSort === "created"}
           ascending={sortOrderAscending}
-          ariaLabel={window.Drupal.t("Sort by creation date", {}, {context: "Search"})}
+          ariaLabel={window.Drupal ? window.Drupal.t("Sort by creation date", {}, {context: "Search"}) : "Sort by creation date"}
           onPress={() => onSortChange("created")}
         />
       </ul>

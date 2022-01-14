@@ -56,20 +56,44 @@ const updateUrlParams = (
 const getInitialValueFromUrl = (key) => {
   const url = new URL(window.location);
 
+  // TODO: FACETS!
+
   switch (key) {
     case "s":
       return url.searchParams.has("s") ? url.searchParams.get("s") : "";
+
     case "era":
       return {
         startYear: url.searchParams.has("start_year") ? url.searchParams.get("start_year") : "",
         endYear: url.searchParams.has("end_year") ? url.searchParams.get("end_year") : "",
       }
+
     case "sort":
       return url.searchParams.has("sort") ? url.searchParams.get("sort") : "relevance";
+
     case "sort_order":
       return url.searchParams.has("sort_order") && url.searchParams.get("sort_order") === "ASC" ? true : false;
+
     case "page":
       return url.searchParams.has("page") ? url.searchParams.get("page") : 1;
+
+    case "facets":
+      const activeFacets = {};
+      const facetKeys = [
+        "aggregated_phenomena_title",
+        "aggregated_formats_title",
+        "aggregated_neighbourhoods_title"
+      ];
+
+      facetKeys.forEach(key => {
+        if (url.searchParams.has(key)) {
+          const values = url.searchParams.get(key).split(",").map(value => ({label: value}));
+          activeFacets[key] = values;
+        }
+      });
+
+      return activeFacets;
+
     default:
       return false;
   }
