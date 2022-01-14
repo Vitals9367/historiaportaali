@@ -7,10 +7,11 @@ import {
 import SearchContainer from './components/SearchContainer';
 
 const currentUrl = window.location.protocol + '//' + window.location.host;
+const apiUrl = (process.env.REACT_APP_STAGE === 'production') ? currentUrl : process.env.REACT_APP_DRUPAL_URL;
 
 const apolloClient = new ApolloClient({
-  uri: currentUrl + '/graphql',
-  cache: new InMemoryCache(/*{
+  uri: apiUrl + '/graphql',
+  cache: new InMemoryCache({
     typePolicies: {
       Query: {
         fields: {
@@ -46,7 +47,7 @@ const apolloClient = new ApolloClient({
         }
       }
     }
-  }*/),
+  }),
   connectToDevTools: true,
 })
 

@@ -2,26 +2,46 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from 'hds-react/components/Button';
 import { getAutocompleteResults } from '../helpers/autocomplete';
+import { scrollTo } from '../helpers/scrollTo';
 import EraSelector from './EraSelector';
 import Facet from './Facet';
 
-const SearchForm = ({ setSearchKeywords, facets, activeFacets, onFacetChange, selectedEra, onEraChange, executeSearch }) => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+const SearchForm = ({
+  setSearchKeywords,
+  facets,
+  activeFacets,
+  onFacetChange,
+  selectedEra,
+  onEraChange,
+  resetSearch,
+  searchHasFilters,
+  resultsRef
+}) => {
+  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
   const watchKeywords = watch("keywords", "");
 
   const onSubmit = data => {
     const { keywords } = data;
     setSearchKeywords(keywords);
-    executeSearch();
+
+    scrollTo({
+      ref: resultsRef,
+      duration: 1000
+    })
+  }
+
+  const handleReset = () => {
+    reset();
+    resetSearch();
   }
 
   useEffect(() => {
 
-    if (watchKeywords.length < 3) {
+    if (watchKeywords && watchKeywords.length < 3) {
       return;
     } 
 
-    getAutocompleteResults(watchKeywords);
+    //getAutocompleteResults(watchKeywords);
   }, [watchKeywords]);
 
   return (
@@ -34,6 +54,13 @@ const SearchForm = ({ setSearchKeywords, facets, activeFacets, onFacetChange, se
               <div className="hds-text-input__input-wrapper">
                 <input placeholder="Paikka, henkilö, aihe, tapahtuma..." className="form-text hds-text-input__input ui-autocomplete-input" data-search-api-autocomplete-search="search" type="text" name="keywords" {...register("keywords")} />
               </div>
+            </div>
+
+            <div className="form-actions">
+              <Button type="submit">Hae</Button>
+              {searchHasFilters && (
+                <Button type="reset" onClick={() => handleReset()}>Tyhjennä</Button>
+              )}
             </div>
 
             <h4>Rajaa hakutuloksia</h4>
@@ -52,10 +79,6 @@ const SearchForm = ({ setSearchKeywords, facets, activeFacets, onFacetChange, se
                 onFacetChange={onFacetChange}
               />
             ))}
-
-            <div className="form-actions">
-              <Button type="submit" color="#bd2f00">Hae</Button>
-            </div>
           </form>
         </div>
       </div>

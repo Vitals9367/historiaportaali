@@ -3,13 +3,26 @@ import { AnimatePresence } from 'framer-motion';
 import SortLinks from './SortLinks.js';
 import ResultCard from './ResultCard.js';
 
-const SearchResults = ({ results, resultCount, currentSort, onSortChange, sortOrderAscending }) => (
-  <div className="search-results">
+const SearchResults = ({
+  innerRef,
+  searchKeywords,
+  results,
+  resultCount,
+  currentSort,
+  onSortChange,
+  sortOrderAscending
+}) => (
+  <div className="search-results" ref={innerRef}>
     <div className="container view__container">
       <header>
         <div className="search-header__left">
           <h2>Hakutulokset</h2>
-          <h3>{resultCount} tulosta haulle</h3>
+          <h3>
+            {resultCount} tulosta haulle
+            {searchKeywords && (
+              <span>: {searchKeywords}</span>
+            )}
+          </h3>
         </div>
         <div className="search-header__right">
           <SortLinks

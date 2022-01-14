@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { SEARCH_QUERY } from '../queries/queries.js';
 import { prepareFacetsForQuery, prepareEraForQuery } from '../helpers/conditions.js';
 import { prepareSortForQuery } from '../helpers/sort.js';
 import { updateUrlParams } from '../helpers/url.js';
+import { hasActiveFacets } from '../helpers/misc.js';
 import SearchForm from './SearchForm.js';
 import SearchResults from './SearchResults';
 import Pager from './Pager.js';
 
 const SearchContainer = () => {
-  const [searchKeywords, setSearchKeywords] = useState([""]);
+  const [searchKeywords, setSearchKeywords] = useState("");
   const [facets, setFacets] = useState();
   const [activeFacets, setActiveFacets] = useState({});
   const [selectedEra, setSelectedEra] = useState({startYear: false, endYear: false});
@@ -22,6 +23,8 @@ const SearchContainer = () => {
   const [executeQuery, { loading, error, data }] = useLazyQuery(SEARCH_QUERY);
 
   const resultsPerPage = 15;
+
+  const resultsRef = useRef(null);
 
   const onFacetChange = (name, values) => {
     setActiveFacets({...activeFacets, [name]: values});
@@ -45,45 +48,51 @@ const SearchContainer = () => {
     }
   }
 
-  // Execute search on facet change
+  const resetSearch = () => {
+    setSearchKeywords("");
+    setActiveFacets({});
+    setCurrentPage(1);
+    setCurrentSort("relevance");
+    setSortOrderAscending(false);
+  }
+
+  // Execute search when parameters change
   useEffect(() => {
     executeSearch();
     updateUrlParams(activeFacets, currentPage, currentSort, sortOrderAscending);
-  }, [activeFacets, currentPage, currentSort, sortOrderAscending]);
+    hasActiveFacets();
+  }, [searchKeywords, activeFacets, currentPage, currentSort, sortOrderAscending]);
 
   useEffect(() => {
-    // Update results when query completes
-    if (data?.searchAPISearch?.documents) {
-      setResults(data.searchAPISearch.documents);
-    }
+    if (data && !loading) {
+      console.log(data);
+      // Update results when query completes
+      if (data?.searchAPISearch?.documents) {
+        setResults(data.searchAPISearch.documents);
+      }
 
-    // Update result count
-    if (data?.searchAPISearch?.result_count) {
-      setResultCount(data.searchAPISearch.result_count);
-    }
+      // Update result count
+      if (data?.searchAPISearch?.result_count) {
+        setResultCount(data.searchAPISearch.result_count);
+      }
 
-    // Update facets state
-    if (data?.searchAPISearch?.facets) {
-      setFacets(data.searchAPISearch.facets);
-    }
+      // Update facets state
+      if (data?.searchAPISearch?.facets) {
+        setFacets(data.searchAPISearch.facets);
+      }
 
-    // Update total page count
-    if (data?.searchAPISearch?.result_count) {
-      setTotalPages(Math.ceil(data.searchAPISearch.result_count / resultsPerPage));
+      // Update total page count
+      if (data?.searchAPISearch?.result_count) {
+        setTotalPages(Math.ceil(data.searchAPISearch.result_count / resultsPerPage));
+      }
     }
-  }, [data]);
-
-  if (error) {
-    console.log(error);
-    return (
-      <div>Error :(</div>
-    )
-  }
+  }, [data, loading]);
 
   const executeSearch = () => {
     const facetConditions = prepareFacetsForQuery(activeFacets);
     const eraConditions = prepareEraForQuery(selectedEra);
     const sort = prepareSortForQuery(currentSort, sortOrderAscending);
+    console.log('execute');
 
     executeQuery({
       variables: {
@@ -98,6 +107,13 @@ const SearchContainer = () => {
     });
   }
 
+  if (error) {
+    console.log(error);
+    return (
+      <div>Error :(</div>
+    )
+  }
+
   return (
     <div className="search-container">
       <SearchForm 
@@ -109,18 +125,23 @@ const SearchContainer = () => {
         selectedEra={selectedEra}
         onEraChange={onEraChange}
         executeSearch={executeSearch}
+        resetSearch={resetSearch}
+        searchHasFilters={searchKeywords[0] || hasActiveFacets(activeFacets)}
+        resultsRef={resultsRef}
       />
 
-      <SearchResults 
+      <SearchResults
+        searchKeywords={searchKeywords}
         results={results}
         resultCount={resultCount}
         currentSort={currentSort}
         onSortChange={onSortChange}
         sortOrderAscending={sortOrderAscending}
+        innerRef={resultsRef}
       />
 
       {totalPages > 1 && (
-        <Pager 
+        <Pager
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={onPageChange}
