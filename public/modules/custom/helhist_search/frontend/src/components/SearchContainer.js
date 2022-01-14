@@ -96,12 +96,14 @@ const SearchContainer = () => {
     const eraConditions = prepareEraForQuery(selectedEra);
     const sort = prepareSortForQuery(currentSort, sortOrderAscending);
 
+    const langcode = (typeof window.drupalSettings !== 'undefined') ? window.drupalSettings.path.currentLanguage : 'fi';
+
     executeQuery({
       variables: {
         keywords: searchKeywords,
         limit: resultsPerPage,
         offset: (currentPage * resultsPerPage) - resultsPerPage,
-        langcodes: ["fi"],
+        langcodes: [langcode],
         facetConditions: facetConditions,
         eraConditions: eraConditions,
         sort: sort
