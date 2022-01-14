@@ -7,22 +7,31 @@ import EraSelector from './EraSelector';
 import Facet from './Facet';
 
 const SearchForm = ({
+  searchKeywords,
   setSearchKeywords,
   facets,
   activeFacets,
   onFacetChange,
   selectedEra,
-  onEraChange,
+  setSelectedEra,
   resetSearch,
   searchHasFilters,
   resultsRef
 }) => {
-  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm({
+    defaultValues: {
+      "keywords": searchKeywords,
+      "startYear": selectedEra.startYear,
+      "endYear": selectedEra.endYear
+    }
+  });
   const watchKeywords = watch("keywords", "");
 
   const onSubmit = data => {
-    const { keywords } = data;
+    const { keywords, startYear, endYear } = data;
+    
     setSearchKeywords(keywords);
+    setSelectedEra({startYear: startYear, endYear: endYear})
 
     scrollTo({
       ref: resultsRef,
@@ -67,8 +76,7 @@ const SearchForm = ({
 
             <div className="form-item">
               <EraSelector
-                selectedEra={selectedEra}
-                onEraChange={onEraChange}
+                register={register}
               />
             </div>
 

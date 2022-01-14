@@ -1,34 +1,57 @@
-.search__pager,
-.search-container .pager ul {
-  list-style: none;
-  margin: $spacing-quadruple 0 0;
-  padding: 0;
-}
+.search-results-container .pager {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
-.search__pager-button-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 1rem 0;
+    list-style: none;
+    text-align: center;
+    font-weight: bold;
 
-  .search__pager-button {
-    text-decoration: none;
-  }
+    li {
+      display: inline-block;
+      margin-right: 0.25rem;
+      margin-left: 0.25rem;
+      vertical-align: top;
 
-  .hds-button {
-    --background-color: transparent;
-    --background-color-hover: var(--color-black-10);
-    --background-color-focus: transparent;
-    --background-color-hover-focus: var(--color-black-10);
-    --background-color-disabled: transparent;
-    --border-color: var(--hdbt-color-black);
-    --border-color-hover: var(--hdbt-color-black);
-    --border-color-focus: var(--hdbt-color-black);
-    --border-color-hover-focus: var(--hdbt-color-black);
-    --border-color-disabled: var(--hdbt-color-black);
-    --color: var(--hdbt-color-black);
-    --color-hover: var(--hdbt-color-black);
-    --color-focus: var(--hdbt-color-black);
-    --color-hover-focus: var(--hdbt-color-black);
-    --focus-outline-color: var(--hdbt-color-black);
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        min-width: 2rem;
+        height: 2rem;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+        text-decoration: none;
+        color: #545560;
+        border-radius: 1rem; /* Pager size ÷ 2 */
+        background: var(--color-white); /* Make sure that the text is visible on dark background. */
+        line-height: 1;
+        color: var(--color--black-70);
+        background-color: transparent;
+        cursor: pointer;
+      }
+
+      a:hover,
+      a:focus {
+        color: var(--color-white);
+        background: var(--color-black-70);
+      }
+    }
+    
+    li.selected a {
+      background: $color-bg-yellow;
+
+      &:hover,
+      &:focus {
+        color: var(--color-white);
+        background: var(--color-black-70);
+      }
+    }
   }
 }

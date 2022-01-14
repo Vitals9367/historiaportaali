@@ -1,6 +1,7 @@
 const updateUrlParams = (
   searchKeywords,
   activeFacets,
+  selectedEra,
   currentPage,
   currentSort,
   sortOrderAscending
@@ -23,7 +24,24 @@ const updateUrlParams = (
     }
   }
 
-  url.searchParams.set("page", currentPage);
+  if (selectedEra.startYear) {
+    url.searchParams.set("start_year", selectedEra.startYear);
+  } else {
+    url.searchParams.delete("start_year");
+  }
+
+  if (selectedEra.endYear) {
+    url.searchParams.set("end_year", selectedEra.endYear);
+  } else {
+    url.searchParams.delete("end_year");
+  }
+
+  if (currentPage > 1) {
+    url.searchParams.set("page", currentPage);
+  } else {
+    url.searchParams.delete("page");
+  }
+  
   url.searchParams.set("sort", currentSort);
 
   if (sortOrderAscending) {
@@ -35,4 +53,26 @@ const updateUrlParams = (
   window.history.pushState({}, '', url);
 }
 
-export { updateUrlParams }
+const getInitialValueFromUrl = (key) => {
+  const url = new URL(window.location);
+
+  switch (key) {
+    case "s":
+      return url.searchParams.has("s") ? url.searchParams.get("s") : "";
+    case "era":
+      return {
+        startYear: url.searchParams.has("start_year") ? url.searchParams.get("start_year") : "",
+        endYear: url.searchParams.has("end_year") ? url.searchParams.get("end_year") : "",
+      }
+    case "sort":
+      return url.searchParams.has("sort") ? url.searchParams.get("sort") : "relevance";
+    case "sort_order":
+      return url.searchParams.has("sort_order") && url.searchParams.get("sort_order") === "ASC" ? true : false;
+    case "page":
+      return url.searchParams.has("page") ? url.searchParams.get("page") : 1;
+    default:
+      return false;
+  }
+}
+
+export { updateUrlParams, getInitialValueFromUrl }

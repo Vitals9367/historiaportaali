@@ -2,7 +2,7 @@ import React from 'react';
 import { Accordion } from 'hds-react/components/Accordion';
 import { TextInput } from 'hds-react/components/TextInput';
 
-const EraSelector = ({ selectedEra, onEraChange }) => {
+const EraSelector = ({  register }) => {
   return (
     <Accordion 
       card 
@@ -14,15 +14,13 @@ const EraSelector = ({ selectedEra, onEraChange }) => {
         id="startDate"
         label="Aloitusvuosi"
         placeholder="1820"
-        value={(selectedEra.startYear ? selectedEra.startYear : "")}
-        onChange={(el) => onEraChange("startYear", el.target.value)}
+        {...register("startYear")}
       />
       <TextInput
         id="endDate"
         label="Lopetusvuosi"
         placeholder="1900"
-        value={(selectedEra.endYear ? selectedEra.endYear : "")}
-        onChange={(el) => onEraChange("endYear", el.target.value)}
+        {...register("endYear")}
       />
     </Accordion>
   )

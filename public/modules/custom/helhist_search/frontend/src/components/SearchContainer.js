@@ -3,7 +3,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import { SEARCH_QUERY } from '../queries/queries.js';
 import { prepareFacetsForQuery, prepareEraForQuery } from '../helpers/conditions.js';
 import { prepareSortForQuery } from '../helpers/sort.js';
-import { updateUrlParams } from '../helpers/url.js';
+import { getInitialValueFromUrl, updateUrlParams } from '../helpers/url.js';
 import { hasActiveFacets } from '../helpers/misc.js';
 import SearchForm from './SearchForm.js';
 import SearchResults from './SearchResults';
@@ -11,12 +11,12 @@ import Pager from './Pager.js';
 
 const SearchContainer = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [searchKeywords, setSearchKeywords] = useState("");
-  const [facets, setFacets] = useState();
+  const [searchKeywords, setSearchKeywords] = useState(getInitialValueFromUrl("s"));
   const [activeFacets, setActiveFacets] = useState({});
-  const [selectedEra, setSelectedEra] = useState({startYear: false, endYear: false});
-  const [currentSort, setCurrentSort] = useState("relevance");
-  const [sortOrderAscending, setSortOrderAscending] = useState(false);
+  const [selectedEra, setSelectedEra] = useState(getInitialValueFromUrl("era"));
+  const [currentSort, setCurrentSort] = useState(getInitialValueFromUrl("sort"));
+  const [sortOrderAscending, setSortOrderAscending] = useState(getInitialValueFromUrl("sort_order"));
+  const [facets, setFacets] = useState();
   const [results, setResults] = useState();
   const [resultCount, setResultCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,10 +30,6 @@ const SearchContainer = () => {
   const onFacetChange = (name, values) => {
     setActiveFacets({...activeFacets, [name]: values});
     setCurrentPage(1);
-  }
-
-  const onEraChange = (key, value) => {
-    setSelectedEra({...selectedEra, [key]: value});
   }
 
   const onPageChange = (newPage) => {
@@ -52,6 +48,7 @@ const SearchContainer = () => {
   const resetSearch = () => {
     setSearchKeywords("");
     setActiveFacets({});
+    setSelectedEra({startYear: false, endYear: false});
     setCurrentPage(1);
     setCurrentSort("relevance");
     setSortOrderAscending(false);
@@ -60,9 +57,9 @@ const SearchContainer = () => {
   // Execute search when parameters change
   useEffect(() => {
     executeSearch();
-    updateUrlParams(searchKeywords, activeFacets, currentPage, currentSort, sortOrderAscending);
+    updateUrlParams(searchKeywords, activeFacets, selectedEra, currentPage, currentSort, sortOrderAscending);
     hasActiveFacets();
-  }, [searchKeywords, activeFacets, currentPage, currentSort, sortOrderAscending]);
+  }, [searchKeywords, activeFacets, selectedEra, currentPage, currentSort, sortOrderAscending]);
 
   useEffect(() => {
     if (data && !loading) {
@@ -76,6 +73,8 @@ const SearchContainer = () => {
       // Update result count
       if (data?.searchAPISearch?.result_count) {
         setResultCount(data.searchAPISearch.result_count);
+      } else {
+        setResultCount(0);
       }
 
       // Update facets state
@@ -128,7 +127,7 @@ const SearchContainer = () => {
         activeFacets={activeFacets}
         onFacetChange={onFacetChange}
         selectedEra={selectedEra}
-        onEraChange={onEraChange}
+        setSelectedEra={setSelectedEra}
         executeSearch={executeSearch}
         resetSearch={resetSearch}
         searchHasFilters={searchKeywords[0] || hasActiveFacets(activeFacets)}
