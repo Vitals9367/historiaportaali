@@ -9,7 +9,8 @@
     "require": {
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6.7",
-        "drupal/better_exposed_filters": "5.x-dev@dev",
+        "drupal/better_exposed_filters": "^5.0",
+        "drupal/blocache": "^1.1",
         "drupal/colorbox": "^1.7",
         "drupal/content_lock": "^2.2",
         "drupal/context": "^4.1",

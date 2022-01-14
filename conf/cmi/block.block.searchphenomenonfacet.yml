@@ -5,11 +5,20 @@ dependencies:
   config:
     - facets.facet.search_phenomenon_facet
   module:
+    - blocache
     - context
     - facets
     - system
   theme:
     - hdbt_subtheme
+third_party_settings:
+  blocache:
+    overridden: true
+    metadata:
+      max-age: -1
+      contexts:
+        - url
+      tags: {  }
 id: searchphenomenonfacet
 theme: hdbt_subtheme
 region: search_filters
