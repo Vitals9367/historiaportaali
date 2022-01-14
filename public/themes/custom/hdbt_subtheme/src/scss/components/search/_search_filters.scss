@@ -11,6 +11,34 @@
       max-width: 900px;
     }
   }
+
+  h4 {
+    margin: 0 0 10px;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .form-actions {
+    button {
+      --background-color: var(--color-metro-dark);
+      --background-color-hover: var(--color-metro-dark-hover);
+      --background-color-focus: var(--color-metro-dark-hover);
+      --background-color-hover-focus: var(--color-metro-dark-hover);
+      --background-color-disabled: var(--color-metro-medium-light);
+      --border-color: var(--color-metro-dark);
+      --border-color-hover: var(--color-metro-dark-hover);
+      --border-color-focus: var(--color-metro-dark-hover);
+      --border-color-hover-focus: var(--color-metro-dark-hover);
+      --border-color-disabled: var(--color-metro-medium-light);
+      --color: var(--color-white);
+      --color-hover: var(--color-white);
+      --color-focus: var(--color-white);
+      --color-hover-focus: var(--color-white);
+      --color-disabled: var(--color-white);
+      --focus-outline-color: var(--color-black);
+      --submit-input-focus-gutter-color: var(--color-white);
+    }
+  }
   
   .filters {
     padding: $spacing-double 0;
@@ -71,12 +99,6 @@
         margin-bottom: 8px;
       }
     }
-  }
-
-  .search-filters-title {
-    margin: 0 0 10px;
-    color: white;
-    font-size: 1rem;
   }
 
   .year-interval__toggle {
