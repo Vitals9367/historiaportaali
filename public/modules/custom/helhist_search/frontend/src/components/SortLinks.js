@@ -23,7 +23,7 @@ const SortLinks = ({ currentSort, onSortChange, sortOrderAscending }) => {
         />
 
         <SortLink
-          title={window.Drupal.t("Year", {}, {context: "Created"})}
+          title={window.Drupal.t("Created", {}, {context: "Search"})}
           active={currentSort === "created"}
           ascending={sortOrderAscending}
           ariaLabel={window.Drupal.t("Sort by creation date", {}, {context: "Search"})}

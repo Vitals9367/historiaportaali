@@ -25,7 +25,7 @@ const SearchResults = ({
         <div className="search-header__left">
           <h2>{window.Drupal.t("Search results", {}, {context: "Search"})}</h2>
           <h3>
-            {resultCount} tulosta haulle
+            {resultCount} {window.Drupal.t("results for search", {}, {context: "Search"})}
             {searchKeywords && (
               <span>: {searchKeywords}</span>
             )}
