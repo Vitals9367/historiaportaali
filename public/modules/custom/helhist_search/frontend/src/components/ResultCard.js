@@ -47,7 +47,7 @@ const ResultCard = ({
             <h3 className="content-card__title">{title}</h3>
             <span className="content-card__arrow">
               <svg aria-labelledby="arrow-right-2076944769" className="icon">
-                <title id="arrow-right-2076944769">Go to content</title>
+                <title id="arrow-right-2076944769">{window.Drupal.t("Go to content")}</title>
                 <use xlinkHref="/themes/contrib/hdbt/dist/icons/sprite.svg#arrow-right"></use>
               </svg>
             </span>

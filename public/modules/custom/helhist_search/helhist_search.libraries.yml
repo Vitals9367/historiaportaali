@@ -4,3 +4,4 @@ search-frontend-app:
     frontend/build/static/js/main.js: {}
   dependencies:
     - core/drupal
+    - locale/translations

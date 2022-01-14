@@ -7,18 +7,18 @@ const EraSelector = ({  register }) => {
     <Accordion 
       card 
       border
-      heading="Valitse ajanjakso"
+      heading={window.Drupal.t("Select era", {}, {context: "Search"})}
       style={{ maxWidth: '360px'}}
     >
       <TextInput
-        id="startDate"
-        label="Aloitusvuosi"
+        id="startYear"
+        label={window.Drupal.t("Start year", {}, {context: "Search"})}
         placeholder="1820"
         {...register("startYear")}
       />
       <TextInput
-        id="endDate"
-        label="Lopetusvuosi"
+        id="endYear"
+        label={window.Drupal.t("End year", {}, {context: "Search"})}
         placeholder="1900"
         {...register("endYear")}
       />

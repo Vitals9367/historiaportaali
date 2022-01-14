@@ -59,20 +59,20 @@ const SearchForm = ({
         <div className="filters">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-item hds-text-input">
-              <label htmlFor="keywords">Hae sisällöstä</label>
+              <label htmlFor="keywords">{window.Drupal.t("Search from content", {}, {context: "Search"})}</label>
               <div className="hds-text-input__input-wrapper">
-                <input placeholder="Paikka, henkilö, aihe, tapahtuma..." className="form-text hds-text-input__input ui-autocomplete-input" data-search-api-autocomplete-search="search" type="text" name="keywords" {...register("keywords")} />
+                <input placeholder={window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"})} className="form-text hds-text-input__input ui-autocomplete-input" data-search-api-autocomplete-search="search" type="text" name="keywords" {...register("keywords")} />
               </div>
             </div>
 
             <div className="form-actions">
-              <Button type="submit">Hae</Button>
+              <Button type="submit">{window.Drupal.t("Search", {}, {context: "Search"})}</Button>
               {searchHasFilters && (
-                <Button type="reset" onClick={() => handleReset()}>Tyhjennä</Button>
+                <Button type="reset" onClick={() => handleReset()}>{window.Drupal.t("Clear", {}, {context: "Search"})}</Button>
               )}
             </div>
 
-            <h4>Rajaa hakutuloksia</h4>
+            <h4>{window.Drupal.t("Filter results", {}, {context: "Search"})}</h4>
 
             <div className="form-item">
               <EraSelector
