@@ -26,7 +26,7 @@ const SearchForm = ({
 
     scrollTo({
       ref: resultsRef,
-      duration: 1000
+      duration: 800
     })
   }
 
@@ -65,24 +65,27 @@ const SearchForm = ({
 
             <h4>Rajaa hakutuloksia</h4>
 
-            <EraSelector
-              selectedEra={selectedEra}
-              onEraChange={onEraChange}
-            />
+            <div className="form-item">
+              <EraSelector
+                selectedEra={selectedEra}
+                onEraChange={onEraChange}
+              />
+            </div>
 
             {facets && facets.map(facet => (
-              <Facet
-                key={facet.name}
-                name={facet.name}
-                values={facet.values.map(value => {return {label: value.filter}})}
-                selectedValues={activeFacets[facet.name]}
-                onFacetChange={onFacetChange}
-              />
+              <div className="form-item" key={facet.name}>
+                <Facet
+                  name={facet.name}
+                  values={facet.values.map(value => {return {label: value.filter}})}
+                  selectedValues={activeFacets[facet.name]}
+                  onFacetChange={onFacetChange}
+                />
+              </div>
             ))}
           </form>
         </div>
       </div>
-      <div className="hds-koros  hds-koros--flip-horizontal" style={{color: "#333333"}}>
+      <div className="hds-koros hds-koros--flip-horizontal" style={{color: "#333333"}}>
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="100%" height="50" fill="currentColor">
           <defs>
             <pattern id="koros744682011" x="0" y="0" width="67" height="50" patternUnits="userSpaceOnUse">

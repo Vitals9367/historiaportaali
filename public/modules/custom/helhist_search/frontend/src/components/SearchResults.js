@@ -2,6 +2,7 @@ import React from 'react';
 import { AnimatePresence } from 'framer-motion';
 import SortLinks from './SortLinks.js';
 import ResultCard from './ResultCard.js';
+import { ReactComponent as LoadingSpinner } from '../assets/loading-spinner.svg';
 
 const SearchResults = ({
   innerRef,
@@ -10,9 +11,15 @@ const SearchResults = ({
   resultCount,
   currentSort,
   onSortChange,
-  sortOrderAscending
+  sortOrderAscending,
+  isLoading
 }) => (
   <div className="search-results" ref={innerRef}>
+    {isLoading && (
+      <div className="spinner-container">
+        <LoadingSpinner />
+      </div>
+    )}
     <div className="container view__container">
       <header>
         <div className="search-header__left">

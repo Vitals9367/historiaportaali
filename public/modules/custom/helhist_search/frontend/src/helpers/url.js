@@ -1,5 +1,17 @@
-const updateUrlParams = (activeFacets, currentPage, currentSort, sortOrderAscending) => {
+const updateUrlParams = (
+  searchKeywords,
+  activeFacets,
+  currentPage,
+  currentSort,
+  sortOrderAscending
+) => {
   const url = new URL(window.location);
+
+  if (searchKeywords) {
+    url.searchParams.set("s", searchKeywords);
+  } else {
+    url.searchParams.delete("s");
+  }
 
   for (const [name, values] of Object.entries(activeFacets)) {
     if (values.length > 0) {

@@ -10,6 +10,7 @@ import SearchResults from './SearchResults';
 import Pager from './Pager.js';
 
 const SearchContainer = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [searchKeywords, setSearchKeywords] = useState("");
   const [facets, setFacets] = useState();
   const [activeFacets, setActiveFacets] = useState({});
@@ -59,13 +60,14 @@ const SearchContainer = () => {
   // Execute search when parameters change
   useEffect(() => {
     executeSearch();
-    updateUrlParams(activeFacets, currentPage, currentSort, sortOrderAscending);
+    updateUrlParams(searchKeywords, activeFacets, currentPage, currentSort, sortOrderAscending);
     hasActiveFacets();
   }, [searchKeywords, activeFacets, currentPage, currentSort, sortOrderAscending]);
 
   useEffect(() => {
     if (data && !loading) {
-      console.log(data);
+      setIsLoading(false);
+
       // Update results when query completes
       if (data?.searchAPISearch?.documents) {
         setResults(data.searchAPISearch.documents);
@@ -89,10 +91,11 @@ const SearchContainer = () => {
   }, [data, loading]);
 
   const executeSearch = () => {
+    setIsLoading(true);
+
     const facetConditions = prepareFacetsForQuery(activeFacets);
     const eraConditions = prepareEraForQuery(selectedEra);
     const sort = prepareSortForQuery(currentSort, sortOrderAscending);
-    console.log('execute');
 
     executeQuery({
       variables: {
@@ -114,8 +117,10 @@ const SearchContainer = () => {
     )
   }
 
+  const containerClasses = `search-wrapper ${isLoading ? 'is-loading' : ''}`;
+
   return (
-    <div className="search-container">
+    <div className={containerClasses}>
       <SearchForm 
         setSearchKeywords={setSearchKeywords}
         searchKeywords={searchKeywords}
@@ -130,23 +135,26 @@ const SearchContainer = () => {
         resultsRef={resultsRef}
       />
 
-      <SearchResults
-        searchKeywords={searchKeywords}
-        results={results}
-        resultCount={resultCount}
-        currentSort={currentSort}
-        onSortChange={onSortChange}
-        sortOrderAscending={sortOrderAscending}
-        innerRef={resultsRef}
-      />
-
-      {totalPages > 1 && (
-        <Pager
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={onPageChange}
+      <div className="search-results-container">
+        <SearchResults
+          searchKeywords={searchKeywords}
+          results={results}
+          resultCount={resultCount}
+          currentSort={currentSort}
+          onSortChange={onSortChange}
+          sortOrderAscending={sortOrderAscending}
+          innerRef={resultsRef}
+          isLoading={isLoading}
         />
-      )}
+
+        {totalPages > 1 && (
+          <Pager
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={onPageChange}
+          />
+        )}
+      </div>
     </div>
   )
   
