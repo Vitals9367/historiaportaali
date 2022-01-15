@@ -1,9 +1,11 @@
+import { API_URL } from '../constants/constants.js';
+
 const fetchAutocompleteSuggestions = async (searchQuery) => {
   try {
     const formData = new FormData();
     formData.append("s", searchQuery);
 
-    const res = await fetch(`${process.env.REACT_APP_DRUPAL_URL}/search_api_autocomplete/search?display=page&filter=s&q=${searchQuery}`, {
+    const res = await fetch(`${API_URL}/search_api_autocomplete/search?display=page&filter=s&q=${searchQuery}`, {
       method: "POST",
       body: formData
     });

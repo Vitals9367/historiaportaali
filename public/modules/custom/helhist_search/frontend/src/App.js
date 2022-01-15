@@ -4,13 +4,11 @@ import {
   InMemoryCache,
   ApolloProvider
 } from '@apollo/client';
+import { API_URL } from './constants/constants.js';
 import SearchContainer from './components/SearchContainer';
 
-const currentUrl = window.location.protocol + '//' + window.location.host;
-const apiUrl = (process.env.REACT_APP_STAGE === 'production') ? currentUrl : process.env.REACT_APP_DRUPAL_URL;
-
 const apolloClient = new ApolloClient({
-  uri: apiUrl + '/graphql',
+  uri: API_URL + '/graphql',
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
