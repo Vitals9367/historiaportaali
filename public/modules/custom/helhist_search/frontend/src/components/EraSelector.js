@@ -8,7 +8,21 @@ const EraSelector = ({  register }) => {
       card 
       border
       heading={window.Drupal ? window.Drupal.t("Select era", {}, {context: "Search"}) : "Select era"}
-      style={{ maxWidth: '360px'}}
+      className="search-filters__era-selector"
+      theme={{
+        '--border-color': 'transparent',
+        '--background-color': 'var(--color-white)',
+        '--padding-horizontal': 'var(--spacing-m)',
+        '--padding-vertical': 'var(--spacing-s)',
+        '--header-font-color': 'var(--color-black-90)',
+        '--header-font-size': 'var(--fontsize-body-m)',
+        '--header-line-height': 'var(--lineheight-s)',
+        '--button-size': '28px',
+        '--button-border-color-hover': 'var(--color-coat-of-arms)',
+        '--content-font-color': 'var(--color-black-90)',
+        '--content-font-size': 'var(--fontsize-body-m)',
+        '--content-line-height': 'var(--lineheight-l)',
+      }}
     >
       <TextInput
         id="startYear"

@@ -66,9 +66,9 @@ const SearchForm = ({
             </div>
 
             <div className="form-actions">
-              <Button type="submit">{window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}</Button>
+              <Button type="submit" className="form-submit">{window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}</Button>
               {searchHasFilters && (
-                <Button type="reset" onClick={() => handleReset()}>{window.Drupal ? window.Drupal.t("Clear", {}, {context: "Search"}) : "Clear"}</Button>
+                <Button type="reset" className="form-reset" onClick={() => handleReset()}>{window.Drupal ? window.Drupal.t("Clear", {}, {context: "Search"}) : "Clear"}</Button>
               )}
             </div>
 

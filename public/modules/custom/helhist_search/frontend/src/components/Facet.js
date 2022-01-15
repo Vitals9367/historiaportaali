@@ -10,7 +10,7 @@ const Facet = ({ name, values, selectedValues, onFacetChange }) => {
 
   // Prepend Format-selection with Article-option, but only if other formats isn't selected
   if (name === "aggregated_formats_title") {
-    if (selectedValues.length === 0 || selectedValues.filter(val => val?.key === "article").length > 0) {
+    if (!selectedValues || selectedValues.length === 0 || selectedValues.filter(val => val?.key === "article").length > 0) {
       values = [{key: "article", label: window.Drupal ? window.Drupal.t("Article", {}, {context: "Search"}) : "Article"}, ...values];
     }
   }
@@ -26,6 +26,10 @@ const Facet = ({ name, values, selectedValues, onFacetChange }) => {
       clearButtonAriaLabel={window.Drupal ? window.Drupal.t("Clear all selections", {}, {context: "Search"}) : "Clear all selections"}
       selectedItemRemoveButtonAriaLabel="Remove ${value}"
       onChange={(values) => onFacetChange(name, values)}
+      theme={{
+        "--dropdown-border-color-default": "transparent",
+        "--dropdown-border-color-hover": "transparent"
+      }}
     />
   )
 }

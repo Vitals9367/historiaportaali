@@ -79,7 +79,6 @@
   form {
     label {
       color: $color-white;
-      margin-bottom: 10px;
     }
 
     .form-actions {
@@ -88,7 +87,7 @@
   }
 
   .form-item {
-    margin-bottom: 24px;
+    margin-bottom: $spacing;
 
     &.form-item-s {
       margin-bottom: $spacing;
