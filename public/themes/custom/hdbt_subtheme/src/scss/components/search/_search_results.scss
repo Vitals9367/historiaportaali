@@ -67,6 +67,7 @@
         background: transparent;
         border: 0;
         cursor: pointer;
+        color: $color-black;
         
         &:hover {
           text-decoration: none;
@@ -119,5 +120,9 @@
   article.content-card {
     padding-left: 0;
     width: 100%;
+
+    .content-card__link {
+      width: auto;
+    }
   }
 }
