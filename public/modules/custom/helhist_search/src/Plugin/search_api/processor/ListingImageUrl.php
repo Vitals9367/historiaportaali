@@ -71,7 +71,7 @@ class ListingImageUrl extends ProcessorPluginBase {
     }
   
     if ($file) {
-      $image_style = ImageStyle::load('3_2_xxs');
+      $image_style = ImageStyle::load('3_2_xxs_2x');
       $image_uri = $file->getFileUri();
   
       if ($image_uri) {

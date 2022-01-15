@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from 'hds-react/components/Button';
-import { getAutocompleteResults } from '../helpers/autocomplete';
+import { SearchInput } from 'hds-react/components/SearchInput';
+import { fetchAutocompleteSuggestions } from '../helpers/autocomplete';
 import { scrollTo } from '../helpers/scrollTo';
 import EraSelector from './EraSelector';
 import Facet from './Facet';
@@ -18,20 +19,24 @@ const SearchForm = ({
   searchHasFilters,
   resultsRef
 }) => {
-  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: {
       "keywords": searchKeywords,
       "startYear": selectedEra.startYear,
       "endYear": selectedEra.endYear
     }
   });
-  const watchKeywords = watch("keywords", "");
+  const [tmpKeywords, setTmpKeywords] = useState("");
 
-  const onSubmit = data => {
-    const { keywords, startYear, endYear } = data;
-    
-    setSearchKeywords(keywords);
+  const onSubmit = (data, value) => {
+    const { startYear, endYear } = data;
     setSelectedEra({startYear: startYear, endYear: endYear})
+
+    if (value) {
+      setSearchKeywords(value);  
+    } else {
+      setSearchKeywords(tmpKeywords);
+    }
 
     scrollTo({
       ref: resultsRef,
@@ -44,14 +49,10 @@ const SearchForm = ({
     resetSearch();
   }
 
-  useEffect(() => {
-
-    if (watchKeywords && watchKeywords.length < 3) {
-      return;
-    } 
-
-    //getAutocompleteResults(watchKeywords);
-  }, [watchKeywords]);
+  const getSuggestions = (inputValue) => new Promise((resolve, reject) => {
+    const suggestions = fetchAutocompleteSuggestions(inputValue);
+    resolve(suggestions);
+  });
 
   return (
     <div className="search-filters">
@@ -60,9 +61,16 @@ const SearchForm = ({
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-item hds-text-input">
               <label htmlFor="keywords">{window.Drupal ? window.Drupal.t("Search from content", {}, {context: "Search"}) : "Search from content"}</label>
-              <div className="hds-text-input__input-wrapper">
-                <input placeholder={window.Drupal ? window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"}) : "Location, person, topic, event..."} className="form-text hds-text-input__input ui-autocomplete-input" data-search-api-autocomplete-search="search" type="text" name="keywords" {...register("keywords")} />
-              </div>
+              <SearchInput 
+                label={window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}
+                placeholder={window.Drupal ? window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"}) : "Location, person, topic, event..."}
+                searchButtonAriaLabel={window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}
+                clearButtonAriaLabel="Clear search field"
+                suggestionLabelField="value"
+                getSuggestions={getSuggestions}
+                onChange={(value) => setTmpKeywords(value)}
+                onSubmit={handleSubmit(onSubmit)}
+              />
             </div>
 
             <div className="form-actions">

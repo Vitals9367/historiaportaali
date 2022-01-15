@@ -1,4 +1,4 @@
-const getAutocompleteResults = async (searchQuery) => {
+const fetchAutocompleteSuggestions = async (searchQuery) => {
   try {
     const formData = new FormData();
     formData.append("s", searchQuery);
@@ -14,7 +14,6 @@ const getAutocompleteResults = async (searchQuery) => {
     }
 
     const data = await res.json();
-    console.log(data);
 
     return data;
   } catch (err) {
@@ -22,4 +21,4 @@ const getAutocompleteResults = async (searchQuery) => {
   }
 }
 
-export { getAutocompleteResults }
+export { fetchAutocompleteSuggestions }
