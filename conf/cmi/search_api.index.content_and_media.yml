@@ -186,6 +186,10 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_start_year
+  content_type:
+    label: 'Content Type'
+    property_path: content_type
+    type: string
   listing_image_url:
     label: 'Listing Image URL'
     property_path: listing_image_url
@@ -263,6 +267,7 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
+  content_type: {  }
   entity_status: {  }
   ignorecase:
     weights:

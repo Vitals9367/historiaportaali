@@ -42,4 +42,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /hakusivu
+    pages: "/hakusivu\r\n/search-page\r\n/sok"
