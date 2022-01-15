@@ -1,13 +1,30 @@
 const prepareFacetsForQuery = facets => {
-  const facetConditions = Object.keys(facets).map(name => {
-    return facets[name].map(value => (
-      {
+  let facetConditions = Object.keys(facets).map(name => {
+    return facets[name].flatMap(value => {
+      // Since "Article"-format selection is inside of Formats-facet but is not really
+      // a Format -taxonomy term, we need to catch it here and ignore it
+      if (name === "aggregated_formats_title" && value?.key && value.key === "article") {
+        return [];
+      }
+
+      return {
         "name": name,
         "value": value.label,
         "operator": "="
       }
-    ));
+    });
   });
+
+  // Add content type condition to the query if "Article"-format is selected
+  if ("aggregated_formats_title" in facets) {
+    if (facets["aggregated_formats_title"].filter(val => val.key === "article").length > 0) {
+      facetConditions[0].push({
+        "name": "content_type",
+        "value": "article",
+        "operator": "="
+      });
+    }
+  }
 
   return [].concat.apply([], facetConditions);
 }

@@ -8,6 +8,13 @@ const Facet = ({ name, values, selectedValues, onFacetChange }) => {
     "aggregated_neighbourhoods_title": window.Drupal ? window.Drupal.t("Select region", {}, {context: "Search"}) : "Select region"
   };
 
+  // Prepend Format-selection with Article-option, but only if other formats isn't selected
+  if (name === "aggregated_formats_title") {
+    if (selectedValues.length === 0 || selectedValues.filter(val => val?.key === "article").length > 0) {
+      values = [{key: "article", label: window.Drupal ? window.Drupal.t("Article", {}, {context: "Search"}) : "Article"}, ...values];
+    }
+  }
+
   return (
     <Select
       multiselect

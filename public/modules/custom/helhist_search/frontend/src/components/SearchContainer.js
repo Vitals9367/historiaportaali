@@ -5,6 +5,7 @@ import { prepareFacetsForQuery, prepareEraForQuery } from '../helpers/conditions
 import { prepareSortForQuery } from '../helpers/sort.js';
 import { getInitialValueFromUrl, updateUrlParams } from '../helpers/url.js';
 import { hasActiveFacets } from '../helpers/misc.js';
+import { RESULTS_PER_PAGE } from '../constants/constants.js';
 import SearchForm from './SearchForm.js';
 import SearchResults from './SearchResults';
 import Pager from './Pager.js';
@@ -22,8 +23,6 @@ const SearchContainer = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [executeQuery, { loading, error, data }] = useLazyQuery(SEARCH_QUERY);
-
-  const resultsPerPage = 15;
 
   const resultsRef = useRef(null);
 
@@ -84,7 +83,7 @@ const SearchContainer = () => {
 
       // Update total page count
       if (data?.searchAPISearch?.result_count) {
-        setTotalPages(Math.ceil(data.searchAPISearch.result_count / resultsPerPage));
+        setTotalPages(Math.ceil(data.searchAPISearch.result_count / RESULTS_PER_PAGE));
       }
     }
   }, [data, loading]);
@@ -101,8 +100,8 @@ const SearchContainer = () => {
     executeQuery({
       variables: {
         keywords: searchKeywords,
-        limit: resultsPerPage,
-        offset: (currentPage * resultsPerPage) - resultsPerPage,
+        limit: RESULTS_PER_PAGE,
+        offset: (currentPage * RESULTS_PER_PAGE) - RESULTS_PER_PAGE,
         langcodes: [langcode],
         facetConditions: facetConditions,
         eraConditions: eraConditions,
@@ -146,8 +145,10 @@ const SearchContainer = () => {
           sortOrderAscending={sortOrderAscending}
           innerRef={resultsRef}
           isLoading={isLoading}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
         />
-
         {totalPages > 1 && (
           <Pager
             currentPage={currentPage}

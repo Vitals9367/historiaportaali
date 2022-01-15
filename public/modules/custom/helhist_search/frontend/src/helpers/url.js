@@ -15,6 +15,7 @@ const updateUrlParams = (
   }
 
   for (const [name, values] of Object.entries(activeFacets)) {
+    // TODO: Extract Article-format to it's own parameter
     if (values.length > 0) {
       const sanitizedValues = values.map(value => value.label);
       const parameterValue = sanitizedValues.join(',');
@@ -89,6 +90,8 @@ const getInitialValueFromUrl = (key) => {
         if (url.searchParams.has(key)) {
           const values = url.searchParams.get(key).split(",").map(value => ({label: value}));
           activeFacets[key] = values;
+        } else {
+          activeFacets[key] = [];
         }
       });
 
