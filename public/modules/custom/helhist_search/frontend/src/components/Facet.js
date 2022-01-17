@@ -25,6 +25,7 @@ const Facet = ({ name, values, selectedValues, onFacetChange }) => {
       defaultValue={selectedValues}
       clearButtonAriaLabel={window.Drupal ? window.Drupal.t("Clear all selections", {}, {context: "Search"}) : "Clear all selections"}
       selectedItemRemoveButtonAriaLabel="Remove ${value}"
+      value={selectedValues ? selectedValues : []}
       onChange={(values) => onFacetChange(name, values)}
       theme={{
         "--dropdown-border-color-default": "transparent",
