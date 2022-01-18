@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from 'hds-react/components/Button';
+import { Koros } from 'hds-react/components/Koros';
 import { SearchInput } from 'hds-react/components/SearchInput';
 import { fetchAutocompleteSuggestions } from '../helpers/autocomplete';
 import { scrollTo } from '../helpers/scrollTo';
@@ -60,7 +61,7 @@ const SearchForm = ({
         <div className="filters">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-item hds-text-input">
-              <SearchInput 
+              <SearchInput
                 label={window.Drupal ? window.Drupal.t("Search from content", {}, {context: "Search"}) : "Search from content"}
                 placeholder={window.Drupal ? window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"}) : "Location, person, topic, event..."}
                 searchButtonAriaLabel={window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}
@@ -100,16 +101,7 @@ const SearchForm = ({
           </form>
         </div>
       </div>
-      <div className="hds-koros hds-koros--flip-horizontal" style={{color: "#333333"}}>
-        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="100%" height="50" fill="currentColor">
-          <defs>
-            <pattern id="koros744682011" x="0" y="0" width="67" height="50" patternUnits="userSpaceOnUse">
-              <polygon points="67 50 67 42.36 33.5 8.5 0 42.36 0 42.36 0 50 67 50"></polygon>
-            </pattern>
-          </defs>
-          <rect fill="url(#koros744682011)" width="100%" height="50"></rect>
-        </svg>
-      </div>
+      <Koros className="search-filters__koro" type="wave" flipHorizontal={true} style={{fill: "#333333", position: "absolute", bottom: "-70px"}} />
     </div>
   )
 }

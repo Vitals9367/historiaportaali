@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { IconDocument, IconCamera, IconArrowRight } from 'hds-react/icons';
 
 const ResultCard = ({
   type,
@@ -34,10 +35,7 @@ const ResultCard = ({
                 {type === 'article' && (
                   <>
                     <span className="content-card__metadata-item__icon bundle-article">
-                      <svg aria-labelledby="document-237563862" className="icon">
-                        <title id="document-237563862">{window.Drupal ? window.Drupal.t("Article") : "Article"}</title>
-                        <use xlinkHref="/themes/contrib/hdbt/dist/icons/sprite.svg#document"></use>
-                      </svg>
+                      <IconDocument className="icon" aria-hidden="true" />
                     </span>
                     <span className="content-card__metadata-item__text">{window.Drupal ? window.Drupal.t("Article") : "Article"}</span>
                   </>
@@ -45,10 +43,7 @@ const ResultCard = ({
                 {type === 'media' && (
                   <>
                     <span className="content-card__metadata-item__icon bundle-image">
-                      <svg aria-labelledby="camera-27315797" className="icon">
-                        <title id="camera-27315797">{formats}</title>
-                        <use xlinkHref="/themes/contrib/hdbt/dist/icons/sprite.svg#camera"></use>
-                      </svg>
+                      <IconCamera className="icon" aria-hidden="true" />
                     </span>
                     {formats && (
                       <span className="content-card__metadata-item__text">
@@ -73,10 +68,7 @@ const ResultCard = ({
             </div>
             <h3 className="content-card__title">{title}</h3>
             <span className="content-card__arrow">
-              <svg aria-labelledby="arrow-right-2076944769" className="icon">
-                <title id="arrow-right-2076944769">{window.Drupal ? window.Drupal.t("Go to content") : "Go to content"}</title>
-                <use xlinkHref="/themes/contrib/hdbt/dist/icons/sprite.svg#arrow-right"></use>
-              </svg>
+              <IconArrowRight className="icon" aria-hidden="true" />
             </span>
           </div>
         </a>
