@@ -13,7 +13,8 @@ label: Search
 index_id: content_and_media
 suggester_settings:
   server:
-    fields: {  }
+    fields:
+      - aggregated_autocomplete
 suggester_weights:
   server: 0
 suggester_limits: {  }
