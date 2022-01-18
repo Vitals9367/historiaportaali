@@ -405,7 +405,7 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      path: search
+      path: search-view
     cache_metadata:
       max-age: -1
       contexts:

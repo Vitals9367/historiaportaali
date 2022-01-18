@@ -1,6 +1,6 @@
 uuid: 894740ca-9c82-41e9-be54-a99818e7aa0d
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - views.view.search

@@ -12,21 +12,10 @@ id: search
 label: Search
 index_id: content_and_media
 suggester_settings:
-  live_results:
+  server:
     fields: {  }
-    highlight:
-      enabled: false
-      field: ''
-    view_modes:
-      'entity:media':
-        file: ''
-        image: ''
-        remote_video: ''
-        soundcloud: ''
-      'entity:node':
-        article: ''
 suggester_weights:
-  live_results: 0
+  server: 0
 suggester_limits: {  }
 search_settings:
   'views:search':

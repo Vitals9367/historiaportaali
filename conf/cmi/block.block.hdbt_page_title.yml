@@ -5,6 +5,7 @@ dependencies:
   module:
     - context
     - node
+    - system
   theme:
     - hdbt_subtheme
 _core:
@@ -47,3 +48,7 @@ visibility:
       own_page_true: '0'
       field_value: '0'
     user_fields: uid
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/search\r\n/haku\r\n/sok"

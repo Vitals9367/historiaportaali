@@ -1,6 +1,6 @@
 uuid: 7f3cb62f-c8a1-4347-a812-ec671d5562d6
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - facets.facet.search_neighbourhoods_facet

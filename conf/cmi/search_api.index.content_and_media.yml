@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_end_year
-    - field.storage.media.field_start_year
     - field.storage.node.field_end_year
     - field.storage.node.field_start_year
+    - field.storage.media.field_end_year
+    - field.storage.media.field_start_year
     - search_api.server.elasticsearch
   module:
     - search_api_location
@@ -37,15 +37,6 @@ field_settings:
       fields:
         - 'entity:media/field_end_year'
         - 'entity:node/field_end_year'
-  aggregated_field:
-    label: 'Aggregated field'
-    property_path: aggregated_field
-    type: string
-    configuration:
-      type: union
-      fields:
-        - 'entity:media/created'
-        - 'entity:node/created'
   aggregated_formats:
     label: 'Aggregated formats'
     property_path: aggregated_field
@@ -271,8 +262,8 @@ processor_settings:
   entity_status: {  }
   ignorecase:
     weights:
-      preprocess_index: -20
-      preprocess_query: -20
+      preprocess_index: -50
+      preprocess_query: -47
     all_fields: false
     fields:
       - aggregated_formats
@@ -282,14 +273,41 @@ processor_settings:
   language_with_fallback: {  }
   listing_image_url: {  }
   rendered_item: {  }
+  tokenizer:
+    weights:
+      preprocess_index: -48
+      preprocess_query: -45
+    all_fields: false
+    fields:
+      - aggregated_keywords
+      - aggregated_title
+    spaces: ''
+    ignored: ._-
+    overlap_cjk: 1
+    minimum_word_size: '3'
+  transliteration:
+    weights:
+      preprocess_index: -49
+      preprocess_query: -46
+    all_fields: false
+    fields:
+      - aggregated_keywords
+      - aggregated_title
   type_boost:
     weights:
-      preprocess_index: 0
+      preprocess_index: -42
     boosts:
       'entity:media':
-        datasource_boost: !!float 1
+        datasource_boost: !!float 0
+        bundle_boosts:
+          file: !!float 0
+          image: !!float 0
+          remote_video: !!float 0
+          soundcloud: !!float 0
       'entity:node':
-        datasource_boost: !!float 3
+        datasource_boost: !!float 0
+        bundle_boosts:
+          article: !!float 0
 tracker_settings:
   default:
     indexing_order: fifo
