@@ -20,6 +20,7 @@
 
   .form-actions {
     button {
+      margin-right: $spacing-half;
       --background-color: var(--color-metro-dark);
       --background-color-hover: var(--color-metro-dark-hover);
       --background-color-focus: var(--color-metro-dark-hover);
