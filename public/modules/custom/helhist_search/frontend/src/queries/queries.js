@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 const SEARCH_QUERY = gql`
-  query SEARCH_QUERY($keywords: [String]!, $limit: Int!, $offset: Int!, $langcodes: [String]!, $facetConditions: [ConditionInput], $eraConditions: [ConditionInput], $sort: [SortInput]) {
+  query SEARCH_QUERY($keywords: [String]!, $limit: Int!, $offset: Int!, $langcodes: [String]!, $conditions: [ConditionInput], $sort: [SortInput]) {
     searchAPISearch(
       index_id: "content_and_media", 
       fulltext: {keys: $keywords},
@@ -10,6 +10,7 @@ const SEARCH_QUERY = gql`
       sort: $sort,
       facets: [
         {field: "aggregated_phenomena_title", limit: 0, operator: "=", min_count: 0, missing: false},
+        {field: "aggregated_phenomenon", limit: 0, operator: "=", min_count: 0, missing: false},
         {field: "aggregated_formats_title", limit: 0, operator: "=", min_count: 0, missing: false}
         {field: "aggregated_neighbourhoods_title", limit: 0, operator: "=", min_count: 0, missing: false}
       ],
@@ -18,11 +19,7 @@ const SEARCH_QUERY = gql`
         groups: [
           {
             conjunction: AND,
-            conditions: $facetConditions
-          },
-          {
-            conjunction: AND,
-            conditions: $eraConditions
+            conditions: $conditions
           }
         ]
       }
@@ -36,6 +33,7 @@ const SEARCH_QUERY = gql`
           image_url: listing_image_url,
           formats: aggregated_formats_title,
           phenomena: aggregated_phenomena_title,
+          phenomenon: aggregated_phenomenon,
           neighbourhoods: aggregated_neighbourhoods_title,
           start_year: aggregated_start_year,
           end_year: aggregated_end_year,

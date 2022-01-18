@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { NetworkStatus } from '@apollo/client';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { SEARCH_QUERY } from '../queries/queries.js';
 import { prepareFacetsForQuery, prepareEraForQuery } from '../helpers/conditions.js';
@@ -22,7 +23,9 @@ const SearchContainer = () => {
   const [resultCount, setResultCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [executeQuery, { loading, error, data }] = useLazyQuery(SEARCH_QUERY);
+  const [executeQuery, { loading, error, data, networkStatus }] = useLazyQuery(SEARCH_QUERY, {
+    notifyOnNetworkStatusChange: true
+  });
 
   const resultsRef = useRef(null);
 
@@ -62,8 +65,6 @@ const SearchContainer = () => {
 
   useEffect(() => {
     if (data && !loading) {
-      setIsLoading(false);
-
       // Update results when query completes
       if (data?.searchAPISearch?.documents) {
         setResults(data.searchAPISearch.documents);
@@ -87,14 +88,21 @@ const SearchContainer = () => {
       }
     }
   }, [data, loading]);
+  
+  useEffect(() => {
+    const loadingStatuses = [NetworkStatus.loading, NetworkStatus.refetch, NetworkStatus.fetchMore];
+    if (loadingStatuses.includes(networkStatus)) {
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+    }
+  }, [networkStatus]);
 
   const executeSearch = () => {
-    setIsLoading(true);
-
     const facetConditions = prepareFacetsForQuery(activeFacets);
     const eraConditions = prepareEraForQuery(selectedEra);
+    const conditions = facetConditions.concat(eraConditions);
     const sort = prepareSortForQuery(currentSort, sortOrderAscending);
-
     const langcode = (typeof window.drupalSettings !== 'undefined') ? window.drupalSettings.path.currentLanguage : 'fi';
 
     executeQuery({
@@ -103,15 +111,14 @@ const SearchContainer = () => {
         limit: RESULTS_PER_PAGE,
         offset: (currentPage * RESULTS_PER_PAGE) - RESULTS_PER_PAGE,
         langcodes: [langcode],
-        facetConditions: facetConditions,
-        eraConditions: eraConditions,
+        conditions: conditions,
         sort: sort
       }
     });
   }
 
   if (error) {
-    console.log(error);
+    console.log("Error", error);
     return (
       <div>Error :(</div>
     )

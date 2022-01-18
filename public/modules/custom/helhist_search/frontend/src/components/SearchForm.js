@@ -60,9 +60,8 @@ const SearchForm = ({
         <div className="filters">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-item hds-text-input">
-              <label htmlFor="keywords">{window.Drupal ? window.Drupal.t("Search from content", {}, {context: "Search"}) : "Search from content"}</label>
               <SearchInput 
-                label={window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}
+                label={window.Drupal ? window.Drupal.t("Search from content", {}, {context: "Search"}) : "Search from content"}
                 placeholder={window.Drupal ? window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"}) : "Location, person, topic, event..."}
                 searchButtonAriaLabel={window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}
                 clearButtonAriaLabel="Clear search field"
