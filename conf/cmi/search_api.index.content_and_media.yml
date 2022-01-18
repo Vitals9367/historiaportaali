@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_end_year
-    - field.storage.media.field_start_year
     - field.storage.node.field_end_year
     - field.storage.node.field_start_year
+    - field.storage.media.field_end_year
+    - field.storage.media.field_start_year
     - search_api.server.elasticsearch
   module:
     - search_api_location
@@ -297,6 +297,7 @@ processor_settings:
       preprocess_query: -47
     all_fields: false
     fields:
+      - aggregated_autocomplete
       - aggregated_formats
       - aggregated_keywords
       - aggregated_neighbourhoods
@@ -310,20 +311,11 @@ processor_settings:
       preprocess_query: -45
     all_fields: false
     fields:
-      - aggregated_keywords
-      - aggregated_title
+      - aggregated_autocomplete
     spaces: ''
     ignored: ._-
     overlap_cjk: 1
     minimum_word_size: '3'
-  transliteration:
-    weights:
-      preprocess_index: -49
-      preprocess_query: -46
-    all_fields: false
-    fields:
-      - aggregated_keywords
-      - aggregated_title
   type_boost:
     weights:
       preprocess_index: -42
