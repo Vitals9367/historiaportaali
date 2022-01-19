@@ -44,6 +44,15 @@ function hdbt_subtheme_theme_suggestions_block_alter(&$suggestions) {
 }
 
 /**
+ * Implements hook_preprocess_menu().
+ * @param $variables
+ */
+function hdbt_subtheme_preprocess_menu(&$variables) {
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['language'] = $langcode;
+}
+
+/**
  * Implements template_preprocess_html().
  */
 function hdbt_subtheme_preprocess_html(&$variables) {
