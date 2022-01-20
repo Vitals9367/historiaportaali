@@ -105,6 +105,9 @@
             },
             "drupal/search_api": {
                 "Properties via entity reference fields are not translated (https://www.drupal.org/project/search_api/issues/3039139#comment-13016070)": "https://www.drupal.org/files/issues/2019-03-11/3039139-3.patch"
+            },
+            "drupal/graphql": {
+                "3.x phpunit tests are broken on PHP 7.4 (https://github.com/drupal-graphql/graphql/issues/982)": "custom-patches/graphql_fix_php_7_notice.patch"
             }
         },
         "installer-types": ["bower-asset", "npm-asset"],
