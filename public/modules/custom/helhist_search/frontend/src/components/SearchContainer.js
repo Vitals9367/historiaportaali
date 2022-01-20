@@ -50,7 +50,7 @@ const SearchContainer = () => {
   const resetSearch = () => {
     setSearchKeywords("");
     setActiveFacets({});
-    setSelectedEra({startYear: false, endYear: false});
+    setSelectedEra({startYear: '', endYear: ''});
     setCurrentPage(1);
     setCurrentSort("relevance");
     setSortOrderAscending(false);
@@ -124,6 +124,8 @@ const SearchContainer = () => {
     )
   }
 
+  const hasActiveEraSelection = (selectedEra.startYear || selectedEra.endYear) ? true : false;
+
   const containerClasses = `search-wrapper ${isLoading ? 'is-loading' : ''}`;
 
   return (
@@ -138,7 +140,7 @@ const SearchContainer = () => {
         setSelectedEra={setSelectedEra}
         executeSearch={executeSearch}
         resetSearch={resetSearch}
-        searchHasFilters={searchKeywords[0] || hasActiveFacets(activeFacets)}
+        searchHasFilters={searchKeywords[0] || hasActiveFacets(activeFacets) || hasActiveEraSelection}
         resultsRef={resultsRef}
       />
 

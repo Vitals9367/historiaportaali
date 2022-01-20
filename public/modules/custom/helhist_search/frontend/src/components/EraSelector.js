@@ -3,7 +3,7 @@ import { Accordion } from 'hds-react/components/Accordion';
 import { TextInput } from 'hds-react/components/TextInput';
 import { IconMinus } from 'hds-react/icons';
 
-const EraSelector = ({  register }) => {
+const EraSelector = ({ register }) => {
   return (
     <Accordion 
       card 

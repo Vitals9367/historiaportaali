@@ -20,7 +20,7 @@ const SearchForm = ({
   searchHasFilters,
   resultsRef
 }) => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       "keywords": searchKeywords,
       "startYear": selectedEra.startYear,
@@ -29,15 +29,10 @@ const SearchForm = ({
   });
   const [tmpKeywords, setTmpKeywords] = useState("");
 
-  const onSubmit = (data, value) => {
+  const onSubmit = (data) => {
     const { startYear, endYear } = data;
     setSelectedEra({startYear: startYear, endYear: endYear})
-
-    if (value) {
-      setSearchKeywords(value);  
-    } else {
-      setSearchKeywords(tmpKeywords);
-    }
+    setSearchKeywords(tmpKeywords);
 
     scrollTo({
       ref: resultsRef,

@@ -46,7 +46,7 @@ const SearchResults = ({
             const type = (result.nid ? 'article' : 'media');
             return (
               <ResultCard
-                key={(result.nid ? result.nid : result.mid)}
+                key={(result.nid ? result.nid : result.mid) + result.url}
                 type={type}
                 title={result.title}
                 imageUrl={result.image_url}
