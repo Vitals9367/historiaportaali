@@ -5,7 +5,6 @@
   "dependencies": {
     "@apollo/client": "^3.5.6",
     "@apollo/react-hooks": "^4.0.0",
-    "crypto-hash": "^2.0.1",
     "framer-motion": "^5.6.0",
     "graphql": "^16.2.0",
     "graphql-tag": "^2.12.6",

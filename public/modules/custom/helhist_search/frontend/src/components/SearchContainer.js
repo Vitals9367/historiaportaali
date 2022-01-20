@@ -154,7 +154,6 @@ const SearchContainer = () => {
           isLoading={isLoading}
           currentPage={currentPage}
           totalPages={totalPages}
-          onPageChange={onPageChange}
         />
         {totalPages > 1 && (
           <Pager
