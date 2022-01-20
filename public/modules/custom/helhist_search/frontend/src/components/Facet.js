@@ -18,8 +18,7 @@ const Facet = ({ name, values, selectedValues, onFacetChange }) => {
   return (
     <Select
       multiselect
-      required
-      label={titleMap[name]}
+      label={selectedValues && selectedValues.length ? titleMap[name] : null}
       placeholder={titleMap[name]}
       options={values}
       defaultValue={selectedValues}
