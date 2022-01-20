@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25c902a5365b7f13b3fab7567b319e64",
+    "content-hash": "45a08744293642a87eae42d0dd3db8c7",
     "packages": [
         {
             "name": "City-of-Helsinki/php-hauki-client",
@@ -3539,6 +3539,9 @@
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
                     }
+                },
+                "patches_applied": {
+                    "How to get facets through GraphQL Search API? (https://www.drupal.org/project/elasticsearch_connector/issues/3253584#comment-14334900)": "custom-patches/elasticsearch_connector_fix_parsefacets_function.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4781,6 +4784,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "3.x phpunit tests are broken on PHP 7.4 (https://github.com/drupal-graphql/graphql/issues/982)": "custom-patches/graphql_fix_php_7_notice.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -7013,6 +7019,9 @@
                     "services": {
                         "drush.services.yml": "^9 || ^10"
                     }
+                },
+                "patches_applied": {
+                    "Properties via entity reference fields are not translated (https://www.drupal.org/project/search_api/issues/3039139#comment-13016070)": "https://www.drupal.org/files/issues/2019-03-11/3039139-3.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -7164,57 +7173,6 @@
                 "issues": "https://www.drupal.org/project/issues/search_api_location",
                 "irc": "irc://irc.freenode.org/drupal-search-api"
             }
-        },
-        {
-            "name": "drupal/search_api_sorts",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/search_api_sorts.git",
-                "reference": "362b2038f38a7fbb63cb1ea687701723d655b746"
-            },
-            "require": {
-                "drupal/core": "^8.8 || ^9",
-                "drupal/search_api": "^1.14"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0+2-dev",
-                    "datestamp": "1602260267",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "JeroenT",
-                    "homepage": "https://www.drupal.org/user/2228934"
-                },
-                {
-                    "name": "StryKaizer",
-                    "homepage": "https://www.drupal.org/user/462700"
-                },
-                {
-                    "name": "borisson_",
-                    "homepage": "https://www.drupal.org/user/2393360"
-                }
-            ],
-            "description": "Create sort options for search queries executed via the Search API.",
-            "homepage": "https://www.drupal.org/project/search_api_sorts",
-            "support": {
-                "source": "https://git.drupalcode.org/project/search_api_sorts"
-            },
-            "time": "2021-02-23T13:51:59+00:00"
         },
         {
             "name": "drupal/select2",
@@ -18438,14 +18396,12 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/better_exposed_filters": 20,
         "drupal/context_entity_field": 20,
         "drupal/elasticsearch_connector": 20,
         "drupal/facets": 20,
         "drupal/rabbit_hole": 10,
         "drupal/search_api": 20,
         "drupal/search_api_location": 15,
-        "drupal/search_api_sorts": 20,
         "drupal/term_merge": 20,
         "drupal/views_block_filter_block": 20,
         "drupal/views_menu_children_filter": 5
