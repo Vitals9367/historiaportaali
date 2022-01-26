@@ -1,0 +1,13 @@
+.frontpage-search {
+  margin: $spacing-double auto;
+  max-width: 900px;
+
+  .frontpage-search__form-wrapper {
+    padding: $spacing-double;
+    background-color: $color-black-80;
+    
+    label {
+      color: $color-white;
+    }
+  }
+}

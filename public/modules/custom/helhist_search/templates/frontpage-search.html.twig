@@ -1,0 +1,16 @@
+<div class="frontpage-search dropdown dropdown--search">
+  <div class="frontpage-search__form-wrapper">
+    <form role="search" action={{ search_page_path }} method="GET">
+      <div class="hds-text-input hds-text-input--search ">
+        <label for="edit-s" class="hds-text-input__label">{{ "Search from content"|t({}, {"context": "Search"}) }}</label>
+        <div class="hds-text-input__input-wrapper">
+          <input placeholder="{{ 'Location, person, topic, event...'|t }}" data-bef-auto-submit-exclude="" data-drupal-selector="edit-s" data-search-api-autocomplete-search="search" class="form-autocomplete form-text hds-text-input__input ui-autocomplete-input" data-autocomplete-path="/search_api_autocomplete/search?display=page&amp;&amp;filter=s" type="text" id="edit-s" name="s" value="" size="30" maxlength="128" autocomplete="off">
+        </div>
+        <button type="submit" class="hds-button hds-button--supplementary hds-button--theme-black" aria-label="Hae">
+          <span class="hds-button__label">&nbsp;</span>
+          <span aria-hidden="true" class="hds-icon hds-icon--search hds-icon--size-m    "></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
