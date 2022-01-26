@@ -43,6 +43,28 @@ function hdbt_subtheme_theme_suggestions_block_alter(&$suggestions) {
   }
 }
 
+/**
+ * Implements hook_preprocess_menu().
+ * @param $variables
+ */
+function hdbt_subtheme_preprocess_menu(&$variables) {
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['language'] = $langcode;
+}
+
+/**
+ * Implements template_preprocess_html().
+ */
+function hdbt_subtheme_preprocess_html(&$variables) {
+  $search_page_aliases = ['/search', '/haku', '/sok'];
+  $current_path = \Drupal::service('path.current')->getPath();
+  $path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+
+  if ($path_alias && in_array($path_alias, $search_page_aliases)) {
+    $variables['attributes']['class'][] = 'search-page';
+  }
+}
+
 function hdbt_subtheme_preprocess_region(&$variables) {
   $variables['is_frontpage'] = false;
   $variables['has_hero'] = false;

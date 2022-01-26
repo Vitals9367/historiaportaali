@@ -24,6 +24,7 @@ dependencies:
     - workflows.workflow.articles_editorial_workflow
   module:
     - config_translation
+    - content_lock
     - content_moderation
     - content_translation
     - entity_usage

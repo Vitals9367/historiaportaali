@@ -20,13 +20,21 @@
 #}
 {% import _self as menus %}
 
+{% if language == 'en' %}
+  {% set search_page_url = '/en/search' %}
+{% elseif language == 'fi' %}
+  {% set search_page_url = '/fi/haku' %}
+{% elseif language == 'sv' %}
+  {% set search_page_url = '/sv/sok' %}
+{% endif %}
+
 {#
   We call a macro which calls itself to render the full tree.
   @see https://twig.symfony.com/doc/1.x/tags/macro.html
 #}
-{{ menus.menu_links(items, attributes, 0, icons_path) }}
+{{ menus.menu_links(items, attributes, 0, icons_path, search_page_url) }}
 
-{% macro menu_links(items, attributes, menu_level, icons_path) %}
+{% macro menu_links(items, attributes, menu_level, icons_path, search_page_url) %}
   {% import _self as menus %}
 
   {% set menu_classes = [
@@ -38,7 +46,7 @@
     <ul{{ attributes.addClass(menu_classes) }}>
       {% if menu_level == 0 %}
       <li class="search-link">
-        <a href="{{ path('view.search.page') }}">
+        <a href={{ search_page_url }}>
           <span>{% include '@hdbt/misc/icon.twig' with {icon: 'search'} %}</span>
           <span>{{ 'Search'|t({}, {'context': 'Mobile menu'}) }}</span>
         </a>

@@ -193,6 +193,7 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
+              read_only: '0'
             expose_fields: false
             placeholder: 'Location, person, topic, event...'
             searched_fields_id: search_api_fulltext_searched_fields
@@ -211,8 +212,7 @@ display:
           parse_mode: phrase
           min_length: null
           fields:
-            - aggregated_keywords
-            - aggregated_title
+            - aggregated_autocomplete
         aggregated_start_year:
           id: aggregated_start_year
           table: search_api_index_content_and_media
@@ -405,7 +405,7 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      path: search
+      path: search-view
     cache_metadata:
       max-age: -1
       contexts:

@@ -11,6 +11,35 @@
       max-width: 900px;
     }
   }
+
+  h4 {
+    margin: 0 0 10px;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .form-actions {
+    button {
+      margin-right: $spacing-half;
+      --background-color: var(--color-metro-dark);
+      --background-color-hover: var(--color-metro-dark-hover);
+      --background-color-focus: var(--color-metro-dark-hover);
+      --background-color-hover-focus: var(--color-metro-dark-hover);
+      --background-color-disabled: var(--color-metro-medium-light);
+      --border-color: var(--color-metro-dark);
+      --border-color-hover: var(--color-metro-dark-hover);
+      --border-color-focus: var(--color-metro-dark-hover);
+      --border-color-hover-focus: var(--color-metro-dark-hover);
+      --border-color-disabled: var(--color-metro-medium-light);
+      --color: var(--color-white);
+      --color-hover: var(--color-white);
+      --color-focus: var(--color-white);
+      --color-hover-focus: var(--color-white);
+      --color-disabled: var(--color-white);
+      --focus-outline-color: var(--color-black);
+      --submit-input-focus-gutter-color: var(--color-white);
+    }
+  }
   
   .filters {
     padding: $spacing-double 0;
@@ -51,7 +80,6 @@
   form {
     label {
       color: $color-white;
-      margin-bottom: 10px;
     }
 
     .form-actions {
@@ -60,7 +88,7 @@
   }
 
   .form-item {
-    margin-bottom: 24px;
+    margin-bottom: $spacing;
 
     &.form-item-s {
       margin-bottom: $spacing;
@@ -73,86 +101,30 @@
     }
   }
 
-  .search-filters-title {
-    margin: 0 0 10px;
-    color: white;
-    font-size: 1rem;
-  }
+  .search-filters__era-selector {
+    padding-left: $spacing;
 
-  .year-interval__toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: $color-white;
-    border: 0;
-    box-sizing: border-box;
-    color: $color-black-90;
-    font-size: 1.125em;
-    width: 100%;
-    height: 56px;
-    line-height: normal;
-    padding: 0 $spacing;
-    cursor: pointer;
+    div[role="button"] {
+      font-weight: 400;
+      color: var(--placeholder-color);
+    }
+
+    div[role="region"] {
+      border-top: 1px solid $color-black-10;
+      padding-top: $spacing-three-quarters;
+    }
 
     label {
-      color: $color-black-90;
-      margin-bottom: 0;
-    }
-  }
-
-  .year-interval__form {
-    background: $color-white;
-    padding: $spacing;
-    border-top: 1px solid $color-black-10;
-  }
-
-  .year-interval__form-items {
-    display: flex;
-    align-items: center;
-    
-    label {
-      color: $color-black-90;
+      color: $color-black-80;
     }
 
-    .hds-text-input .hds-text-input__input {
-      border: 2px solid $color-black-50;
-    }
+    .year-input-container {
+      display: flex;
+      align-items: center;
 
-    .item-divider {
-      margin-top: 7px;
-      padding: 0 $spacing-quarter;
-
-      svg {
-        vertical-align: middle;
-      }
-    }
-  }
-
-  .facets-summary {
-    ul {
-      list-style: none;
-
-      li {
-        display: inline-block;
-        margin-right: $spacing;
-
-        a {
-          text-decoration: none;
-          color: $color-white;
-        }
-      }
-    }
-
-    .facet-item__container {
-      background: $color-metro-dark;
-      padding: $spacing;
-
-      .facet-item__remove-icon {
-        margin-right: $spacing-half;
-
-        svg {
-          vertical-align: middle;
-        }
+      .item-divider {
+        margin-top: $spacing-double;
+        padding: 0 $spacing-quarter;
       }
     }
   }

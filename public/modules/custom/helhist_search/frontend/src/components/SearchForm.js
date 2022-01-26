@@ -1,0 +1,104 @@
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Button } from 'hds-react/components/Button';
+import { Koros } from 'hds-react/components/Koros';
+import { SearchInput } from 'hds-react/components/SearchInput';
+import { fetchAutocompleteSuggestions } from '../helpers/autocomplete';
+import { scrollTo } from '../helpers/scrollTo';
+import EraSelector from './EraSelector';
+import Facet from './Facet';
+
+const SearchForm = ({
+  searchKeywords,
+  setSearchKeywords,
+  facets,
+  activeFacets,
+  onFacetChange,
+  selectedEra,
+  setSelectedEra,
+  resetSearch,
+  searchHasFilters,
+  resultsRef
+}) => {
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues: {
+      "keywords": searchKeywords,
+      "startYear": selectedEra.startYear,
+      "endYear": selectedEra.endYear
+    }
+  });
+  const [tmpKeywords, setTmpKeywords] = useState("");
+
+  const onSubmit = (data) => {
+    const { startYear, endYear } = data;
+    setSelectedEra({startYear: startYear, endYear: endYear})
+    setSearchKeywords(tmpKeywords);
+
+    scrollTo({
+      ref: resultsRef,
+      duration: 800
+    })
+  }
+
+  const handleReset = () => {
+    reset();
+    resetSearch();
+  }
+
+  const getSuggestions = (inputValue) => new Promise((resolve, reject) => {
+    const suggestions = fetchAutocompleteSuggestions(inputValue);
+    resolve(suggestions);
+  });
+
+  return (
+    <div className="search-filters">
+      <div className="container block__container">
+        <div className="filters">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-item hds-text-input">
+              <SearchInput
+                label={window.Drupal ? window.Drupal.t("Search from content", {}, {context: "Search"}) : "Search from content"}
+                placeholder={window.Drupal ? window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"}) : "Location, person, topic, event..."}
+                searchButtonAriaLabel={window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}
+                clearButtonAriaLabel="Clear search field"
+                suggestionLabelField="value"
+                getSuggestions={getSuggestions}
+                onChange={(value) => setTmpKeywords(value)}
+                onSubmit={handleSubmit(onSubmit)}
+              />
+            </div>
+
+            <div className="form-actions">
+              <Button type="submit" className="form-submit">{window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}</Button>
+              {searchHasFilters && (
+                <Button type="reset" className="form-reset" onClick={() => handleReset()}>{window.Drupal ? window.Drupal.t("Clear", {}, {context: "Search"}) : "Clear"}</Button>
+              )}
+            </div>
+
+            <h4>{window.Drupal ? window.Drupal.t("Filter results", {}, {context: "Search"}) : "Filter results"}</h4>
+
+            <div className="form-item">
+              <EraSelector
+                register={register}
+              />
+            </div>
+
+            {facets && facets.map(facet => (
+              <div className="form-item" key={facet.name}>
+                <Facet
+                  name={facet.name}
+                  values={facet.values.map(value => {return {label: value.filter}})}
+                  selectedValues={activeFacets[facet.name]}
+                  onFacetChange={onFacetChange}
+                />
+              </div>
+            ))}
+          </form>
+        </div>
+      </div>
+      <Koros className="search-filters__koro" type="wave" flipHorizontal={true} style={{fill: "#333333", position: "absolute", bottom: "-70px"}} />
+    </div>
+  )
+}
+
+export default SearchForm;
