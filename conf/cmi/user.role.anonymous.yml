@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - eu_cookie_compliance
+    - graphql
     - helfi_api_base
     - media
     - search_api_autocomplete
@@ -17,6 +18,7 @@ is_admin: false
 permissions:
   - 'access content'
   - 'display eu cookie compliance popup'
+  - 'execute graphql requests'
   - 'use search_api_autocomplete for search'
   - 'view media'
   - 'view remote entities'
