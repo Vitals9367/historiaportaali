@@ -138,7 +138,7 @@ display:
                 advanced:
                   sort_options: false
                   rewrite:
-                    filter_rewrite_values: ''
+                    filter_rewrite_values: '- All -|Select phenomenon'
                   collapsible: false
                   is_secondary: false
       access:
@@ -367,7 +367,7 @@ display:
           exposed: true
           expose:
             operator_id: field_phenomena_target_id_op
-            label: Phenomenon
+            label: ''
             description: ''
             use_operator: false
             operator: field_phenomena_target_id_op
@@ -412,24 +412,24 @@ display:
           data_source: field_geolocation
           entity_source: __base_table
           name_field: ''
-          description_field: ''
-          view_mode: full
-          leaflet_map: 'OSM Mapnik'
-          height: '400'
-          height_unit: px
+          description_field: '#rendered_entity_ajax'
+          view_mode: map_item
+          leaflet_map: esri-world_topo_map
+          height: '70'
+          height_unit: vh
           hide_empty_map: false
           disable_wheel: false
-          gesture_handling: false
+          gesture_handling: true
           reset_map:
             control: false
             position: topright
           map_position:
-            force: false
+            force: true
             center:
-              lat: !!float 0
-              lon: !!float 0
-            zoom: 12
-            minZoom: 1
+              lat: 60.169856330105
+              lon: 24.93838811948
+            zoom: 14
+            minZoom: 4
             maxZoom: 18
             zoomFiner: 0
           weight: ''

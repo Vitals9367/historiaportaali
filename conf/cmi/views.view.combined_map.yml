@@ -276,7 +276,7 @@ display:
           exposed: true
           expose:
             operator_id: field_start_year_value_op
-            label: Alkaa
+            label: Starts
             description: ''
             use_operator: false
             operator: field_start_year_value_op
@@ -323,7 +323,7 @@ display:
           exposed: true
           expose:
             operator_id: field_end_year_value_op
-            label: Päättyy
+            label: Ends
             description: ''
             use_operator: false
             operator: field_end_year_value_op
