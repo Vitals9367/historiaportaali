@@ -114,7 +114,7 @@
                       {% if media.fields.field_geolocation is not empty %}
                         <div class="media--image__content__map_link">
                           {% include '@hdbt/misc/icon.twig' with {icon: 'location', label: 'Location marker icon'|t } %}
-                          <a href="/fi/kartta?id={{ media.id() }}">Show on map</a>
+                          <a href="/{{ language }}/kartta?id={{ media.id() }}">{{ 'Show on map'|t({}, {'context': 'Content'}) }}</a>
                         </div>
                       {% endif %}
 
