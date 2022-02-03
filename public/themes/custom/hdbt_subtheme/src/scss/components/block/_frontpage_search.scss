@@ -1,0 +1,34 @@
+.frontpage-search {
+  position: relative;
+  background-color: $color-black-80;
+  color: $color-white;
+  margin: 0 $spacing $spacing-double;
+  padding-bottom: $spacing-double;
+  max-width: 900px;
+
+  @include breakpoint($breakpoint-l) {
+    margin: 0 auto $spacing-double;
+  }
+  
+  form {
+    label {
+      color: $color-white;
+    }
+
+    .hds-text-input__input-wrapper {
+      margin-bottom: $spacing;
+
+      input {
+        border: 0;
+      }
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      
+      @include breakpoint($breakpoint-s) {
+        width: auto;
+      }
+    }
+  }
+}
