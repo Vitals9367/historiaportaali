@@ -40,8 +40,8 @@
 
     openPopupByNid: function(id) {
       let selectedMarker = null;
-      let zoomAmount = 15;
-
+      let layerInsideGroup = false;
+      
       map.eachLayer(layer => {
         if (layer.options?.entity_id == id) {
           selectedMarker = layer;
@@ -53,28 +53,44 @@
           childMarkers.forEach(childMarker => {
             if (childMarker.options?.entity_id == id) {
               selectedMarker = childMarker;
-
-              // Zoom closer if the marker is inside a group to make
-              // sure that the marker is visible before opening popup
-              zoomAmount = 18;
+              layerInsideGroup = true;
             }
           });
         }
       });
 
       if (selectedMarker) {
-        // Center map to the selected marker
-        map.setView(selectedMarker._latlng, zoomAmount);
+        Drupal.behaviors.map.zoomToLayer(selectedMarker, layerInsideGroup);
+      }
+    },
 
-        // Wait for the centering to finish before opening popup
-        map.on('moveend', function() {
+    zoomToLayer: function(selectedMarker, layerInsideGroup = false) {
+      if (!selectedMarker) {
+        return false;
+      }
+
+      // Use Leaflet Markercluster's 'zoomToShowLayer'-method to reveal
+      // grouped marker
+      if (layerInsideGroup) {
+        selectedMarker.__parent._group.zoomToShowLayer(selectedMarker, () => {
           selectedMarker.openPopup();
         });
-
-        map.on('popupopen', function() {
-          map.off('moveend');
-        });
       }
+
+      // Center map to the selected marker if marker isn't grouped
+      if (!layerInsideGroup) {
+        const zoomAmount = 15;
+        map.setView(selectedMarker._latlng, zoomAmount);
+      }
+
+      // Wait for the centering to finish before opening popup
+      map.on('moveend', function() {
+        selectedMarker.openPopup();
+      });
+
+      map.on('popupopen', function() {
+        map.off('moveend');
+      });
     },
 
     bindPopupPositioning: function() {
