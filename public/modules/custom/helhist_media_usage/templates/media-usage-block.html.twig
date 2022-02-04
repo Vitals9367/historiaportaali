@@ -1,6 +1,6 @@
 {% if content %}
   <div class="image__usage">
-    <div class="label">{{ 'Used in articles'|t }}</div>
+    <h3 class="label">{{ 'Used in articles'|t({}, {'context': 'Content'}) }}</h3>
     {% for nid in content %}
       {{ drupal_entity('node', nid, 'listing_item') }}
     {% endfor %}
