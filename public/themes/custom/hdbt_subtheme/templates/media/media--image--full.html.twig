@@ -83,7 +83,7 @@
               </div>
               <div class="{{ media.bundle()|clean_class }}__map_link">
                 {% include '@hdbt/misc/icon.twig' with {icon: 'location', label: 'Location marker icon'|t } %}
-                <a href="/fi/kartta?id={{ media.id() }}">{{ 'Show on map'|t({}, {'context': 'Content'}) }}</a>
+                <a href="/{{ media.langcode.0.value }}/kartta?id={{ media.id() }}">{{ 'Show on map'|t({}, {'context': 'Content'}) }}</a>
               </div>
             {% endif %}
 
