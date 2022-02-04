@@ -100,7 +100,6 @@ content:
       height_unit: px
       hide_empty_map: true
       disable_wheel: false
-      fullscreen_control: false
       gesture_handling: false
       reset_map:
         control: false
@@ -112,7 +111,7 @@ content:
         center:
           lat: !!float 0
           lon: !!float 0
-        zoom: 12
+        zoom: 15
         minZoom: 1
         maxZoom: 18
         zoomFiner: 0
@@ -144,6 +143,9 @@ content:
         control: false
         options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
         include_path: false
+      fullscreen:
+        control: false
+        options: '{"position":"topleft","pseudoFullscreen":false}'
       path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2","radius":"6"}'
       geocoder:
         control: false
