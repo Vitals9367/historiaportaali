@@ -30,3 +30,4 @@ regions:
 libraries:
   - hdbt_subtheme/global-styling
   - hdbt_subtheme/global-scripting
+  - hdbt_admin/select2.min
