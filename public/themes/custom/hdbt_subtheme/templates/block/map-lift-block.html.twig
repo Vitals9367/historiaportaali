@@ -9,8 +9,16 @@
           <img src="{{ base_path ~ directory }}/src/images/map_comparison.png" alt="" />
         </a>
       </div>
-      <a href="{{ map_node_url }}">
-        {% include '@hdbt/button/button.html.twig' with { type: 'primary', disabled: false, icon_last: true, icon_last_type: 'arrow-right', label: 'Explore interactive map'|t } %}
+      {%
+        set link_classes = [
+          'hds-button',
+          'hds-button--primary',
+          'hdbt-icon',
+          'hdbt-icon--arrow-right',
+        ]
+      %}
+      <a href="{{ map_node_url }}" {{ create_attribute({'class': link_classes} ) }}>
+        <span class="hds-button__label">{{ 'Explore interactive map'|t }}</span>
       </a>
     {% endblock %}
   {% endembed %}
