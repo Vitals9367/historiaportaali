@@ -6,13 +6,11 @@ dependencies:
     - core.entity_view_mode.node.map_item
     - field.storage.node.field_geolocation
     - node.type.article
-    - taxonomy.vocabulary.phenomena
   module:
     - better_exposed_filters
     - geofield
     - leaflet_views
     - node
-    - taxonomy
     - user
 id: combined_map
 label: 'Combined map'
@@ -353,54 +351,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_phenomena_target_id:
-          id: field_phenomena_target_id
-          table: node__field_phenomena
-          field: field_phenomena_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_phenomena_target_id_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: field_phenomena_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_phenomena_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              admin: '0'
-              content_producer: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: phenomena
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
       filter_groups:
         operator: AND
         groups:
@@ -502,7 +452,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -524,7 +473,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
