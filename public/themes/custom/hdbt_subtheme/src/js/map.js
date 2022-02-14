@@ -77,20 +77,21 @@
         });
       }
 
-      // Center map to the selected marker if marker isn't grouped
       if (!layerInsideGroup) {
+        // Attach event handler to open popup after map centering
+        map.on('moveend', function() {
+          selectedMarker.openPopup();
+        });
+
+        // Remove event handler attached above after popup is opened
+        map.on('popupopen', function() {
+          map.off('moveend');
+        });
+
+        // Center map to the selected marker
         const zoomAmount = 15;
         map.setView(selectedMarker._latlng, zoomAmount);
       }
-
-      // Wait for the centering to finish before opening popup
-      map.on('moveend', function() {
-        selectedMarker.openPopup();
-      });
-
-      map.on('popupopen', function() {
-        map.off('moveend');
-      });
     },
 
     bindPopupPositioning: function() {
