@@ -3,12 +3,6 @@ display:
     display_options:
       exposed_form:
         options:
-          bef:
-            filter:
-              field_phenomena_target_id:
-                advanced:
-                  rewrite:
-                    filter_rewrite_values: '- Kaikki -|Valitse ilmiö'
           submit_button: Hae
           reset_button_label: Tyhjennä
       filters:

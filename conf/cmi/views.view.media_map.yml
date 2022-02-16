@@ -6,9 +6,8 @@ dependencies:
     - core.entity_view_mode.media.map_item
     - field.storage.media.field_geolocation
     - media.type.image
-    - taxonomy.vocabulary.phenomena
+    - taxonomy.vocabulary.keywords
   module:
-    - better_exposed_filters
     - geofield
     - leaflet_views
     - media
@@ -99,7 +98,7 @@ display:
           offset: 0
           items_per_page: 0
       exposed_form:
-        type: bef
+        type: basic
         options:
           submit_button: Apply
           reset_button: true
@@ -108,39 +107,6 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: full_html
-          bef:
-            general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_textfield_delay: 500
-              autosubmit_hide: false
-              input_required: false
-              allow_secondary: false
-              secondary_label: 'Advanced options'
-              secondary_open: false
-            filter:
-              field_start_year_value:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  is_secondary: false
-              field_end_year_value:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  is_secondary: false
-              field_phenomena_target_id:
-                plugin_id: default
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: '- All -|Select phenomenon'
-                  collapsible: false
-                  is_secondary: false
       access:
         type: perm
         options:
@@ -291,9 +257,10 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
+              read_only: '0'
             min_placeholder: ''
             max_placeholder: ''
-            placeholder: ''
+            placeholder: '1820'
           is_grouped: false
           group_info:
             label: ''
@@ -338,9 +305,10 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
+              read_only: '0'
             min_placeholder: ''
             max_placeholder: ''
-            placeholder: ''
+            placeholder: '1900'
           is_grouped: false
           group_info:
             label: ''
@@ -353,10 +321,10 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_phenomena_target_id:
-          id: field_phenomena_target_id
-          table: media__field_phenomena
-          field: field_phenomena_target_id
+        field_keywords_target_id:
+          id: field_keywords_target_id
+          table: media__field_keywords
+          field: field_keywords_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -366,14 +334,14 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_phenomena_target_id_op
+            operator_id: field_keywords_target_id_op
             label: ''
             description: ''
             use_operator: false
-            operator: field_phenomena_target_id_op
+            operator: field_keywords_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_phenomena_target_id
+            identifier: field_keywords_target_id
             required: false
             remember: false
             multiple: false
@@ -382,6 +350,7 @@ display:
               anonymous: '0'
               admin: '0'
               content_producer: '0'
+              read_only: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -396,7 +365,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          vid: phenomena
+          vid: keywords
           type: select
           hierarchy: false
           limit: true

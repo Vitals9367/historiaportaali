@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Views;
 
@@ -94,4 +95,85 @@ function _getMapDisplays() {
   return [
     'block'
   ];
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Hide taxonomy terms from exposed form filters that wouldn't return results.
+ */
+function helhist_map_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $form_id = 'views-exposed-form-combined-map-block--2';
+  $select_field = 'field_keywords_target_id';
+  $taxonomy_field = 'node__field_keywords';
+
+  if ($form['#id'] == $form_id) {
+    $active_terms = _get_active_terms($taxonomy_field, $select_field);
+    if (isset($active_terms)) {
+      unset($form[$select_field]['#options']);
+      $form[$select_field]['#options'] = ['All' => t('Select keyword')];
+
+      foreach ($active_terms as $active_term) {
+        $form[$select_field]['#options'][$active_term[0]] = $active_term[1];
+      }
+    }
+    else {
+      // No active terms were found, so something weird must have happened.
+      unset($form[$select_field]['#options']);
+      $form[$select_field]['#options'] = ['All' => t('Select keyword')];
+    }
+  }
+}
+
+/**
+ * Find taxonomy terms that return node results for a given field.
+ * 
+ * @param string $taxonomy_field
+ * @param string $select_field
+ */
+function _get_active_terms($taxonomy_field, $select_field) {
+
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $term_list = [];
+
+  // Find taxonomy terms that link to node type content with a geolocation.
+  $connection = \Drupal::database();
+  $query = $connection->select($taxonomy_field, 'node__field_table');
+  $query->join('node__field_geolocation', 'geolocation', 'geolocation.entity_id = node__field_table.entity_id');
+  $query->join('taxonomy_term_field_data', 'tname', 'tname.tid = node__field_table.' . $select_field);
+  $query->condition('tname.langcode', $language);
+  $query->fields('node__field_table', [$select_field]);
+  $query->fields('tname', ['name']);
+  $result = $query->distinct()->execute();
+  while ($row = $result->fetchAssoc()) {
+    array_push($term_list, [$row[$select_field], $row['name']]);
+  }
+
+  // Find taxonomy terms that link to media type content with a geolocation.
+  $connection = \Drupal::database();
+  $query = $connection->select($taxonomy_field, 'media__field_table');
+  $query->join('media__field_geolocation', 'geolocation', 'geolocation.entity_id = media__field_table.entity_id');
+  $query->join('taxonomy_term_field_data', 'tname', 'tname.tid = media__field_table.' . $select_field);
+  $query->condition('tname.langcode', $language);
+  $query->fields('media__field_table', [$select_field]);
+  $query->fields('tname', ['name']);
+  $result = $query->distinct()->execute();
+  while ($row = $result->fetchAssoc()) {
+    array_push($term_list, [$row[$select_field], $row['name']]);
+  }
+
+  // Sort final options array.
+  usort($term_list, "_select_sort");
+  return $term_list;
+}
+
+/**
+ * Sort term list array by taxonomy name column.
+ *
+ * @param array $a
+ * @param array $b
+ */
+function _select_sort ($a, $b) {
+  return strcmp($a[1], $b[1]);
 }
