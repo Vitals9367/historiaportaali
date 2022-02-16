@@ -6,7 +6,7 @@
     attach: function(context, settings) {
       let self = this;
 
-      $(document).on('leaflet.map', function(e, settings, lMap, mapid) {
+      $(document).once('map').on('leaflet.map', function(e, settings, lMap, mapid) {
         if (mapid.startsWith('leaflet-map-view-combined-map-block')) {
           map = lMap;
           const idFromUrl = self.getUrlParameter('id');
