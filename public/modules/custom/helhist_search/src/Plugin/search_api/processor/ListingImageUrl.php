@@ -65,12 +65,12 @@ class ListingImageUrl extends ProcessorPluginBase {
       $media = $entity->field_liftup_image->entity;
     }
 
-    if ($media) {
+    if (isset($media)) {
       $fid = $media->getSource()->getSourceFieldValue($media);
       $file = File::load($fid);
     }
   
-    if ($file) {
+    if (isset($file)) {
       $image_style = ImageStyle::load('3_2_xxs_2x');
       $image_uri = $file->getFileUri();
   
