@@ -6,13 +6,14 @@ types:
   media: {  }
   menu_link_content: {  }
   node:
-    article: article
-    page: page
-  paragraphs_library_item: {  }
+    '*': '*'
+  paragraphs_library_item:
+    '*': '*'
   path_alias: {  }
   redirect: {  }
   search_api_task: {  }
-  taxonomy_term: {  }
+  taxonomy_term:
+    '*': '*'
   user: {  }
   paragraph: {  }
 types_translation_lock: {  }
