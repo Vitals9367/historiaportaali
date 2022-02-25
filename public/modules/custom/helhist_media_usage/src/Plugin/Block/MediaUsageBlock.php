@@ -127,7 +127,7 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
         if(preg_match('/node\/(\d+)/', $url_path, $matches)) {
           $node = \Drupal\node\Entity\Node::load($matches[1]);
         }
-        if (!is_null($node)) {
+        if (isset($node)) {
           // Filter duplicates (old revisions, same media in liftup and content) and non-articles.
           if (!in_array($node->id(), $content) && $node->getType() == 'article') {
             $content[] = $node->id();
