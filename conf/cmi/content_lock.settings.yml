@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: 6Ka3T1c-CIjEUO1Q64NXKksLthkMhj53a6zy4RJBtkc
 verbose: 1
 types:
   content_moderation_state: {  }
@@ -6,13 +8,14 @@ types:
   media: {  }
   menu_link_content: {  }
   node:
-    article: article
-    page: page
-  paragraphs_library_item: {  }
+    '*': '*'
+  paragraphs_library_item:
+    '*': '*'
   path_alias: {  }
   redirect: {  }
   search_api_task: {  }
-  taxonomy_term: {  }
+  taxonomy_term:
+    '*': '*'
   user: {  }
   paragraph: {  }
 types_translation_lock: {  }
@@ -57,5 +60,3 @@ form_op_lock:
   paragraph:
     mode: 0
     values: {  }
-_core:
-  default_config_hash: 6Ka3T1c-CIjEUO1Q64NXKksLthkMhj53a6zy4RJBtkc
