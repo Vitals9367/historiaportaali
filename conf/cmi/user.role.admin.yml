@@ -47,11 +47,12 @@ dependencies:
     - system
     - taxonomy
     - toolbar
+    - content_lock
 _core:
   default_config_hash: oDxYEw5hRkjMNuwK8kHu8mvLUk1n07pQHZPC8JiU2nE
 id: admin
-label: Admin
-weight: 2
+label: Administrator
+weight: 5
 is_admin: null
 permissions:
   - 'access administration pages'
@@ -239,3 +240,16 @@ permissions:
   - 'view scheduled content'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
+  - 'administer blocks'
+  - 'administer hotjar settings'
+  - 'assign admin role'
+  - 'assign content_producer role'
+  - 'assign editor role'
+  - 'assign read_only role'
+  - 'set landing_page published on date'
+  - 'set page published on date'
+  - 'use menu link attributes'
+  - 'use text format minimal'
+  - 'use text format full_html'
+  - 'use text format minimal'
+  - 'break content lock'
