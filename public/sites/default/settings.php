@@ -98,5 +98,18 @@ if ($env = getenv('APP_ENV')) {
   if (file_exists(__DIR__ . '/settings.local.php')) {
     include __DIR__ . '/settings.local.php';
   }
-}
 
+  // Openshift Elasticsearch authentication
+  if ($env == 'development') {
+    $config['elasticsearch_connector.cluster.local']['url'] = 'https://elasticsearch-helhist-dev-es-http:9200';
+    $config['elasticsearch_connector.cluster.local']['options']['use_authentication'] = '1';
+    $config['elasticsearch_connector.cluster.local']['options']['username'] = 'elastic';
+    $config['elasticsearch_connector.cluster.local']['options']['password'] = '11U1i6GY6I1Tmr829jQLo8dY';
+  }
+  if ($env == 'test') {
+    $config['elasticsearch_connector.cluster.local']['url'] = 'https://elasticsearch-helhist-test-es-http:9200';
+    $config['elasticsearch_connector.cluster.local']['options']['use_authentication'] = '1';
+    $config['elasticsearch_connector.cluster.local']['options']['username'] = 'elastic';
+    $config['elasticsearch_connector.cluster.local']['options']['password'] = 'Q7n88J667AHiEy7Z8J0G0ehD';
+  }
+}
