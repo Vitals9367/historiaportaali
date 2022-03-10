@@ -101,3 +101,12 @@ function _get_year_interval_render_array($form) {
     ]
   ];
 }
+
+/**
+ * Implements hook_elasticsearch_connector_load_library_options_alter().
+ */
+function helhist_search_elasticsearch_connector_load_library_options_alter(&$options, &$context) {
+  // Skip SSL certificate verification.
+  $options['curl'][CURLOPT_SSL_VERIFYPEER] = FALSE;
+  $options['curl'][CURLOPT_SSL_VERIFYHOST] = FALSE;
+}
