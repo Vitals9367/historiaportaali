@@ -21,6 +21,11 @@ type_settings:
       weight: -1
       published: false
       default_revision: false
+    not_published:
+      label: 'Not published'
+      weight: 1
+      published: false
+      default_revision: true
     published:
       label: Published
       weight: 0
@@ -31,6 +36,7 @@ type_settings:
       label: 'Create New Draft'
       from:
         - draft
+        - not_published
         - published
       to: draft
       weight: -2
@@ -39,6 +45,7 @@ type_settings:
       from:
         - draft
         - for_review
+        - not_published
         - published
       to: published
       weight: 0
@@ -46,8 +53,16 @@ type_settings:
       label: 'Submit for review'
       from:
         - draft
+        - not_published
       to: for_review
       weight: -1
+    unpublish:
+      label: Unpublish
+      from:
+        - not_published
+        - published
+      to: not_published
+      weight: 1
   entity_types:
     node:
       - article

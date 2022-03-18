@@ -23,6 +23,7 @@ dependencies:
     - taxonomy.vocabulary.phenomena
     - workflows.workflow.articles_editorial_workflow
   module:
+    - block
     - config_translation
     - content_lock
     - content_moderation
@@ -34,6 +35,7 @@ dependencies:
     - helfi_api_base
     - locale
     - media
+    - menu_link_attributes
     - menu_link_content
     - node
     - paragraphs
@@ -47,7 +49,6 @@ dependencies:
     - system
     - taxonomy
     - toolbar
-    - content_lock
 _core:
   default_config_hash: oDxYEw5hRkjMNuwK8kHu8mvLUk1n07pQHZPC8JiU2nE
 id: admin
@@ -67,10 +68,12 @@ permissions:
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
+  - 'administer blocks'
   - 'administer content translation'
   - 'administer content types'
   - 'administer eu cookie compliance categories'
   - 'administer eu cookie compliance popup'
+  - 'administer hotjar settings'
   - 'administer menu'
   - 'administer nodes'
   - 'administer paragraphs library'
@@ -84,7 +87,12 @@ permissions:
   - 'administer taxonomy'
   - 'administer url aliases'
   - 'administer users'
+  - 'assign admin role'
   - 'assign all roles'
+  - 'assign content_producer role'
+  - 'assign editor role'
+  - 'assign read_only role'
+  - 'break content lock'
   - 'break content lock'
   - 'bypass node access'
   - 'cancel account'
@@ -192,6 +200,8 @@ permissions:
   - 'revert map_layer revisions'
   - 'revert page revisions'
   - 'schedule publishing of nodes'
+  - 'set landing_page published on date'
+  - 'set page published on date'
   - 'translate any entity'
   - 'translate article node'
   - 'translate authors taxonomy_term'
@@ -223,7 +233,12 @@ permissions:
   - 'use articles_editorial_workflow transition create_new_draft'
   - 'use articles_editorial_workflow transition publish'
   - 'use articles_editorial_workflow transition submit_for_review'
+  - 'use articles_editorial_workflow transition unpublish'
+  - 'use menu link attributes'
   - 'use text format full_html'
+  - 'use text format full_html'
+  - 'use text format minimal'
+  - 'use text format minimal'
   - 'view all media revisions'
   - 'view all revisions'
   - 'view any unpublished content'
@@ -240,16 +255,3 @@ permissions:
   - 'view scheduled content'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
-  - 'administer blocks'
-  - 'administer hotjar settings'
-  - 'assign admin role'
-  - 'assign content_producer role'
-  - 'assign editor role'
-  - 'assign read_only role'
-  - 'set landing_page published on date'
-  - 'set page published on date'
-  - 'use menu link attributes'
-  - 'use text format minimal'
-  - 'use text format full_html'
-  - 'use text format minimal'
-  - 'break content lock'
