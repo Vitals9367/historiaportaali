@@ -43,7 +43,7 @@
       &.node--view-mode-full {
 
         p {
-          @include font-size($fontsize-body-m, $lineheight-s);
+          @include font-size($fontsize-body-xl, $lineheight-m);
         }
       }
     }
