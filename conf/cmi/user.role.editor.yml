@@ -1,6 +1,35 @@
+uuid: null
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - media.type.file
+    - media.type.image
+    - media.type.remote_video
+    - media.type.soundcloud
+    - node.type.landing_page
+    - node.type.page
+    - taxonomy.vocabulary.keywords
+  module:
+    - content_moderation
+    - content_translation
+    - file
+    - filter
+    - helfi_api_base
+    - locale
+    - media
+    - menu_link_attributes
+    - menu_link_content
+    - node
+    - paragraphs
+    - paragraphs_library
+    - path
+    - redirect
+    - scheduler
+    - system
+    - taxonomy
+    - toolbar
 id: editor
 label: Editor
 weight: 4
@@ -89,6 +118,8 @@ permissions:
   - 'update media'
   - 'use menu link attributes'
   - 'use text format full_html'
+  - 'use text format full_html'
+  - 'use text format minimal'
   - 'use text format minimal'
   - 'view all media revisions'
   - 'view all revisions'
@@ -100,5 +131,3 @@ permissions:
   - 'view scheduled content'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
-  - 'use text format full_html'
-  - 'use text format minimal'

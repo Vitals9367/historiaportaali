@@ -4,5 +4,7 @@ type_settings:
       label: Luonnos
     for_review:
       label: 'Odottaa hyväksyntää'
+    not_published:
+      label: 'Pois julkaisusta'
     published:
       label: Julkaistu
