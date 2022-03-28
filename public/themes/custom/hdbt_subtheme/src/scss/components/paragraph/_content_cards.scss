@@ -25,6 +25,11 @@ $card_spacing: $spacing-and-half;
   }
 
   @include breakpoint($breakpoint-s) {
+    margin-left: initial;
+    width: initial;
+  }
+
+  @include breakpoint($breakpoint-m) {
     overflow-x: hidden;
     flex-wrap: wrap;
   }
@@ -50,8 +55,9 @@ $card_spacing: $spacing-and-half;
 .content-card__link {
   width: 245px;
   padding-bottom: 0;
+  height: 100%;
 
-  @include breakpoint($breakpoint-s) {
+  @include breakpoint($breakpoint-m) {
     width: auto;
     padding-bottom: $spacing;
   }
@@ -60,11 +66,15 @@ $card_spacing: $spacing-and-half;
 .content-card {
   width: calc(245px + #{$card_spacing});
   padding-left: $card_spacing;
+  // Override helfi grid system
+  margin-top: 0 !important;
+  flex: 1 1 33%;
+  margin-bottom: $card_spacing;
 
   &:first-of-type {
     padding-left: 0;
 
-    @include breakpoint($breakpoint-s) {
+    @include breakpoint($breakpoint-m) {
       padding-left: $card_spacing;
     }
   }
@@ -97,6 +107,7 @@ $card_spacing: $spacing-and-half;
 .content-card__content {
   background: $color-white;
   padding: $spacing;
+  height: 100%;
 
   .content-card__metadata {
     display: flex;
