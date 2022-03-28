@@ -1,10 +1,10 @@
-label: 'Moderated content'
-description: 'Find and moderate content.'
+label: 'Модерируемые материалы'
+description: 'Найти и модерировать контент.'
 display:
   default:
     display_title: 'По умолчанию'
     display_options:
-      title: 'Moderated content'
+      title: 'Модерируемые материалы'
       fields:
         title:
           label: Заголовок
@@ -16,7 +16,7 @@ display:
           label: Автор
           separator: ', '
         moderation_state:
-          label: 'Moderation state'
+          label: 'Состояние модерации'
           separator: ', '
         changed:
           label: Обновлено
@@ -43,7 +43,7 @@ display:
           sort_desc_label: 'По убыванию'
       empty:
         area_text_custom:
-          content: 'No moderated content available. Only pending versions of content, such as drafts, are listed here.'
+          content: 'Нет доступных модерируемых материалов. Здесь перечислены только ожидающие версии материалов, такие как черновики.'
       filters:
         title:
           expose:
@@ -53,9 +53,9 @@ display:
             label: 'Тип материала'
         moderation_state:
           expose:
-            label: 'Moderation state'
+            label: 'Состояние модерации'
         langcode:
           expose:
             label: Язык
   moderated_content:
-    display_title: 'Moderated content'
+    display_title: 'Модерируемые материалы'

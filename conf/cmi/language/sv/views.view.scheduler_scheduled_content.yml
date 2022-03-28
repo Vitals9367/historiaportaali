@@ -63,20 +63,20 @@ display:
           expose:
             label: Språk
       title: 'Scheduled Content'
-    display_title: Huvud
+    display_title: Förvald
   overview:
     display_options:
       menu:
         title: Schemalagd
       tab_options:
-        title: Content
+        title: Innehåll
     display_title: 'Content Overview'
   user_page:
     display_options:
       menu:
         title: Schemalagd
       tab_options:
-        title: Content
+        title: Innehåll
       arguments:
         uid:
           exception:

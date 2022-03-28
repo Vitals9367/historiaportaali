@@ -22,7 +22,7 @@ display:
             offset_label: Пропустить
       fields:
         node_bulk_form:
-          label: 'Node operations bulk form'
+          label: 'Форма массовых операций с материалами'
           action_title: Действие
         title:
           label: Заголовок

@@ -36,10 +36,10 @@ display:
             format_custom_false: Julkaisematon
           separator: ', '
         publish_on:
-          label: Julkaisupäivämäärä
+          label: Julkaisuaika
           separator: ', '
         unpublish_on:
-          label: 'Julkaisun peruutuspäivämäärä'
+          label: 'Ajastettu piilottaminen'
           separator: ', '
         operations:
           label: Toimenpiteet

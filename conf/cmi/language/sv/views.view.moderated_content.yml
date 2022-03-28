@@ -1,10 +1,10 @@
-label: 'Moderated content'
-description: 'Find and moderate content.'
+label: 'Modererat innehåll'
+description: 'Hitta och moderera innehåll.'
 display:
   default:
     display_title: Förvald
     display_options:
-      title: 'Moderated content'
+      title: 'Modererat innehåll'
       fields:
         title:
           label: Titel
@@ -16,7 +16,7 @@ display:
           label: Författare
           separator: ', '
         moderation_state:
-          label: 'Moderation state'
+          label: Modereringsstatus
           separator: ', '
         changed:
           label: Uppdaterad
@@ -43,7 +43,7 @@ display:
           sort_desc_label: Fallande
       empty:
         area_text_custom:
-          content: 'No moderated content available. Only pending versions of content, such as drafts, are listed here.'
+          content: 'Inget modererat innehåll tillgängligt. Endast väntande versioner av innehåll, till exempel utkast, listas här.'
       filters:
         title:
           expose:
@@ -53,9 +53,9 @@ display:
             label: Innehållstyp
         moderation_state:
           expose:
-            label: 'Moderation state'
+            label: Modereringsstatus
         langcode:
           expose:
             label: Språk
   moderated_content:
-    display_title: 'Moderated content'
+    display_title: 'Modererat innehåll'
