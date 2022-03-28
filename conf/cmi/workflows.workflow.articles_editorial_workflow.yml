@@ -59,6 +59,8 @@ type_settings:
     unpublish:
       label: Unpublish
       from:
+        - draft
+        - for_review
         - not_published
         - published
       to: not_published
