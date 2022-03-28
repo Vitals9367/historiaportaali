@@ -17,6 +17,6 @@ display:
       filters:
         label:
           expose:
-            label: Otsikko
+            label: Tunnus
   entity_reference:
     display_title: Entiteettiviittaus
