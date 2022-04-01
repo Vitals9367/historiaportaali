@@ -4,34 +4,29 @@ display:
       fields:
         count:
           label: Käyttö
+          alter:
+            text: "{% if count == '1' %}\r\nEsiintyy sisällössä\r\n{% else %}\r\nEi esiinny sisällössä\r\n{% endif %}"
         entity_translations_field:
           label: Käännökset
         media_bulk_form:
           action_title: Toiminto
         thumbnail__target_id:
           label: Pienoiskuva
-          separator: ', '
         name:
           label: 'Mediatiedoston nimi'
-          separator: ', '
         bundle:
           label: Tyyppi
-          separator: ', '
         uid:
           label: Kirjoittaja
-          separator: ', '
         status:
           label: Tila
           settings:
             format_custom_false: Julkaisematon
             format_custom_true: Julkaistu
-          separator: ', '
         changed:
           label: Päivitetty
-          separator: ', '
         operations:
           label: Toimenpiteet
-      title: Media
       pager:
         options:
           tags:
@@ -42,7 +37,6 @@ display:
           expose:
             items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options_all_label: '- Kaikki -'
-            offset_label: Offset
       exposed_form:
         options:
           submit_button: Suodatin
@@ -63,6 +57,7 @@ display:
         status:
           expose:
             label: Tosi
+            description: ''
           group_info:
             label: Julkaisutila
             group_items:
@@ -75,9 +70,6 @@ display:
             label: Kieli
     display_title: Oletus
   media_page_list:
-    display_title: Media
     display_options:
-      menu:
-        title: Media
-label: Media
+      menu: {  }
 description: 'Etsi ja ylläpidä mediatiedostoja.'
