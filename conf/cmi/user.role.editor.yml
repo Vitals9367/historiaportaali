@@ -11,6 +11,7 @@ dependencies:
     - node.type.landing_page
     - node.type.page
     - taxonomy.vocabulary.keywords
+    - workflows.workflow.articles_editorial_workflow
   module:
     - content_moderation
     - content_translation
@@ -116,6 +117,8 @@ permissions:
   - 'update any media'
   - 'update content translations'
   - 'update media'
+  - 'use articles_editorial_workflow transition create_new_draft'
+  - 'use articles_editorial_workflow transition submit_for_review'
   - 'use menu link attributes'
   - 'use text format full_html'
   - 'use text format full_html'
@@ -125,6 +128,7 @@ permissions:
   - 'view all revisions'
   - 'view any unpublished content'
   - 'view landing_page revisions'
+  - 'view latest version'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view page revisions'
