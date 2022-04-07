@@ -118,5 +118,6 @@ if ($env = getenv('APP_ENV')) {
     $config['elasticsearch_connector.cluster.local']['options']['use_authentication'] = '1';
     $config['elasticsearch_connector.cluster.local']['options']['username'] = 'elastic';
     $config['elasticsearch_connector.cluster.local']['options']['password'] = '24r4BwuWWs6809EmNk30Y2ze';
+    $settings['trusted_host_patterns'][] = '^historia.hel.fi$';
   }
 }
