@@ -116,7 +116,7 @@ class MediaUsageBlock extends BlockBase implements ContainerFactoryPluginInterfa
     foreach ($rows as $row) {
       // Get link from entity usage table column.
       $link = $row[0];
-      if (!is_null($link)) {
+      if ($link instanceof \Drupal\Core\Link) {
         // Get node from link url.
         $url = $link->getUrl()->toString();
         // Strip langcode.
