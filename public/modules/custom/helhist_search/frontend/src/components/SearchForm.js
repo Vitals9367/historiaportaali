@@ -29,10 +29,15 @@ const SearchForm = ({
   });
   const [tmpKeywords, setTmpKeywords] = useState("");
 
-  const onSubmit = (data) => {
-    const { startYear, endYear } = data;
+  const onSubmit = suggestionKeyword => (formData) => {
+    const { startYear, endYear } = formData;
     setSelectedEra({startYear: startYear, endYear: endYear})
-    setSearchKeywords(tmpKeywords);
+
+    if (suggestionKeyword) {
+      setSearchKeywords(suggestionKeyword);
+    } else {
+      setSearchKeywords(tmpKeywords);
+    }
 
     scrollTo({
       ref: resultsRef,
@@ -45,26 +50,41 @@ const SearchForm = ({
     resetSearch();
   }
 
-  const getSuggestions = (inputValue) => new Promise((resolve, reject) => {
+  const getSuggestions = (inputValue) => new Promise((resolve) => {
     const suggestions = fetchAutocompleteSuggestions(inputValue);
     resolve(suggestions);
   });
+
+  const getSearchInputPlaceholder = () => {
+    /**
+     * Because there is no way to pass default value to the SearchInput-component,
+     * we have to use search field's placeholder to show the pre-defined keyword.
+     * 
+     * This should be refactored when following issue is resolved:
+     * https://github.com/City-of-Helsinki/helsinki-design-system/issues/666
+     */
+    if (searchKeywords) {
+      return searchKeywords;
+    } else {
+      return window.Drupal ? window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"}) : "Location, person, topic, event...";
+    }
+  }
 
   return (
     <div className="search-filters">
       <div className="container block__container">
         <div className="filters">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit())}>
             <div className="form-item hds-text-input">
               <SearchInput
                 label={window.Drupal ? window.Drupal.t("Search from content", {}, {context: "Search"}) : "Search from content"}
-                placeholder={window.Drupal ? window.Drupal.t("Location, person, topic, event...", {}, {context: "Search"}) : "Location, person, topic, event..."}
+                placeholder={getSearchInputPlaceholder()}
                 searchButtonAriaLabel={window.Drupal ? window.Drupal.t("Search", {}, {context: "Search"}) : "Search"}
                 clearButtonAriaLabel="Clear search field"
                 suggestionLabelField="value"
                 getSuggestions={getSuggestions}
                 onChange={(value) => setTmpKeywords(value)}
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={(value) => handleSubmit(onSubmit(value))()}
               />
             </div>
 
