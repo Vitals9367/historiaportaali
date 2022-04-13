@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { IconDocument, IconCamera, IconArrowRight } from 'hds-react/icons';
+import PlaceholderImage from './PlaceholderImage';
 
 const ResultCard = ({
   type,
@@ -26,7 +27,12 @@ const ResultCard = ({
       <article className={classes}>
         <a href={url} className="content-card__link" rel="bookmark">
           <div className="content-card__image">
-            <img src={imageUrl} />
+            {imageUrl && (
+              <img src={imageUrl} />
+            )}
+            {!imageUrl && (
+              <PlaceholderImage />
+            )}
           </div>
           
           <div className="content-card__content">
