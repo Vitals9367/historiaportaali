@@ -16,10 +16,9 @@ RUN chmod +x /crons/*
 
 # Install theme packages
 WORKDIR /var/www/html/public/themes/custom/hdbt_subtheme
-RUN unset NPM_CONFIG_PREFIX
-RUN export NVM_DIR="/var/www/html/.nvm"
-SHELL ["/bin/bash", "--login", "-c"]
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-RUN nvm install
-RUN nvm use
-RUN npm install
+ENV NVM_DIR /var/www/html/.nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash \
+    && . $NVM_DIR/nvm.sh \
+    && nvm install  \
+    && nvm use \
+    && npm install
