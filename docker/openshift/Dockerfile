@@ -18,15 +18,15 @@ RUN chmod +x /crons/*
 WORKDIR /var/www/html/public/themes/custom/hdbt_subtheme
 
 RUN mkdir -p /var/www/html/.nvm
+
 ENV NVM_DIR /var/www/html/.nvm
+ENV NODE_VERSION 0.38.0
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash \
+    && . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
 
-RUN source $NVM_DIR/nvm.sh
-RUN source ~/.profile
-RUN source ~/.bashrc
-
-RUN nvm install
-RUN nvm use
-RUN npm install
-
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+#ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
