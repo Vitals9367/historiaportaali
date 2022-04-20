@@ -19,4 +19,4 @@ WORKDIR /var/www/html/public/themes/custom/hdbt_subtheme
 ENV NVM_DIR /var/www/html/.nvm
 RUN mkdir -p /var/www/html/.nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install && nvm use && npm install"
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh nvm install && source $NVM_DIR/nvm.sh nvm use && source $NVM_DIR/nvm.sh npm install"
