@@ -21,4 +21,4 @@ RUN mkdir -p "$NVM_DIR"/.nvm && \
     curl -Lo- https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.1.tar.gz | tar xzf - && \
     source nvm-0.39.1/nvm.sh --install && \
     nvm use && \
-    rm -rf nvm-0.38.0
+    rm -rf nvm-0.39.1
