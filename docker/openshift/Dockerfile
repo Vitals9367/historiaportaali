@@ -20,7 +20,7 @@ WORKDIR /var/www/html/public/themes/custom/hdbt_subtheme
 RUN mkdir -p /var/www/html/.nvm
 
 ENV NVM_DIR /var/www/html/.nvm
-#ENV NODE_VERSION 0.10.33
+ENV NODE_VERSION node
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash \
     && . $NVM_DIR/nvm.sh \
