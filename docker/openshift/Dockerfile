@@ -16,9 +16,12 @@ RUN chmod +x /crons/*
 
 # Install theme packages
 WORKDIR /var/www/html/public/themes/custom/hdbt_subtheme
+RUN mkdir -p /var/www/html/.nvm
 ENV NVM_DIR /var/www/html/.nvm
-RUN mkdir -p "$NVM_DIR"/.nvm && \
-    curl -Lo- https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.1.tar.gz | tar xzf - && \
-    source nvm-0.39.1/nvm.sh --install && \
-    nvm use && \
-    rm -rf nvm-0.39.1
+ENV NODE_VERSION 0.10.33
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash \
+    && . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+    && npm install
